@@ -18,6 +18,7 @@ namespace BixHubWrapper.Model
         public DateTime? CompletedDate { get; set; }
         public string FlowType { get; set; }
         public string IdentificationStatus { get; set; }
+        public string Description { get; set; }
         public string Status { get; set; }
         public string Workflow { get; set; }
         public string Process { get; set; }
@@ -30,6 +31,7 @@ namespace BixHubWrapper.Model
         {
             var result = string.Empty;
             result += string.Format("  SessionGuid: {0}", SessionGuid);
+            result += Environment.NewLine + string.Format("  Description: {0}", Description);
             result += Environment.NewLine + string.Format("  ExternalID: {0}", ExternalID);
             result += Environment.NewLine + string.Format("  CreatedDate: {0}", CreatedDate);
             result += Environment.NewLine + string.Format("  UpdatedDate: {0}", UpdatedDate);

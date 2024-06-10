@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml.Linq;
 
 namespace BixHubWrapper
@@ -64,8 +65,9 @@ namespace BixHubWrapper
         public Guid CreateNewSignSession(string sessionDescription, string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, string fileToSign)
         {
             IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+
             
-            var documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFilePost(System.IO.File.ReadAllBytes(fileToSign));
+            var documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
 
             var attributes = new Dictionary<string, string>
             {
@@ -165,6 +167,7 @@ namespace BixHubWrapper
             }
             if (statusModel != null)
             {
+                result.Description = sessionModel.Description;
                 result.Status = statusModel.Status.ToString();
                 result.CompletedDate = statusModel.CompletedDate == null ? DateTime.MinValue : statusModel.CompletedDate.Value.ToLocalTime();
                 result.Workflow = sessionModel.WorkFlow.ToString();
