@@ -23,19 +23,14 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Defines ProcessType
+    /// Defines SignSessionProcessTypeDto
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-        public enum ProcessType
+        public enum SignSessionProcessTypeDto
     {
         /// <summary>
         /// Enum ES for value: ES
         /// </summary>
         [EnumMember(Value = "ES")]
-        ES = 1,
-        /// <summary>
-        /// Enum QES for value: QES
-        /// </summary>
-        [EnumMember(Value = "QES")]
-        QES = 2    }
+        ES = 1    }
 }

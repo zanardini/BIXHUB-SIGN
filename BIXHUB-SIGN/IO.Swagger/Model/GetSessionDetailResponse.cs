@@ -32,6 +32,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="GetSessionDetailResponse" /> class.
         /// </summary>
         /// <param name="guid">guid.</param>
+        /// <param name="description">description.</param>
         /// <param name="process">process.</param>
         /// <param name="status">status.</param>
         /// <param name="workFlow">workFlow.</param>
@@ -43,9 +44,10 @@ namespace IO.Swagger.Model
         /// <param name="approvers">approvers.</param>
         /// <param name="documents">documents.</param>
         /// <param name="signers">signers.</param>
-        public GetSessionDetailResponse(Guid? guid = default(Guid?), ProcessType process = default(ProcessType), SignSessionStatus status = default(SignSessionStatus), WorkFlowType workFlow = default(WorkFlowType), DateTime? createdDate = default(DateTime?), DateTime? updatedDate = default(DateTime?), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<ApproverSessionDetailResponse> approvers = default(List<ApproverSessionDetailResponse>), List<DocumentSessionDetailResponse> documents = default(List<DocumentSessionDetailResponse>), List<SignerSessionDetailResponse> signers = default(List<SignerSessionDetailResponse>))
+        public GetSessionDetailResponse(Guid? guid = default(Guid?), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), WorkFlowType workFlow = default(WorkFlowType), DateTime? createdDate = default(DateTime?), DateTime? updatedDate = default(DateTime?), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<ApproverSessionDetailResponse> approvers = default(List<ApproverSessionDetailResponse>), List<DocumentSessionDetailResponse> documents = default(List<DocumentSessionDetailResponse>), List<SignerSessionDetailResponse> signers = default(List<SignerSessionDetailResponse>))
         {
             this.Guid = guid;
+            this.Description = description;
             this.Process = process;
             this.Status = status;
             this.WorkFlow = workFlow;
@@ -66,10 +68,16 @@ namespace IO.Swagger.Model
         public Guid? Guid { get; set; }
 
         /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -140,6 +148,7 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class GetSessionDetailResponse {\n");
             sb.Append("  Guid: ").Append(Guid).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Process: ").Append(Process).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  WorkFlow: ").Append(WorkFlow).Append("\n");
@@ -189,6 +198,11 @@ namespace IO.Swagger.Model
                     this.Guid == input.Guid ||
                     (this.Guid != null &&
                     this.Guid.Equals(input.Guid))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Process == input.Process ||
@@ -264,6 +278,8 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.Guid != null)
                     hashCode = hashCode * 59 + this.Guid.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Process != null)
                     hashCode = hashCode * 59 + this.Process.GetHashCode();
                 if (this.Status != null)

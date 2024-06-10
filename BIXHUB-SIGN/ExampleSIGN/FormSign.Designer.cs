@@ -60,6 +60,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this._btnGetSessionStatus = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -68,7 +69,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sessionData = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this._txtSessionDescription = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -223,6 +225,8 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this._txtSessionDescription);
+            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this._txtFileToSign);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this._txtDescription);
@@ -251,7 +255,7 @@
             this._txtFileToSign.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this._txtFileToSign.Location = new System.Drawing.Point(76, 94);
             this._txtFileToSign.Name = "_txtFileToSign";
-            this._txtFileToSign.Size = new System.Drawing.Size(312, 20);
+            this._txtFileToSign.Size = new System.Drawing.Size(255, 20);
             this._txtFileToSign.TabIndex = 26;
             // 
             // label13
@@ -265,15 +269,15 @@
             // 
             // _txtDescription
             // 
-            this._txtDescription.Location = new System.Drawing.Point(539, 43);
+            this._txtDescription.Location = new System.Drawing.Point(494, 43);
             this._txtDescription.Name = "_txtDescription";
-            this._txtDescription.Size = new System.Drawing.Size(257, 20);
+            this._txtDescription.Size = new System.Drawing.Size(302, 20);
             this._txtDescription.TabIndex = 24;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(447, 46);
+            this.label8.Location = new System.Drawing.Point(409, 46);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 23;
@@ -297,15 +301,15 @@
             // 
             // _txtExternalID
             // 
-            this._txtExternalID.Location = new System.Drawing.Point(540, 69);
+            this._txtExternalID.Location = new System.Drawing.Point(495, 69);
             this._txtExternalID.Name = "_txtExternalID";
-            this._txtExternalID.Size = new System.Drawing.Size(257, 20);
+            this._txtExternalID.Size = new System.Drawing.Size(302, 20);
             this._txtExternalID.TabIndex = 20;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(448, 73);
+            this.label9.Location = new System.Drawing.Point(410, 73);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 19;
@@ -329,15 +333,15 @@
             // 
             // _txtPhoneNumber
             // 
-            this._txtPhoneNumber.Location = new System.Drawing.Point(539, 17);
+            this._txtPhoneNumber.Location = new System.Drawing.Point(494, 17);
             this._txtPhoneNumber.Name = "_txtPhoneNumber";
-            this._txtPhoneNumber.Size = new System.Drawing.Size(257, 20);
+            this._txtPhoneNumber.Size = new System.Drawing.Size(302, 20);
             this._txtPhoneNumber.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(447, 21);
+            this.label5.Location = new System.Drawing.Point(409, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 11;
@@ -397,6 +401,17 @@
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Lettura sessioni di firma";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(603, 28);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 25);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Download";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -481,16 +496,21 @@
             this.sessionData.TabIndex = 0;
             this.sessionData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sessionData_CellContentClick);
             // 
-            // button3
+            // _txtSessionDescription
             // 
-            this.button3.Location = new System.Drawing.Point(603, 28);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 25);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Download";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this._txtSessionDescription.Location = new System.Drawing.Point(495, 97);
+            this._txtSessionDescription.Name = "_txtSessionDescription";
+            this._txtSessionDescription.Size = new System.Drawing.Size(185, 20);
+            this._txtSessionDescription.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(381, 100);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(108, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Descrizione Sessione";
             // 
             // FormSign
             // 
@@ -563,6 +583,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox _txtSessionDescription;
+        private System.Windows.Forms.Label label14;
     }
 }
 

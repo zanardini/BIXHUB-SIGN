@@ -23,10 +23,10 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Defines VerificationMode
+    /// Defines VerificationModeDto
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-        public enum VerificationMode
+        public enum VerificationModeDto
     {
         /// <summary>
         /// Enum Signature for value: Signature
@@ -42,10 +42,5 @@ namespace IO.Swagger.Model
         /// Enum SmsOtp for value: SmsOtp
         /// </summary>
         [EnumMember(Value = "SmsOtp")]
-        SmsOtp = 3,
-        /// <summary>
-        /// Enum WhatsappOtp for value: WhatsappOtp
-        /// </summary>
-        [EnumMember(Value = "WhatsappOtp")]
-        WhatsappOtp = 4    }
+        SmsOtp = 3    }
 }

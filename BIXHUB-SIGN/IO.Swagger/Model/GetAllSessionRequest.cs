@@ -40,7 +40,7 @@ namespace IO.Swagger.Model
         /// <param name="toCreationDate">toCreationDate.</param>
         /// <param name="skip">skip.</param>
         /// <param name="take">take.</param>
-        public GetAllSessionRequest(Guid? businessUnitGuid = default(Guid?), Guid? sessionGuid = default(Guid?), ProcessType process = default(ProcessType), WorkFlowType workFlow = default(WorkFlowType), SignSessionStatus sessionStatus = default(SignSessionStatus), DateTime? fromCreationDate = default(DateTime?), DateTime? toCreationDate = default(DateTime?), int? skip = default(int?), int? take = default(int?))
+        public GetAllSessionRequest(Guid? businessUnitGuid = default(Guid?), Guid? sessionGuid = default(Guid?), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), SignSessionStatus sessionStatus = default(SignSessionStatus), DateTime? fromCreationDate = default(DateTime?), DateTime? toCreationDate = default(DateTime?), int? skip = default(int?), int? take = default(int?))
         {
             this.BusinessUnitGuid = businessUnitGuid;
             this.SessionGuid = sessionGuid;
@@ -69,7 +69,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkFlow

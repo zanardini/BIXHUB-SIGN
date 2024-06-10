@@ -61,7 +61,7 @@ namespace BixHubWrapper
             _accessToken = accessTokenDto.access_token;
         }
 
-        public Guid CreateNewSignSession(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, string fileToSign)
+        public Guid CreateNewSignSession(string sessionDescription, string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, string fileToSign)
         {
             IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
             
@@ -98,12 +98,12 @@ namespace BixHubWrapper
             fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
             List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
-            signers.Add(new CreateSignerDto(description, email, phoneNumber, taxCode, VerificationMode.EmailOtp, 0, false, returnUrl, externalID, fieldsGroup1, attachments));
+            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.EmailOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
 
             List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
             documents.Add(new CreateDocumentDto("Documento DDT", documentUploaded.FileGuid, null, "DDT.PDF", false));
 
-            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(ProcessType.ES, WorkFlowType.Automatic, metadata, parameters, attributes, webhooks,
+            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.ES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
                 approvers, followers, documents, signers, true, true, true);
             IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
 
@@ -190,7 +190,7 @@ namespace BixHubWrapper
         public byte[] GetAuditTrailIdentificationBySessionGuid(Guid sessionGuid, Guid signerGuid)
         {
             IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            var response = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet(sessionGuid, signerGuid);
+            var response = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet(sessionGuid, signerGuid);
             return response;
         }
 
@@ -205,7 +205,7 @@ namespace BixHubWrapper
 
             foreach (var document in sessionModel.Documents)
             {
-                var doc = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSignedResultGet(sessionGuid, document.Guid);
+                var doc = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet(sessionGuid, document.Guid);
                 result.Add(document.ExternalId, doc);
             }
             return result;

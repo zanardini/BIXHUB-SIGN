@@ -33,6 +33,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="process">process (required).</param>
         /// <param name="workFlow">workFlow.</param>
+        /// <param name="description">description.</param>
         /// <param name="metadata">metadata.</param>
         /// <param name="parameters">parameters.</param>
         /// <param name="attributes">attributes.</param>
@@ -44,7 +45,7 @@ namespace IO.Swagger.Model
         /// <param name="requireIdentificationForSigners">requireIdentificationForSigners.</param>
         /// <param name="requireStrongAuthForSigners">requireStrongAuthForSigners.</param>
         /// <param name="requireStrongAuthForApprovers">requireStrongAuthForApprovers.</param>
-        public CreateSessionRequest(ProcessType process = default(ProcessType), WorkFlowType workFlow = default(WorkFlowType), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?))
+        public CreateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?))
         {
             // to ensure "process" is required (not null)
             if (process == null)
@@ -56,6 +57,7 @@ namespace IO.Swagger.Model
                 this.Process = process;
             }
             this.WorkFlow = workFlow;
+            this.Description = description;
             this.Metadata = metadata;
             this.Parameters = parameters;
             this.Attributes = attributes;
@@ -73,13 +75,19 @@ namespace IO.Swagger.Model
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkFlow
         /// </summary>
         [DataMember(Name="workFlow", EmitDefaultValue=false)]
         public WorkFlowType WorkFlow { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Metadata
@@ -157,6 +165,7 @@ namespace IO.Swagger.Model
             sb.Append("class CreateSessionRequest {\n");
             sb.Append("  Process: ").Append(Process).Append("\n");
             sb.Append("  WorkFlow: ").Append(WorkFlow).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Parameters: ").Append(Parameters).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -211,6 +220,11 @@ namespace IO.Swagger.Model
                     this.WorkFlow == input.WorkFlow ||
                     (this.WorkFlow != null &&
                     this.WorkFlow.Equals(input.WorkFlow))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Metadata == input.Metadata ||
@@ -290,6 +304,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Process.GetHashCode();
                 if (this.WorkFlow != null)
                     hashCode = hashCode * 59 + this.WorkFlow.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Parameters != null)

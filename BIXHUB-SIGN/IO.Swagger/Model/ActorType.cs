@@ -42,5 +42,10 @@ namespace IO.Swagger.Model
         /// Enum Signer for value: Signer
         /// </summary>
         [EnumMember(Value = "Signer")]
-        Signer = 3    }
+        Signer = 3,
+        /// <summary>
+        /// Enum Follower for value: Follower
+        /// </summary>
+        [EnumMember(Value = "Follower")]
+        Follower = 4    }
 }

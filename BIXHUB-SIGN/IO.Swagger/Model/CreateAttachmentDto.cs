@@ -32,8 +32,11 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="CreateAttachmentDto" /> class.
         /// </summary>
         /// <param name="description">description (required).</param>
-        /// <param name="toSign">toSign.</param>
-        public CreateAttachmentDto(string description = default(string), bool? toSign = default(bool?))
+        /// <param name="mandatory">mandatory.</param>
+        /// <param name="attachToAuditTrail">attachToAuditTrail.</param>
+        /// <param name="externalId">externalId.</param>
+        /// <param name="indexOrder">indexOrder.</param>
+        public CreateAttachmentDto(string description = default(string), bool? mandatory = default(bool?), bool? attachToAuditTrail = default(bool?), string externalId = default(string), float? indexOrder = default(float?))
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -44,7 +47,10 @@ namespace IO.Swagger.Model
             {
                 this.Description = description;
             }
-            this.ToSign = toSign;
+            this.Mandatory = mandatory;
+            this.AttachToAuditTrail = attachToAuditTrail;
+            this.ExternalId = externalId;
+            this.IndexOrder = indexOrder;
         }
         
         /// <summary>
@@ -54,10 +60,28 @@ namespace IO.Swagger.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets ToSign
+        /// Gets or Sets Mandatory
         /// </summary>
-        [DataMember(Name="toSign", EmitDefaultValue=false)]
-        public bool? ToSign { get; set; }
+        [DataMember(Name="mandatory", EmitDefaultValue=false)]
+        public bool? Mandatory { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AttachToAuditTrail
+        /// </summary>
+        [DataMember(Name="attachToAuditTrail", EmitDefaultValue=false)]
+        public bool? AttachToAuditTrail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExternalId
+        /// </summary>
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IndexOrder
+        /// </summary>
+        [DataMember(Name="indexOrder", EmitDefaultValue=false)]
+        public float? IndexOrder { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -68,7 +92,10 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class CreateAttachmentDto {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  ToSign: ").Append(ToSign).Append("\n");
+            sb.Append("  Mandatory: ").Append(Mandatory).Append("\n");
+            sb.Append("  AttachToAuditTrail: ").Append(AttachToAuditTrail).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,9 +136,24 @@ namespace IO.Swagger.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
-                    this.ToSign == input.ToSign ||
-                    (this.ToSign != null &&
-                    this.ToSign.Equals(input.ToSign))
+                    this.Mandatory == input.Mandatory ||
+                    (this.Mandatory != null &&
+                    this.Mandatory.Equals(input.Mandatory))
+                ) && 
+                (
+                    this.AttachToAuditTrail == input.AttachToAuditTrail ||
+                    (this.AttachToAuditTrail != null &&
+                    this.AttachToAuditTrail.Equals(input.AttachToAuditTrail))
+                ) && 
+                (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
+                    this.IndexOrder == input.IndexOrder ||
+                    (this.IndexOrder != null &&
+                    this.IndexOrder.Equals(input.IndexOrder))
                 );
         }
 
@@ -126,8 +168,14 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.ToSign != null)
-                    hashCode = hashCode * 59 + this.ToSign.GetHashCode();
+                if (this.Mandatory != null)
+                    hashCode = hashCode * 59 + this.Mandatory.GetHashCode();
+                if (this.AttachToAuditTrail != null)
+                    hashCode = hashCode * 59 + this.AttachToAuditTrail.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.IndexOrder != null)
+                    hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
                 return hashCode;
             }
         }

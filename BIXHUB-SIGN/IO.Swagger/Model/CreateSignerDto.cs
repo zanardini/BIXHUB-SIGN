@@ -37,12 +37,11 @@ namespace IO.Swagger.Model
         /// <param name="taxCode">taxCode (required).</param>
         /// <param name="verificationMode">verificationMode.</param>
         /// <param name="indexOrder">indexOrder.</param>
-        /// <param name="canUploadAttachment">canUploadAttachment.</param>
         /// <param name="redirectUri">redirectUri.</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="fieldGroups">fieldGroups.</param>
         /// <param name="attachments">attachments.</param>
-        public CreateSignerDto(string description = default(string), string email = default(string), string phoneNumber = default(string), string taxCode = default(string), VerificationMode verificationMode = default(VerificationMode), float? indexOrder = default(float?), bool? canUploadAttachment = default(bool?), string redirectUri = default(string), string externalId = default(string), List<CreateFieldGroupDto> fieldGroups = default(List<CreateFieldGroupDto>), List<CreateAttachmentDto> attachments = default(List<CreateAttachmentDto>))
+        public CreateSignerDto(string description = default(string), string email = default(string), string phoneNumber = default(string), string taxCode = default(string), VerificationModeDto verificationMode = default(VerificationModeDto), float? indexOrder = default(float?), string redirectUri = default(string), string externalId = default(string), List<CreateFieldGroupDto> fieldGroups = default(List<CreateFieldGroupDto>), List<CreateAttachmentDto> attachments = default(List<CreateAttachmentDto>))
         {
             // to ensure "taxCode" is required (not null)
             if (taxCode == null)
@@ -58,7 +57,6 @@ namespace IO.Swagger.Model
             this.PhoneNumber = phoneNumber;
             this.VerificationMode = verificationMode;
             this.IndexOrder = indexOrder;
-            this.CanUploadAttachment = canUploadAttachment;
             this.RedirectUri = redirectUri;
             this.ExternalId = externalId;
             this.FieldGroups = fieldGroups;
@@ -93,19 +91,13 @@ namespace IO.Swagger.Model
         /// Gets or Sets VerificationMode
         /// </summary>
         [DataMember(Name="verificationMode", EmitDefaultValue=false)]
-        public VerificationMode VerificationMode { get; set; }
+        public VerificationModeDto VerificationMode { get; set; }
 
         /// <summary>
         /// Gets or Sets IndexOrder
         /// </summary>
         [DataMember(Name="indexOrder", EmitDefaultValue=false)]
         public float? IndexOrder { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CanUploadAttachment
-        /// </summary>
-        [DataMember(Name="canUploadAttachment", EmitDefaultValue=false)]
-        public bool? CanUploadAttachment { get; set; }
 
         /// <summary>
         /// Gets or Sets RedirectUri
@@ -145,7 +137,6 @@ namespace IO.Swagger.Model
             sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
             sb.Append("  VerificationMode: ").Append(VerificationMode).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
-            sb.Append("  CanUploadAttachment: ").Append(CanUploadAttachment).Append("\n");
             sb.Append("  RedirectUri: ").Append(RedirectUri).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FieldGroups: ").Append(FieldGroups).Append("\n");
@@ -215,11 +206,6 @@ namespace IO.Swagger.Model
                     this.IndexOrder.Equals(input.IndexOrder))
                 ) && 
                 (
-                    this.CanUploadAttachment == input.CanUploadAttachment ||
-                    (this.CanUploadAttachment != null &&
-                    this.CanUploadAttachment.Equals(input.CanUploadAttachment))
-                ) && 
-                (
                     this.RedirectUri == input.RedirectUri ||
                     (this.RedirectUri != null &&
                     this.RedirectUri.Equals(input.RedirectUri))
@@ -264,8 +250,6 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.VerificationMode.GetHashCode();
                 if (this.IndexOrder != null)
                     hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
-                if (this.CanUploadAttachment != null)
-                    hashCode = hashCode * 59 + this.CanUploadAttachment.GetHashCode();
                 if (this.RedirectUri != null)
                     hashCode = hashCode * 59 + this.RedirectUri.GetHashCode();
                 if (this.ExternalId != null)

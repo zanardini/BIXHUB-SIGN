@@ -32,6 +32,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="GetAllSessionResponse" /> class.
         /// </summary>
         /// <param name="sessionGuid">sessionGuid.</param>
+        /// <param name="description">description.</param>
         /// <param name="process">process.</param>
         /// <param name="status">status.</param>
         /// <param name="createdDate">createdDate.</param>
@@ -40,9 +41,10 @@ namespace IO.Swagger.Model
         /// <param name="parameters">parameters.</param>
         /// <param name="metadata">metadata.</param>
         /// <param name="attributes">attributes.</param>
-        public GetAllSessionResponse(Guid? sessionGuid = default(Guid?), ProcessType process = default(ProcessType), SignSessionStatus status = default(SignSessionStatus), DateTime? createdDate = default(DateTime?), DateTime? updatedDate = default(DateTime?), DateTime? completedDate = default(DateTime?), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>))
+        public GetAllSessionResponse(Guid? sessionGuid = default(Guid?), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), DateTime? createdDate = default(DateTime?), DateTime? updatedDate = default(DateTime?), DateTime? completedDate = default(DateTime?), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>))
         {
             this.SessionGuid = sessionGuid;
+            this.Description = description;
             this.Process = process;
             this.Status = status;
             this.CreatedDate = createdDate;
@@ -60,10 +62,16 @@ namespace IO.Swagger.Model
         public Guid? SessionGuid { get; set; }
 
         /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -116,6 +124,7 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class GetAllSessionResponse {\n");
             sb.Append("  SessionGuid: ").Append(SessionGuid).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Process: ").Append(Process).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  CreatedDate: ").Append(CreatedDate).Append("\n");
@@ -162,6 +171,11 @@ namespace IO.Swagger.Model
                     this.SessionGuid == input.SessionGuid ||
                     (this.SessionGuid != null &&
                     this.SessionGuid.Equals(input.SessionGuid))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Process == input.Process ||
@@ -219,6 +233,8 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.SessionGuid != null)
                     hashCode = hashCode * 59 + this.SessionGuid.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Process != null)
                     hashCode = hashCode * 59 + this.Process.GetHashCode();
                 if (this.Status != null)

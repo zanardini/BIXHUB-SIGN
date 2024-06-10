@@ -36,7 +36,7 @@ namespace IO.Swagger.Model
         /// <param name="metadata">metadata.</param>
         /// <param name="parameters">parameters.</param>
         /// <param name="attributes">attributes.</param>
-        public UpdateSessionRequest(ProcessType process = default(ProcessType), WorkFlowType workFlow = default(WorkFlowType), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>))
+        public UpdateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>))
         {
             this.Process = process;
             this.WorkFlow = workFlow;
@@ -49,7 +49,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkFlow

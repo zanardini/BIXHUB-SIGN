@@ -41,7 +41,7 @@ namespace IO.Swagger.Model
         /// <param name="approvers">approvers.</param>
         /// <param name="signers">signers.</param>
         /// <param name="errors">errors.</param>
-        public GetStatusSessionResponse(Guid? sessionGuid = default(Guid?), ProcessType process = default(ProcessType), SignSessionStatus status = default(SignSessionStatus), string reason = default(string), DateTime? createdDate = default(DateTime?), DateTime? completedDate = default(DateTime?), List<NextActorStatusSessionResponse> nextActors = default(List<NextActorStatusSessionResponse>), List<ApproverStatusSessionResponse> approvers = default(List<ApproverStatusSessionResponse>), List<SignerStatusSessionResponse> signers = default(List<SignerStatusSessionResponse>), List<SignErrorDto> errors = default(List<SignErrorDto>))
+        public GetStatusSessionResponse(Guid? sessionGuid = default(Guid?), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), string reason = default(string), DateTime? createdDate = default(DateTime?), DateTime? completedDate = default(DateTime?), List<NextActorStatusSessionResponse> nextActors = default(List<NextActorStatusSessionResponse>), List<ApproverStatusSessionResponse> approvers = default(List<ApproverStatusSessionResponse>), List<SignerStatusSessionResponse> signers = default(List<SignerStatusSessionResponse>), List<SignErrorDto> errors = default(List<SignErrorDto>))
         {
             this.SessionGuid = sessionGuid;
             this.Process = process;
@@ -65,7 +65,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets Status

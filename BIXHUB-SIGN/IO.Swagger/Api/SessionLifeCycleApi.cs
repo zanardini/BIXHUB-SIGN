@@ -292,9 +292,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>byte[]</returns>
-        byte[] ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet (Guid? sessionGuid, Guid? signerGuid = null);
+        byte[] ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet (Guid? sessionGuid, Guid? signerGuid);
 
         /// <summary>
         /// 
@@ -304,9 +304,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid = null);
+        ApiResponse<byte[]> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -379,10 +379,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>FileDataBase64</returns>
-        FileDataBase64 ApiV1SessionLifeCycleGetSignedResultBase64Get (Guid? sessionGuid = null, Guid? documentGuid = null);
+        FileDataBase64 ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet (Guid? sessionGuid, Guid? documentGuid);
 
         /// <summary>
         /// 
@@ -391,10 +391,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>ApiResponse of FileDataBase64</returns>
-        ApiResponse<FileDataBase64> ApiV1SessionLifeCycleGetSignedResultBase64GetWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null);
+        ApiResponse<FileDataBase64> ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? documentGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -402,10 +402,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>byte[]</returns>
-        byte[] ApiV1SessionLifeCycleGetSignedResultGet (Guid? sessionGuid = null, Guid? documentGuid = null);
+        byte[] ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet (Guid? sessionGuid, Guid? documentGuid);
 
         /// <summary>
         /// 
@@ -414,10 +414,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> ApiV1SessionLifeCycleGetSignedResultGetWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null);
+        ApiResponse<byte[]> ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? documentGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -1074,9 +1074,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetAsync (Guid? sessionGuid, Guid? signerGuid = null);
+        System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetAsync (Guid? sessionGuid, Guid? signerGuid);
 
         /// <summary>
         /// 
@@ -1086,9 +1086,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -1161,10 +1161,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of FileDataBase64</returns>
-        System.Threading.Tasks.Task<FileDataBase64> ApiV1SessionLifeCycleGetSignedResultBase64GetAsync (Guid? sessionGuid = null, Guid? documentGuid = null);
+        System.Threading.Tasks.Task<FileDataBase64> ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetAsync (Guid? sessionGuid, Guid? documentGuid);
 
         /// <summary>
         /// 
@@ -1173,10 +1173,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of ApiResponse (FileDataBase64)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileDataBase64>> ApiV1SessionLifeCycleGetSignedResultBase64GetAsyncWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null);
+        System.Threading.Tasks.Task<ApiResponse<FileDataBase64>> ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? documentGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -1184,10 +1184,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetSignedResultGetAsync (Guid? sessionGuid = null, Guid? documentGuid = null);
+        System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetAsync (Guid? sessionGuid, Guid? documentGuid);
 
         /// <summary>
         /// 
@@ -1196,10 +1196,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetSignedResultGetAsyncWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? documentGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -3630,11 +3630,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>byte[]</returns>
-        public byte[] ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet (Guid? sessionGuid, Guid? signerGuid = null)
+        public byte[] ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet (Guid? sessionGuid, Guid? signerGuid)
         {
-             ApiResponse<byte[]> localVarResponse = ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetWithHttpInfo(sessionGuid, signerGuid);
+             ApiResponse<byte[]> localVarResponse = ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetWithHttpInfo(sessionGuid, signerGuid);
              return localVarResponse.Data;
         }
 
@@ -3643,15 +3643,18 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid = null)
+        public ApiResponse< byte[] > ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid)
         {
             // verify the required parameter 'sessionGuid' is set
             if (sessionGuid == null)
-                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet");
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet");
+            // verify the required parameter 'signerGuid' is set
+            if (signerGuid == null)
+                throw new ApiException(400, "Missing required parameter 'signerGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet");
 
-            var localVarPath = "/api/v1/SessionLifeCycle/GetAuditTrailIdentification/{sessionGuid}";
+            var localVarPath = "/api/v1/SessionLifeCycle/GetAuditTrailIdentification/{sessionGuid}/{signerGuid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3675,7 +3678,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
-            if (signerGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "signerGuid", signerGuid)); // query parameter
+            if (signerGuid != null) localVarPathParams.Add("signerGuid", this.Configuration.ApiClient.ParameterToString(signerGuid)); // path parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -3692,7 +3695,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -3706,11 +3709,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetAsync (Guid? sessionGuid, Guid? signerGuid = null)
+        public async System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetAsync (Guid? sessionGuid, Guid? signerGuid)
         {
-             ApiResponse<byte[]> localVarResponse = await ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetAsyncWithHttpInfo(sessionGuid, signerGuid);
+             ApiResponse<byte[]> localVarResponse = await ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetAsyncWithHttpInfo(sessionGuid, signerGuid);
              return localVarResponse.Data;
 
         }
@@ -3720,15 +3723,18 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
-        /// <param name="signerGuid"> (optional)</param>
+        /// <param name="signerGuid"></param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid)
         {
             // verify the required parameter 'sessionGuid' is set
             if (sessionGuid == null)
-                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet");
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet");
+            // verify the required parameter 'signerGuid' is set
+            if (signerGuid == null)
+                throw new ApiException(400, "Missing required parameter 'signerGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet");
 
-            var localVarPath = "/api/v1/SessionLifeCycle/GetAuditTrailIdentification/{sessionGuid}";
+            var localVarPath = "/api/v1/SessionLifeCycle/GetAuditTrailIdentification/{sessionGuid}/{signerGuid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3752,7 +3758,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
-            if (signerGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "signerGuid", signerGuid)); // query parameter
+            if (signerGuid != null) localVarPathParams.Add("signerGuid", this.Configuration.ApiClient.ParameterToString(signerGuid)); // path parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -3769,7 +3775,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -4223,12 +4229,12 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>FileDataBase64</returns>
-        public FileDataBase64 ApiV1SessionLifeCycleGetSignedResultBase64Get (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public FileDataBase64 ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet (Guid? sessionGuid, Guid? documentGuid)
         {
-             ApiResponse<FileDataBase64> localVarResponse = ApiV1SessionLifeCycleGetSignedResultBase64GetWithHttpInfo(sessionGuid, documentGuid);
+             ApiResponse<FileDataBase64> localVarResponse = ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetWithHttpInfo(sessionGuid, documentGuid);
              return localVarResponse.Data;
         }
 
@@ -4236,13 +4242,19 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>ApiResponse of FileDataBase64</returns>
-        public ApiResponse< FileDataBase64 > ApiV1SessionLifeCycleGetSignedResultBase64GetWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public ApiResponse< FileDataBase64 > ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? documentGuid)
         {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet");
+            // verify the required parameter 'documentGuid' is set
+            if (documentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'documentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet");
 
-            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResultBase64";
+            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4265,8 +4277,8 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (sessionGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionGuid", sessionGuid)); // query parameter
-            if (documentGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "documentGuid", documentGuid)); // query parameter
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (documentGuid != null) localVarPathParams.Add("documentGuid", this.Configuration.ApiClient.ParameterToString(documentGuid)); // path parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -4283,7 +4295,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultBase64Get", localVarResponse);
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -4296,12 +4308,12 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of FileDataBase64</returns>
-        public async System.Threading.Tasks.Task<FileDataBase64> ApiV1SessionLifeCycleGetSignedResultBase64GetAsync (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public async System.Threading.Tasks.Task<FileDataBase64> ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetAsync (Guid? sessionGuid, Guid? documentGuid)
         {
-             ApiResponse<FileDataBase64> localVarResponse = await ApiV1SessionLifeCycleGetSignedResultBase64GetAsyncWithHttpInfo(sessionGuid, documentGuid);
+             ApiResponse<FileDataBase64> localVarResponse = await ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetAsyncWithHttpInfo(sessionGuid, documentGuid);
              return localVarResponse.Data;
 
         }
@@ -4310,13 +4322,19 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of ApiResponse (FileDataBase64)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<FileDataBase64>> ApiV1SessionLifeCycleGetSignedResultBase64GetAsyncWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public async System.Threading.Tasks.Task<ApiResponse<FileDataBase64>> ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? documentGuid)
         {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet");
+            // verify the required parameter 'documentGuid' is set
+            if (documentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'documentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet");
 
-            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResultBase64";
+            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4339,8 +4357,8 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (sessionGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionGuid", sessionGuid)); // query parameter
-            if (documentGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "documentGuid", documentGuid)); // query parameter
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (documentGuid != null) localVarPathParams.Add("documentGuid", this.Configuration.ApiClient.ParameterToString(documentGuid)); // path parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -4357,7 +4375,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultBase64Get", localVarResponse);
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -4370,12 +4388,12 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>byte[]</returns>
-        public byte[] ApiV1SessionLifeCycleGetSignedResultGet (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public byte[] ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet (Guid? sessionGuid, Guid? documentGuid)
         {
-             ApiResponse<byte[]> localVarResponse = ApiV1SessionLifeCycleGetSignedResultGetWithHttpInfo(sessionGuid, documentGuid);
+             ApiResponse<byte[]> localVarResponse = ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetWithHttpInfo(sessionGuid, documentGuid);
              return localVarResponse.Data;
         }
 
@@ -4383,13 +4401,19 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > ApiV1SessionLifeCycleGetSignedResultGetWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public ApiResponse< byte[] > ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? documentGuid)
         {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet");
+            // verify the required parameter 'documentGuid' is set
+            if (documentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'documentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet");
 
-            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResult";
+            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4412,8 +4436,8 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (sessionGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionGuid", sessionGuid)); // query parameter
-            if (documentGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "documentGuid", documentGuid)); // query parameter
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (documentGuid != null) localVarPathParams.Add("documentGuid", this.Configuration.ApiClient.ParameterToString(documentGuid)); // path parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -4430,7 +4454,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -4443,12 +4467,12 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetSignedResultGetAsync (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public async System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetAsync (Guid? sessionGuid, Guid? documentGuid)
         {
-             ApiResponse<byte[]> localVarResponse = await ApiV1SessionLifeCycleGetSignedResultGetAsyncWithHttpInfo(sessionGuid, documentGuid);
+             ApiResponse<byte[]> localVarResponse = await ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetAsyncWithHttpInfo(sessionGuid, documentGuid);
              return localVarResponse.Data;
 
         }
@@ -4457,13 +4481,19 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionGuid"> (optional)</param>
-        /// <param name="documentGuid"> (optional)</param>
+        /// <param name="sessionGuid"></param>
+        /// <param name="documentGuid"></param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetSignedResultGetAsyncWithHttpInfo (Guid? sessionGuid = null, Guid? documentGuid = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? documentGuid)
         {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet");
+            // verify the required parameter 'documentGuid' is set
+            if (documentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'documentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet");
 
-            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResult";
+            var localVarPath = "/api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4486,8 +4516,8 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (sessionGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionGuid", sessionGuid)); // query parameter
-            if (documentGuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "documentGuid", documentGuid)); // query parameter
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (documentGuid != null) localVarPathParams.Add("documentGuid", this.Configuration.ApiClient.ParameterToString(documentGuid)); // path parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -4504,7 +4534,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 

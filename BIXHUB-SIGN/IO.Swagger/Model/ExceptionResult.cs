@@ -31,25 +31,27 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExceptionResult" /> class.
         /// </summary>
-        /// <param name="code">code.</param>
+        /// <param name="errorId">errorId.</param>
+        /// <param name="errorCode">errorCode.</param>
         /// <param name="message">message.</param>
-        public ExceptionResult(ExceptionCodeEnum code = default(ExceptionCodeEnum), string message = default(string))
+        public ExceptionResult(Guid? errorId = default(Guid?), string errorCode = default(string), string message = default(string))
         {
-            this.Code = code;
+            this.ErrorId = errorId;
+            this.ErrorCode = errorCode;
             this.Message = message;
         }
         
         /// <summary>
-        /// Gets or Sets Guid
+        /// Gets or Sets ErrorId
         /// </summary>
-        [DataMember(Name="guid", EmitDefaultValue=false)]
-        public Guid? Guid { get; private set; }
+        [DataMember(Name="errorId", EmitDefaultValue=false)]
+        public Guid? ErrorId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets ErrorCode
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public ExceptionCodeEnum Code { get; set; }
+        [DataMember(Name="errorCode", EmitDefaultValue=false)]
+        public string ErrorCode { get; set; }
 
         /// <summary>
         /// Gets or Sets Message
@@ -65,8 +67,8 @@ namespace IO.Swagger.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ExceptionResult {\n");
-            sb.Append("  Guid: ").Append(Guid).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  ErrorId: ").Append(ErrorId).Append("\n");
+            sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -103,14 +105,14 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.Guid == input.Guid ||
-                    (this.Guid != null &&
-                    this.Guid.Equals(input.Guid))
+                    this.ErrorId == input.ErrorId ||
+                    (this.ErrorId != null &&
+                    this.ErrorId.Equals(input.ErrorId))
                 ) && 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.ErrorCode == input.ErrorCode ||
+                    (this.ErrorCode != null &&
+                    this.ErrorCode.Equals(input.ErrorCode))
                 ) && 
                 (
                     this.Message == input.Message ||
@@ -128,10 +130,10 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Guid != null)
-                    hashCode = hashCode * 59 + this.Guid.GetHashCode();
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.ErrorId != null)
+                    hashCode = hashCode * 59 + this.ErrorId.GetHashCode();
+                if (this.ErrorCode != null)
+                    hashCode = hashCode * 59 + this.ErrorCode.GetHashCode();
                 if (this.Message != null)
                     hashCode = hashCode * 59 + this.Message.GetHashCode();
                 return hashCode;

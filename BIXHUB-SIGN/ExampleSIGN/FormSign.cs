@@ -25,6 +25,7 @@ namespace ExampleSIGN
                     _txtClientGuid.Text = settaggioIniziale.ClientGuid;
                     _txtClientId.Text = settaggioIniziale.ClientId;
                     _txtClientSecret.Text = settaggioIniziale.ClientSecret;
+                    _txtSessionDescription.Text = settaggioIniziale.SessionDescription;
                     _txtMail.Text = settaggioIniziale.Mail;
                     _txtDescription.Text = settaggioIniziale.Description;
                     _txtTaxCode.Text = settaggioIniziale.TaxCode;
@@ -59,7 +60,7 @@ namespace ExampleSIGN
                 if (_caller == null)
                     throw new Exception("Fare login");
 
-                Guid sessionId = _caller.CreateNewSignSession(_txtMail.Text, _txtDescription.Text, _txtTaxCode.Text, _txtPhoneNumber.Text, _txtReturnUrl.Text, _txtExternalID.Text, _txtFileToSign.Text);
+                Guid sessionId = _caller.CreateNewSignSession(_txtSessionDescription.Text,  _txtMail.Text, _txtDescription.Text, _txtTaxCode.Text, _txtPhoneNumber.Text, _txtReturnUrl.Text, _txtExternalID.Text, _txtFileToSign.Text);
                 AddLogInfo("Sessione creata con successo: " + sessionId);
             }
             catch (Exception ex)
@@ -82,6 +83,7 @@ namespace ExampleSIGN
                     ClientGuid = _txtClientGuid.Text,
                     ClientId = _txtClientId.Text,
                     ClientSecret = _txtClientSecret.Text,
+                    SessionDescription = _txtSessionDescription.Text,
                     Mail = _txtMail.Text,
                     Description = _txtDescription.Text,
                     TaxCode = _txtTaxCode.Text,
@@ -269,6 +271,8 @@ namespace ExampleSIGN
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
 
+
+        public string SessionDescription { get; set; }
         public string Mail { get; set; }
         public string Description { get; set; }
         public string TaxCode { get; set; }

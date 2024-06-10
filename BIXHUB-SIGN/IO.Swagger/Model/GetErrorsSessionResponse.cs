@@ -38,7 +38,7 @@ namespace IO.Swagger.Model
         /// <param name="completedDate">completedDate.</param>
         /// <param name="errors">errors.</param>
         /// <param name="errorsNumber">errorsNumber.</param>
-        public GetErrorsSessionResponse(Guid? sessionGuid = default(Guid?), ProcessType process = default(ProcessType), SignSessionStatus status = default(SignSessionStatus), DateTime? createdDate = default(DateTime?), DateTime? completedDate = default(DateTime?), List<SignErrorDto> errors = default(List<SignErrorDto>), int? errorsNumber = default(int?))
+        public GetErrorsSessionResponse(Guid? sessionGuid = default(Guid?), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), DateTime? createdDate = default(DateTime?), DateTime? completedDate = default(DateTime?), List<SignErrorDto> errors = default(List<SignErrorDto>), int? errorsNumber = default(int?))
         {
             this.SessionGuid = sessionGuid;
             this.Process = process;
@@ -59,7 +59,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Process
         /// </summary>
         [DataMember(Name="process", EmitDefaultValue=false)]
-        public ProcessType Process { get; set; }
+        public SignSessionProcessTypeDto Process { get; set; }
 
         /// <summary>
         /// Gets or Sets Status

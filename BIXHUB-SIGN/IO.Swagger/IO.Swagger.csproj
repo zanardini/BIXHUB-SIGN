@@ -96,7 +96,6 @@ OpenAPI spec version: v1
     <Compile Include="Model\CreateSignerDto.cs" />
     <Compile Include="Model\CreateWebhookDto.cs" />
     <Compile Include="Model\DocumentSessionDetailResponse.cs" />
-    <Compile Include="Model\ExceptionCodeEnum.cs" />
     <Compile Include="Model\ExceptionResult.cs" />
     <Compile Include="Model\FieldGroupDocumentSessionDetailResponse.cs" />
     <Compile Include="Model\FieldGroupSessionDetailResponse.cs" />
@@ -113,7 +112,6 @@ OpenAPI spec version: v1
     <Compile Include="Model\GetStatusSessionResponse.cs" />
     <Compile Include="Model\NextActorStatusSessionResponse.cs" />
     <Compile Include="Model\PositionType.cs" />
-    <Compile Include="Model\ProcessType.cs" />
     <Compile Include="Model\PublishSessionApproversResponse.cs" />
     <Compile Include="Model\PublishSessionResponse.cs" />
     <Compile Include="Model\PublishSessionSignersResponse.cs" />
@@ -128,12 +126,13 @@ OpenAPI spec version: v1
     <Compile Include="Model\SignerSessionDetailResponse.cs" />
     <Compile Include="Model\SignerStatusSessionResponse.cs" />
     <Compile Include="Model\SignerStatusSessionState.cs" />
+    <Compile Include="Model\SignSessionProcessTypeDto.cs" />
     <Compile Include="Model\SignSessionStatus.cs" />
     <Compile Include="Model\SignWebhookEvent.cs" />
     <Compile Include="Model\UpdateSessionRequest.cs" />
     <Compile Include="Model\UploadFileBase64Request.cs" />
     <Compile Include="Model\UploadFilesRequest.cs" />
-    <Compile Include="Model\VerificationMode.cs" />
+    <Compile Include="Model\VerificationModeDto.cs" />
     <Compile Include="Model\WorkFlowType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
