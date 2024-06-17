@@ -36,13 +36,15 @@ namespace IO.Swagger.Model
         /// <param name="email">email.</param>
         /// <param name="description">description.</param>
         /// <param name="uri">uri.</param>
-        public NextActorStatusSessionResponse(ActorType type = default(ActorType), Guid? guid = default(Guid?), string email = default(string), string description = default(string), string uri = default(string))
+        /// <param name="externalId">externalId.</param>
+        public NextActorStatusSessionResponse(ActorType type = default(ActorType), Guid? guid = default(Guid?), string email = default(string), string description = default(string), string uri = default(string), string externalId = default(string))
         {
             this.Type = type;
             this.Guid = guid;
             this.Email = email;
             this.Description = description;
             this.Uri = uri;
+            this.ExternalId = externalId;
         }
         
         /// <summary>
@@ -76,6 +78,12 @@ namespace IO.Swagger.Model
         public string Uri { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExternalId
+        /// </summary>
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -88,6 +96,7 @@ namespace IO.Swagger.Model
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Uri: ").Append(Uri).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -146,6 +155,11 @@ namespace IO.Swagger.Model
                     this.Uri == input.Uri ||
                     (this.Uri != null &&
                     this.Uri.Equals(input.Uri))
+                ) && 
+                (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
                 );
         }
 
@@ -168,6 +182,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Uri != null)
                     hashCode = hashCode * 59 + this.Uri.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 return hashCode;
             }
         }

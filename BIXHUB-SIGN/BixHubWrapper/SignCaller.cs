@@ -175,10 +175,6 @@ namespace BixHubWrapper
                 result.NextUri = "";
                 if (statusModel.NextActors != null && statusModel.NextActors.Count > 0)
                     result.NextUri = statusModel.NextActors[0].Uri;
-                if (statusModel.Status == IO.Swagger.Model.SignSessionStatus.Completed)
-                {
-                    result.NextUri = "https://signdemo.bixhub.eu/Sign/signcomplete/" + sessionGuid.ToString() ;
-                }
             }
             return result;
         }

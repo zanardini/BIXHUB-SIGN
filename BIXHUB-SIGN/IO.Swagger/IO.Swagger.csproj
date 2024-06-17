@@ -81,6 +81,8 @@ OpenAPI spec version: v1
     <Compile Include="Model\ApproverSessionDetailResponse.cs" />
     <Compile Include="Model\ApproverStatusSessionResponse.cs" />
     <Compile Include="Model\ApproverStatusSessionState.cs" />
+    <Compile Include="Model\AttachmentSessionDetailResponse.cs" />
+    <Compile Include="Model\AttachmentStatusSessionResponse.cs" />
     <Compile Include="Model\ColorDto.cs" />
     <Compile Include="Model\CreateApproverDto.cs" />
     <Compile Include="Model\CreateAttachmentDto.cs" />

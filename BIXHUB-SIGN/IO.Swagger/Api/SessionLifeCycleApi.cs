@@ -293,6 +293,56 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionGuid"></param>
         /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>FileDataBase64</returns>
+        FileDataBase64 ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>ApiResponse of FileDataBase64</returns>
+        ApiResponse<FileDataBase64> ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>byte[]</returns>
+        byte[] ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
         /// <returns>byte[]</returns>
         byte[] ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet (Guid? sessionGuid, Guid? signerGuid);
 
@@ -1066,6 +1116,56 @@ namespace IO.Swagger.Api
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (GetAllSessionResponseGetPaginatedListResponseExecuted)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAllSessionResponseGetPaginatedListResponseExecuted>> ApiV1SessionLifeCycleGetAllPostAsyncWithHttpInfo (GetAllSessionRequest body = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of FileDataBase64</returns>
+        System.Threading.Tasks.Task<FileDataBase64> ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetAsync (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of ApiResponse (FileDataBase64)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FileDataBase64>> ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetAsync (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid);
         /// <summary>
         /// 
         /// </summary>
@@ -3623,6 +3723,348 @@ namespace IO.Swagger.Api
             return new ApiResponse<GetAllSessionResponseGetPaginatedListResponseExecuted>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (GetAllSessionResponseGetPaginatedListResponseExecuted) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetAllSessionResponseGetPaginatedListResponseExecuted)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>FileDataBase64</returns>
+        public FileDataBase64 ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+             ApiResponse<FileDataBase64> localVarResponse = ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetWithHttpInfo(sessionGuid, signerGuid, attachmentGuid);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>ApiResponse of FileDataBase64</returns>
+        public ApiResponse< FileDataBase64 > ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'signerGuid' is set
+            if (signerGuid == null)
+                throw new ApiException(400, "Missing required parameter 'signerGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'attachmentGuid' is set
+            if (attachmentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'attachmentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet");
+
+            var localVarPath = "/api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain; x-api-version=1.0",
+                "application/json; x-api-version=1.0",
+                "text/json; x-api-version=1.0"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (signerGuid != null) localVarPathParams.Add("signerGuid", this.Configuration.ApiClient.ParameterToString(signerGuid)); // path parameter
+            if (attachmentGuid != null) localVarPathParams.Add("attachmentGuid", this.Configuration.ApiClient.ParameterToString(attachmentGuid)); // path parameter
+            // authentication (Bearer) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FileDataBase64>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (FileDataBase64) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileDataBase64)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of FileDataBase64</returns>
+        public async System.Threading.Tasks.Task<FileDataBase64> ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetAsync (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+             ApiResponse<FileDataBase64> localVarResponse = await ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetAsyncWithHttpInfo(sessionGuid, signerGuid, attachmentGuid);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of ApiResponse (FileDataBase64)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FileDataBase64>> ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'signerGuid' is set
+            if (signerGuid == null)
+                throw new ApiException(400, "Missing required parameter 'signerGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'attachmentGuid' is set
+            if (attachmentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'attachmentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet");
+
+            var localVarPath = "/api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain; x-api-version=1.0",
+                "application/json; x-api-version=1.0",
+                "text/json; x-api-version=1.0"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (signerGuid != null) localVarPathParams.Add("signerGuid", this.Configuration.ApiClient.ParameterToString(signerGuid)); // path parameter
+            if (attachmentGuid != null) localVarPathParams.Add("attachmentGuid", this.Configuration.ApiClient.ParameterToString(attachmentGuid)); // path parameter
+            // authentication (Bearer) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FileDataBase64>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (FileDataBase64) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileDataBase64)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>byte[]</returns>
+        public byte[] ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+             ApiResponse<byte[]> localVarResponse = ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetWithHttpInfo(sessionGuid, signerGuid, attachmentGuid);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'signerGuid' is set
+            if (signerGuid == null)
+                throw new ApiException(400, "Missing required parameter 'signerGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'attachmentGuid' is set
+            if (attachmentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'attachmentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet");
+
+            var localVarPath = "/api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain; x-api-version=1.0",
+                "application/json; x-api-version=1.0",
+                "text/json; x-api-version=1.0"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (signerGuid != null) localVarPathParams.Add("signerGuid", this.Configuration.ApiClient.ParameterToString(signerGuid)); // path parameter
+            if (attachmentGuid != null) localVarPathParams.Add("attachmentGuid", this.Configuration.ApiClient.ParameterToString(attachmentGuid)); // path parameter
+            // authentication (Bearer) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetAsync (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+             ApiResponse<byte[]> localVarResponse = await ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetAsyncWithHttpInfo(sessionGuid, signerGuid, attachmentGuid);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="signerGuid"></param>
+        /// <param name="attachmentGuid"></param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGetAsyncWithHttpInfo (Guid? sessionGuid, Guid? signerGuid, Guid? attachmentGuid)
+        {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'signerGuid' is set
+            if (signerGuid == null)
+                throw new ApiException(400, "Missing required parameter 'signerGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet");
+            // verify the required parameter 'attachmentGuid' is set
+            if (attachmentGuid == null)
+                throw new ApiException(400, "Missing required parameter 'attachmentGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet");
+
+            var localVarPath = "/api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain; x-api-version=1.0",
+                "application/json; x-api-version=1.0",
+                "text/json; x-api-version=1.0"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (signerGuid != null) localVarPathParams.Add("signerGuid", this.Configuration.ApiClient.ParameterToString(signerGuid)); // path parameter
+            if (attachmentGuid != null) localVarPathParams.Add("attachmentGuid", this.Configuration.ApiClient.ParameterToString(attachmentGuid)); // path parameter
+            // authentication (Bearer) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
         }
 
         /// <summary>

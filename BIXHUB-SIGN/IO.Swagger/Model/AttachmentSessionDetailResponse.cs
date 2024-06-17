@@ -23,26 +23,24 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// SignerSessionDetailResponse
+    /// AttachmentSessionDetailResponse
     /// </summary>
     [DataContract]
-        public partial class SignerSessionDetailResponse :  IEquatable<SignerSessionDetailResponse>, IValidatableObject
+        public partial class AttachmentSessionDetailResponse :  IEquatable<AttachmentSessionDetailResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignerSessionDetailResponse" /> class.
+        /// Initializes a new instance of the <see cref="AttachmentSessionDetailResponse" /> class.
         /// </summary>
         /// <param name="guid">guid.</param>
-        /// <param name="taxCode">taxCode.</param>
+        /// <param name="description">description.</param>
         /// <param name="externalId">externalId.</param>
-        /// <param name="attachments">attachments.</param>
-        /// <param name="fieldGroups">fieldGroups.</param>
-        public SignerSessionDetailResponse(Guid? guid = default(Guid?), string taxCode = default(string), string externalId = default(string), List<AttachmentSessionDetailResponse> attachments = default(List<AttachmentSessionDetailResponse>), List<FieldGroupSessionDetailResponse> fieldGroups = default(List<FieldGroupSessionDetailResponse>))
+        /// <param name="fileName">fileName.</param>
+        public AttachmentSessionDetailResponse(Guid? guid = default(Guid?), string description = default(string), string externalId = default(string), string fileName = default(string))
         {
             this.Guid = guid;
-            this.TaxCode = taxCode;
+            this.Description = description;
             this.ExternalId = externalId;
-            this.Attachments = attachments;
-            this.FieldGroups = fieldGroups;
+            this.FileName = fileName;
         }
         
         /// <summary>
@@ -52,10 +50,10 @@ namespace IO.Swagger.Model
         public Guid? Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxCode
+        /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="taxCode", EmitDefaultValue=false)]
-        public string TaxCode { get; set; }
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
@@ -64,16 +62,10 @@ namespace IO.Swagger.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attachments
+        /// Gets or Sets FileName
         /// </summary>
-        [DataMember(Name="attachments", EmitDefaultValue=false)]
-        public List<AttachmentSessionDetailResponse> Attachments { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FieldGroups
-        /// </summary>
-        [DataMember(Name="fieldGroups", EmitDefaultValue=false)]
-        public List<FieldGroupSessionDetailResponse> FieldGroups { get; set; }
+        [DataMember(Name="fileName", EmitDefaultValue=false)]
+        public string FileName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -82,12 +74,11 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SignerSessionDetailResponse {\n");
+            sb.Append("class AttachmentSessionDetailResponse {\n");
             sb.Append("  Guid: ").Append(Guid).Append("\n");
-            sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Attachments: ").Append(Attachments).Append("\n");
-            sb.Append("  FieldGroups: ").Append(FieldGroups).Append("\n");
+            sb.Append("  FileName: ").Append(FileName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,15 +99,15 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SignerSessionDetailResponse);
+            return this.Equals(input as AttachmentSessionDetailResponse);
         }
 
         /// <summary>
-        /// Returns true if SignerSessionDetailResponse instances are equal
+        /// Returns true if AttachmentSessionDetailResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of SignerSessionDetailResponse to be compared</param>
+        /// <param name="input">Instance of AttachmentSessionDetailResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SignerSessionDetailResponse input)
+        public bool Equals(AttachmentSessionDetailResponse input)
         {
             if (input == null)
                 return false;
@@ -128,9 +119,9 @@ namespace IO.Swagger.Model
                     this.Guid.Equals(input.Guid))
                 ) && 
                 (
-                    this.TaxCode == input.TaxCode ||
-                    (this.TaxCode != null &&
-                    this.TaxCode.Equals(input.TaxCode))
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -138,16 +129,9 @@ namespace IO.Swagger.Model
                     this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
-                    this.Attachments == input.Attachments ||
-                    this.Attachments != null &&
-                    input.Attachments != null &&
-                    this.Attachments.SequenceEqual(input.Attachments)
-                ) && 
-                (
-                    this.FieldGroups == input.FieldGroups ||
-                    this.FieldGroups != null &&
-                    input.FieldGroups != null &&
-                    this.FieldGroups.SequenceEqual(input.FieldGroups)
+                    this.FileName == input.FileName ||
+                    (this.FileName != null &&
+                    this.FileName.Equals(input.FileName))
                 );
         }
 
@@ -162,14 +146,12 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.Guid != null)
                     hashCode = hashCode * 59 + this.Guid.GetHashCode();
-                if (this.TaxCode != null)
-                    hashCode = hashCode * 59 + this.TaxCode.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.Attachments != null)
-                    hashCode = hashCode * 59 + this.Attachments.GetHashCode();
-                if (this.FieldGroups != null)
-                    hashCode = hashCode * 59 + this.FieldGroups.GetHashCode();
+                if (this.FileName != null)
+                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
                 return hashCode;
             }
         }
