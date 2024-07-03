@@ -32,7 +32,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="CreateFieldDto" /> class.
         /// </summary>
         /// <param name="type">type.</param>
-        /// <param name="shortDescription">shortDescription.</param>
+        /// <param name="shortDescription">shortDescription (required).</param>
         /// <param name="longDescription">longDescription.</param>
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="optional">optional.</param>
@@ -44,11 +44,20 @@ namespace IO.Swagger.Model
         /// <param name="backGroundColor">backGroundColor.</param>
         /// <param name="maxLength">maxLength.</param>
         /// <param name="multiLine">multiLine.</param>
+        /// <param name="regexPattern">regexPattern.</param>
         /// <param name="position">position.</param>
-        public CreateFieldDto(FieldType type = default(FieldType), string shortDescription = default(string), string longDescription = default(string), float? indexOrder = default(float?), bool? optional = default(bool?), string externalId = default(string), List<string> values = default(List<string>), List<CreateRadioButtonFieldDto> radioButtonFields = default(List<CreateRadioButtonFieldDto>), double? fontSize = default(double?), FontAbleTech font = default(FontAbleTech), ColorDto backGroundColor = default(ColorDto), int? maxLength = default(int?), bool? multiLine = default(bool?), CreatePositionDto position = default(CreatePositionDto))
+        public CreateFieldDto(FieldType type = default(FieldType), string shortDescription = default(string), string longDescription = default(string), float? indexOrder = default(float?), bool? optional = default(bool?), string externalId = default(string), List<string> values = default(List<string>), List<CreateRadioButtonFieldDto> radioButtonFields = default(List<CreateRadioButtonFieldDto>), double? fontSize = default(double?), FontAbleTech font = default(FontAbleTech), ColorDto backGroundColor = default(ColorDto), int? maxLength = default(int?), bool? multiLine = default(bool?), string regexPattern = default(string), CreatePositionDto position = default(CreatePositionDto))
         {
+            // to ensure "shortDescription" is required (not null)
+            if (shortDescription == null)
+            {
+                throw new InvalidDataException("shortDescription is a required property for CreateFieldDto and cannot be null");
+            }
+            else
+            {
+                this.ShortDescription = shortDescription;
+            }
             this.Type = type;
-            this.ShortDescription = shortDescription;
             this.LongDescription = longDescription;
             this.IndexOrder = indexOrder;
             this.Optional = optional;
@@ -60,6 +69,7 @@ namespace IO.Swagger.Model
             this.BackGroundColor = backGroundColor;
             this.MaxLength = maxLength;
             this.MultiLine = multiLine;
+            this.RegexPattern = regexPattern;
             this.Position = position;
         }
         
@@ -142,6 +152,12 @@ namespace IO.Swagger.Model
         public bool? MultiLine { get; set; }
 
         /// <summary>
+        /// Gets or Sets RegexPattern
+        /// </summary>
+        [DataMember(Name="regexPattern", EmitDefaultValue=false)]
+        public string RegexPattern { get; set; }
+
+        /// <summary>
         /// Gets or Sets Position
         /// </summary>
         [DataMember(Name="position", EmitDefaultValue=false)]
@@ -168,6 +184,7 @@ namespace IO.Swagger.Model
             sb.Append("  BackGroundColor: ").Append(BackGroundColor).Append("\n");
             sb.Append("  MaxLength: ").Append(MaxLength).Append("\n");
             sb.Append("  MultiLine: ").Append(MultiLine).Append("\n");
+            sb.Append("  RegexPattern: ").Append(RegexPattern).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -271,6 +288,11 @@ namespace IO.Swagger.Model
                     this.MultiLine.Equals(input.MultiLine))
                 ) && 
                 (
+                    this.RegexPattern == input.RegexPattern ||
+                    (this.RegexPattern != null &&
+                    this.RegexPattern.Equals(input.RegexPattern))
+                ) && 
+                (
                     this.Position == input.Position ||
                     (this.Position != null &&
                     this.Position.Equals(input.Position))
@@ -312,6 +334,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.MaxLength.GetHashCode();
                 if (this.MultiLine != null)
                     hashCode = hashCode * 59 + this.MultiLine.GetHashCode();
+                if (this.RegexPattern != null)
+                    hashCode = hashCode * 59 + this.RegexPattern.GetHashCode();
                 if (this.Position != null)
                     hashCode = hashCode * 59 + this.Position.GetHashCode();
                 return hashCode;

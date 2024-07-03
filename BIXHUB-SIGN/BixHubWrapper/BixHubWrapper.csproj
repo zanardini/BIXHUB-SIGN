@@ -73,6 +73,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IdeCaller.cs" />
+    <Compile Include="Model\AcquiredIDInfoResponse.cs" />
     <Compile Include="SignCaller.cs" />
     <Compile Include="Model\InfoSessionResponse.cs" />
     <Compile Include="Model\TokenFromUserResult.cs" />

@@ -31,8 +31,8 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSignerDto" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
-        /// <param name="email">email.</param>
+        /// <param name="description">description (required).</param>
+        /// <param name="email">email (required).</param>
         /// <param name="phoneNumber">phoneNumber.</param>
         /// <param name="taxCode">taxCode (required).</param>
         /// <param name="verificationMode">verificationMode.</param>
@@ -43,6 +43,24 @@ namespace IO.Swagger.Model
         /// <param name="attachments">attachments.</param>
         public CreateSignerDto(string description = default(string), string email = default(string), string phoneNumber = default(string), string taxCode = default(string), VerificationModeDto verificationMode = default(VerificationModeDto), float? indexOrder = default(float?), string redirectUri = default(string), string externalId = default(string), List<CreateFieldGroupDto> fieldGroups = default(List<CreateFieldGroupDto>), List<CreateAttachmentDto> attachments = default(List<CreateAttachmentDto>))
         {
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new InvalidDataException("description is a required property for CreateSignerDto and cannot be null");
+            }
+            else
+            {
+                this.Description = description;
+            }
+            // to ensure "email" is required (not null)
+            if (email == null)
+            {
+                throw new InvalidDataException("email is a required property for CreateSignerDto and cannot be null");
+            }
+            else
+            {
+                this.Email = email;
+            }
             // to ensure "taxCode" is required (not null)
             if (taxCode == null)
             {
@@ -52,8 +70,6 @@ namespace IO.Swagger.Model
             {
                 this.TaxCode = taxCode;
             }
-            this.Description = description;
-            this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.VerificationMode = verificationMode;
             this.IndexOrder = indexOrder;

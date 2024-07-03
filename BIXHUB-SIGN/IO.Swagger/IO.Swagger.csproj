@@ -66,6 +66,7 @@ OpenAPI spec version: v1
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IdeApi\IdeSessionLifeCycleApi.cs" />
     <Compile Include="Api\MonitoringApi.cs" />
     <Compile Include="Api\SessionLifeCycleApi.cs" />
     <Compile Include="Client\ApiClient.cs" />
@@ -77,6 +78,32 @@ OpenAPI spec version: v1
     <Compile Include="Client\IApiAccessor.cs" />
     <Compile Include="Client\IReadableConfiguration.cs" />
     <Compile Include="Client\SwaggerDateConverter.cs" />
+    <Compile Include="IdeModel\CreateSessionRequest.cs" />
+    <Compile Include="IdeModel\CreateSessionResponse.cs" />
+    <Compile Include="IdeModel\DeclaredPersonalData.cs" />
+    <Compile Include="IdeModel\DigitalIdentityResponse.cs" />
+    <Compile Include="IdeModel\DocumentType.cs" />
+    <Compile Include="IdeModel\ExceptionCodeEnum.cs" />
+    <Compile Include="IdeModel\ExceptionResult.cs" />
+    <Compile Include="IdeModel\FlowStep.cs" />
+    <Compile Include="IdeModel\GetAcquiredIDInfoRequest.cs" />
+    <Compile Include="IdeModel\GetAcquiredIDInfoResponse.cs" />
+    <Compile Include="IdeModel\GetAcquiredUserInfo.cs" />
+    <Compile Include="IdeModel\GetAllSessionRequest.cs" />
+    <Compile Include="IdeModel\GetAllSessionResponse.cs" />
+    <Compile Include="IdeModel\GetSessionResponse.cs" />
+    <Compile Include="IdeModel\GetStatusSessionResponse.cs" />
+    <Compile Include="IdeModel\IDCardAcquiredResponse.cs" />
+    <Compile Include="IdeModel\IDCardAcquiredUserResponse.cs" />
+    <Compile Include="IdeModel\IdentificationStatus.cs" />
+    <Compile Include="IdeModel\PersonalDataAcquiredInfoResponse.cs" />
+    <Compile Include="IdeModel\PersonalDataAcquiredUserInfoResponse.cs" />
+    <Compile Include="IdeModel\ResourceResponse.cs" />
+    <Compile Include="IdeModel\SendEmailRequest.cs" />
+    <Compile Include="IdeModel\SessionFlowTypeDto.cs" />
+    <Compile Include="IdeModel\SessionStatus.cs" />
+    <Compile Include="IdeModel\Sex.cs" />
+    <Compile Include="IdeModel\UpdateSessionRequest.cs" />
     <Compile Include="Model\ActorType.cs" />
     <Compile Include="Model\ApproverSessionDetailResponse.cs" />
     <Compile Include="Model\ApproverStatusSessionResponse.cs" />
@@ -112,6 +139,8 @@ OpenAPI spec version: v1
     <Compile Include="Model\GetErrorsSessionResponse.cs" />
     <Compile Include="Model\GetSessionDetailResponse.cs" />
     <Compile Include="Model\GetStatusSessionResponse.cs" />
+    <Compile Include="Model\IdentificationSessionStatusSessionResponse.cs" />
+    <Compile Include="Model\IdeSessionStatus.cs" />
     <Compile Include="Model\NextActorStatusSessionResponse.cs" />
     <Compile Include="Model\PositionType.cs" />
     <Compile Include="Model\PublishSessionApproversResponse.cs" />
@@ -121,6 +150,7 @@ OpenAPI spec version: v1
     <Compile Include="Model\RemoveFieldRequest.cs" />
     <Compile Include="Model\SavedFileResponse.cs" />
     <Compile Include="Model\SendEmailRequest.cs" />
+    <Compile Include="Model\SessionFlowTypeDto.cs" />
     <Compile Include="Model\SessionLifeCycleUploadFileBody.cs" />
     <Compile Include="Model\SessionLifeCycleUploadFilesBody.cs" />
     <Compile Include="Model\SignErrorDto.cs" />

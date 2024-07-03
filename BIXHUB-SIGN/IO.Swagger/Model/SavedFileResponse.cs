@@ -35,12 +35,14 @@ namespace IO.Swagger.Model
         /// <param name="fileName">fileName.</param>
         /// <param name="mimeType">mimeType.</param>
         /// <param name="hash">hash.</param>
-        public SavedFileResponse(Guid? fileGuid = default(Guid?), string fileName = default(string), string mimeType = default(string), string hash = default(string))
+        /// <param name="fileSize">fileSize.</param>
+        public SavedFileResponse(Guid? fileGuid = default(Guid?), string fileName = default(string), string mimeType = default(string), string hash = default(string), long? fileSize = default(long?))
         {
             this.FileGuid = fileGuid;
             this.FileName = fileName;
             this.MimeType = mimeType;
             this.Hash = hash;
+            this.FileSize = fileSize;
         }
         
         /// <summary>
@@ -68,6 +70,12 @@ namespace IO.Swagger.Model
         public string Hash { get; set; }
 
         /// <summary>
+        /// Gets or Sets FileSize
+        /// </summary>
+        [DataMember(Name="fileSize", EmitDefaultValue=false)]
+        public long? FileSize { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -79,6 +87,7 @@ namespace IO.Swagger.Model
             sb.Append("  FileName: ").Append(FileName).Append("\n");
             sb.Append("  MimeType: ").Append(MimeType).Append("\n");
             sb.Append("  Hash: ").Append(Hash).Append("\n");
+            sb.Append("  FileSize: ").Append(FileSize).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -132,6 +141,11 @@ namespace IO.Swagger.Model
                     this.Hash == input.Hash ||
                     (this.Hash != null &&
                     this.Hash.Equals(input.Hash))
+                ) && 
+                (
+                    this.FileSize == input.FileSize ||
+                    (this.FileSize != null &&
+                    this.FileSize.Equals(input.FileSize))
                 );
         }
 
@@ -152,6 +166,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.MimeType.GetHashCode();
                 if (this.Hash != null)
                     hashCode = hashCode * 59 + this.Hash.GetHashCode();
+                if (this.FileSize != null)
+                    hashCode = hashCode * 59 + this.FileSize.GetHashCode();
                 return hashCode;
             }
         }

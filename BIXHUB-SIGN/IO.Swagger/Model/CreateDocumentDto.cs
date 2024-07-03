@@ -36,7 +36,8 @@ namespace IO.Swagger.Model
         /// <param name="sealPositions">sealPositions.</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="mandatoryRead">mandatoryRead.</param>
-        public CreateDocumentDto(string description = default(string), Guid? fileGuid = default(Guid?), List<CreatePositionDto> sealPositions = default(List<CreatePositionDto>), string externalId = default(string), bool? mandatoryRead = default(bool?))
+        /// <param name="indexOrder">indexOrder.</param>
+        public CreateDocumentDto(string description = default(string), Guid? fileGuid = default(Guid?), List<CreatePositionDto> sealPositions = default(List<CreatePositionDto>), string externalId = default(string), bool? mandatoryRead = default(bool?), float? indexOrder = default(float?))
         {
             // to ensure "fileGuid" is required (not null)
             if (fileGuid == null)
@@ -51,6 +52,7 @@ namespace IO.Swagger.Model
             this.SealPositions = sealPositions;
             this.ExternalId = externalId;
             this.MandatoryRead = mandatoryRead;
+            this.IndexOrder = indexOrder;
         }
         
         /// <summary>
@@ -84,6 +86,12 @@ namespace IO.Swagger.Model
         public bool? MandatoryRead { get; set; }
 
         /// <summary>
+        /// Gets or Sets IndexOrder
+        /// </summary>
+        [DataMember(Name="indexOrder", EmitDefaultValue=false)]
+        public float? IndexOrder { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,6 +104,7 @@ namespace IO.Swagger.Model
             sb.Append("  SealPositions: ").Append(SealPositions).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  MandatoryRead: ").Append(MandatoryRead).Append("\n");
+            sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +164,11 @@ namespace IO.Swagger.Model
                     this.MandatoryRead == input.MandatoryRead ||
                     (this.MandatoryRead != null &&
                     this.MandatoryRead.Equals(input.MandatoryRead))
+                ) && 
+                (
+                    this.IndexOrder == input.IndexOrder ||
+                    (this.IndexOrder != null &&
+                    this.IndexOrder.Equals(input.IndexOrder))
                 );
         }
 
@@ -177,6 +191,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.MandatoryRead != null)
                     hashCode = hashCode * 59 + this.MandatoryRead.GetHashCode();
+                if (this.IndexOrder != null)
+                    hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
                 return hashCode;
             }
         }

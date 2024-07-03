@@ -23,64 +23,54 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Defines SignSessionStatus
+    /// Defines IdeSessionStatus
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-        public enum SignSessionStatus
+        public enum IdeSessionStatus
     {
         /// <summary>
-        /// Enum Initializing for value: Initializing
+        /// Enum Pending for value: Pending
         /// </summary>
-        [EnumMember(Value = "Initializing")]
-        Initializing = 1,
-        /// <summary>
-        /// Enum Created for value: Created
-        /// </summary>
-        [EnumMember(Value = "Created")]
-        Created = 2,
-        /// <summary>
-        /// Enum Deleted for value: Deleted
-        /// </summary>
-        [EnumMember(Value = "Deleted")]
-        Deleted = 3,
-        /// <summary>
-        /// Enum Approved for value: Approved
-        /// </summary>
-        [EnumMember(Value = "Approved")]
-        Approved = 4,
-        /// <summary>
-        /// Enum RejectedByApprover for value: RejectedByApprover
-        /// </summary>
-        [EnumMember(Value = "RejectedByApprover")]
-        RejectedByApprover = 5,
+        [EnumMember(Value = "Pending")]
+        Pending = 1,
         /// <summary>
         /// Enum InProgress for value: InProgress
         /// </summary>
         [EnumMember(Value = "InProgress")]
-        InProgress = 6,
+        InProgress = 2,
+        /// <summary>
+        /// Enum InVerify for value: InVerify
+        /// </summary>
+        [EnumMember(Value = "InVerify")]
+        InVerify = 3,
         /// <summary>
         /// Enum Completed for value: Completed
         /// </summary>
         [EnumMember(Value = "Completed")]
-        Completed = 7,
+        Completed = 4,
+        /// <summary>
+        /// Enum Failed for value: Failed
+        /// </summary>
+        [EnumMember(Value = "Failed")]
+        Failed = 5,
+        /// <summary>
+        /// Enum Deleted for value: Deleted
+        /// </summary>
+        [EnumMember(Value = "Deleted")]
+        Deleted = 6,
         /// <summary>
         /// Enum DeletedByRetention for value: DeletedByRetention
         /// </summary>
         [EnumMember(Value = "DeletedByRetention")]
-        DeletedByRetention = 8,
+        DeletedByRetention = 7,
         /// <summary>
         /// Enum FailedTooManyAttempts for value: FailedTooManyAttempts
         /// </summary>
         [EnumMember(Value = "FailedTooManyAttempts")]
-        FailedTooManyAttempts = 9,
+        FailedTooManyAttempts = 8,
         /// <summary>
-        /// Enum RejectedBySigner for value: RejectedBySigner
+        /// Enum FailedSpidCie for value: FailedSpidCie
         /// </summary>
-        [EnumMember(Value = "RejectedBySigner")]
-        RejectedBySigner = 10,
-        /// <summary>
-        /// Enum SignerIdentificationFailed for value: SignerIdentificationFailed
-        /// </summary>
-        [EnumMember(Value = "SignerIdentificationFailed")]
-        SignerIdentificationFailed = 11    }
+        [EnumMember(Value = "FailedSpidCie")]
+        FailedSpidCie = 9    }
 }

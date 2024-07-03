@@ -1,10 +1,12 @@
 ﻿using IO.Swagger.Model;
+using Microsoft.SqlServer.Server;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -62,12 +64,15 @@ namespace BixHubWrapper
             _accessToken = accessTokenDto.access_token;
         }
 
-        public Guid CreateNewSignSession(string sessionDescription, string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, string fileToSign)
+        public Guid CreateNewSignSessionFEA(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover)
         {
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+            var sessionDescription = "Firma avanzata del contratto";
+            var fileToSign = @"C:\Temp\BixHub\FEA_ContrattoAgenzia.pdf";
+            var acceptToSign = @"C:\Temp\BixHub\FEA_Adesione.pdf";
 
-            
-            var documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+            SavedFileResponse acceptUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(acceptToSign)), System.IO.Path.GetFileName(acceptToSign), MimeMapping.GetMimeMapping(acceptToSign)));
+            SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
 
             var attributes = new Dictionary<string, string>
             {
@@ -84,9 +89,96 @@ namespace BixHubWrapper
             };
 
             List<CreateWebhookDto> webhooks = new List<CreateWebhookDto>();
-            
+
             List<CreateApproverDto> approvers = new List<CreateApproverDto>();
-            approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
+            if (addApprover)
+                approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
+
+            List<CreateFollowerDto> followers = new List<CreateFollowerDto>();
+
+            List<CreateSignerDto> signers = new List<CreateSignerDto>();
+            List<CreateFieldGroupDto> fieldsGroup1 = new List<CreateFieldGroupDto>();
+            List<CreateFieldGroupDocumentDto> fg_documents = new List<CreateFieldGroupDocumentDto>();
+            List<CreateFieldDto> fg_fieldsAccept = new List<CreateFieldDto>();
+            List<CreateFieldDto> fg_fieldsDocument = new List<CreateFieldDto>();
+
+            fg_fieldsAccept.Add(new CreateFieldDto(FieldType.TextBox
+             , "Valorizzare con il luogo"
+             , "Valorizzare con il luogo"
+             , 0, false, "0", null, null
+             , null, FontAbleTech.TimesRoman, null, null, null, ""
+             , new CreatePositionDto(PositionType.AcroField, "Luogo")));
+
+            fg_fieldsAccept.Add(new CreateFieldDto(FieldType.DatePicker
+             , "Data della firma"
+             , "Data della firma"
+             , 1, false, "1", null, null
+             , null, FontAbleTech.TimesRoman, null, null, null, ""
+             , new CreatePositionDto(PositionType.AcroField, "Data")));
+
+            fg_fieldsAccept.Add(new CreateFieldDto(FieldType.Signature
+                , "Firma per accettazione delle condizioni di servizio"
+                , "Firma per accettazione delle condizioni di servizio"
+                , 2, false, "2", null, null, null, FontAbleTech.TimesRoman, null, null, null, ""
+                , new CreatePositionDto(PositionType.AcroField, "Signature1")));
+
+            fg_fieldsDocument.Add(new CreateFieldDto(FieldType.Signature
+               , "Firma per accettazione del mandato di agenzia"
+               , "Firma per accettazione del mandato di agenzia"
+               , 3, false, "3", null, null, null, FontAbleTech.TimesRoman, null, null, null, ""
+               , new CreatePositionDto(PositionType.AcroField, "Signature2")));
+
+
+            fg_documents.Add(new CreateFieldGroupDocumentDto(acceptUploaded.FileGuid, 0, fg_fieldsAccept)); 
+            fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 1, fg_fieldsDocument));
+            fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
+
+            List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
+            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+
+            List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
+            documents.Add(new CreateDocumentDto("Adesione al servizio FEA", acceptUploaded.FileGuid, null, "Adesione al servizio FEA", false, 0));
+            documents.Add(new CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
+            
+            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.ES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
+                approvers, followers, documents, signers, true, true, true);
+            IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
+
+            if (response.SessionGuid == null)
+                throw new Exception("Post return null");
+
+            IO.Swagger.Model.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid.Value);
+            return response.SessionGuid.Value;
+        }
+
+        public Guid CreateNewSignSessionFES(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover)
+        {
+            var sessionDescription = "Firma semplice del modulo privacy";
+            var fileToSign = @"C:\Temp\BixHub\FES_ModuloPrivacy.pdf";
+
+            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+
+            SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+
+            var attributes = new Dictionary<string, string>
+            {
+            };
+
+            // parameters sono i parametri di funzionamento del servizio quali la lingua utente nonchè la URL di redirect a fine sessione
+            var parameters = new Dictionary<string, string> {
+                { "returnUrl", returnUrl },
+                { "language", "it" }
+            };
+            // è possibile indicare metadati da salvare lato BIX-IDE per poi favorire il match
+            var metadata = new Dictionary<string, string> {
+                { "externalID", externalID }
+            };
+
+            List<CreateWebhookDto> webhooks = new List<CreateWebhookDto>();
+
+            List<CreateApproverDto> approvers = new List<CreateApproverDto>();
+            if (addApprover)
+                approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
 
             List<CreateFollowerDto> followers = new List<CreateFollowerDto>();
 
@@ -94,19 +186,72 @@ namespace BixHubWrapper
             List<CreateFieldGroupDto> fieldsGroup1 = new List<CreateFieldGroupDto>();
             List<CreateFieldGroupDocumentDto> fg_documents = new List<CreateFieldGroupDocumentDto>();
             List<CreateFieldDto> fg_fields = new List<CreateFieldDto>();
-            CreatePositionDto fg_Position = new CreatePositionDto(PositionType.AcroField, "Signature2");
-            fg_fields.Add(new CreateFieldDto(FieldType.Signature, "Punto firma", "", 6, false, "2", null, null, null, FontAbleTech.TimesRoman, null, null, null, fg_Position));
+
+            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+                , "Consenso finalità di adempimento contrattuale delle prestazioni da me richieste"
+                , "Consenso finalità di adempimento contrattuale delle prestazioni da me richieste"
+                , 0, false, "0", null
+                , new List<CreateRadioButtonFieldDto>
+                {
+                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
+                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
+                }
+                , null, FontAbleTech.TimesRoman, null, null, null, ""
+                , new CreatePositionDto(PositionType.AcroField, "Group1")));
+
+            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+                            , "Consenso finalità di analisi e ricerche di mercato per migliorare l'offerta di prodotti"
+                            , "Consenso finalità di analisi e ricerche di mercato per migliorare l'offerta di prodotti"
+                            , 1, false, "1", null
+                            , new List<CreateRadioButtonFieldDto>
+                            {
+                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
+                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
+                            }
+                            , null, FontAbleTech.TimesRoman, null, null, null, ""
+                            , new CreatePositionDto(PositionType.AcroField, "Group2")));
+
+            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+             , "Consenso finalità commerciali e di marketing diretto e indiretto come indicato nell'informativa"
+             , "Consenso finalità commerciali e di marketing diretto e indiretto come indicato nell'informativa"
+             , 2, false, "2", null
+             , new List<CreateRadioButtonFieldDto>
+             {
+                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
+                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
+             }
+             , null, FontAbleTech.TimesRoman, null, null, null, ""
+             , new CreatePositionDto(PositionType.AcroField, "Group3")));
+
+            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+             , "Consenso al trasferimento dei miei suddetti dati verso i paesi indicati nell'informativa"
+             , "Consenso al trasferimento dei miei suddetti dati verso i paesi indicati nell'informativa"
+             , 3, false, "3", null
+             , new List<CreateRadioButtonFieldDto>
+             {
+                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
+                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
+             }
+             , null, FontAbleTech.TimesRoman, null, null, null, ""
+             , new CreatePositionDto(PositionType.AcroField, "Group4")));
+
+            fg_fields.Add(new CreateFieldDto(FieldType.Signature
+                , "Firma per accettazione"
+                , "Firma per accettazione"
+                , 5, false, "5", null, null, null, FontAbleTech.TimesRoman, null, null, null, ""
+                , new CreatePositionDto(PositionType.AcroField, "Signature1")));
+
             fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fields));
             fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
             List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
-            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.EmailOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
 
             List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
-            documents.Add(new CreateDocumentDto("Documento DDT", documentUploaded.FileGuid, null, "DDT.PDF", false));
+            documents.Add(new CreateDocumentDto("Informativa Privacy", documentUploaded.FileGuid, null, "Informativa Privacy", false));
 
             IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.ES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
-                approvers, followers, documents, signers, true, true, true);
+                approvers, followers, documents, signers, false, true, true);
             IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
 
             if (response.SessionGuid == null)
@@ -210,7 +355,7 @@ namespace BixHubWrapper
             return result;
         }
 
-        public Dictionary<Guid, string> GetSigners(Guid sessionGuid)
+        public Dictionary<Guid, string> GetSignersAndIdeSession(Guid sessionGuid)
         {
             var result = new Dictionary<Guid, string>();
 
@@ -218,10 +363,10 @@ namespace BixHubWrapper
             IO.Swagger.Model.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
             List<IO.Swagger.Model.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid?> { sessionGuid });
             IO.Swagger.Model.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
-
-            foreach (var signer in sessionModel.Signers)
+            foreach (var signer in statusModel.Signers)
             {
-                result.Add(signer.Guid.Value, signer.TaxCode);
+                if (signer.IdentificationSession != null && signer.IdentificationSession.Guid != null)
+                    result.Add(signer.IdentificationSession.Guid.Value, signer.TaxCode);
             }
             return result;
         }

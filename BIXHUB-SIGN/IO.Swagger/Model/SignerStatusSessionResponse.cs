@@ -37,8 +37,9 @@ namespace IO.Swagger.Model
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="status">status.</param>
         /// <param name="attachments">attachments.</param>
+        /// <param name="identificationSession">identificationSession.</param>
         /// <param name="externalId">externalId.</param>
-        public SignerStatusSessionResponse(Guid? guid = default(Guid?), string email = default(string), string taxCode = default(string), float? indexOrder = default(float?), SignerStatusSessionState status = default(SignerStatusSessionState), List<AttachmentStatusSessionResponse> attachments = default(List<AttachmentStatusSessionResponse>), string externalId = default(string))
+        public SignerStatusSessionResponse(Guid? guid = default(Guid?), string email = default(string), string taxCode = default(string), float? indexOrder = default(float?), SignerStatusSessionState status = default(SignerStatusSessionState), List<AttachmentStatusSessionResponse> attachments = default(List<AttachmentStatusSessionResponse>), IdentificationSessionStatusSessionResponse identificationSession = default(IdentificationSessionStatusSessionResponse), string externalId = default(string))
         {
             this.Guid = guid;
             this.Email = email;
@@ -46,6 +47,7 @@ namespace IO.Swagger.Model
             this.IndexOrder = indexOrder;
             this.Status = status;
             this.Attachments = attachments;
+            this.IdentificationSession = identificationSession;
             this.ExternalId = externalId;
         }
         
@@ -86,6 +88,12 @@ namespace IO.Swagger.Model
         public List<AttachmentStatusSessionResponse> Attachments { get; set; }
 
         /// <summary>
+        /// Gets or Sets IdentificationSession
+        /// </summary>
+        [DataMember(Name="identificationSession", EmitDefaultValue=false)]
+        public IdentificationSessionStatusSessionResponse IdentificationSession { get; set; }
+
+        /// <summary>
         /// Gets or Sets ExternalId
         /// </summary>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
@@ -105,6 +113,7 @@ namespace IO.Swagger.Model
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
+            sb.Append("  IdentificationSession: ").Append(IdentificationSession).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -172,6 +181,11 @@ namespace IO.Swagger.Model
                     this.Attachments.SequenceEqual(input.Attachments)
                 ) && 
                 (
+                    this.IdentificationSession == input.IdentificationSession ||
+                    (this.IdentificationSession != null &&
+                    this.IdentificationSession.Equals(input.IdentificationSession))
+                ) && 
+                (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
@@ -199,6 +213,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Attachments != null)
                     hashCode = hashCode * 59 + this.Attachments.GetHashCode();
+                if (this.IdentificationSession != null)
+                    hashCode = hashCode * 59 + this.IdentificationSession.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 return hashCode;

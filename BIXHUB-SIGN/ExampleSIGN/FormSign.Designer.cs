@@ -43,8 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this._txtLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this._txtFileToSign = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this._cbAddApprover = new System.Windows.Forms.CheckBox();
+            this._btnCreaSessioneFEA = new System.Windows.Forms.Button();
             this._txtDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this._txtTaxCode = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this._txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this._btnCreaSessione = new System.Windows.Forms.Button();
+            this._btnCreaSessioneFES = new System.Windows.Forms.Button();
             this._txtMail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this._btnGetSessionStatus = new System.Windows.Forms.Button();
@@ -69,8 +69,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sessionData = new System.Windows.Forms.DataGridView();
-            this._txtSessionDescription = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this._txtIdeUrl = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -84,6 +84,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this._txtIdeUrl);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this._txtSignUrl);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label11);
@@ -98,7 +100,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(805, 101);
+            this.groupBox1.Size = new System.Drawing.Size(804, 135);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connessione Web Api";
@@ -122,7 +124,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 46);
+            this.label11.Location = new System.Drawing.Point(8, 80);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(63, 13);
             this.label11.TabIndex = 12;
@@ -131,7 +133,7 @@
             // _btnSaveSettings
             // 
             this._btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnSaveSettings.Location = new System.Drawing.Point(690, 65);
+            this._btnSaveSettings.Location = new System.Drawing.Point(689, 99);
             this._btnSaveSettings.Margin = new System.Windows.Forms.Padding(2);
             this._btnSaveSettings.Name = "_btnSaveSettings";
             this._btnSaveSettings.Size = new System.Drawing.Size(106, 25);
@@ -142,14 +144,14 @@
             // 
             // _txtClientGuid
             // 
-            this._txtClientGuid.Location = new System.Drawing.Point(75, 44);
+            this._txtClientGuid.Location = new System.Drawing.Point(76, 78);
             this._txtClientGuid.Name = "_txtClientGuid";
             this._txtClientGuid.Size = new System.Drawing.Size(480, 20);
             this._txtClientGuid.TabIndex = 3;
             // 
             // _btnLogin
             // 
-            this._btnLogin.Location = new System.Drawing.Point(581, 65);
+            this._btnLogin.Location = new System.Drawing.Point(582, 99);
             this._btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this._btnLogin.Name = "_btnLogin";
             this._btnLogin.Size = new System.Drawing.Size(105, 25);
@@ -168,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(264, 73);
+            this.label3.Location = new System.Drawing.Point(265, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 5;
@@ -177,7 +179,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 72);
+            this.label2.Location = new System.Drawing.Point(7, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
@@ -185,7 +187,7 @@
             // 
             // _txtClientSecret
             // 
-            this._txtClientSecret.Location = new System.Drawing.Point(331, 70);
+            this._txtClientSecret.Location = new System.Drawing.Point(332, 104);
             this._txtClientSecret.Name = "_txtClientSecret";
             this._txtClientSecret.PasswordChar = '*';
             this._txtClientSecret.Size = new System.Drawing.Size(223, 20);
@@ -193,7 +195,7 @@
             // 
             // _txtClientId
             // 
-            this._txtClientId.Location = new System.Drawing.Point(74, 70);
+            this._txtClientId.Location = new System.Drawing.Point(75, 104);
             this._txtClientId.Name = "_txtClientId";
             this._txtClientId.Size = new System.Drawing.Size(159, 20);
             this._txtClientId.TabIndex = 4;
@@ -218,17 +220,15 @@
             this._txtLog.Multiline = true;
             this._txtLog.Name = "_txtLog";
             this._txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this._txtLog.Size = new System.Drawing.Size(790, 229);
+            this._txtLog.Size = new System.Drawing.Size(789, 211);
             this._txtLog.TabIndex = 7;
             // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this._txtSessionDescription);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this._txtFileToSign);
-            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this._cbAddApprover);
+            this.groupBox3.Controls.Add(this._btnCreaSessioneFEA);
             this.groupBox3.Controls.Add(this._txtDescription);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this._txtTaxCode);
@@ -239,33 +239,36 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this._txtPhoneNumber);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this._btnCreaSessione);
+            this.groupBox3.Controls.Add(this._btnCreaSessioneFES);
             this.groupBox3.Controls.Add(this._txtMail);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(12, 119);
+            this.groupBox3.Location = new System.Drawing.Point(12, 153);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(805, 128);
+            this.groupBox3.Size = new System.Drawing.Size(804, 140);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Creazione nuova sessione di firma";
+            this.groupBox3.Text = "Creazione nuova sessione di firma FES";
             // 
-            // _txtFileToSign
+            // _cbAddApprover
             // 
-            this._txtFileToSign.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this._txtFileToSign.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this._txtFileToSign.Location = new System.Drawing.Point(76, 94);
-            this._txtFileToSign.Name = "_txtFileToSign";
-            this._txtFileToSign.Size = new System.Drawing.Size(255, 20);
-            this._txtFileToSign.TabIndex = 26;
+            this._cbAddApprover.AutoSize = true;
+            this._cbAddApprover.Location = new System.Drawing.Point(413, 99);
+            this._cbAddApprover.Name = "_cbAddApprover";
+            this._cbAddApprover.Size = new System.Drawing.Size(124, 17);
+            this._cbAddApprover.TabIndex = 30;
+            this._cbAddApprover.Text = "Inserisci approvatore";
+            this._cbAddApprover.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // _btnCreaSessioneFEA
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 96);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "File To Sign";
+            this._btnCreaSessioneFEA.Location = new System.Drawing.Point(684, 94);
+            this._btnCreaSessioneFEA.Margin = new System.Windows.Forms.Padding(2);
+            this._btnCreaSessioneFEA.Name = "_btnCreaSessioneFEA";
+            this._btnCreaSessioneFEA.Size = new System.Drawing.Size(112, 25);
+            this._btnCreaSessioneFEA.TabIndex = 29;
+            this._btnCreaSessioneFEA.Text = "Crea Sessione FEA";
+            this._btnCreaSessioneFEA.UseVisualStyleBackColor = true;
+            this._btnCreaSessioneFEA.Click += new System.EventHandler(this._btnCreaSessioneFEA_Click);
             // 
             // _txtDescription
             // 
@@ -347,16 +350,16 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Phone Number";
             // 
-            // _btnCreaSessione
+            // _btnCreaSessioneFES
             // 
-            this._btnCreaSessione.Location = new System.Drawing.Point(685, 94);
-            this._btnCreaSessione.Margin = new System.Windows.Forms.Padding(2);
-            this._btnCreaSessione.Name = "_btnCreaSessione";
-            this._btnCreaSessione.Size = new System.Drawing.Size(112, 25);
-            this._btnCreaSessione.TabIndex = 10;
-            this._btnCreaSessione.Text = "Crea";
-            this._btnCreaSessione.UseVisualStyleBackColor = true;
-            this._btnCreaSessione.Click += new System.EventHandler(this._btnCreaSessione_Click);
+            this._btnCreaSessioneFES.Location = new System.Drawing.Point(559, 94);
+            this._btnCreaSessioneFES.Margin = new System.Windows.Forms.Padding(2);
+            this._btnCreaSessioneFES.Name = "_btnCreaSessioneFES";
+            this._btnCreaSessioneFES.Size = new System.Drawing.Size(112, 25);
+            this._btnCreaSessioneFES.TabIndex = 10;
+            this._btnCreaSessioneFES.Text = "Crea Sessione FES";
+            this._btnCreaSessioneFES.UseVisualStyleBackColor = true;
+            this._btnCreaSessioneFES.Click += new System.EventHandler(this._btnCreaSessioneFES_Click);
             // 
             // _txtMail
             // 
@@ -395,9 +398,9 @@
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this._txtSessionID);
             this.groupBox4.Controls.Add(this._btnGetSessionStatus);
-            this.groupBox4.Location = new System.Drawing.Point(12, 253);
+            this.groupBox4.Location = new System.Drawing.Point(12, 299);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(805, 69);
+            this.groupBox4.Size = new System.Drawing.Size(804, 69);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Lettura sessioni di firma";
@@ -458,10 +461,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 328);
+            this.tabControl1.Location = new System.Drawing.Point(13, 374);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(804, 261);
+            this.tabControl1.Size = new System.Drawing.Size(803, 243);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -470,7 +473,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(796, 235);
+            this.tabPage1.Size = new System.Drawing.Size(795, 217);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Log";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -481,7 +484,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(796, 235);
+            this.tabPage2.Size = new System.Drawing.Size(795, 251);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sessioni";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -492,31 +495,31 @@
             this.sessionData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sessionData.Location = new System.Drawing.Point(3, 3);
             this.sessionData.Name = "sessionData";
-            this.sessionData.Size = new System.Drawing.Size(790, 229);
+            this.sessionData.Size = new System.Drawing.Size(789, 245);
             this.sessionData.TabIndex = 0;
             this.sessionData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sessionData_CellContentClick);
             // 
-            // _txtSessionDescription
+            // _txtIdeUrl
             // 
-            this._txtSessionDescription.Location = new System.Drawing.Point(495, 97);
-            this._txtSessionDescription.Name = "_txtSessionDescription";
-            this._txtSessionDescription.Size = new System.Drawing.Size(185, 20);
-            this._txtSessionDescription.TabIndex = 28;
+            this._txtIdeUrl.Location = new System.Drawing.Point(413, 46);
+            this._txtIdeUrl.Name = "_txtIdeUrl";
+            this._txtIdeUrl.Size = new System.Drawing.Size(258, 20);
+            this._txtIdeUrl.TabIndex = 14;
             // 
-            // label14
+            // label13
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(381, 100);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(108, 13);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "Descrizione Sessione";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(345, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Ide Web Api";
             // 
             // FormSign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 601);
+            this.ClientSize = new System.Drawing.Size(828, 629);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -552,7 +555,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox _txtLog;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button _btnCreaSessione;
+        private System.Windows.Forms.Button _btnCreaSessioneFES;
         private System.Windows.Forms.TextBox _txtMail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button _btnSaveSettings;
@@ -579,12 +582,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox _txtDescription;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox _txtFileToSign;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox _txtSessionDescription;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button _btnCreaSessioneFEA;
+        private System.Windows.Forms.CheckBox _cbAddApprover;
+        private System.Windows.Forms.TextBox _txtIdeUrl;
+        private System.Windows.Forms.Label label13;
     }
 }
 
