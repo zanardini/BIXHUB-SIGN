@@ -104,32 +104,33 @@ namespace BixHubWrapper
 
             fg_fieldsAccept.Add(new CreateFieldDto(FieldType.TextBox
              , "Valorizzare con il luogo"
-             , "Valorizzare con il luogo"
-             , 0, false, "0", null, null
-             , null, FontAbleTech.TimesRoman, null, null, null, ""
+             , 0, false, "" , "0", null
+             , null, null, FontAbleTech.TimesRoman, null, null, null, ""
+             , DatePickerConstraint.Today
              , new CreatePositionDto(PositionType.AcroField, "Luogo")));
 
             fg_fieldsAccept.Add(new CreateFieldDto(FieldType.DatePicker
              , "Data della firma"
-             , "Data della firma"
-             , 1, false, "1", null, null
-             , null, FontAbleTech.TimesRoman, null, null, null, ""
+             , 1, false, "", "1", null
+             , null, null, FontAbleTech.TimesRoman, null, null, null, ""
+             , DatePickerConstraint.Today
              , new CreatePositionDto(PositionType.AcroField, "Data")));
 
             fg_fieldsAccept.Add(new CreateFieldDto(FieldType.Signature
                 , "Firma per accettazione delle condizioni di servizio"
-                , "Firma per accettazione delle condizioni di servizio"
-                , 2, false, "2", null, null, null, FontAbleTech.TimesRoman, null, null, null, ""
+                , 2, false, "", "2", null, null, null
+                , FontAbleTech.TimesRoman, null, null, null, ""
+                , DatePickerConstraint.Today
                 , new CreatePositionDto(PositionType.AcroField, "Signature1")));
 
             fg_fieldsDocument.Add(new CreateFieldDto(FieldType.Signature
                , "Firma per accettazione del mandato di agenzia"
-               , "Firma per accettazione del mandato di agenzia"
-               , 3, false, "3", null, null, null, FontAbleTech.TimesRoman, null, null, null, ""
+               , 3, false, "", "3", null, null, null
+               , FontAbleTech.TimesRoman, null, null, null, ""
+               , DatePickerConstraint.Today
                , new CreatePositionDto(PositionType.AcroField, "Signature2")));
 
-
-            fg_documents.Add(new CreateFieldGroupDocumentDto(acceptUploaded.FileGuid, 0, fg_fieldsAccept)); 
+            fg_documents.Add(new CreateFieldGroupDocumentDto(acceptUploaded.FileGuid, 0, fg_fieldsAccept));
             fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 1, fg_fieldsDocument));
             fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
@@ -139,7 +140,7 @@ namespace BixHubWrapper
             List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
             documents.Add(new CreateDocumentDto("Adesione al servizio FEA", acceptUploaded.FileGuid, null, "Adesione al servizio FEA", false, 0));
             documents.Add(new CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
-            
+
             IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.ES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
                 approvers, followers, documents, signers, true, true, true);
             IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
@@ -189,56 +190,55 @@ namespace BixHubWrapper
 
             fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
                 , "Consenso finalità di adempimento contrattuale delle prestazioni da me richieste"
-                , "Consenso finalità di adempimento contrattuale delle prestazioni da me richieste"
-                , 0, false, "0", null
+                , 0, false, "", "0", null
                 , new List<CreateRadioButtonFieldDto>
                 {
-                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
-                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
+                    new CreateRadioButtonFieldDto("Do il consenso", 0)
+                    , new CreateRadioButtonFieldDto("Nego il consenso", 1)
                 }
                 , null, FontAbleTech.TimesRoman, null, null, null, ""
+                , DatePickerConstraint.Today
                 , new CreatePositionDto(PositionType.AcroField, "Group1")));
 
             fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
-                            , "Consenso finalità di analisi e ricerche di mercato per migliorare l'offerta di prodotti"
-                            , "Consenso finalità di analisi e ricerche di mercato per migliorare l'offerta di prodotti"
-                            , 1, false, "1", null
-                            , new List<CreateRadioButtonFieldDto>
-                            {
-                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
-                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
-                            }
-                            , null, FontAbleTech.TimesRoman, null, null, null, ""
-                            , new CreatePositionDto(PositionType.AcroField, "Group2")));
+                , "Consenso finalità di analisi e ricerche di mercato per migliorare l'offerta di prodotti"
+                , 1, false,"", "1", null
+                , new List<CreateRadioButtonFieldDto>
+                {
+                                new CreateRadioButtonFieldDto("Do il consenso", 0)
+                                , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                }
+                , null, FontAbleTech.TimesRoman, null, null, null, ""
+                , DatePickerConstraint.Today
+                , new CreatePositionDto(PositionType.AcroField, "Group2")));
 
             fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
-             , "Consenso finalità commerciali e di marketing diretto e indiretto come indicato nell'informativa"
-             , "Consenso finalità commerciali e di marketing diretto e indiretto come indicato nell'informativa"
-             , 2, false, "2", null
-             , new List<CreateRadioButtonFieldDto>
-             {
-                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
-                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
-             }
-             , null, FontAbleTech.TimesRoman, null, null, null, ""
-             , new CreatePositionDto(PositionType.AcroField, "Group3")));
+                , "Consenso finalità commerciali e di marketing diretto e indiretto come indicato nell'informativa"
+                , 2, false, "", "2", null
+                , new List<CreateRadioButtonFieldDto>
+                {
+                                new CreateRadioButtonFieldDto("Do il consenso", 0)
+                                , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                }
+                , null, FontAbleTech.TimesRoman, null, null, null, ""
+                , DatePickerConstraint.Today
+                , new CreatePositionDto(PositionType.AcroField, "Group3")));
 
             fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
-             , "Consenso al trasferimento dei miei suddetti dati verso i paesi indicati nell'informativa"
-             , "Consenso al trasferimento dei miei suddetti dati verso i paesi indicati nell'informativa"
-             , 3, false, "3", null
-             , new List<CreateRadioButtonFieldDto>
-             {
-                    new CreateRadioButtonFieldDto("Do il consenso" , "Do il consenso" , 0)
-                    , new CreateRadioButtonFieldDto("Nego il consenso" , "Nego il consenso" , 1)
-             }
-             , null, FontAbleTech.TimesRoman, null, null, null, ""
-             , new CreatePositionDto(PositionType.AcroField, "Group4")));
+                , "Consenso al trasferimento dei miei suddetti dati verso i paesi indicati nell'informativa"
+                , 3, false, "" , "3", null
+                , new List<CreateRadioButtonFieldDto>
+                {
+                                new CreateRadioButtonFieldDto("Do il consenso", 0)
+                                , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                }
+                , null, FontAbleTech.TimesRoman, null, null, null, ""
+                , DatePickerConstraint.Today
+                , new CreatePositionDto(PositionType.AcroField, "Group4")));
 
             fg_fields.Add(new CreateFieldDto(FieldType.Signature
                 , "Firma per accettazione"
-                , "Firma per accettazione"
-                , 5, false, "5", null, null, null, FontAbleTech.TimesRoman, null, null, null, ""
+                , 5, false,"", "5", null, null, null, FontAbleTech.TimesRoman, null, null, null, "", DatePickerConstraint.Today
                 , new CreatePositionDto(PositionType.AcroField, "Signature1")));
 
             fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fields));
@@ -286,9 +286,9 @@ namespace BixHubWrapper
             var result = new List<BixHubWrapper.Model.InfoSessionResponse>();
             if (sessionResponse == null)
                 return result;
-            if (sessionResponse.Items == null)
+            if (sessionResponse._List == null)
                 return result;
-            foreach (IO.Swagger.Model.GetAllSessionResponse session in sessionResponse.Items)
+            foreach (IO.Swagger.Model.GetAllSessionResponse session in sessionResponse._List)
                 if (session.SessionGuid != null)
                     result.Add(GetSession(session.SessionGuid.Value));
             return result;
@@ -331,13 +331,7 @@ namespace BixHubWrapper
             return response;
         }
 
-        public byte[] GetAuditTrailIdentificationBySessionGuid(Guid sessionGuid, Guid signerGuid)
-        {
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            var response = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAuditTrailIdentificationSessionGuidSignerGuidGet(sessionGuid, signerGuid);
-            return response;
-        }
-
+        
         public Dictionary<string, byte[]> GetSignedFiles(Guid sessionGuid)
         {
             var result = new Dictionary<string, byte[]>();

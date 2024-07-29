@@ -37,12 +37,12 @@ namespace IO.Swagger.Model
         /// <param name="top">top.</param>
         /// <param name="left">left.</param>
         /// <param name="label">label.</param>
-        /// <param name="occurence">occurence.</param>
+        /// <param name="occurrence">occurrence.</param>
         /// <param name="offsetX">offsetX.</param>
         /// <param name="offsetY">offsetY.</param>
         /// <param name="width">width.</param>
         /// <param name="height">height.</param>
-        public CreatePositionDto(PositionType type = default(PositionType), string acroFieldTag = default(string), int? pageNumber = default(int?), float? top = default(float?), float? left = default(float?), string label = default(string), int? occurence = default(int?), float? offsetX = default(float?), float? offsetY = default(float?), float? width = default(float?), float? height = default(float?))
+        public CreatePositionDto(PositionType type = default(PositionType), string acroFieldTag = default(string), int? pageNumber = default(int?), float? top = default(float?), float? left = default(float?), string label = default(string), int? occurrence = default(int?), float? offsetX = default(float?), float? offsetY = default(float?), float? width = default(float?), float? height = default(float?))
         {
             this.Type = type;
             this.AcroFieldTag = acroFieldTag;
@@ -50,7 +50,7 @@ namespace IO.Swagger.Model
             this.Top = top;
             this.Left = left;
             this.Label = label;
-            this.Occurence = occurence;
+            this.Occurrence = occurrence;
             this.OffsetX = offsetX;
             this.OffsetY = offsetY;
             this.Width = width;
@@ -94,10 +94,10 @@ namespace IO.Swagger.Model
         public string Label { get; set; }
 
         /// <summary>
-        /// Gets or Sets Occurence
+        /// Gets or Sets Occurrence
         /// </summary>
-        [DataMember(Name="occurence", EmitDefaultValue=false)]
-        public int? Occurence { get; set; }
+        [DataMember(Name="occurrence", EmitDefaultValue=false)]
+        public int? Occurrence { get; set; }
 
         /// <summary>
         /// Gets or Sets OffsetX
@@ -137,7 +137,7 @@ namespace IO.Swagger.Model
             sb.Append("  Top: ").Append(Top).Append("\n");
             sb.Append("  Left: ").Append(Left).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  Occurence: ").Append(Occurence).Append("\n");
+            sb.Append("  Occurrence: ").Append(Occurrence).Append("\n");
             sb.Append("  OffsetX: ").Append(OffsetX).Append("\n");
             sb.Append("  OffsetY: ").Append(OffsetY).Append("\n");
             sb.Append("  Width: ").Append(Width).Append("\n");
@@ -207,9 +207,9 @@ namespace IO.Swagger.Model
                     this.Label.Equals(input.Label))
                 ) && 
                 (
-                    this.Occurence == input.Occurence ||
-                    (this.Occurence != null &&
-                    this.Occurence.Equals(input.Occurence))
+                    this.Occurrence == input.Occurrence ||
+                    (this.Occurrence != null &&
+                    this.Occurrence.Equals(input.Occurrence))
                 ) && 
                 (
                     this.OffsetX == input.OffsetX ||
@@ -254,8 +254,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Left.GetHashCode();
                 if (this.Label != null)
                     hashCode = hashCode * 59 + this.Label.GetHashCode();
-                if (this.Occurence != null)
-                    hashCode = hashCode * 59 + this.Occurence.GetHashCode();
+                if (this.Occurrence != null)
+                    hashCode = hashCode * 59 + this.Occurrence.GetHashCode();
                 if (this.OffsetX != null)
                     hashCode = hashCode * 59 + this.OffsetX.GetHashCode();
                 if (this.OffsetY != null)

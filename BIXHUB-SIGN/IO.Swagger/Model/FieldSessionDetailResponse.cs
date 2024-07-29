@@ -33,16 +33,14 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="guid">guid.</param>
         /// <param name="shortDescription">shortDescription.</param>
-        /// <param name="longDescription">longDescription.</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="optional">optional.</param>
         /// <param name="fieldType">fieldType.</param>
         /// <param name="value">value.</param>
-        public FieldSessionDetailResponse(Guid? guid = default(Guid?), string shortDescription = default(string), string longDescription = default(string), string externalId = default(string), bool? optional = default(bool?), FieldType fieldType = default(FieldType), string value = default(string))
+        public FieldSessionDetailResponse(Guid? guid = default(Guid?), string shortDescription = default(string), string externalId = default(string), bool? optional = default(bool?), FieldType fieldType = default(FieldType), string value = default(string))
         {
             this.Guid = guid;
             this.ShortDescription = shortDescription;
-            this.LongDescription = longDescription;
             this.ExternalId = externalId;
             this.Optional = optional;
             this.FieldType = fieldType;
@@ -60,12 +58,6 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="shortDescription", EmitDefaultValue=false)]
         public string ShortDescription { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LongDescription
-        /// </summary>
-        [DataMember(Name="longDescription", EmitDefaultValue=false)]
-        public string LongDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
@@ -101,7 +93,6 @@ namespace IO.Swagger.Model
             sb.Append("class FieldSessionDetailResponse {\n");
             sb.Append("  Guid: ").Append(Guid).Append("\n");
             sb.Append("  ShortDescription: ").Append(ShortDescription).Append("\n");
-            sb.Append("  LongDescription: ").Append(LongDescription).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Optional: ").Append(Optional).Append("\n");
             sb.Append("  FieldType: ").Append(FieldType).Append("\n");
@@ -151,11 +142,6 @@ namespace IO.Swagger.Model
                     this.ShortDescription.Equals(input.ShortDescription))
                 ) && 
                 (
-                    this.LongDescription == input.LongDescription ||
-                    (this.LongDescription != null &&
-                    this.LongDescription.Equals(input.LongDescription))
-                ) && 
-                (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
@@ -190,8 +176,6 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Guid.GetHashCode();
                 if (this.ShortDescription != null)
                     hashCode = hashCode * 59 + this.ShortDescription.GetHashCode();
-                if (this.LongDescription != null)
-                    hashCode = hashCode * 59 + this.LongDescription.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Optional != null)

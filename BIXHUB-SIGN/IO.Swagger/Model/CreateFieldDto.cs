@@ -33,9 +33,9 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="type">type.</param>
         /// <param name="shortDescription">shortDescription (required).</param>
-        /// <param name="longDescription">longDescription.</param>
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="optional">optional.</param>
+        /// <param name="initialValue">initialValue.</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="values">values.</param>
         /// <param name="radioButtonFields">radioButtonFields.</param>
@@ -45,8 +45,9 @@ namespace IO.Swagger.Model
         /// <param name="maxLength">maxLength.</param>
         /// <param name="multiLine">multiLine.</param>
         /// <param name="regexPattern">regexPattern.</param>
+        /// <param name="datePickerConstraint">datePickerConstraint.</param>
         /// <param name="position">position.</param>
-        public CreateFieldDto(FieldType type = default(FieldType), string shortDescription = default(string), string longDescription = default(string), float? indexOrder = default(float?), bool? optional = default(bool?), string externalId = default(string), List<string> values = default(List<string>), List<CreateRadioButtonFieldDto> radioButtonFields = default(List<CreateRadioButtonFieldDto>), double? fontSize = default(double?), FontAbleTech font = default(FontAbleTech), ColorDto backGroundColor = default(ColorDto), int? maxLength = default(int?), bool? multiLine = default(bool?), string regexPattern = default(string), CreatePositionDto position = default(CreatePositionDto))
+        public CreateFieldDto(FieldType type = default(FieldType), string shortDescription = default(string), float? indexOrder = default(float?), bool? optional = default(bool?), string initialValue = default(string), string externalId = default(string), List<string> values = default(List<string>), List<CreateRadioButtonFieldDto> radioButtonFields = default(List<CreateRadioButtonFieldDto>), double? fontSize = default(double?), FontAbleTech font = default(FontAbleTech), ColorDto backGroundColor = default(ColorDto), int? maxLength = default(int?), bool? multiLine = default(bool?), string regexPattern = default(string), DatePickerConstraint datePickerConstraint = default(DatePickerConstraint), CreatePositionDto position = default(CreatePositionDto))
         {
             // to ensure "shortDescription" is required (not null)
             if (shortDescription == null)
@@ -58,9 +59,9 @@ namespace IO.Swagger.Model
                 this.ShortDescription = shortDescription;
             }
             this.Type = type;
-            this.LongDescription = longDescription;
             this.IndexOrder = indexOrder;
             this.Optional = optional;
+            this.InitialValue = initialValue;
             this.ExternalId = externalId;
             this.Values = values;
             this.RadioButtonFields = radioButtonFields;
@@ -70,6 +71,7 @@ namespace IO.Swagger.Model
             this.MaxLength = maxLength;
             this.MultiLine = multiLine;
             this.RegexPattern = regexPattern;
+            this.DatePickerConstraint = datePickerConstraint;
             this.Position = position;
         }
         
@@ -86,12 +88,6 @@ namespace IO.Swagger.Model
         public string ShortDescription { get; set; }
 
         /// <summary>
-        /// Gets or Sets LongDescription
-        /// </summary>
-        [DataMember(Name="longDescription", EmitDefaultValue=false)]
-        public string LongDescription { get; set; }
-
-        /// <summary>
         /// Gets or Sets IndexOrder
         /// </summary>
         [DataMember(Name="indexOrder", EmitDefaultValue=false)]
@@ -102,6 +98,12 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="optional", EmitDefaultValue=false)]
         public bool? Optional { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InitialValue
+        /// </summary>
+        [DataMember(Name="initialValue", EmitDefaultValue=false)]
+        public string InitialValue { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
@@ -158,6 +160,12 @@ namespace IO.Swagger.Model
         public string RegexPattern { get; set; }
 
         /// <summary>
+        /// Gets or Sets DatePickerConstraint
+        /// </summary>
+        [DataMember(Name="datePickerConstraint", EmitDefaultValue=false)]
+        public DatePickerConstraint DatePickerConstraint { get; set; }
+
+        /// <summary>
         /// Gets or Sets Position
         /// </summary>
         [DataMember(Name="position", EmitDefaultValue=false)]
@@ -173,9 +181,9 @@ namespace IO.Swagger.Model
             sb.Append("class CreateFieldDto {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  ShortDescription: ").Append(ShortDescription).Append("\n");
-            sb.Append("  LongDescription: ").Append(LongDescription).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("  Optional: ").Append(Optional).Append("\n");
+            sb.Append("  InitialValue: ").Append(InitialValue).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  RadioButtonFields: ").Append(RadioButtonFields).Append("\n");
@@ -185,6 +193,7 @@ namespace IO.Swagger.Model
             sb.Append("  MaxLength: ").Append(MaxLength).Append("\n");
             sb.Append("  MultiLine: ").Append(MultiLine).Append("\n");
             sb.Append("  RegexPattern: ").Append(RegexPattern).Append("\n");
+            sb.Append("  DatePickerConstraint: ").Append(DatePickerConstraint).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -231,11 +240,6 @@ namespace IO.Swagger.Model
                     this.ShortDescription.Equals(input.ShortDescription))
                 ) && 
                 (
-                    this.LongDescription == input.LongDescription ||
-                    (this.LongDescription != null &&
-                    this.LongDescription.Equals(input.LongDescription))
-                ) && 
-                (
                     this.IndexOrder == input.IndexOrder ||
                     (this.IndexOrder != null &&
                     this.IndexOrder.Equals(input.IndexOrder))
@@ -244,6 +248,11 @@ namespace IO.Swagger.Model
                     this.Optional == input.Optional ||
                     (this.Optional != null &&
                     this.Optional.Equals(input.Optional))
+                ) && 
+                (
+                    this.InitialValue == input.InitialValue ||
+                    (this.InitialValue != null &&
+                    this.InitialValue.Equals(input.InitialValue))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -293,6 +302,11 @@ namespace IO.Swagger.Model
                     this.RegexPattern.Equals(input.RegexPattern))
                 ) && 
                 (
+                    this.DatePickerConstraint == input.DatePickerConstraint ||
+                    (this.DatePickerConstraint != null &&
+                    this.DatePickerConstraint.Equals(input.DatePickerConstraint))
+                ) && 
+                (
                     this.Position == input.Position ||
                     (this.Position != null &&
                     this.Position.Equals(input.Position))
@@ -312,12 +326,12 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.ShortDescription != null)
                     hashCode = hashCode * 59 + this.ShortDescription.GetHashCode();
-                if (this.LongDescription != null)
-                    hashCode = hashCode * 59 + this.LongDescription.GetHashCode();
                 if (this.IndexOrder != null)
                     hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
                 if (this.Optional != null)
                     hashCode = hashCode * 59 + this.Optional.GetHashCode();
+                if (this.InitialValue != null)
+                    hashCode = hashCode * 59 + this.InitialValue.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Values != null)
@@ -336,6 +350,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.MultiLine.GetHashCode();
                 if (this.RegexPattern != null)
                     hashCode = hashCode * 59 + this.RegexPattern.GetHashCode();
+                if (this.DatePickerConstraint != null)
+                    hashCode = hashCode * 59 + this.DatePickerConstraint.GetHashCode();
                 if (this.Position != null)
                     hashCode = hashCode * 59 + this.Position.GetHashCode();
                 return hashCode;

@@ -31,15 +31,21 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRadioButtonFieldDto" /> class.
         /// </summary>
-        /// <param name="shortDescription">shortDescription.</param>
-        /// <param name="longDescription">longDescription.</param>
+        /// <param name="shortDescription">shortDescription (required).</param>
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="appearance">appearance.</param>
         /// <param name="position">position.</param>
-        public CreateRadioButtonFieldDto(string shortDescription = default(string), string longDescription = default(string), float? indexOrder = default(float?), RadioButtonAppearance appearance = default(RadioButtonAppearance), CreatePositionDto position = default(CreatePositionDto))
+        public CreateRadioButtonFieldDto(string shortDescription = default(string), float? indexOrder = default(float?), RadioButtonAppearance appearance = default(RadioButtonAppearance), CreatePositionDto position = default(CreatePositionDto))
         {
-            this.ShortDescription = shortDescription;
-            this.LongDescription = longDescription;
+            // to ensure "shortDescription" is required (not null)
+            if (shortDescription == null)
+            {
+                throw new InvalidDataException("shortDescription is a required property for CreateRadioButtonFieldDto and cannot be null");
+            }
+            else
+            {
+                this.ShortDescription = shortDescription;
+            }
             this.IndexOrder = indexOrder;
             this.Appearance = appearance;
             this.Position = position;
@@ -50,12 +56,6 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="shortDescription", EmitDefaultValue=false)]
         public string ShortDescription { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LongDescription
-        /// </summary>
-        [DataMember(Name="longDescription", EmitDefaultValue=false)]
-        public string LongDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets IndexOrder
@@ -84,7 +84,6 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class CreateRadioButtonFieldDto {\n");
             sb.Append("  ShortDescription: ").Append(ShortDescription).Append("\n");
-            sb.Append("  LongDescription: ").Append(LongDescription).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("  Appearance: ").Append(Appearance).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
@@ -128,11 +127,6 @@ namespace IO.Swagger.Model
                     this.ShortDescription.Equals(input.ShortDescription))
                 ) && 
                 (
-                    this.LongDescription == input.LongDescription ||
-                    (this.LongDescription != null &&
-                    this.LongDescription.Equals(input.LongDescription))
-                ) && 
-                (
                     this.IndexOrder == input.IndexOrder ||
                     (this.IndexOrder != null &&
                     this.IndexOrder.Equals(input.IndexOrder))
@@ -160,8 +154,6 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.ShortDescription != null)
                     hashCode = hashCode * 59 + this.ShortDescription.GetHashCode();
-                if (this.LongDescription != null)
-                    hashCode = hashCode * 59 + this.LongDescription.GetHashCode();
                 if (this.IndexOrder != null)
                     hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
                 if (this.Appearance != null)

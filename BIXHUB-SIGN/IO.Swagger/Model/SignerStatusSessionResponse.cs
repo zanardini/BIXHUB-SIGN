@@ -33,16 +33,18 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="guid">guid.</param>
         /// <param name="email">email.</param>
+        /// <param name="description">description.</param>
         /// <param name="taxCode">taxCode.</param>
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="status">status.</param>
         /// <param name="attachments">attachments.</param>
         /// <param name="identificationSession">identificationSession.</param>
         /// <param name="externalId">externalId.</param>
-        public SignerStatusSessionResponse(Guid? guid = default(Guid?), string email = default(string), string taxCode = default(string), float? indexOrder = default(float?), SignerStatusSessionState status = default(SignerStatusSessionState), List<AttachmentStatusSessionResponse> attachments = default(List<AttachmentStatusSessionResponse>), IdentificationSessionStatusSessionResponse identificationSession = default(IdentificationSessionStatusSessionResponse), string externalId = default(string))
+        public SignerStatusSessionResponse(Guid? guid = default(Guid?), string email = default(string), string description = default(string), string taxCode = default(string), float? indexOrder = default(float?), SignerStatusSessionState status = default(SignerStatusSessionState), List<AttachmentStatusSessionResponse> attachments = default(List<AttachmentStatusSessionResponse>), IdentificationSessionStatusSessionResponse identificationSession = default(IdentificationSessionStatusSessionResponse), string externalId = default(string))
         {
             this.Guid = guid;
             this.Email = email;
+            this.Description = description;
             this.TaxCode = taxCode;
             this.IndexOrder = indexOrder;
             this.Status = status;
@@ -62,6 +64,12 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="email", EmitDefaultValue=false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxCode
@@ -109,6 +117,7 @@ namespace IO.Swagger.Model
             sb.Append("class SignerStatusSessionResponse {\n");
             sb.Append("  Guid: ").Append(Guid).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -160,6 +169,11 @@ namespace IO.Swagger.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.TaxCode == input.TaxCode ||
                     (this.TaxCode != null &&
                     this.TaxCode.Equals(input.TaxCode))
@@ -205,6 +219,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Guid.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.TaxCode != null)
                     hashCode = hashCode * 59 + this.TaxCode.GetHashCode();
                 if (this.IndexOrder != null)

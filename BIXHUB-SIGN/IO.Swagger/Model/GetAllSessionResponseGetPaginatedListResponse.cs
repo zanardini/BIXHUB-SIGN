@@ -23,25 +23,33 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// SendEmailRequest
+    /// GetAllSessionResponseGetPaginatedListResponse
     /// </summary>
     [DataContract]
-        public partial class SendEmailRequest :  IEquatable<SendEmailRequest>, IValidatableObject
+        public partial class GetAllSessionResponseGetPaginatedListResponse :  IEquatable<GetAllSessionResponseGetPaginatedListResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendEmailRequest" /> class.
+        /// Initializes a new instance of the <see cref="GetAllSessionResponseGetPaginatedListResponse" /> class.
         /// </summary>
-        /// <param name="reminder">reminder.</param>
-        public SendEmailRequest(bool? reminder = default(bool?))
+        /// <param name="_list">_list.</param>
+        /// <param name="totalRecords">totalRecords.</param>
+        public GetAllSessionResponseGetPaginatedListResponse(List<GetAllSessionResponse> _list = default(List<GetAllSessionResponse>), int? totalRecords = default(int?))
         {
-            this.Reminder = reminder;
+            this._List = _list;
+            this.TotalRecords = totalRecords;
         }
         
         /// <summary>
-        /// Gets or Sets Reminder
+        /// Gets or Sets _List
         /// </summary>
-        [DataMember(Name="reminder", EmitDefaultValue=false)]
-        public bool? Reminder { get; set; }
+        [DataMember(Name="list", EmitDefaultValue=false)]
+        public List<GetAllSessionResponse> _List { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalRecords
+        /// </summary>
+        [DataMember(Name="totalRecords", EmitDefaultValue=false)]
+        public int? TotalRecords { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +58,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SendEmailRequest {\n");
-            sb.Append("  Reminder: ").Append(Reminder).Append("\n");
+            sb.Append("class GetAllSessionResponseGetPaginatedListResponse {\n");
+            sb.Append("  _List: ").Append(_List).Append("\n");
+            sb.Append("  TotalRecords: ").Append(TotalRecords).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -72,24 +81,30 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SendEmailRequest);
+            return this.Equals(input as GetAllSessionResponseGetPaginatedListResponse);
         }
 
         /// <summary>
-        /// Returns true if SendEmailRequest instances are equal
+        /// Returns true if GetAllSessionResponseGetPaginatedListResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of SendEmailRequest to be compared</param>
+        /// <param name="input">Instance of GetAllSessionResponseGetPaginatedListResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SendEmailRequest input)
+        public bool Equals(GetAllSessionResponseGetPaginatedListResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Reminder == input.Reminder ||
-                    (this.Reminder != null &&
-                    this.Reminder.Equals(input.Reminder))
+                    this._List == input._List ||
+                    this._List != null &&
+                    input._List != null &&
+                    this._List.SequenceEqual(input._List)
+                ) && 
+                (
+                    this.TotalRecords == input.TotalRecords ||
+                    (this.TotalRecords != null &&
+                    this.TotalRecords.Equals(input.TotalRecords))
                 );
         }
 
@@ -102,8 +117,10 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Reminder != null)
-                    hashCode = hashCode * 59 + this.Reminder.GetHashCode();
+                if (this._List != null)
+                    hashCode = hashCode * 59 + this._List.GetHashCode();
+                if (this.TotalRecords != null)
+                    hashCode = hashCode * 59 + this.TotalRecords.GetHashCode();
                 return hashCode;
             }
         }

@@ -31,7 +31,7 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDocumentDto" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
+        /// <param name="description">description (required).</param>
         /// <param name="fileGuid">fileGuid (required).</param>
         /// <param name="sealPositions">sealPositions.</param>
         /// <param name="externalId">externalId.</param>
@@ -39,6 +39,15 @@ namespace IO.Swagger.Model
         /// <param name="indexOrder">indexOrder.</param>
         public CreateDocumentDto(string description = default(string), Guid? fileGuid = default(Guid?), List<CreatePositionDto> sealPositions = default(List<CreatePositionDto>), string externalId = default(string), bool? mandatoryRead = default(bool?), float? indexOrder = default(float?))
         {
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new InvalidDataException("description is a required property for CreateDocumentDto and cannot be null");
+            }
+            else
+            {
+                this.Description = description;
+            }
             // to ensure "fileGuid" is required (not null)
             if (fileGuid == null)
             {
@@ -48,7 +57,6 @@ namespace IO.Swagger.Model
             {
                 this.FileGuid = fileGuid;
             }
-            this.Description = description;
             this.SealPositions = sealPositions;
             this.ExternalId = externalId;
             this.MandatoryRead = mandatoryRead;

@@ -45,7 +45,8 @@ namespace IO.Swagger.Model
         /// <param name="requireIdentificationForSigners">requireIdentificationForSigners.</param>
         /// <param name="requireStrongAuthForSigners">requireStrongAuthForSigners.</param>
         /// <param name="requireStrongAuthForApprovers">requireStrongAuthForApprovers.</param>
-        public CreateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?))
+        /// <param name="requireTimestampingForDocuments">requireTimestampingForDocuments.</param>
+        public CreateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?), bool? requireTimestampingForDocuments = default(bool?))
         {
             // to ensure "process" is required (not null)
             if (process == null)
@@ -69,6 +70,7 @@ namespace IO.Swagger.Model
             this.RequireIdentificationForSigners = requireIdentificationForSigners;
             this.RequireStrongAuthForSigners = requireStrongAuthForSigners;
             this.RequireStrongAuthForApprovers = requireStrongAuthForApprovers;
+            this.RequireTimestampingForDocuments = requireTimestampingForDocuments;
         }
         
         /// <summary>
@@ -156,6 +158,12 @@ namespace IO.Swagger.Model
         public bool? RequireStrongAuthForApprovers { get; set; }
 
         /// <summary>
+        /// Gets or Sets RequireTimestampingForDocuments
+        /// </summary>
+        [DataMember(Name="requireTimestampingForDocuments", EmitDefaultValue=false)]
+        public bool? RequireTimestampingForDocuments { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -177,6 +185,7 @@ namespace IO.Swagger.Model
             sb.Append("  RequireIdentificationForSigners: ").Append(RequireIdentificationForSigners).Append("\n");
             sb.Append("  RequireStrongAuthForSigners: ").Append(RequireStrongAuthForSigners).Append("\n");
             sb.Append("  RequireStrongAuthForApprovers: ").Append(RequireStrongAuthForApprovers).Append("\n");
+            sb.Append("  RequireTimestampingForDocuments: ").Append(RequireTimestampingForDocuments).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -288,6 +297,11 @@ namespace IO.Swagger.Model
                     this.RequireStrongAuthForApprovers == input.RequireStrongAuthForApprovers ||
                     (this.RequireStrongAuthForApprovers != null &&
                     this.RequireStrongAuthForApprovers.Equals(input.RequireStrongAuthForApprovers))
+                ) && 
+                (
+                    this.RequireTimestampingForDocuments == input.RequireTimestampingForDocuments ||
+                    (this.RequireTimestampingForDocuments != null &&
+                    this.RequireTimestampingForDocuments.Equals(input.RequireTimestampingForDocuments))
                 );
         }
 
@@ -328,6 +342,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.RequireStrongAuthForSigners.GetHashCode();
                 if (this.RequireStrongAuthForApprovers != null)
                     hashCode = hashCode * 59 + this.RequireStrongAuthForApprovers.GetHashCode();
+                if (this.RequireTimestampingForDocuments != null)
+                    hashCode = hashCode * 59 + this.RequireTimestampingForDocuments.GetHashCode();
                 return hashCode;
             }
         }

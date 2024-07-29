@@ -62,5 +62,10 @@ namespace IO.Swagger.Model
         /// Enum SendMailToFollower for value: SendMailToFollower
         /// </summary>
         [EnumMember(Value = "SendMailToFollower")]
-        SendMailToFollower = 7    }
+        SendMailToFollower = 7,
+        /// <summary>
+        /// Enum AuditTrailGeneration for value: AuditTrailGeneration
+        /// </summary>
+        [EnumMember(Value = "AuditTrailGeneration")]
+        AuditTrailGeneration = 8    }
 }

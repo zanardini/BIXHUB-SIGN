@@ -33,13 +33,15 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="guid">guid.</param>
         /// <param name="email">email.</param>
+        /// <param name="description">description.</param>
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="status">status.</param>
         /// <param name="externalId">externalId.</param>
-        public ApproverStatusSessionResponse(Guid? guid = default(Guid?), string email = default(string), float? indexOrder = default(float?), ApproverStatusSessionState status = default(ApproverStatusSessionState), string externalId = default(string))
+        public ApproverStatusSessionResponse(Guid? guid = default(Guid?), string email = default(string), string description = default(string), float? indexOrder = default(float?), ApproverStatusSessionState status = default(ApproverStatusSessionState), string externalId = default(string))
         {
             this.Guid = guid;
             this.Email = email;
+            this.Description = description;
             this.IndexOrder = indexOrder;
             this.Status = status;
             this.ExternalId = externalId;
@@ -56,6 +58,12 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="email", EmitDefaultValue=false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets IndexOrder
@@ -85,6 +93,7 @@ namespace IO.Swagger.Model
             sb.Append("class ApproverStatusSessionResponse {\n");
             sb.Append("  Guid: ").Append(Guid).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
@@ -133,6 +142,11 @@ namespace IO.Swagger.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.IndexOrder == input.IndexOrder ||
                     (this.IndexOrder != null &&
                     this.IndexOrder.Equals(input.IndexOrder))
@@ -162,6 +176,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Guid.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.IndexOrder != null)
                     hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
                 if (this.Status != null)

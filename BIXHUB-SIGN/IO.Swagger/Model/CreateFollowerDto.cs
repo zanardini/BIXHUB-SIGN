@@ -32,7 +32,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="CreateFollowerDto" /> class.
         /// </summary>
         /// <param name="email">email (required).</param>
-        /// <param name="description">description.</param>
+        /// <param name="description">description (required).</param>
         public CreateFollowerDto(string email = default(string), string description = default(string))
         {
             // to ensure "email" is required (not null)
@@ -44,7 +44,15 @@ namespace IO.Swagger.Model
             {
                 this.Email = email;
             }
-            this.Description = description;
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new InvalidDataException("description is a required property for CreateFollowerDto and cannot be null");
+            }
+            else
+            {
+                this.Description = description;
+            }
         }
         
         /// <summary>

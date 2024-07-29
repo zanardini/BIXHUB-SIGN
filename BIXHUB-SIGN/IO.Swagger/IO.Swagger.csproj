@@ -124,6 +124,7 @@ OpenAPI spec version: v1
     <Compile Include="Model\CreateSessionResponse.cs" />
     <Compile Include="Model\CreateSignerDto.cs" />
     <Compile Include="Model\CreateWebhookDto.cs" />
+    <Compile Include="Model\DatePickerConstraint.cs" />
     <Compile Include="Model\DocumentSessionDetailResponse.cs" />
     <Compile Include="Model\ExceptionResult.cs" />
     <Compile Include="Model\FieldGroupDocumentSessionDetailResponse.cs" />
@@ -135,6 +136,7 @@ OpenAPI spec version: v1
     <Compile Include="Model\FontAbleTech.cs" />
     <Compile Include="Model\GetAllSessionRequest.cs" />
     <Compile Include="Model\GetAllSessionResponse.cs" />
+    <Compile Include="Model\GetAllSessionResponseGetPaginatedListResponse.cs" />
     <Compile Include="Model\GetAllSessionResponseGetPaginatedListResponseExecuted.cs" />
     <Compile Include="Model\GetErrorsSessionResponse.cs" />
     <Compile Include="Model\GetSessionDetailResponse.cs" />

@@ -32,7 +32,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="CreateApproverDto" /> class.
         /// </summary>
         /// <param name="email">email (required).</param>
-        /// <param name="description">description.</param>
+        /// <param name="description">description (required).</param>
         /// <param name="indexOrder">indexOrder.</param>
         /// <param name="redirectUri">redirectUri.</param>
         /// <param name="externalId">externalId.</param>
@@ -47,7 +47,15 @@ namespace IO.Swagger.Model
             {
                 this.Email = email;
             }
-            this.Description = description;
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new InvalidDataException("description is a required property for CreateApproverDto and cannot be null");
+            }
+            else
+            {
+                this.Description = description;
+            }
             this.IndexOrder = indexOrder;
             this.RedirectUri = redirectUri;
             this.ExternalId = externalId;
