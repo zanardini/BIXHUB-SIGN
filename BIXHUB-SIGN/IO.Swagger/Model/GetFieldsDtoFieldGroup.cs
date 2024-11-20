@@ -23,33 +23,33 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// GetAllSessionResponseGetPaginatedListResponse
+    /// GetFieldsDtoFieldGroup
     /// </summary>
     [DataContract]
-        public partial class GetAllSessionResponseGetPaginatedListResponse :  IEquatable<GetAllSessionResponseGetPaginatedListResponse>, IValidatableObject
+        public partial class GetFieldsDtoFieldGroup :  IEquatable<GetFieldsDtoFieldGroup>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAllSessionResponseGetPaginatedListResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetFieldsDtoFieldGroup" /> class.
         /// </summary>
-        /// <param name="_list">_list.</param>
-        /// <param name="totalRecords">totalRecords.</param>
-        public GetAllSessionResponseGetPaginatedListResponse(List<GetAllSessionResponse> _list = default(List<GetAllSessionResponse>), int? totalRecords = default(int?))
+        /// <param name="guid">guid.</param>
+        /// <param name="name">name.</param>
+        public GetFieldsDtoFieldGroup(Guid? guid = default(Guid?), string name = default(string))
         {
-            this._List = _list;
-            this.TotalRecords = totalRecords;
+            this.Guid = guid;
+            this.Name = name;
         }
         
         /// <summary>
-        /// Gets or Sets _List
+        /// Gets or Sets Guid
         /// </summary>
-        [DataMember(Name="list", EmitDefaultValue=false)]
-        public List<GetAllSessionResponse> _List { get; set; }
+        [DataMember(Name="guid", EmitDefaultValue=false)]
+        public Guid? Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalRecords
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="totalRecords", EmitDefaultValue=false)]
-        public int? TotalRecords { get; set; }
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -58,9 +58,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GetAllSessionResponseGetPaginatedListResponse {\n");
-            sb.Append("  _List: ").Append(_List).Append("\n");
-            sb.Append("  TotalRecords: ").Append(TotalRecords).Append("\n");
+            sb.Append("class GetFieldsDtoFieldGroup {\n");
+            sb.Append("  Guid: ").Append(Guid).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -81,30 +81,29 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAllSessionResponseGetPaginatedListResponse);
+            return this.Equals(input as GetFieldsDtoFieldGroup);
         }
 
         /// <summary>
-        /// Returns true if GetAllSessionResponseGetPaginatedListResponse instances are equal
+        /// Returns true if GetFieldsDtoFieldGroup instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAllSessionResponseGetPaginatedListResponse to be compared</param>
+        /// <param name="input">Instance of GetFieldsDtoFieldGroup to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAllSessionResponseGetPaginatedListResponse input)
+        public bool Equals(GetFieldsDtoFieldGroup input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._List == input._List ||
-                    this._List != null &&
-                    input._List != null &&
-                    this._List.SequenceEqual(input._List)
+                    this.Guid == input.Guid ||
+                    (this.Guid != null &&
+                    this.Guid.Equals(input.Guid))
                 ) && 
                 (
-                    this.TotalRecords == input.TotalRecords ||
-                    (this.TotalRecords != null &&
-                    this.TotalRecords.Equals(input.TotalRecords))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -117,10 +116,10 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._List != null)
-                    hashCode = hashCode * 59 + this._List.GetHashCode();
-                if (this.TotalRecords != null)
-                    hashCode = hashCode * 59 + this.TotalRecords.GetHashCode();
+                if (this.Guid != null)
+                    hashCode = hashCode * 59 + this.Guid.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;
             }
         }

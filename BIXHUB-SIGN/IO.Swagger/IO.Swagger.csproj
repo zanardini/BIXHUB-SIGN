@@ -133,12 +133,17 @@ OpenAPI spec version: v1
     <Compile Include="Model\FieldType.cs" />
     <Compile Include="Model\FileDataBase64.cs" />
     <Compile Include="Model\FixErrorRequest.cs" />
+    <Compile Include="Model\FollowerSessionDetailResponse.cs" />
     <Compile Include="Model\FontAbleTech.cs" />
     <Compile Include="Model\GetAllSessionRequest.cs" />
     <Compile Include="Model\GetAllSessionResponse.cs" />
     <Compile Include="Model\GetAllSessionResponseGetPaginatedListResponse.cs" />
     <Compile Include="Model\GetAllSessionResponseGetPaginatedListResponseExecuted.cs" />
     <Compile Include="Model\GetErrorsSessionResponse.cs" />
+    <Compile Include="Model\GetFieldsDtoDocument.cs" />
+    <Compile Include="Model\GetFieldsDtoFieldGroup.cs" />
+    <Compile Include="Model\GetFieldsDtoResponse.cs" />
+    <Compile Include="Model\GetFieldsDtoSigner.cs" />
     <Compile Include="Model\GetSessionDetailResponse.cs" />
     <Compile Include="Model\GetStatusSessionResponse.cs" />
     <Compile Include="Model\IdentificationSessionStatusSessionResponse.cs" />
@@ -146,6 +151,7 @@ OpenAPI spec version: v1
     <Compile Include="Model\NextActorStatusSessionResponse.cs" />
     <Compile Include="Model\PositionType.cs" />
     <Compile Include="Model\PublishSessionApproversResponse.cs" />
+    <Compile Include="Model\PublishSessionErrorsResponse.cs" />
     <Compile Include="Model\PublishSessionResponse.cs" />
     <Compile Include="Model\PublishSessionSignersResponse.cs" />
     <Compile Include="Model\RadioButtonAppearance.cs" />

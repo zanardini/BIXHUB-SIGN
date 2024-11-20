@@ -303,6 +303,36 @@ namespace ExampleSIGN
                 AddLogError(ex.Message);
             }
         }
+
+        private void _btnCreaSessioneFEQ_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_signCaller == null)
+                    throw new Exception("Fare login");
+
+                if (_txtTaxCode.Text != "GLSVST80A01H501A")
+                {
+                    if (MessageBox.Show("Il codice fiscale per FEQ in DEMO non è corretto. Applicare quello corretto?", "FEQ - Attenzione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        _txtTaxCode.Text = "GLSVST80A01H501A";
+                    else
+                        throw new Exception("Il codice fiscale per FEQ in DEMO non è corretto");
+                }
+                if (_txtDescription.Text != "Evariste Galois")
+                {
+                    if (MessageBox.Show("La descrizione firmatario per FEQ in DEMO non è corretta. Applicare quella corretta?", "FEQ - Attenzione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        _txtDescription.Text = "Evariste Galois";
+                    else
+                        throw new Exception("La descrizione firmatario per FEQ in DEMO non è corretta.");
+                }
+                Guid sessionId = _signCaller.CreateNewSignSessionFEQ(_txtMail.Text, _txtDescription.Text, _txtTaxCode.Text, _txtPhoneNumber.Text, _txtReturnUrl.Text, _txtExternalID.Text, _cbAddApprover.Checked);
+                AddLogInfo("Sessione creata con successo: " + sessionId);
+            }
+            catch (Exception ex)
+            {
+                AddLogError(ex.Message);
+            }
+        }
     }
 
     [Serializable()]

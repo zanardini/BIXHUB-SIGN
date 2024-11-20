@@ -23,43 +23,35 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// PublishSessionApproversResponse
+    /// GetFieldsDtoDocument
     /// </summary>
     [DataContract]
-        public partial class PublishSessionApproversResponse :  IEquatable<PublishSessionApproversResponse>, IValidatableObject
+        public partial class GetFieldsDtoDocument :  IEquatable<GetFieldsDtoDocument>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PublishSessionApproversResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetFieldsDtoDocument" /> class.
         /// </summary>
-        /// <param name="email">email.</param>
+        /// <param name="guid">guid.</param>
         /// <param name="description">description.</param>
-        /// <param name="uri">uri.</param>
         /// <param name="externalId">externalId.</param>
-        public PublishSessionApproversResponse(string email = default(string), string description = default(string), string uri = default(string), string externalId = default(string))
+        public GetFieldsDtoDocument(Guid? guid = default(Guid?), string description = default(string), string externalId = default(string))
         {
-            this.Email = email;
+            this.Guid = guid;
             this.Description = description;
-            this.Uri = uri;
             this.ExternalId = externalId;
         }
         
         /// <summary>
-        /// Gets or Sets Email
+        /// Gets or Sets Guid
         /// </summary>
-        [DataMember(Name="email", EmitDefaultValue=false)]
-        public string Email { get; set; }
+        [DataMember(Name="guid", EmitDefaultValue=false)]
+        public Guid? Guid { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Uri
-        /// </summary>
-        [DataMember(Name="uri", EmitDefaultValue=false)]
-        public string Uri { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
@@ -74,10 +66,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class PublishSessionApproversResponse {\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("class GetFieldsDtoDocument {\n");
+            sb.Append("  Guid: ").Append(Guid).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Uri: ").Append(Uri).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -99,34 +90,29 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PublishSessionApproversResponse);
+            return this.Equals(input as GetFieldsDtoDocument);
         }
 
         /// <summary>
-        /// Returns true if PublishSessionApproversResponse instances are equal
+        /// Returns true if GetFieldsDtoDocument instances are equal
         /// </summary>
-        /// <param name="input">Instance of PublishSessionApproversResponse to be compared</param>
+        /// <param name="input">Instance of GetFieldsDtoDocument to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PublishSessionApproversResponse input)
+        public bool Equals(GetFieldsDtoDocument input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
+                    this.Guid == input.Guid ||
+                    (this.Guid != null &&
+                    this.Guid.Equals(input.Guid))
                 ) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
-                (
-                    this.Uri == input.Uri ||
-                    (this.Uri != null &&
-                    this.Uri.Equals(input.Uri))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -144,12 +130,10 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Email != null)
-                    hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Guid != null)
+                    hashCode = hashCode * 59 + this.Guid.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Uri != null)
-                    hashCode = hashCode * 59 + this.Uri.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 return hashCode;

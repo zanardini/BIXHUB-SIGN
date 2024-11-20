@@ -23,33 +23,33 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// GetAllSessionResponseGetPaginatedListResponse
+    /// PublishSessionErrorsResponse
     /// </summary>
     [DataContract]
-        public partial class GetAllSessionResponseGetPaginatedListResponse :  IEquatable<GetAllSessionResponseGetPaginatedListResponse>, IValidatableObject
+        public partial class PublishSessionErrorsResponse :  IEquatable<PublishSessionErrorsResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAllSessionResponseGetPaginatedListResponse" /> class.
+        /// Initializes a new instance of the <see cref="PublishSessionErrorsResponse" /> class.
         /// </summary>
-        /// <param name="_list">_list.</param>
-        /// <param name="totalRecords">totalRecords.</param>
-        public GetAllSessionResponseGetPaginatedListResponse(List<GetAllSessionResponse> _list = default(List<GetAllSessionResponse>), int? totalRecords = default(int?))
+        /// <param name="type">type.</param>
+        /// <param name="details">details.</param>
+        public PublishSessionErrorsResponse(SignErrorType type = default(SignErrorType), string details = default(string))
         {
-            this._List = _list;
-            this.TotalRecords = totalRecords;
+            this.Type = type;
+            this.Details = details;
         }
         
         /// <summary>
-        /// Gets or Sets _List
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="list", EmitDefaultValue=false)]
-        public List<GetAllSessionResponse> _List { get; set; }
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public SignErrorType Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalRecords
+        /// Gets or Sets Details
         /// </summary>
-        [DataMember(Name="totalRecords", EmitDefaultValue=false)]
-        public int? TotalRecords { get; set; }
+        [DataMember(Name="details", EmitDefaultValue=false)]
+        public string Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -58,9 +58,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GetAllSessionResponseGetPaginatedListResponse {\n");
-            sb.Append("  _List: ").Append(_List).Append("\n");
-            sb.Append("  TotalRecords: ").Append(TotalRecords).Append("\n");
+            sb.Append("class PublishSessionErrorsResponse {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -81,30 +81,29 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAllSessionResponseGetPaginatedListResponse);
+            return this.Equals(input as PublishSessionErrorsResponse);
         }
 
         /// <summary>
-        /// Returns true if GetAllSessionResponseGetPaginatedListResponse instances are equal
+        /// Returns true if PublishSessionErrorsResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAllSessionResponseGetPaginatedListResponse to be compared</param>
+        /// <param name="input">Instance of PublishSessionErrorsResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAllSessionResponseGetPaginatedListResponse input)
+        public bool Equals(PublishSessionErrorsResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._List == input._List ||
-                    this._List != null &&
-                    input._List != null &&
-                    this._List.SequenceEqual(input._List)
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.TotalRecords == input.TotalRecords ||
-                    (this.TotalRecords != null &&
-                    this.TotalRecords.Equals(input.TotalRecords))
+                    this.Details == input.Details ||
+                    (this.Details != null &&
+                    this.Details.Equals(input.Details))
                 );
         }
 
@@ -117,10 +116,10 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._List != null)
-                    hashCode = hashCode * 59 + this._List.GetHashCode();
-                if (this.TotalRecords != null)
-                    hashCode = hashCode * 59 + this.TotalRecords.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Details != null)
+                    hashCode = hashCode * 59 + this.Details.GetHashCode();
                 return hashCode;
             }
         }

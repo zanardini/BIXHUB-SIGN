@@ -23,30 +23,40 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// FieldSessionDetailResponse
+    /// GetFieldsDtoResponse
     /// </summary>
     [DataContract]
-        public partial class FieldSessionDetailResponse :  IEquatable<FieldSessionDetailResponse>, IValidatableObject
+        public partial class GetFieldsDtoResponse :  IEquatable<GetFieldsDtoResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FieldSessionDetailResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetFieldsDtoResponse" /> class.
         /// </summary>
+        /// <param name="type">type.</param>
         /// <param name="guid">guid.</param>
         /// <param name="shortDescription">shortDescription.</param>
         /// <param name="externalId">externalId.</param>
-        /// <param name="optional">optional.</param>
-        /// <param name="fieldType">fieldType.</param>
         /// <param name="value">value.</param>
-        public FieldSessionDetailResponse(Guid? guid = default(Guid?), string shortDescription = default(string), string externalId = default(string), bool? optional = default(bool?), FieldType fieldType = default(FieldType), string value = default(string))
+        /// <param name="document">document.</param>
+        /// <param name="fieldGroup">fieldGroup.</param>
+        /// <param name="signer">signer.</param>
+        public GetFieldsDtoResponse(FieldType type = default(FieldType), Guid? guid = default(Guid?), string shortDescription = default(string), string externalId = default(string), string value = default(string), GetFieldsDtoDocument document = default(GetFieldsDtoDocument), GetFieldsDtoFieldGroup fieldGroup = default(GetFieldsDtoFieldGroup), GetFieldsDtoSigner signer = default(GetFieldsDtoSigner))
         {
+            this.Type = type;
             this.Guid = guid;
             this.ShortDescription = shortDescription;
             this.ExternalId = externalId;
-            this.Optional = optional;
-            this.FieldType = fieldType;
             this.Value = value;
+            this.Document = document;
+            this.FieldGroup = fieldGroup;
+            this.Signer = signer;
         }
         
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public FieldType Type { get; set; }
+
         /// <summary>
         /// Gets or Sets Guid
         /// </summary>
@@ -66,22 +76,28 @@ namespace IO.Swagger.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Optional
-        /// </summary>
-        [DataMember(Name="optional", EmitDefaultValue=false)]
-        public bool? Optional { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FieldType
-        /// </summary>
-        [DataMember(Name="fieldType", EmitDefaultValue=false)]
-        public FieldType FieldType { get; set; }
-
-        /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Document
+        /// </summary>
+        [DataMember(Name="document", EmitDefaultValue=false)]
+        public GetFieldsDtoDocument Document { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FieldGroup
+        /// </summary>
+        [DataMember(Name="fieldGroup", EmitDefaultValue=false)]
+        public GetFieldsDtoFieldGroup FieldGroup { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Signer
+        /// </summary>
+        [DataMember(Name="signer", EmitDefaultValue=false)]
+        public GetFieldsDtoSigner Signer { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,13 +106,15 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FieldSessionDetailResponse {\n");
+            sb.Append("class GetFieldsDtoResponse {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Guid: ").Append(Guid).Append("\n");
             sb.Append("  ShortDescription: ").Append(ShortDescription).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Optional: ").Append(Optional).Append("\n");
-            sb.Append("  FieldType: ").Append(FieldType).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Document: ").Append(Document).Append("\n");
+            sb.Append("  FieldGroup: ").Append(FieldGroup).Append("\n");
+            sb.Append("  Signer: ").Append(Signer).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,20 +135,25 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FieldSessionDetailResponse);
+            return this.Equals(input as GetFieldsDtoResponse);
         }
 
         /// <summary>
-        /// Returns true if FieldSessionDetailResponse instances are equal
+        /// Returns true if GetFieldsDtoResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of FieldSessionDetailResponse to be compared</param>
+        /// <param name="input">Instance of GetFieldsDtoResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FieldSessionDetailResponse input)
+        public bool Equals(GetFieldsDtoResponse input)
         {
             if (input == null)
                 return false;
 
             return 
+                (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
                 (
                     this.Guid == input.Guid ||
                     (this.Guid != null &&
@@ -147,19 +170,24 @@ namespace IO.Swagger.Model
                     this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
-                    this.Optional == input.Optional ||
-                    (this.Optional != null &&
-                    this.Optional.Equals(input.Optional))
-                ) && 
-                (
-                    this.FieldType == input.FieldType ||
-                    (this.FieldType != null &&
-                    this.FieldType.Equals(input.FieldType))
-                ) && 
-                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
+                ) && 
+                (
+                    this.Document == input.Document ||
+                    (this.Document != null &&
+                    this.Document.Equals(input.Document))
+                ) && 
+                (
+                    this.FieldGroup == input.FieldGroup ||
+                    (this.FieldGroup != null &&
+                    this.FieldGroup.Equals(input.FieldGroup))
+                ) && 
+                (
+                    this.Signer == input.Signer ||
+                    (this.Signer != null &&
+                    this.Signer.Equals(input.Signer))
                 );
         }
 
@@ -172,18 +200,22 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Guid != null)
                     hashCode = hashCode * 59 + this.Guid.GetHashCode();
                 if (this.ShortDescription != null)
                     hashCode = hashCode * 59 + this.ShortDescription.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.Optional != null)
-                    hashCode = hashCode * 59 + this.Optional.GetHashCode();
-                if (this.FieldType != null)
-                    hashCode = hashCode * 59 + this.FieldType.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if (this.Document != null)
+                    hashCode = hashCode * 59 + this.Document.GetHashCode();
+                if (this.FieldGroup != null)
+                    hashCode = hashCode * 59 + this.FieldGroup.GetHashCode();
+                if (this.Signer != null)
+                    hashCode = hashCode * 59 + this.Signer.GetHashCode();
                 return hashCode;
             }
         }

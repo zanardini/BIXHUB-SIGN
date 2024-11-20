@@ -64,6 +64,69 @@ namespace BixHubWrapper
             _accessToken = accessTokenDto.access_token;
         }
 
+        public Guid CreateNewSignSessionFEQ(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover)
+        {
+            var sessionDescription = "Firma qualificata del contratto";
+            var fileToSign = @"C:\Temp\BixHub\FEQ_ContrattoAgenzia.pdf";
+
+            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+            SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+
+            var attributes = new Dictionary<string, string>
+            {
+            };
+
+            // parameters sono i parametri di funzionamento del servizio quali la lingua utente nonchè la URL di redirect a fine sessione
+            var parameters = new Dictionary<string, string> {
+                { "returnUrl", returnUrl },
+                { "language", "it" }
+            };
+            // è possibile indicare metadati da salvare lato BIX-IDE per poi favorire il match
+            var metadata = new Dictionary<string, string> {
+                { "externalID", externalID }
+            };
+
+            List<CreateWebhookDto> webhooks = new List<CreateWebhookDto>();
+
+            List<CreateApproverDto> approvers = new List<CreateApproverDto>();
+            if (addApprover)
+                approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
+
+            List<CreateFollowerDto> followers = new List<CreateFollowerDto>();
+
+            List<CreateSignerDto> signers = new List<CreateSignerDto>();
+            List<CreateFieldGroupDto> fieldsGroup1 = new List<CreateFieldGroupDto>();
+            List<CreateFieldGroupDocumentDto> fg_documents = new List<CreateFieldGroupDocumentDto>();
+            List<CreateFieldDto> fg_fieldsDocument = new List<CreateFieldDto>();
+
+           
+            fg_fieldsDocument.Add(new CreateFieldDto(FieldType.Signature
+               , "Firma per accettazione del mandato di agenzia"
+               , 3, false, "", "3", null, null, null
+               , FontAbleTech.TimesRoman, null, null, null, ""
+               , DatePickerConstraint.Today
+               , new CreatePositionDto(PositionType.AcroField, "Signature2")));
+
+            fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fieldsDocument));
+            fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
+
+            List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
+            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+
+            List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
+            documents.Add(new CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
+
+            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.QES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
+                approvers, followers, documents, signers, true, true, true, true);
+            IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
+
+            if (response.SessionGuid == null)
+                throw new Exception("Post return null");
+
+            IO.Swagger.Model.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid.Value);
+            return response.SessionGuid.Value;
+        }
+
         public Guid CreateNewSignSessionFEA(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover)
         {
             var sessionDescription = "Firma avanzata del contratto";
@@ -104,7 +167,7 @@ namespace BixHubWrapper
 
             fg_fieldsAccept.Add(new CreateFieldDto(FieldType.TextBox
              , "Valorizzare con il luogo"
-             , 0, false, "" , "0", null
+             , 0, false, "", "0", null
              , null, null, FontAbleTech.TimesRoman, null, null, null, ""
              , DatePickerConstraint.Today
              , new CreatePositionDto(PositionType.AcroField, "Luogo")));
