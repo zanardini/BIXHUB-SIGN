@@ -85,9 +85,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IO.Swagger\IO.Swagger.csproj">
-      <Project>{332dfa6a-1060-44d0-97a5-0524a2bbac96}</Project>
-      <Name>IO.Swagger</Name>
+    <ProjectReference Include="..\Abletech.Bix.IdeService.Contract\src\Abletech.Bix.IdeService.Contract\Abletech.Bix.IdeService.Contract.csproj">
+      <Project>{589d8db3-afa5-4b71-bcad-c24013c1bbb9}</Project>
+      <Name>Abletech.Bix.IdeService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abletech.Bix.SignService.Contract\src\Abletech.Bix.SignService.Contract\Abletech.Bix.SignService.Contract.csproj">
+      <Project>{a39b89d7-bcaa-4380-8dce-77628433efee}</Project>
+      <Name>Abletech.Bix.SignService.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,1565 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DigitalOnBoarding",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "/OnBoardingService"
+    }
+  ],
+  "paths": {
+    "/api/v1/Monitoring/Healthy": {
+      "get": {
+        "tags": [
+          "Monitoring"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Create": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Create the identification session",
+        "description": "Permits to create the identification session for a prospect user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Get/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns info of an identification sessione",
+        "description": "Returns the identification session's metadata/parameters/attributes risk score associated if the flow is completed",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetStatus": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns status of a list of identification session",
+        "description": "Returns status and risk score of a identification session base on the flow types",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetStatusSessionResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAll": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns a list of identification sessions",
+        "description": "Returns a list of identification sessions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAuditLog/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns Audit Logs of an identification session",
+        "description": "Returns Audit Logs in pdf format",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAuditLogBase64/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns Audit Logs of an identification session",
+        "description": "Returns Audit Logs in pdf format",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAcquiredUserInfo/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns acquired or verified informations of a prospect customer during the identification session",
+        "description": "Returns acquired or verified informations of a prospect customer during the identification session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAcquiredUserInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAcquiredIDInfo/{sessionGuid}": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns acquired or verified informations of a prospect customer during the identification session",
+        "description": "Returns acquired or verified informations of a prospect customer during the identification session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAcquiredIDInfoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAcquiredIDInfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/Update/{sessionGuid}": {
+      "put": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Update attributes, parameters or metadata of an identification session",
+        "description": "Update parameters or metadata of an identification session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Delete/{sessionGuid}": {
+      "delete": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Delete an identification session",
+        "description": "Delete an identification session if exist",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/SendEmail/{sessionGuid}": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Send an email with the link to activate the identification session",
+        "description": "Send an email with the link to activate the identification session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendEmailRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetIdCardFront/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetIdCardBack/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetDigitalIdentityData/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DigitalIdentityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetSelfie/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetLivenessDetection/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateSessionRequest": {
+        "required": [
+          "flowType"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "declaredPersonalData": {
+            "$ref": "#/components/schemas/DeclaredPersonalData"
+          },
+          "webhooks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdeWebhookDto"
+            },
+            "nullable": true
+          },
+          "flowType": {
+            "$ref": "#/components/schemas/SessionFlowTypeDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSessionResponse": {
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sessionUrl": {
+            "required": [
+              "hostNameType"
+            ],
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeclaredPersonalData": {
+        "required": [
+          "phoneNumber",
+          "taxCode"
+        ],
+        "type": "object",
+        "properties": {
+          "taxCode": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 50,
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DigitalIdentityResponse": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "nullable": true
+          },
+          "response": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DocumentType": {
+        "enum": [
+          "IdentityCard",
+          "DrivingLicense",
+          "Passport"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "IdentityCard",
+          "DrivingLicense",
+          "Passport"
+        ]
+      },
+      "ExceptionResult": {
+        "type": "object",
+        "properties": {
+          "errorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCodeDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FlowStep": {
+        "type": "object",
+        "properties": {
+          "indexOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAcquiredIDInfoRequest": {
+        "type": "object",
+        "properties": {
+          "withPersonalData": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "withIDCard": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "withSelfie": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "withLivenessDetection": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "withDigitalIdentityReqResp": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAcquiredIDInfoResponse": {
+        "type": "object",
+        "properties": {
+          "personalData": {
+            "$ref": "#/components/schemas/PersonalDataAcquiredInfoResponse"
+          },
+          "idCard": {
+            "$ref": "#/components/schemas/IDCardAcquiredResponse"
+          },
+          "selfie": {
+            "$ref": "#/components/schemas/ResourceResponse"
+          },
+          "livenessDetection": {
+            "$ref": "#/components/schemas/ResourceResponse"
+          },
+          "digitalIdentity": {
+            "$ref": "#/components/schemas/DigitalIdentityResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAcquiredUserInfo": {
+        "type": "object",
+        "properties": {
+          "personalData": {
+            "$ref": "#/components/schemas/PersonalDataAcquiredUserInfoResponse"
+          },
+          "idCard": {
+            "$ref": "#/components/schemas/IDCardAcquiredUserResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllSessionRequest": {
+        "type": "object",
+        "properties": {
+          "skip": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "take": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllSessionResponse": {
+        "type": "object",
+        "properties": {
+          "sessions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetSessionResponse"
+            },
+            "nullable": true
+          },
+          "totalSession": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetSessionResponse": {
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "declaredPersonalData": {
+            "$ref": "#/components/schemas/DeclaredPersonalData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetStatusSessionResponse": {
+        "required": [
+          "flowType",
+          "identificationStatus",
+          "sessionStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "flowType": {
+            "$ref": "#/components/schemas/SessionFlowTypeDto"
+          },
+          "identificationStatus": {
+            "$ref": "#/components/schemas/IdentificationStatus"
+          },
+          "riskScore": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "riskScoreEvaluation": {
+            "type": "string",
+            "nullable": true
+          },
+          "flow": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FlowStep"
+            },
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "verifyDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "sessionStatus": {
+            "$ref": "#/components/schemas/IdeSessionStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IDCardAcquiredResponse": {
+        "type": "object",
+        "properties": {
+          "documentIdentifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "frontFileData": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "rearFileData": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IDCardAcquiredUserResponse": {
+        "type": "object",
+        "properties": {
+          "documentIdentifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "acquiredFront": {
+            "type": "boolean"
+          },
+          "acquiredRear": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdeSessionStatus": {
+        "enum": [
+          "Pending",
+          "InProgress",
+          "InVerify",
+          "Completed",
+          "Failed",
+          "Deleted",
+          "DeletedByRetention",
+          "FailedTooManyAttempts",
+          "FailedSpidCie",
+          "FailedCannotVerify"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Pending",
+          "InProgress",
+          "InVerify",
+          "Completed",
+          "Failed",
+          "Deleted",
+          "DeletedByRetention",
+          "FailedTooManyAttempts",
+          "FailedSpidCie",
+          "FailedCannotVerify"
+        ]
+      },
+      "IdeWebhookDto": {
+        "required": [
+          "webhookType"
+        ],
+        "type": "object",
+        "properties": {
+          "webhookType": {
+            "$ref": "#/components/schemas/IdeWebhookEvent"
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdeWebhookEvent": {
+        "enum": [
+          "Ide_SessionCompleted"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Ide_SessionCompleted"
+        ]
+      },
+      "IdentificationStatus": {
+        "enum": [
+          "InProgress",
+          "Identified",
+          "NotRecognized"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "InProgress",
+          "Identified",
+          "NotRecognized"
+        ]
+      },
+      "PersonalDataAcquiredInfoResponse": {
+        "required": [
+          "sex"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationality": {
+            "type": "string",
+            "nullable": true
+          },
+          "placeOfBirth": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneVerified": {
+            "type": "boolean"
+          },
+          "sex": {
+            "$ref": "#/components/schemas/Sex"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonalDataAcquiredUserInfoResponse": {
+        "required": [
+          "sex"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationality": {
+            "type": "string",
+            "nullable": true
+          },
+          "placeOfBirth": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneVerified": {
+            "type": "boolean"
+          },
+          "sex": {
+            "$ref": "#/components/schemas/Sex"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResourceResponse": {
+        "type": "object",
+        "properties": {
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileData": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendEmailRequest": {
+        "type": "object",
+        "properties": {
+          "templateId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SessionFlowTypeDto": {
+        "enum": [
+          "Dynamic",
+          "Ai",
+          "Spid",
+          "Cie"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Dynamic",
+          "Ai",
+          "Spid",
+          "Cie"
+        ]
+      },
+      "Sex": {
+        "enum": [
+          "NotKnown",
+          "Male",
+          "Female",
+          "NotApplicable"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "NotKnown",
+          "Male",
+          "Female",
+          "NotApplicable"
+        ]
+      },
+      "UpdateSessionRequest": {
+        "type": "object",
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Please enter a valid token",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

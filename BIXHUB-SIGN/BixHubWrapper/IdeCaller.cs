@@ -1,7 +1,7 @@
-﻿using IO.Swagger.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -23,12 +23,12 @@ namespace BixHubWrapper
             _accessToken = accessToken;
         }
 
-        public IO.Swagger.Client.Configuration Configuration
+        public Abletech.Bix.IdeService.Contract.Client.Configuration Configuration
         {
             get
             {
                 {
-                    return new IO.Swagger.Client.Configuration()
+                    return new Abletech.Bix.IdeService.Contract.Client.Configuration()
                     {
                         AccessToken = _accessToken,
                         BasePath = _ideUrl + "/OnBoardingService",
@@ -41,8 +41,8 @@ namespace BixHubWrapper
 
         public BixHubWrapper.Model.AcquiredIDInfoResponse GetIdentificationEvidenceBySessionGuid(Guid sessionGuid)
         {
-            IO.Swagger.IdeApi.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.IdeApi.SessionLifeCycleApi(Configuration);
-            var allEvidenceResponse = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAcquiredIDInfoSessionGuidPost(sessionGuid, new IO.Swagger.IdeModel.GetAcquiredIDInfoRequest()
+            Abletech.Bix.IdeService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.IdeService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            var allEvidenceResponse = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAcquiredIDInfoSessionGuidPost(sessionGuid, new Abletech.Bix.IdeService.Contract.Model.V1.GetAcquiredIDInfoRequest()
             {
                 WithDigitalIdentityReqResp = true,
                 WithIDCard = true,
@@ -59,9 +59,13 @@ namespace BixHubWrapper
 
         public byte[] GetAuditLogBySessionGuid(Guid sessionGuid)
         {
-            IO.Swagger.IdeApi.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.IdeApi.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.IdeService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.IdeService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
             var response = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAuditLogSessionGuidGet(sessionGuid);
-            return response;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                response.CopyTo(ms);
+                return ms.ToArray();
+            }
         }
 
     }

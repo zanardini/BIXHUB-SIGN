@@ -1,0 +1,3453 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SignService",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "/SignService"
+    }
+  ],
+  "paths": {
+    "/api/v1/Monitoring/Healthy": {
+      "get": {
+        "tags": [
+          "Monitoring"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/UploadFile": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Upload a document in format pdf",
+        "description": "Permits document upload for preparing a signature session.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedFileResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedFileResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedFileResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/UploadFileBase64": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFileBase64Request"
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFileBase64Request"
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFileBase64Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedFileResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedFileResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedFileResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/UploadFiles": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Upload documents in format pdf",
+        "description": "Permits documents upload for preparing a signature session.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "files": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedFileResponse"
+                  }
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedFileResponse"
+                  }
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedFileResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/UploadFilesBase64": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFilesRequest"
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFilesRequest"
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFilesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedFileResponse"
+                  }
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedFileResponse"
+                  }
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SavedFileResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/CreateAndPublish": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              },
+              "examples": {
+                "Simple electronic signature example search field by Label, AcroField and Coordinates": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Label","pageNumber":1,"label":"Text present at least once on page {pageNumber} of the PDF","occurrence":1,"offsetX":0.2,"width":20,"height":4.5},"immutable":false},{"type":"Signature","shortDescription":"Second Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1 (Make sure an acrofield with this tag exists)"},"immutable":false},{"type":"Signature","shortDescription":"Third Signature for Acceptance","indexOrder":2,"optional":false,"externalId":"90","position":{"type":"Coordinates","pageNumber":1,"top":40,"left":20,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature with seal appearance": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[],"followers":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","sealPositions":[{"type":"Coordinates","pageNumber":1,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5}],"externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"EmailOtp","indexOrder":0,"externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature example with approvers, followers and attachments": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[{"email":"Valid Approver Email","description":"Approver Description","indexOrder":0}],"followers":[{"email":"Valid Follower Email","description":"Follower Description"}],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":1},{"description":"Contratto","fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","externalId":"abc","mandatoryRead":true,"indexOrder":2}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"TextBox","shortDescription":"Name and surname","indexOrder":0,"optional":false,"externalId":"56","fontSize":15,"multiLine":false,"regexPattern":"^[a-zA-Z' ]+$","position":{"type":"AcroField","acroFieldTag":"TheUndersigned"},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":5,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1"},"immutable":false}]},{"fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","indexOrder":1,"fields":[{"type":"CheckBox","shortDescription":"Agree to the Terms and Conditions","indexOrder":0,"optional":false,"externalId":"90","position":{"type":"AcroField","acroFieldTag":"SI_21"},"immutable":false}]}]}],"attachments":[{"description":"Id Card","mandatory":true,"attachToAuditTrail":true,"externalId":"47r9384","indexOrder":0}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Electronic signature with all field types and with signers identification": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"approvers":[],"followers":[],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":11.5,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":10,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false},{"type":"TextBox","shortDescription":"Name and surname","indexOrder":31,"optional":false,"externalId":"3D0EF946-FC23-4B47-B672-52231F9E34A6","fontSize":15,"position":{"type":"Coordinates","pageNumber":10,"top":65,"left":10,"width":20,"height":8},"immutable":false},{"type":"ComboBox","shortDescription":"Sex ISO IEC_5218","indexOrder":41,"optional":false,"externalId":"973C5A28-ED59-4950-A55C-727037EF59E4","values":["NotKnown","Male","Female","NotApplicable"],"position":{"type":"Coordinates","pageNumber":10,"top":80,"left":10,"width":20,"height":8},"immutable":false}]}]}],"attachments":[],"requireIdentification":true,"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example with one signer Graphometric and one remote": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Graphometric Signer Description","email":"Valid Graphometric Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Graphometric Signer TaxCode","verificationMode":"Signature","indexOrder":1,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":1,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true},{"description":"Remote Signer Description","email":"Valid Remote Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Remote Signer TaxCode","verificationMode":"SmsOtp","indexOrder":2,"redirectUri":"https://portal.arxivar.it/it/","externalId":"987mop","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":2,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":2,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":3,"optional":false,"externalId":"NewSignature","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                }
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              },
+              "examples": {
+                "Simple electronic signature example search field by Label, AcroField and Coordinates": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Label","pageNumber":1,"label":"Text present at least once on page {pageNumber} of the PDF","occurrence":1,"offsetX":0.2,"width":20,"height":4.5},"immutable":false},{"type":"Signature","shortDescription":"Second Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1 (Make sure an acrofield with this tag exists)"},"immutable":false},{"type":"Signature","shortDescription":"Third Signature for Acceptance","indexOrder":2,"optional":false,"externalId":"90","position":{"type":"Coordinates","pageNumber":1,"top":40,"left":20,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature with seal appearance": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[],"followers":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","sealPositions":[{"type":"Coordinates","pageNumber":1,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5}],"externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"EmailOtp","indexOrder":0,"externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature example with approvers, followers and attachments": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[{"email":"Valid Approver Email","description":"Approver Description","indexOrder":0}],"followers":[{"email":"Valid Follower Email","description":"Follower Description"}],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":1},{"description":"Contratto","fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","externalId":"abc","mandatoryRead":true,"indexOrder":2}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"TextBox","shortDescription":"Name and surname","indexOrder":0,"optional":false,"externalId":"56","fontSize":15,"multiLine":false,"regexPattern":"^[a-zA-Z' ]+$","position":{"type":"AcroField","acroFieldTag":"TheUndersigned"},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":5,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1"},"immutable":false}]},{"fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","indexOrder":1,"fields":[{"type":"CheckBox","shortDescription":"Agree to the Terms and Conditions","indexOrder":0,"optional":false,"externalId":"90","position":{"type":"AcroField","acroFieldTag":"SI_21"},"immutable":false}]}]}],"attachments":[{"description":"Id Card","mandatory":true,"attachToAuditTrail":true,"externalId":"47r9384","indexOrder":0}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Electronic signature with all field types and with signers identification": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"approvers":[],"followers":[],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":11.5,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":10,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false},{"type":"TextBox","shortDescription":"Name and surname","indexOrder":31,"optional":false,"externalId":"3D0EF946-FC23-4B47-B672-52231F9E34A6","fontSize":15,"position":{"type":"Coordinates","pageNumber":10,"top":65,"left":10,"width":20,"height":8},"immutable":false},{"type":"ComboBox","shortDescription":"Sex ISO IEC_5218","indexOrder":41,"optional":false,"externalId":"973C5A28-ED59-4950-A55C-727037EF59E4","values":["NotKnown","Male","Female","NotApplicable"],"position":{"type":"Coordinates","pageNumber":10,"top":80,"left":10,"width":20,"height":8},"immutable":false}]}]}],"attachments":[],"requireIdentification":true,"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example with one signer Graphometric and one remote": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Graphometric Signer Description","email":"Valid Graphometric Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Graphometric Signer TaxCode","verificationMode":"Signature","indexOrder":1,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":1,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true},{"description":"Remote Signer Description","email":"Valid Remote Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Remote Signer TaxCode","verificationMode":"SmsOtp","indexOrder":2,"redirectUri":"https://portal.arxivar.it/it/","externalId":"987mop","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":2,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":2,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":3,"optional":false,"externalId":"NewSignature","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                }
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              },
+              "examples": {
+                "Simple electronic signature example search field by Label, AcroField and Coordinates": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Label","pageNumber":1,"label":"Text present at least once on page {pageNumber} of the PDF","occurrence":1,"offsetX":0.2,"width":20,"height":4.5},"immutable":false},{"type":"Signature","shortDescription":"Second Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1 (Make sure an acrofield with this tag exists)"},"immutable":false},{"type":"Signature","shortDescription":"Third Signature for Acceptance","indexOrder":2,"optional":false,"externalId":"90","position":{"type":"Coordinates","pageNumber":1,"top":40,"left":20,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature with seal appearance": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[],"followers":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","sealPositions":[{"type":"Coordinates","pageNumber":1,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5}],"externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"EmailOtp","indexOrder":0,"externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature example with approvers, followers and attachments": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[{"email":"Valid Approver Email","description":"Approver Description","indexOrder":0}],"followers":[{"email":"Valid Follower Email","description":"Follower Description"}],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":1},{"description":"Contratto","fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","externalId":"abc","mandatoryRead":true,"indexOrder":2}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"TextBox","shortDescription":"Name and surname","indexOrder":0,"optional":false,"externalId":"56","fontSize":15,"multiLine":false,"regexPattern":"^[a-zA-Z' ]+$","position":{"type":"AcroField","acroFieldTag":"TheUndersigned"},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":5,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1"},"immutable":false}]},{"fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","indexOrder":1,"fields":[{"type":"CheckBox","shortDescription":"Agree to the Terms and Conditions","indexOrder":0,"optional":false,"externalId":"90","position":{"type":"AcroField","acroFieldTag":"SI_21"},"immutable":false}]}]}],"attachments":[{"description":"Id Card","mandatory":true,"attachToAuditTrail":true,"externalId":"47r9384","indexOrder":0}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Electronic signature with all field types and with signers identification": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"approvers":[],"followers":[],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":11.5,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":10,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false},{"type":"TextBox","shortDescription":"Name and surname","indexOrder":31,"optional":false,"externalId":"3D0EF946-FC23-4B47-B672-52231F9E34A6","fontSize":15,"position":{"type":"Coordinates","pageNumber":10,"top":65,"left":10,"width":20,"height":8},"immutable":false},{"type":"ComboBox","shortDescription":"Sex ISO IEC_5218","indexOrder":41,"optional":false,"externalId":"973C5A28-ED59-4950-A55C-727037EF59E4","values":["NotKnown","Male","Female","NotApplicable"],"position":{"type":"Coordinates","pageNumber":10,"top":80,"left":10,"width":20,"height":8},"immutable":false}]}]}],"attachments":[],"requireIdentification":true,"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example with one signer Graphometric and one remote": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Graphometric Signer Description","email":"Valid Graphometric Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Graphometric Signer TaxCode","verificationMode":"Signature","indexOrder":1,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":1,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true},{"description":"Remote Signer Description","email":"Valid Remote Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Remote Signer TaxCode","verificationMode":"SmsOtp","indexOrder":2,"redirectUri":"https://portal.arxivar.it/it/","externalId":"987mop","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":2,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":2,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":3,"optional":false,"externalId":"NewSignature","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishSessionResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishSessionResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishSessionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Create": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Create a signature session",
+        "description": "Permits to create the signature session in draft state. In order to make session viewable call publish API after create.",
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              },
+              "examples": {
+                "Simple electronic signature example search field by Label, AcroField and Coordinates": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Label","pageNumber":1,"label":"Text present at least once on page {pageNumber} of the PDF","occurrence":1,"offsetX":0.2,"width":20,"height":4.5},"immutable":false},{"type":"Signature","shortDescription":"Second Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1 (Make sure an acrofield with this tag exists)"},"immutable":false},{"type":"Signature","shortDescription":"Third Signature for Acceptance","indexOrder":2,"optional":false,"externalId":"90","position":{"type":"Coordinates","pageNumber":1,"top":40,"left":20,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature with seal appearance": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[],"followers":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","sealPositions":[{"type":"Coordinates","pageNumber":1,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5}],"externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"EmailOtp","indexOrder":0,"externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature example with approvers, followers and attachments": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[{"email":"Valid Approver Email","description":"Approver Description","indexOrder":0}],"followers":[{"email":"Valid Follower Email","description":"Follower Description"}],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":1},{"description":"Contratto","fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","externalId":"abc","mandatoryRead":true,"indexOrder":2}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"TextBox","shortDescription":"Name and surname","indexOrder":0,"optional":false,"externalId":"56","fontSize":15,"multiLine":false,"regexPattern":"^[a-zA-Z' ]+$","position":{"type":"AcroField","acroFieldTag":"TheUndersigned"},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":5,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1"},"immutable":false}]},{"fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","indexOrder":1,"fields":[{"type":"CheckBox","shortDescription":"Agree to the Terms and Conditions","indexOrder":0,"optional":false,"externalId":"90","position":{"type":"AcroField","acroFieldTag":"SI_21"},"immutable":false}]}]}],"attachments":[{"description":"Id Card","mandatory":true,"attachToAuditTrail":true,"externalId":"47r9384","indexOrder":0}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Electronic signature with all field types and with signers identification": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"approvers":[],"followers":[],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":11.5,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":10,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false},{"type":"TextBox","shortDescription":"Name and surname","indexOrder":31,"optional":false,"externalId":"3D0EF946-FC23-4B47-B672-52231F9E34A6","fontSize":15,"position":{"type":"Coordinates","pageNumber":10,"top":65,"left":10,"width":20,"height":8},"immutable":false},{"type":"ComboBox","shortDescription":"Sex ISO IEC_5218","indexOrder":41,"optional":false,"externalId":"973C5A28-ED59-4950-A55C-727037EF59E4","values":["NotKnown","Male","Female","NotApplicable"],"position":{"type":"Coordinates","pageNumber":10,"top":80,"left":10,"width":20,"height":8},"immutable":false}]}]}],"attachments":[],"requireIdentification":true,"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example with one signer Graphometric and one remote": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Graphometric Signer Description","email":"Valid Graphometric Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Graphometric Signer TaxCode","verificationMode":"Signature","indexOrder":1,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":1,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true},{"description":"Remote Signer Description","email":"Valid Remote Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Remote Signer TaxCode","verificationMode":"SmsOtp","indexOrder":2,"redirectUri":"https://portal.arxivar.it/it/","externalId":"987mop","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":2,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":2,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":3,"optional":false,"externalId":"NewSignature","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                }
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              },
+              "examples": {
+                "Simple electronic signature example search field by Label, AcroField and Coordinates": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Label","pageNumber":1,"label":"Text present at least once on page {pageNumber} of the PDF","occurrence":1,"offsetX":0.2,"width":20,"height":4.5},"immutable":false},{"type":"Signature","shortDescription":"Second Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1 (Make sure an acrofield with this tag exists)"},"immutable":false},{"type":"Signature","shortDescription":"Third Signature for Acceptance","indexOrder":2,"optional":false,"externalId":"90","position":{"type":"Coordinates","pageNumber":1,"top":40,"left":20,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature with seal appearance": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[],"followers":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","sealPositions":[{"type":"Coordinates","pageNumber":1,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5}],"externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"EmailOtp","indexOrder":0,"externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature example with approvers, followers and attachments": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[{"email":"Valid Approver Email","description":"Approver Description","indexOrder":0}],"followers":[{"email":"Valid Follower Email","description":"Follower Description"}],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":1},{"description":"Contratto","fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","externalId":"abc","mandatoryRead":true,"indexOrder":2}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"TextBox","shortDescription":"Name and surname","indexOrder":0,"optional":false,"externalId":"56","fontSize":15,"multiLine":false,"regexPattern":"^[a-zA-Z' ]+$","position":{"type":"AcroField","acroFieldTag":"TheUndersigned"},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":5,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1"},"immutable":false}]},{"fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","indexOrder":1,"fields":[{"type":"CheckBox","shortDescription":"Agree to the Terms and Conditions","indexOrder":0,"optional":false,"externalId":"90","position":{"type":"AcroField","acroFieldTag":"SI_21"},"immutable":false}]}]}],"attachments":[{"description":"Id Card","mandatory":true,"attachToAuditTrail":true,"externalId":"47r9384","indexOrder":0}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Electronic signature with all field types and with signers identification": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"approvers":[],"followers":[],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":11.5,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":10,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false},{"type":"TextBox","shortDescription":"Name and surname","indexOrder":31,"optional":false,"externalId":"3D0EF946-FC23-4B47-B672-52231F9E34A6","fontSize":15,"position":{"type":"Coordinates","pageNumber":10,"top":65,"left":10,"width":20,"height":8},"immutable":false},{"type":"ComboBox","shortDescription":"Sex ISO IEC_5218","indexOrder":41,"optional":false,"externalId":"973C5A28-ED59-4950-A55C-727037EF59E4","values":["NotKnown","Male","Female","NotApplicable"],"position":{"type":"Coordinates","pageNumber":10,"top":80,"left":10,"width":20,"height":8},"immutable":false}]}]}],"attachments":[],"requireIdentification":true,"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example with one signer Graphometric and one remote": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Graphometric Signer Description","email":"Valid Graphometric Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Graphometric Signer TaxCode","verificationMode":"Signature","indexOrder":1,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":1,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true},{"description":"Remote Signer Description","email":"Valid Remote Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Remote Signer TaxCode","verificationMode":"SmsOtp","indexOrder":2,"redirectUri":"https://portal.arxivar.it/it/","externalId":"987mop","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":2,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":2,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":3,"optional":false,"externalId":"NewSignature","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                }
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionRequest"
+              },
+              "examples": {
+                "Simple electronic signature example search field by Label, AcroField and Coordinates": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Label","pageNumber":1,"label":"Text present at least once on page {pageNumber} of the PDF","occurrence":1,"offsetX":0.2,"width":20,"height":4.5},"immutable":false},{"type":"Signature","shortDescription":"Second Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1 (Make sure an acrofield with this tag exists)"},"immutable":false},{"type":"Signature","shortDescription":"Third Signature for Acceptance","indexOrder":2,"optional":false,"externalId":"90","position":{"type":"Coordinates","pageNumber":1,"top":40,"left":20,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature with seal appearance": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[],"followers":[],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","sealPositions":[{"type":"Coordinates","pageNumber":1,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5}],"externalId":"12","mandatoryRead":true,"indexOrder":0}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"EmailOtp","indexOrder":0,"externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":0,"optional":false,"externalId":"56","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":20,"offsetX":0,"offsetY":0,"width":20,"height":4.5},"immutable":false}]}]}],"attachments":[],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Simple electronic signature example with approvers, followers and attachments": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[],"approvers":[{"email":"Valid Approver Email","description":"Approver Description","indexOrder":0}],"followers":[{"email":"Valid Follower Email","description":"Follower Description"}],"documents":[{"description":"Privacy Disclaimer","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"12","mandatoryRead":true,"indexOrder":1},{"description":"Contratto","fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","externalId":"abc","mandatoryRead":true,"indexOrder":2}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"34","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"TextBox","shortDescription":"Name and surname","indexOrder":0,"optional":false,"externalId":"56","fontSize":15,"multiLine":false,"regexPattern":"^[a-zA-Z' ]+$","position":{"type":"AcroField","acroFieldTag":"TheUndersigned"},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":5,"optional":false,"externalId":"78","position":{"type":"AcroField","acroFieldTag":"Signature1"},"immutable":false}]},{"fileGuid":"16cfe678-bd51-4d2a-a20b-828756f5d001","indexOrder":1,"fields":[{"type":"CheckBox","shortDescription":"Agree to the Terms and Conditions","indexOrder":0,"optional":false,"externalId":"90","position":{"type":"AcroField","acroFieldTag":"SI_21"},"immutable":false}]}]}],"attachments":[{"description":"Id Card","mandatory":true,"attachToAuditTrail":true,"externalId":"47r9384","indexOrder":0}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Electronic signature with all field types and with signers identification": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"approvers":[],"followers":[],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"SmsOtp","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":10,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":11.5,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":10,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false},{"type":"TextBox","shortDescription":"Name and surname","indexOrder":31,"optional":false,"externalId":"3D0EF946-FC23-4B47-B672-52231F9E34A6","fontSize":15,"position":{"type":"Coordinates","pageNumber":10,"top":65,"left":10,"width":20,"height":8},"immutable":false},{"type":"ComboBox","shortDescription":"Sex ISO IEC_5218","indexOrder":41,"optional":false,"externalId":"973C5A28-ED59-4950-A55C-727037EF59E4","values":["NotKnown","Male","Female","NotApplicable"],"position":{"type":"Coordinates","pageNumber":10,"top":80,"left":10,"width":20,"height":8},"immutable":false}]}]}],"attachments":[],"requireIdentification":true,"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Signer Description","email":"Valid Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Signer TaxCode","verificationMode":"Signature","indexOrder":0,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":21,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":10,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                },
+                "Graphometric Signature Example with one signer Graphometric and one remote": {
+                  "value": {"process":"ES","workFlow":"Automatic","metadata":{"oggetto":"Session Subject"},"parameters":{"language":"it"},"attributes":{"otp.expireInSeconds":"120","otp.message":"OTP code to insert: "},"webhooks":[{"webhookType":"Sign_SessionCompleted","url":"https://company.com/endpoint"}],"documents":[{"description":"FEA Membership Form","fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","externalId":"1234","mandatoryRead":true,"indexOrder":1}],"signers":[{"description":"Graphometric Signer Description","email":"Valid Graphometric Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Graphometric Signer TaxCode","verificationMode":"Signature","indexOrder":1,"redirectUri":"https://portal.arxivar.it/it/","externalId":"fbd123","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":1,"optional":false,"externalId":"80855C68-B9D5-462A-99AF-AF6976248F89","position":{"type":"Coordinates","pageNumber":1,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":true},{"description":"Remote Signer Description","email":"Valid Remote Signer Email","phoneNumber":"+393483333333","taxCode":"Valid Remote Signer TaxCode","verificationMode":"SmsOtp","indexOrder":2,"redirectUri":"https://portal.arxivar.it/it/","externalId":"987mop","fieldGroups":[{"name":"First Group","groupOrder":0,"documents":[{"fileGuid":"ad129714-836d-4368-840b-d6f1cf044599","indexOrder":0,"fields":[{"type":"RadioGroup","shortDescription":"Terms and Conditions","indexOrder":0,"optional":false,"externalId":"1","radioButtonFields":[{"shortDescription":"Agree","indexOrder":0,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":20,"width":3,"height":3}},{"shortDescription":"Disagree","indexOrder":1,"position":{"type":"Coordinates","pageNumber":2,"top":40,"left":30,"width":3,"height":3}}],"immutable":false},{"type":"CheckBox","shortDescription":"Allow the use of data for marketing purposes","indexOrder":2,"optional":false,"externalId":"565","position":{"type":"Coordinates","pageNumber":2,"top":25,"left":10,"width":3,"height":3},"immutable":false},{"type":"Signature","shortDescription":"Signature for Acceptance","indexOrder":3,"optional":false,"externalId":"NewSignature","position":{"type":"Coordinates","pageNumber":2,"top":50,"left":10,"width":20,"height":8},"immutable":false}]}]}],"graphometric":false}],"requireStrongAuthForSigners":false,"requireStrongAuthForApprovers":false,"acquireBiometricData":true,"automaticReminder":"None"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSessionResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSessionResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSessionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Get/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Return info of a signature session",
+        "description": "Returns the signature session's metadata/parameters/attributes and the details about approvers, signers, documents, attachments and fields.",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionDetailResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionDetailResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetFields/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Return info of all fields in a flatten way",
+        "description": "Return info of all fields in flatten way in order to make easy the acquisition of a selected values by users for fields",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "documentGuid",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "signerGuid",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "fieldGroupGuid",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFieldsDtoResponse"
+                  }
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFieldsDtoResponse"
+                  }
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFieldsDtoResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAll": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Return all signature sessions with the status",
+        "description": "Return all signature sessions with the status, for more details about session status use API GetStatus",
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllSessionRequest"
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllSessionRequest"
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllSessionResponseGetPaginatedListResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllSessionResponseGetPaginatedListResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllSessionResponseGetPaginatedListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetStatus": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns status details of a list of signature sessions",
+        "description": "Returns status details of a list of signature sessions base on the process types",
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetStatusSessionResponse"
+                  }
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetStatusSessionResponse"
+                  }
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetStatusSessionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetErrors": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns errors details of a list of signature sessions",
+        "description": "Returns errors details of a list of signature sessions. For example if you use webhooks and your registered endpoint is not reachable for 24h, with this API you could acquire this information, and remediate.",
+        "parameters": [
+          {
+            "name": "take",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetErrorsSessionResponse"
+                  }
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetErrorsSessionResponse"
+                  }
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetErrorsSessionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAuditTrail/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns Audit Trail of a signature session",
+        "description": "Returns Audit Trail in pdf format with the evidence of all operations executed by users during the signature session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAuditTrail64/{sessionGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "documentGuid",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns signed document by documentGuid and sessionGuid",
+        "description": "Returns signed document by sessionGuid and documentGuid, use API Get to obtain all the documents guid of a created session.",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Returns attachment uploaded by user during signature session",
+        "description": "Returns attachment uploaded by user during signature session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "signerGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "attachmentGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid}": {
+      "get": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "signerGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "attachmentGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDataBase64"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/SessionLifeCycle/Update/{sessionGuid}": {
+      "patch": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Update attributes, parameters or metadata of an signature session",
+        "description": "Update attributes, parameters or metadata of an signature session",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSessionRequest"
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSessionRequest"
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Publish/{sessionGuid}": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Make signature session viewable",
+        "description": "Make signature session viewable, after this operation any ather modification are not allowed",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishSessionResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishSessionResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishSessionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/Delete/{sessionGuid}": {
+      "delete": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Delete a signature session",
+        "description": "Delete a signature session if exist and if is in a deletable status",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/SendEmail/{sessionGuid}": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "summary": "Send an email to next user with the link to activate the signature session",
+        "description": "Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.",
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/SendEmailRequest"
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/SendEmailRequest"
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/SendEmailRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActorType"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActorType"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActorType"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/MarkErrorAsFixed/{sessionGuid}": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/FixErrorRequest"
+              }
+            },
+            "text/json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/FixErrorRequest"
+              }
+            },
+            "application/*+json; x-api-version=1.0": {
+              "schema": {
+                "$ref": "#/components/schemas/FixErrorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid}": {
+      "post": {
+        "tags": [
+          "SessionLifeCycle"
+        ],
+        "parameters": [
+          {
+            "name": "sessionGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "signerGuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestoreIdentificationSessionResponse"
+                }
+              },
+              "application/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestoreIdentificationSessionResponse"
+                }
+              },
+              "text/json; x-api-version=1.0": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestoreIdentificationSessionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ActorType": {
+        "enum": [
+          "None",
+          "Approver",
+          "Signer",
+          "Follower"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "None",
+          "Approver",
+          "Signer",
+          "Follower"
+        ]
+      },
+      "ApproverSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApproverStatusSessionResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ApproverStatusSessionState"
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstAccessDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApproverStatusSessionState": {
+        "enum": [
+          "Approved",
+          "Rejected",
+          "InProgress"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Approved",
+          "Rejected",
+          "InProgress"
+        ]
+      },
+      "AttachmentSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mandatory": {
+            "type": "boolean"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AttachmentStatusSessionResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "mandatory": {
+            "type": "boolean"
+          },
+          "uploaded": {
+            "type": "boolean"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutomaticReminderType": {
+        "enum": [
+          "None",
+          "Day7",
+          "Day14",
+          "Custom"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "None",
+          "Day7",
+          "Day14",
+          "Custom"
+        ]
+      },
+      "ColorDto": {
+        "type": "object",
+        "properties": {
+          "red": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "green": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "blue": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateApproverDto": {
+        "required": [
+          "description",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "redirectUri": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "language": {
+            "maxLength": 2,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateAttachmentDto": {
+        "required": [
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "mandatory": {
+            "type": "boolean"
+          },
+          "attachToAuditTrail": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "externalId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateDocumentDto": {
+        "required": [
+          "description",
+          "fileGuid"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "fileGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sealPositions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatePositionDto"
+            },
+            "nullable": true
+          },
+          "externalId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "mandatoryRead": {
+            "type": "boolean"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateFieldDto": {
+        "required": [
+          "shortDescription",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "shortDescription": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "optional": {
+            "type": "boolean"
+          },
+          "initialValue": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "radioButtonFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateRadioButtonFieldDto"
+            },
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "font": {
+            "$ref": "#/components/schemas/FontAbleTech"
+          },
+          "backGroundColor": {
+            "$ref": "#/components/schemas/ColorDto"
+          },
+          "maxLength": {
+            "maximum": 255,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "multiLine": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "regexPattern": {
+            "type": "string",
+            "nullable": true
+          },
+          "datePickerConstraint": {
+            "$ref": "#/components/schemas/DatePickerConstraint"
+          },
+          "position": {
+            "$ref": "#/components/schemas/CreatePositionDto"
+          },
+          "immutable": {
+            "type": "boolean"
+          },
+          "textColor": {
+            "$ref": "#/components/schemas/ColorDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateFieldGroupDocumentDto": {
+        "required": [
+          "fileGuid"
+        ],
+        "type": "object",
+        "properties": {
+          "fileGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateFieldDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateFieldGroupDto": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "groupOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateFieldGroupDocumentDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateFollowerDto": {
+        "required": [
+          "description",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "language": {
+            "maxLength": 2,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePositionDto": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PositionType"
+          },
+          "acroFieldTag": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "top": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "left": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "label": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "occurrence": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "offsetX": {
+            "maximum": 100,
+            "minimum": -100,
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "offsetY": {
+            "maximum": 100,
+            "minimum": -100,
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "width": {
+            "maximum": 100,
+            "minimum": 1,
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "height": {
+            "maximum": 100,
+            "minimum": 1,
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateRadioButtonFieldDto": {
+        "required": [
+          "shortDescription"
+        ],
+        "type": "object",
+        "properties": {
+          "shortDescription": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "appearance": {
+            "$ref": "#/components/schemas/RadioButtonAppearance"
+          },
+          "position": {
+            "$ref": "#/components/schemas/CreatePositionDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSessionRequest": {
+        "required": [
+          "automaticReminder",
+          "process",
+          "workFlow"
+        ],
+        "type": "object",
+        "properties": {
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "workFlow": {
+            "$ref": "#/components/schemas/WorkFlowType"
+          },
+          "description": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "webhooks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateWebhookDto"
+            },
+            "nullable": true
+          },
+          "approvers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateApproverDto"
+            },
+            "nullable": true
+          },
+          "followers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateFollowerDto"
+            },
+            "nullable": true
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateDocumentDto"
+            },
+            "nullable": true
+          },
+          "signers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateSignerDto"
+            },
+            "nullable": true
+          },
+          "requireIdentificationForSigners": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "requireStrongAuthForSigners": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "requireStrongAuthForApprovers": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "requireTimestampingForDocuments": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "lockAllChangesInSignedDocuments": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "acquireBiometricData": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "externalId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "retentionDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "daysToDownload": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "automaticReminder": {
+            "$ref": "#/components/schemas/AutomaticReminderType"
+          },
+          "extraFields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "customAutomaticReminderDays": {
+            "maximum": 14,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSessionResponse": {
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSignerDto": {
+        "required": [
+          "description",
+          "verificationMode"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "maxLength": 20,
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "verificationMode": {
+            "$ref": "#/components/schemas/VerificationModeDto"
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "redirectUri": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "fieldGroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateFieldGroupDto"
+            },
+            "nullable": true
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateAttachmentDto"
+            },
+            "nullable": true
+          },
+          "language": {
+            "maxLength": 2,
+            "type": "string",
+            "nullable": true
+          },
+          "requireIdentification": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "graphometric": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateWebhookDto": {
+        "required": [
+          "url",
+          "webhookType"
+        ],
+        "type": "object",
+        "properties": {
+          "webhookType": {
+            "$ref": "#/components/schemas/SignWebhookEvent"
+          },
+          "url": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatePickerConstraint": {
+        "enum": [
+          "Today",
+          "Past",
+          "Future",
+          "TodayOrPast",
+          "TodayOrFuture"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Today",
+          "Past",
+          "Future",
+          "TodayOrPast",
+          "TodayOrFuture"
+        ]
+      },
+      "DocumentSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExceptionResult": {
+        "type": "object",
+        "properties": {
+          "errorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCodeDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FieldGroupDocumentSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldSessionDetailResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FieldGroupSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "groupOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldGroupDocumentSessionDetailResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FieldSessionDetailResponse": {
+        "required": [
+          "fieldType"
+        ],
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shortDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "optional": {
+            "type": "boolean"
+          },
+          "fieldType": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FieldType": {
+        "enum": [
+          "Signature",
+          "CheckBox",
+          "RadioGroup",
+          "TextBox",
+          "DatePicker",
+          "ComboBox"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Signature",
+          "CheckBox",
+          "RadioGroup",
+          "TextBox",
+          "DatePicker",
+          "ComboBox"
+        ]
+      },
+      "FileDataBase64": {
+        "type": "object",
+        "properties": {
+          "base64": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FixErrorRequest": {
+        "type": "object",
+        "properties": {
+          "errorGuid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FollowerSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FontAbleTech": {
+        "enum": [
+          "TimesRoman",
+          "TimesRomanBold",
+          "TimesRomanItalic",
+          "TimesRomanBoldItalic",
+          "Helvetica",
+          "HelveticaBold",
+          "HelveticaItalic",
+          "HelveticaBoldItalic",
+          "Courier",
+          "CourierBold",
+          "CourierItalic",
+          "CourierBoldItalic"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "TimesRoman",
+          "TimesRomanBold",
+          "TimesRomanItalic",
+          "TimesRomanBoldItalic",
+          "Helvetica",
+          "HelveticaBold",
+          "HelveticaItalic",
+          "HelveticaBoldItalic",
+          "Courier",
+          "CourierBold",
+          "CourierItalic",
+          "CourierBoldItalic"
+        ]
+      },
+      "GetAllSessionRequest": {
+        "type": "object",
+        "properties": {
+          "businessUnitGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "workFlow": {
+            "$ref": "#/components/schemas/WorkFlowType"
+          },
+          "sessionStatus": {
+            "$ref": "#/components/schemas/SignSessionStatus"
+          },
+          "fromCreationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "toCreationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "take": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllSessionResponse": {
+        "required": [
+          "process",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SignSessionStatus"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllSessionResponseGetPaginatedListResponse": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetAllSessionResponse"
+            },
+            "nullable": true
+          },
+          "totalRecords": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetErrorsSessionResponse": {
+        "required": [
+          "process",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SignSessionStatus"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignErrorDto"
+            },
+            "nullable": true
+          },
+          "errorsNumber": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetFieldsDtoDocument": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetFieldsDtoFieldGroup": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetFieldsDtoResponse": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shortDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "document": {
+            "$ref": "#/components/schemas/GetFieldsDtoDocument"
+          },
+          "fieldGroup": {
+            "$ref": "#/components/schemas/GetFieldsDtoFieldGroup"
+          },
+          "signer": {
+            "$ref": "#/components/schemas/GetFieldsDtoSigner"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetFieldsDtoSigner": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetSessionDetailResponse": {
+        "required": [
+          "process",
+          "status",
+          "workFlow"
+        ],
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SignSessionStatus"
+          },
+          "workFlow": {
+            "$ref": "#/components/schemas/WorkFlowType"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "approvers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApproverSessionDetailResponse"
+            },
+            "nullable": true
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentSessionDetailResponse"
+            },
+            "nullable": true
+          },
+          "signers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignerSessionDetailResponse"
+            },
+            "nullable": true
+          },
+          "followers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FollowerSessionDetailResponse"
+            },
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetStatusSessionResponse": {
+        "required": [
+          "process",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SignSessionStatus"
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextActors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NextActorStatusSessionResponse"
+            },
+            "nullable": true
+          },
+          "approvers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApproverStatusSessionResponse"
+            },
+            "nullable": true
+          },
+          "signers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignerStatusSessionResponse"
+            },
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignErrorDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdeSessionStatus": {
+        "enum": [
+          "Pending",
+          "InProgress",
+          "InVerify",
+          "Completed",
+          "Failed",
+          "Deleted",
+          "DeletedByRetention",
+          "FailedTooManyAttempts",
+          "FailedSpidCie",
+          "FailedCannotVerify"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Pending",
+          "InProgress",
+          "InVerify",
+          "Completed",
+          "Failed",
+          "Deleted",
+          "DeletedByRetention",
+          "FailedTooManyAttempts",
+          "FailedSpidCie",
+          "FailedCannotVerify"
+        ]
+      },
+      "IdentificationSessionStatusSessionResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/IdeSessionStatus"
+          },
+          "flowType": {
+            "$ref": "#/components/schemas/SessionFlowTypeDto"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NextActorStatusSessionResponse": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ActorType"
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "uri": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "graphometric": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PositionType": {
+        "enum": [
+          "AcroField",
+          "Label",
+          "Coordinates"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "AcroField",
+          "Label",
+          "Coordinates"
+        ]
+      },
+      "PublishSessionApproversResponse": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "uri": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublishSessionErrorsResponse": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SignErrorType"
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublishSessionResponse": {
+        "type": "object",
+        "properties": {
+          "approvers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublishSessionApproversResponse"
+            },
+            "nullable": true
+          },
+          "signers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublishSessionSignersResponse"
+            },
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublishSessionErrorsResponse"
+            },
+            "nullable": true
+          },
+          "sessionGuid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublishSessionSignersResponse": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "uri": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RadioButtonAppearance": {
+        "enum": [
+          "Tick",
+          "Circle",
+          "Cross",
+          "Diamond",
+          "Square",
+          "Star"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Tick",
+          "Circle",
+          "Cross",
+          "Diamond",
+          "Square",
+          "Star"
+        ]
+      },
+      "RestoreIdentificationSessionErrorsResponse": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SignErrorType"
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RestoreIdentificationSessionResponse": {
+        "type": "object",
+        "properties": {
+          "nextActors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NextActorStatusSessionResponse"
+            },
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RestoreIdentificationSessionErrorsResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavedFileResponse": {
+        "type": "object",
+        "properties": {
+          "fileGuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileSize": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendEmailRequest": {
+        "type": "object",
+        "properties": {
+          "reminder": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SessionFlowTypeDto": {
+        "enum": [
+          "Dynamic",
+          "Ai",
+          "Spid",
+          "Cie"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Dynamic",
+          "Ai",
+          "Spid",
+          "Cie"
+        ]
+      },
+      "SignErrorDto": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "$ref": "#/components/schemas/SignErrorType"
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignErrorType": {
+        "enum": [
+          "SendMailToApprover",
+          "SendMailToSigner",
+          "WebhookCallSessionCompleted",
+          "WebhookCallSignerCompleted",
+          "WenhookCallApproverCompleted",
+          "WebhookCallSessionApproved",
+          "SendMailToFollower",
+          "AuditTrailGeneration",
+          "IdentificationSession"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "SendMailToApprover",
+          "SendMailToSigner",
+          "WebhookCallSessionCompleted",
+          "WebhookCallSignerCompleted",
+          "WenhookCallApproverCompleted",
+          "WebhookCallSessionApproved",
+          "SendMailToFollower",
+          "AuditTrailGeneration",
+          "IdentificationSession"
+        ]
+      },
+      "SignSessionProcessTypeDto": {
+        "enum": [
+          "ES",
+          "QES"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "ES",
+          "QES"
+        ]
+      },
+      "SignSessionStatus": {
+        "enum": [
+          "Initializing",
+          "Created",
+          "Deleted",
+          "Approved",
+          "RejectedByApprover",
+          "InProgress",
+          "Completed",
+          "DeletedByRetention",
+          "FailedTooManyAttempts",
+          "RejectedBySigner",
+          "SignerIdentificationFailed",
+          "SignerIdentificationExpired"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Initializing",
+          "Created",
+          "Deleted",
+          "Approved",
+          "RejectedByApprover",
+          "InProgress",
+          "Completed",
+          "DeletedByRetention",
+          "FailedTooManyAttempts",
+          "RejectedBySigner",
+          "SignerIdentificationFailed",
+          "SignerIdentificationExpired"
+        ]
+      },
+      "SignWebhookEvent": {
+        "enum": [
+          "Sign_SessionCompleted",
+          "Sign_SignerCompleted",
+          "Sign_ApproverCompleted",
+          "Sign_SessionApproved",
+          "Ide_SessionCompleted"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Sign_SessionCompleted",
+          "Sign_SignerCompleted",
+          "Sign_ApproverCompleted",
+          "Sign_SessionApproved",
+          "Ide_SessionCompleted"
+        ]
+      },
+      "SignerSessionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttachmentSessionDetailResponse"
+            },
+            "nullable": true
+          },
+          "fieldGroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldGroupSessionDetailResponse"
+            },
+            "nullable": true
+          },
+          "graphometric": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignerStatusSessionResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "indexOrder": {
+            "type": "number",
+            "format": "float"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SignerStatusSessionState"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttachmentStatusSessionResponse"
+            },
+            "nullable": true
+          },
+          "identificationSession": {
+            "$ref": "#/components/schemas/IdentificationSessionStatusSessionResponse"
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstAccessDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignerStatusSessionState": {
+        "enum": [
+          "Signed",
+          "InProgress"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Signed",
+          "InProgress"
+        ]
+      },
+      "UpdateSessionRequest": {
+        "type": "object",
+        "properties": {
+          "process": {
+            "$ref": "#/components/schemas/SignSessionProcessTypeDto"
+          },
+          "workFlow": {
+            "$ref": "#/components/schemas/WorkFlowType"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UploadFileBase64Request": {
+        "type": "object",
+        "properties": {
+          "base64": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UploadFilesRequest": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UploadFileBase64Request"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VerificationModeDto": {
+        "enum": [
+          "Signature",
+          "EmailOtp",
+          "SmsOtp",
+          "WhatsappOtp"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Signature",
+          "EmailOtp",
+          "SmsOtp",
+          "WhatsappOtp"
+        ]
+      },
+      "WorkFlowType": {
+        "enum": [
+          "Automatic",
+          "Manual"
+        ],
+        "type": "string",
+        "x-enumNames": [
+          "Automatic",
+          "Manual"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Please enter a valid token",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

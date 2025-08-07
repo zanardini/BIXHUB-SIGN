@@ -1,16 +1,12 @@
-﻿using IO.Swagger.Model;
-using Microsoft.SqlServer.Server;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using System.Xml.Linq;
 
 namespace BixHubWrapper
 {
@@ -27,18 +23,20 @@ namespace BixHubWrapper
             _signUrl = signUrl;
         }
 
-        public IO.Swagger.Client.Configuration Configuration
+        public Abletech.Bix.SignService.Contract.Client.Configuration Configuration
         {
             get
             {
                 {
-                    return new IO.Swagger.Client.Configuration()
+                  ;
+                    var result = new Abletech.Bix.SignService.Contract.Client.Configuration()
                     {
                         AccessToken = _accessToken,
                         BasePath = _signUrl + "/SignService",
                         ApiKey = new Dictionary<string, string>() { { "Authorization", _accessToken } },
                         ApiKeyPrefix = new Dictionary<string, string>() { { "Authorization", "Bearer" } }
                     };
+                    return result;
                 }
             }
         }
@@ -69,8 +67,8 @@ namespace BixHubWrapper
             var sessionDescription = "Firma qualificata del contratto";
             var fileToSign = @"C:\Temp\BixHub\FEQ_ContrattoAgenzia.pdf";
 
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Model.V1.SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new Abletech.Bix.SignService.Contract.Model.V1.UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
 
             var attributes = new Dictionary<string, string>
             {
@@ -86,45 +84,46 @@ namespace BixHubWrapper
                 { "externalID", externalID }
             };
 
-            List<CreateWebhookDto> webhooks = new List<CreateWebhookDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto> webhooks = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto>();
 
-            List<CreateApproverDto> approvers = new List<CreateApproverDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto> approvers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto>();
             if (addApprover)
-                approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
+                approvers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto(email, description, 0, returnUrl, externalID));
 
-            List<CreateFollowerDto> followers = new List<CreateFollowerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto> followers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto>();
 
-            List<CreateSignerDto> signers = new List<CreateSignerDto>();
-            List<CreateFieldGroupDto> fieldsGroup1 = new List<CreateFieldGroupDto>();
-            List<CreateFieldGroupDocumentDto> fg_documents = new List<CreateFieldGroupDocumentDto>();
-            List<CreateFieldDto> fg_fieldsDocument = new List<CreateFieldDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto> signers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto> fieldsGroup1 = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto> fg_documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto> fg_fieldsDocument = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto>();
 
-           
-            fg_fieldsDocument.Add(new CreateFieldDto(FieldType.Signature
+
+            fg_fieldsDocument.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.Signature
                , "Firma per accettazione del mandato di agenzia"
                , 3, false, "", "3", null, null, null
-               , FontAbleTech.TimesRoman, null, null, null, ""
-               , DatePickerConstraint.Today
-               , new CreatePositionDto(PositionType.AcroField, "Signature2")));
+               , Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+               , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+               , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Signature2")));
 
-            fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fieldsDocument));
-            fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
+            fg_documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fieldsDocument));
+            fieldsGroup1.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
-            List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
-            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto> attachments = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto>();
+            var signer = new Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto(description, email, phoneNumber, taxCode, Abletech.Bix.SignService.Contract.Model.V1.VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments);
+            signers.Add(signer);
 
-            List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
-            documents.Add(new CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto> documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto>();
+            documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
 
-            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.QES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest body = new Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest(Abletech.Bix.SignService.Contract.Model.V1.SignSessionProcessTypeDto.QES, Abletech.Bix.SignService.Contract.Model.V1.WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
                 approvers, followers, documents, signers, true, true, true, true);
-            IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
 
             if (response.SessionGuid == null)
                 throw new Exception("Post return null");
 
-            IO.Swagger.Model.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid.Value);
-            return response.SessionGuid.Value;
+            Abletech.Bix.SignService.Contract.Model.V1.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid);
+            return response.SessionGuid;
         }
 
         public Guid CreateNewSignSessionFEA(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover)
@@ -133,9 +132,9 @@ namespace BixHubWrapper
             var fileToSign = @"C:\Temp\BixHub\FEA_ContrattoAgenzia.pdf";
             var acceptToSign = @"C:\Temp\BixHub\FEA_Adesione.pdf";
 
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            SavedFileResponse acceptUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(acceptToSign)), System.IO.Path.GetFileName(acceptToSign), MimeMapping.GetMimeMapping(acceptToSign)));
-            SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Model.V1.SavedFileResponse acceptUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new Abletech.Bix.SignService.Contract.Model.V1.UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(acceptToSign)), System.IO.Path.GetFileName(acceptToSign), MimeMapping.GetMimeMapping(acceptToSign)));
+            Abletech.Bix.SignService.Contract.Model.V1.SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new Abletech.Bix.SignService.Contract.Model.V1.UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
 
             var attributes = new Dictionary<string, string>
             {
@@ -151,68 +150,68 @@ namespace BixHubWrapper
                 { "externalID", externalID }
             };
 
-            List<CreateWebhookDto> webhooks = new List<CreateWebhookDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto> webhooks = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto>();
 
-            List<CreateApproverDto> approvers = new List<CreateApproverDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto> approvers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto>();
             if (addApprover)
-                approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
+                approvers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto(email, description, 0, returnUrl, externalID));
 
-            List<CreateFollowerDto> followers = new List<CreateFollowerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto> followers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto>();
 
-            List<CreateSignerDto> signers = new List<CreateSignerDto>();
-            List<CreateFieldGroupDto> fieldsGroup1 = new List<CreateFieldGroupDto>();
-            List<CreateFieldGroupDocumentDto> fg_documents = new List<CreateFieldGroupDocumentDto>();
-            List<CreateFieldDto> fg_fieldsAccept = new List<CreateFieldDto>();
-            List<CreateFieldDto> fg_fieldsDocument = new List<CreateFieldDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto> signers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto> fieldsGroup1 = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto> fg_documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto> fg_fieldsAccept = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto> fg_fieldsDocument = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto>();
 
-            fg_fieldsAccept.Add(new CreateFieldDto(FieldType.TextBox
+            fg_fieldsAccept.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.TextBox
              , "Valorizzare con il luogo"
              , 0, false, "", "0", null
-             , null, null, FontAbleTech.TimesRoman, null, null, null, ""
-             , DatePickerConstraint.Today
-             , new CreatePositionDto(PositionType.AcroField, "Luogo")));
+             , null, null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+             , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+             , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Luogo")));
 
-            fg_fieldsAccept.Add(new CreateFieldDto(FieldType.DatePicker
+            fg_fieldsAccept.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.DatePicker
              , "Data della firma"
              , 1, false, "", "1", null
-             , null, null, FontAbleTech.TimesRoman, null, null, null, ""
-             , DatePickerConstraint.Today
-             , new CreatePositionDto(PositionType.AcroField, "Data")));
+             , null, null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+             , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+             , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Data")));
 
-            fg_fieldsAccept.Add(new CreateFieldDto(FieldType.Signature
+            fg_fieldsAccept.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.Signature
                 , "Firma per accettazione delle condizioni di servizio"
                 , 2, false, "", "2", null, null, null
-                , FontAbleTech.TimesRoman, null, null, null, ""
-                , DatePickerConstraint.Today
-                , new CreatePositionDto(PositionType.AcroField, "Signature1")));
+                , Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+                , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Signature1")));
 
-            fg_fieldsDocument.Add(new CreateFieldDto(FieldType.Signature
+            fg_fieldsDocument.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.Signature
                , "Firma per accettazione del mandato di agenzia"
                , 3, false, "", "3", null, null, null
-               , FontAbleTech.TimesRoman, null, null, null, ""
-               , DatePickerConstraint.Today
-               , new CreatePositionDto(PositionType.AcroField, "Signature2")));
+               , Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+               , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+               , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Signature2")));
 
-            fg_documents.Add(new CreateFieldGroupDocumentDto(acceptUploaded.FileGuid, 0, fg_fieldsAccept));
-            fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 1, fg_fieldsDocument));
-            fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
+            fg_documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto(acceptUploaded.FileGuid, 0, fg_fieldsAccept));
+            fg_documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 1, fg_fieldsDocument));
+            fieldsGroup1.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
-            List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
-            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto> attachments = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto>();
+            signers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto(description, email, phoneNumber, taxCode, Abletech.Bix.SignService.Contract.Model.V1.VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
 
-            List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
-            documents.Add(new CreateDocumentDto("Adesione al servizio FEA", acceptUploaded.FileGuid, null, "Adesione al servizio FEA", false, 0));
-            documents.Add(new CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto> documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto>();
+            documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto("Adesione al servizio FEA", acceptUploaded.FileGuid, null, "Adesione al servizio FEA", false, 0));
+            documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto("Contratto di agenzia", documentUploaded.FileGuid, null, "Contratto di agenzia", false, 1));
 
-            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.ES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest body = new Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest(Abletech.Bix.SignService.Contract.Model.V1.SignSessionProcessTypeDto.ES, Abletech.Bix.SignService.Contract.Model.V1.WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
                 approvers, followers, documents, signers, true, true, true);
-            IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
 
-            if (response.SessionGuid == null)
+            if (response == null)
                 throw new Exception("Post return null");
 
-            IO.Swagger.Model.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid.Value);
-            return response.SessionGuid.Value;
+            var a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid);
+            return response.SessionGuid;
         }
 
         public Guid CreateNewSignSessionFES(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover)
@@ -220,9 +219,9 @@ namespace BixHubWrapper
             var sessionDescription = "Firma semplice del modulo privacy";
             var fileToSign = @"C:\Temp\BixHub\FES_ModuloPrivacy.pdf";
 
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
 
-            SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+            Abletech.Bix.SignService.Contract.Model.V1.SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new Abletech.Bix.SignService.Contract.Model.V1.UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
 
             var attributes = new Dictionary<string, string>
             {
@@ -238,104 +237,171 @@ namespace BixHubWrapper
                 { "externalID", externalID }
             };
 
-            List<CreateWebhookDto> webhooks = new List<CreateWebhookDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto> webhooks = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto>();
 
-            List<CreateApproverDto> approvers = new List<CreateApproverDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto> approvers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto>();
             if (addApprover)
-                approvers.Add(new CreateApproverDto(email, description, 0, returnUrl, externalID));
+                approvers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto(email, description, 0, returnUrl, externalID));
 
-            List<CreateFollowerDto> followers = new List<CreateFollowerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto> followers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto>();
 
-            List<CreateSignerDto> signers = new List<CreateSignerDto>();
-            List<CreateFieldGroupDto> fieldsGroup1 = new List<CreateFieldGroupDto>();
-            List<CreateFieldGroupDocumentDto> fg_documents = new List<CreateFieldGroupDocumentDto>();
-            List<CreateFieldDto> fg_fields = new List<CreateFieldDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto> signers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto> fieldsGroup1 = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto> fg_documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto> fg_fields = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto>();
 
-            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+            fg_fields.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.RadioGroup
                 , "Consenso finalità di adempimento contrattuale delle prestazioni da me richieste"
                 , 0, false, "", "0", null
-                , new List<CreateRadioButtonFieldDto>
+                , new List<Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto>
                 {
-                    new CreateRadioButtonFieldDto("Do il consenso", 0)
-                    , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                    new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Do il consenso", 0)
+                    , new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Nego il consenso", 1)
                 }
-                , null, FontAbleTech.TimesRoman, null, null, null, ""
-                , DatePickerConstraint.Today
-                , new CreatePositionDto(PositionType.AcroField, "Group1")));
+                , null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+                , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Group1")));
 
-            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+            fg_fields.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.RadioGroup
                 , "Consenso finalità di analisi e ricerche di mercato per migliorare l'offerta di prodotti"
-                , 1, false,"", "1", null
-                , new List<CreateRadioButtonFieldDto>
+                , 1, false, "", "1", null
+                , new List<Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto>
                 {
-                                new CreateRadioButtonFieldDto("Do il consenso", 0)
-                                , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                                new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Do il consenso", 0)
+                                , new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Nego il consenso", 1)
                 }
-                , null, FontAbleTech.TimesRoman, null, null, null, ""
-                , DatePickerConstraint.Today
-                , new CreatePositionDto(PositionType.AcroField, "Group2")));
+                , null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+                , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Group2")));
 
-            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+            fg_fields.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.RadioGroup
                 , "Consenso finalità commerciali e di marketing diretto e indiretto come indicato nell'informativa"
                 , 2, false, "", "2", null
-                , new List<CreateRadioButtonFieldDto>
+                , new List<Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto>
                 {
-                                new CreateRadioButtonFieldDto("Do il consenso", 0)
-                                , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                                new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Do il consenso", 0)
+                                , new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Nego il consenso", 1)
                 }
-                , null, FontAbleTech.TimesRoman, null, null, null, ""
-                , DatePickerConstraint.Today
-                , new CreatePositionDto(PositionType.AcroField, "Group3")));
+                , null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+                , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Group3")));
 
-            fg_fields.Add(new CreateFieldDto(FieldType.RadioGroup
+            fg_fields.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.RadioGroup
                 , "Consenso al trasferimento dei miei suddetti dati verso i paesi indicati nell'informativa"
-                , 3, false, "" , "3", null
-                , new List<CreateRadioButtonFieldDto>
+                , 3, false, "", "3", null
+                , new List<Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto>
                 {
-                                new CreateRadioButtonFieldDto("Do il consenso", 0)
-                                , new CreateRadioButtonFieldDto("Nego il consenso", 1)
+                                new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Do il consenso", 0)
+                                , new Abletech.Bix.SignService.Contract.Model.V1.CreateRadioButtonFieldDto("Nego il consenso", 1)
                 }
-                , null, FontAbleTech.TimesRoman, null, null, null, ""
-                , DatePickerConstraint.Today
-                , new CreatePositionDto(PositionType.AcroField, "Group4")));
+                , null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, ""
+                , Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Group4")));
 
-            fg_fields.Add(new CreateFieldDto(FieldType.Signature
+            fg_fields.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.Signature
                 , "Firma per accettazione"
-                , 5, false,"", "5", null, null, null, FontAbleTech.TimesRoman, null, null, null, "", DatePickerConstraint.Today
-                , new CreatePositionDto(PositionType.AcroField, "Signature1")));
+                , 5, false, "", "5", null, null, null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, "", Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Signature1")));
 
-            fg_documents.Add(new CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fields));
-            fieldsGroup1.Add(new CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
+            fg_documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fields));
+            fieldsGroup1.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
-            List<CreateAttachmentDto> attachments = new List<CreateAttachmentDto>();
-            signers.Add(new IO.Swagger.Model.CreateSignerDto(description, email, phoneNumber, taxCode, VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto> attachments = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto>();
+            signers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto(description, email, phoneNumber, taxCode, Abletech.Bix.SignService.Contract.Model.V1.VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
 
-            List<CreateDocumentDto> documents = new List<CreateDocumentDto>();
-            documents.Add(new CreateDocumentDto("Informativa Privacy", documentUploaded.FileGuid, null, "Informativa Privacy", false));
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto> documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto>();
+            documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto("Informativa Privacy", documentUploaded.FileGuid, null, "Informativa Privacy", false));
 
-            IO.Swagger.Model.CreateSessionRequest body = new IO.Swagger.Model.CreateSessionRequest(SignSessionProcessTypeDto.ES, WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest body = new Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest(Abletech.Bix.SignService.Contract.Model.V1.SignSessionProcessTypeDto.ES, Abletech.Bix.SignService.Contract.Model.V1.WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
                 approvers, followers, documents, signers, false, true, true);
-            IO.Swagger.Model.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
 
             if (response.SessionGuid == null)
                 throw new Exception("Post return null");
 
-            IO.Swagger.Model.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid.Value);
-            return response.SessionGuid.Value;
+            Abletech.Bix.SignService.Contract.Model.V1.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid);
+            return response.SessionGuid;
+        }
+
+        public Guid CreateNewSignSessionGrafo(string email, string description, string taxCode, string phoneNumber, string returnUrl, string externalID, bool addApprover, bool addBiometricData)
+        {
+            var sessionDescription = "Firma grafometrica del modulo privacy";
+            var fileToSign = @"C:\Temp\BixHub\Grafo_ModuloPrivacy.pdf";
+
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+
+            Abletech.Bix.SignService.Contract.Model.V1.SavedFileResponse documentUploaded = sessionLifeCycleApi.ApiV1SessionLifeCycleUploadFileBase64Post(new Abletech.Bix.SignService.Contract.Model.V1.UploadFileBase64Request(System.Convert.ToBase64String(System.IO.File.ReadAllBytes(fileToSign)), System.IO.Path.GetFileName(fileToSign), MimeMapping.GetMimeMapping(fileToSign)));
+
+            var attributes = new Dictionary<string, string>
+            {
+            };
+
+            // parameters sono i parametri di funzionamento del servizio quali la lingua utente nonchè la URL di redirect a fine sessione
+            var parameters = new Dictionary<string, string> {
+                { "returnUrl", returnUrl },
+                { "language", "it" }
+            };
+            // è possibile indicare metadati da salvare lato BIX-IDE per poi favorire il match
+            var metadata = new Dictionary<string, string> {
+                { "externalID", externalID }
+            };
+
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto> webhooks = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateWebhookDto>();
+
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto> approvers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto>();
+            if (addApprover)
+                approvers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateApproverDto(email, description, 0, returnUrl, externalID));
+
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto> followers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFollowerDto>();
+
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto> signers = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto> fieldsGroup1 = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto> fg_documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto>();
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto> fg_fields = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto>();
+
+            fg_fields.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldDto(Abletech.Bix.SignService.Contract.Model.V1.FieldType.Signature
+                , "Firma per accettazione"
+                , 5, false, "", "5", null, null, null, Abletech.Bix.SignService.Contract.Model.V1.FontAbleTech.TimesRoman, null, null, null, "", Abletech.Bix.SignService.Contract.Model.V1.DatePickerConstraint.Today
+                , new Abletech.Bix.SignService.Contract.Model.V1.CreatePositionDto(Abletech.Bix.SignService.Contract.Model.V1.PositionType.AcroField, "Signature1")));
+
+            fg_documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDocumentDto(documentUploaded.FileGuid, 0, fg_fields));
+            fieldsGroup1.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
+
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto> attachments = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto>();
+            var signer = new Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto(description, email, phoneNumber, taxCode, Abletech.Bix.SignService.Contract.Model.V1.VerificationModeDto.Signature, 0, returnUrl, externalID, fieldsGroup1, attachments);
+            signer.Graphometric = true;
+
+            signers.Add(signer);
+
+            List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto> documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto>();
+            documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto("Informativa Privacy", documentUploaded.FileGuid, null, "Informativa Privacy", false));
+
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest body = new Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest(Abletech.Bix.SignService.Contract.Model.V1.SignSessionProcessTypeDto.ES, Abletech.Bix.SignService.Contract.Model.V1.WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
+                approvers, followers, documents, signers, false, false, false);
+            body.AcquireBiometricData = addBiometricData;
+            
+            Abletech.Bix.SignService.Contract.Model.V1.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
+
+            if (response.SessionGuid == null)
+                throw new Exception("Post return null");
+
+            Abletech.Bix.SignService.Contract.Model.V1.PublishSessionResponse a = sessionLifeCycleApi.ApiV1SessionLifeCyclePublishSessionGuidPost(response.SessionGuid);
+            return response.SessionGuid;
         }
 
         public void DeleteIdentificationSession(Guid sessionGuid)
         {
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
             sessionLifeCycleApi.ApiV1SessionLifeCycleDeleteSessionGuidDelete(sessionGuid);
         }
 
         public BixHubWrapper.Model.InfoSessionResponse GetSession(Guid sessionGuid)
         {
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            IO.Swagger.Model.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
-            List<IO.Swagger.Model.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid?> { sessionGuid });
-            IO.Swagger.Model.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
+
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Model.V1.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
+            List<Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid> { sessionGuid });
+            Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
             var result = InfoSessionResponseTranslate(sessionGuid, sessionModel, statusModel);
             return result;
 
@@ -343,21 +409,21 @@ namespace BixHubWrapper
 
         public List<BixHubWrapper.Model.InfoSessionResponse> GetSessionList()
         {
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            IO.Swagger.Model.GetAllSessionRequest request = new IO.Swagger.Model.GetAllSessionRequest(null, null);
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Model.V1.GetAllSessionRequest request = new Abletech.Bix.SignService.Contract.Model.V1.GetAllSessionRequest(null, null);
             var sessionResponse = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAllPost(request);
             var result = new List<BixHubWrapper.Model.InfoSessionResponse>();
             if (sessionResponse == null)
                 return result;
-            if (sessionResponse._List == null)
+            if (sessionResponse.List == null)
                 return result;
-            foreach (IO.Swagger.Model.GetAllSessionResponse session in sessionResponse._List)
+            foreach (var session in sessionResponse.List)
                 if (session.SessionGuid != null)
-                    result.Add(GetSession(session.SessionGuid.Value));
+                    result.Add(GetSession(session.SessionGuid));
             return result;
         }
 
-        private BixHubWrapper.Model.InfoSessionResponse InfoSessionResponseTranslate(Guid? sessionGuid, IO.Swagger.Model.GetSessionDetailResponse sessionModel, IO.Swagger.Model.GetStatusSessionResponse statusModel)
+        private BixHubWrapper.Model.InfoSessionResponse InfoSessionResponseTranslate(Guid? sessionGuid, Abletech.Bix.SignService.Contract.Model.V1.GetSessionDetailResponse sessionModel, Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse statusModel)
         {
             if (sessionModel == null)
                 return null;
@@ -366,7 +432,7 @@ namespace BixHubWrapper
             if (sessionGuid != null)
                 result.SessionGuid = sessionGuid.Value;
             if (sessionModel.CreatedDate != null)
-                result.CreatedDate = sessionModel.CreatedDate.Value.ToLocalTime();
+                result.CreatedDate = sessionModel.CreatedDate.ToLocalTime();
             if (sessionModel.Metadata != null)
             {
                 var f = sessionModel.Metadata.FirstOrDefault(x => x.Key == "externalID");
@@ -389,25 +455,34 @@ namespace BixHubWrapper
 
         public byte[] GetAuditTrailSignBySessionGuid(Guid sessionGuid)
         {
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
             var response = sessionLifeCycleApi.ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet(sessionGuid);
-            return response;
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                response.CopyTo(ms);
+                return ms.ToArray();
+            }
         }
 
-        
         public Dictionary<string, byte[]> GetSignedFiles(Guid sessionGuid)
         {
             var result = new Dictionary<string, byte[]>();
-
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            IO.Swagger.Model.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
-            List<IO.Swagger.Model.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid?> { sessionGuid });
-            IO.Swagger.Model.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Model.V1.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
+            List<Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid> { sessionGuid });
+            Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
 
             foreach (var document in sessionModel.Documents)
             {
                 var doc = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet(sessionGuid, document.Guid);
-                result.Add(document.ExternalId, doc);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    doc.CopyTo(ms);
+                    var docB = ms.ToArray();
+                    result.Add(document.ExternalId, docB);
+                }
             }
             return result;
         }
@@ -416,14 +491,14 @@ namespace BixHubWrapper
         {
             var result = new Dictionary<Guid, string>();
 
-            IO.Swagger.Api.SessionLifeCycleApi sessionLifeCycleApi = new IO.Swagger.Api.SessionLifeCycleApi(Configuration);
-            IO.Swagger.Model.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
-            List<IO.Swagger.Model.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid?> { sessionGuid });
-            IO.Swagger.Model.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
+            Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi sessionLifeCycleApi = new Abletech.Bix.SignService.Contract.Client.V1.SessionLifeCycleApi(Configuration);
+            Abletech.Bix.SignService.Contract.Model.V1.GetSessionDetailResponse sessionModel = sessionLifeCycleApi.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
+            List<Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse> statusModelList = sessionLifeCycleApi.ApiV1SessionLifeCycleGetStatusPost(new List<Guid> { sessionGuid });
+            Abletech.Bix.SignService.Contract.Model.V1.GetStatusSessionResponse statusModel = statusModelList.FirstOrDefault();
             foreach (var signer in statusModel.Signers)
             {
                 if (signer.IdentificationSession != null && signer.IdentificationSession.Guid != null)
-                    result.Add(signer.IdentificationSession.Guid.Value, signer.TaxCode);
+                    result.Add(signer.IdentificationSession.Guid, signer.TaxCode);
             }
             return result;
         }

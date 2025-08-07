@@ -333,6 +333,30 @@ namespace ExampleSIGN
                 AddLogError(ex.Message);
             }
         }
+
+        private void _btnCreaSessioneGrafo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_signCaller == null)
+                    throw new Exception("Fare login");
+
+                Guid sessionId = _signCaller.CreateNewSignSessionGrafo(_txtMail.Text, _txtDescription.Text, _txtTaxCode.Text, _txtPhoneNumber.Text, _txtReturnUrl.Text, _txtExternalID.Text, _cbAddApprover.Checked, _cbAddGrafoData.Checked);
+                AddLogInfo("Sessione creata con successo: " + sessionId);
+            }
+            catch (Exception ex)
+            {
+                AddLogError(ex.Message);
+            }
+        }
+
+        private void _btnClearLog_Click(object sender, EventArgs e)
+        {
+            sessionData.DataSource = null;
+            sessionData.Columns.Clear();
+            _txtLog.Text = string.Empty;    
+
+        }
     }
 
     [Serializable()]

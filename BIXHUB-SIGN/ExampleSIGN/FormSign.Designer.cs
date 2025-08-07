@@ -45,6 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this._txtLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this._cbAddGrafoData = new System.Windows.Forms.CheckBox();
+            this._btnCreaSessioneGrafo = new System.Windows.Forms.Button();
             this._btnCreaSessioneFEQ = new System.Windows.Forms.Button();
             this._cbAddApprover = new System.Windows.Forms.CheckBox();
             this._btnCreaSessioneFEA = new System.Windows.Forms.Button();
@@ -72,6 +74,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sessionData = new System.Windows.Forms.DataGridView();
+            this._btnClearLog = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -258,6 +261,8 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this._cbAddGrafoData);
+            this.groupBox3.Controls.Add(this._btnCreaSessioneGrafo);
             this.groupBox3.Controls.Add(this._btnCreaSessioneFEQ);
             this.groupBox3.Controls.Add(this._cbAddApprover);
             this.groupBox3.Controls.Add(this._btnCreaSessioneFEA);
@@ -283,9 +288,33 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Creazione nuova sessione di firma FES";
             // 
+            // _cbAddGrafoData
+            // 
+            this._cbAddGrafoData.AutoSize = true;
+            this._cbAddGrafoData.Checked = true;
+            this._cbAddGrafoData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this._cbAddGrafoData.Location = new System.Drawing.Point(952, 131);
+            this._cbAddGrafoData.Margin = new System.Windows.Forms.Padding(4);
+            this._cbAddGrafoData.Name = "_cbAddGrafoData";
+            this._cbAddGrafoData.Size = new System.Drawing.Size(114, 20);
+            this._cbAddGrafoData.TabIndex = 33;
+            this._cbAddGrafoData.Text = "Dati biometrici";
+            this._cbAddGrafoData.UseVisualStyleBackColor = true;
+            // 
+            // _btnCreaSessioneGrafo
+            // 
+            this._btnCreaSessioneGrafo.Location = new System.Drawing.Point(754, 125);
+            this._btnCreaSessioneGrafo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnCreaSessioneGrafo.Name = "_btnCreaSessioneGrafo";
+            this._btnCreaSessioneGrafo.Size = new System.Drawing.Size(191, 31);
+            this._btnCreaSessioneGrafo.TabIndex = 32;
+            this._btnCreaSessioneGrafo.Text = "Crea Sessione Grafmetrica";
+            this._btnCreaSessioneGrafo.UseVisualStyleBackColor = true;
+            this._btnCreaSessioneGrafo.Click += new System.EventHandler(this._btnCreaSessioneGrafo_Click);
+            // 
             // _btnCreaSessioneFEQ
             // 
-            this._btnCreaSessioneFEQ.Location = new System.Drawing.Point(912, 124);
+            this._btnCreaSessioneFEQ.Location = new System.Drawing.Point(599, 125);
             this._btnCreaSessioneFEQ.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._btnCreaSessioneFEQ.Name = "_btnCreaSessioneFEQ";
             this._btnCreaSessioneFEQ.Size = new System.Drawing.Size(149, 31);
@@ -297,7 +326,7 @@
             // _cbAddApprover
             // 
             this._cbAddApprover.AutoSize = true;
-            this._cbAddApprover.Location = new System.Drawing.Point(440, 130);
+            this._cbAddApprover.Location = new System.Drawing.Point(127, 131);
             this._cbAddApprover.Margin = new System.Windows.Forms.Padding(4);
             this._cbAddApprover.Name = "_cbAddApprover";
             this._cbAddApprover.Size = new System.Drawing.Size(155, 20);
@@ -307,7 +336,7 @@
             // 
             // _btnCreaSessioneFEA
             // 
-            this._btnCreaSessioneFEA.Location = new System.Drawing.Point(757, 124);
+            this._btnCreaSessioneFEA.Location = new System.Drawing.Point(444, 125);
             this._btnCreaSessioneFEA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._btnCreaSessioneFEA.Name = "_btnCreaSessioneFEA";
             this._btnCreaSessioneFEA.Size = new System.Drawing.Size(149, 31);
@@ -408,7 +437,7 @@
             // 
             // _btnCreaSessioneFES
             // 
-            this._btnCreaSessioneFES.Location = new System.Drawing.Point(602, 124);
+            this._btnCreaSessioneFES.Location = new System.Drawing.Point(289, 125);
             this._btnCreaSessioneFES.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._btnCreaSessioneFES.Name = "_btnCreaSessioneFES";
             this._btnCreaSessioneFES.Size = new System.Drawing.Size(149, 31);
@@ -440,7 +469,7 @@
             this._btnGetSessionStatus.Location = new System.Drawing.Point(13, 36);
             this._btnGetSessionStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._btnGetSessionStatus.Name = "_btnGetSessionStatus";
-            this._btnGetSessionStatus.Size = new System.Drawing.Size(199, 31);
+            this._btnGetSessionStatus.Size = new System.Drawing.Size(151, 31);
             this._btnGetSessionStatus.TabIndex = 12;
             this._btnGetSessionStatus.Text = "Reperimento elenco";
             this._btnGetSessionStatus.UseVisualStyleBackColor = true;
@@ -450,6 +479,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this._btnClearLog);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Controls.Add(this.button1);
@@ -566,6 +596,17 @@
             this.sessionData.TabIndex = 0;
             this.sessionData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sessionData_CellContentClick);
             // 
+            // _btnClearLog
+            // 
+            this._btnClearLog.Location = new System.Drawing.Point(170, 36);
+            this._btnClearLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnClearLog.Name = "_btnClearLog";
+            this._btnClearLog.Size = new System.Drawing.Size(112, 31);
+            this._btnClearLog.TabIndex = 18;
+            this._btnClearLog.Text = "Clear Log";
+            this._btnClearLog.UseVisualStyleBackColor = true;
+            this._btnClearLog.Click += new System.EventHandler(this._btnClearLog_Click);
+            // 
             // FormSign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -641,6 +682,9 @@
         private System.Windows.Forms.TextBox _txtIdeUrl;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button _btnCreaSessioneFEQ;
+        private System.Windows.Forms.CheckBox _cbAddGrafoData;
+        private System.Windows.Forms.Button _btnCreaSessioneGrafo;
+        private System.Windows.Forms.Button _btnClearLog;
     }
 }
 
