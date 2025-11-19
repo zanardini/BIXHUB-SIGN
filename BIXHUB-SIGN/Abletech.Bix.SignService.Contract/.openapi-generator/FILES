@@ -51,6 +51,7 @@ docs/IdeSessionStatus.md
 docs/IdentificationSessionStatusSessionResponse.md
 docs/MonitoringApi.md
 docs/NextActorStatusSessionResponse.md
+docs/NotificationChannel.md
 docs/PositionType.md
 docs/PublishSessionApproversResponse.md
 docs/PublishSessionErrorsResponse.md
@@ -126,6 +127,7 @@ src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetStatusSessionResponseTest
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/IdeSessionStatusTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/IdentificationSessionStatusSessionResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/NextActorStatusSessionResponseTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/NotificationChannelTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/PositionTypeTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/PublishSessionApproversResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/PublishSessionErrorsResponseTests.cs
@@ -209,6 +211,7 @@ src/Abletech.Bix.SignService.Contract/Model.V1/GetStatusSessionResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/IdeSessionStatus.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/IdentificationSessionStatusSessionResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/NextActorStatusSessionResponse.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/NotificationChannel.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/PositionType.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/PublishSessionApproversResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/PublishSessionErrorsResponse.cs

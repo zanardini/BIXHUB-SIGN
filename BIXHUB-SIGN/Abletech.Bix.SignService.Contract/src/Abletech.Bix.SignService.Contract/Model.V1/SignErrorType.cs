@@ -105,7 +105,13 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Enum IdentificationSession for value: IdentificationSession
         /// </summary>
         [EnumMember(Value = "IdentificationSession")]
-        IdentificationSession = 9
+        IdentificationSession = 9,
+
+        /// <summary>
+        /// Enum SendSmsToSigner for value: SendSmsToSigner
+        /// </summary>
+        [EnumMember(Value = "SendSmsToSigner")]
+        SendSmsToSigner = 10
 
     }
 

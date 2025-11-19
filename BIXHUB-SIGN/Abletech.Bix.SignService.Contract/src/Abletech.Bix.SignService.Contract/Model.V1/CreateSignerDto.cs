@@ -57,6 +57,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         [DataMember(Name="verificationMode", EmitDefaultValue=true)]
         public VerificationModeDto VerificationMode { get; set; }
         /// <summary>
+        /// Gets or Sets NotificationChannel
+        /// </summary>
+        [DataMember(Name="notificationChannel", EmitDefaultValue=true)]
+        public NotificationChannel NotificationChannel { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateSignerDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -77,7 +82,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <param name="language">language.</param>
         /// <param name="requireIdentification">requireIdentification.</param>
         /// <param name="graphometric">graphometric.</param>
-        public CreateSignerDto(string description = default(string), string email = default(string), string phoneNumber = default(string), string taxCode = default(string), VerificationModeDto verificationMode = default(VerificationModeDto), float indexOrder = default(float), string redirectUri = default(string), string externalId = default(string), List<CreateFieldGroupDto> fieldGroups = default(List<CreateFieldGroupDto>), List<CreateAttachmentDto> attachments = default(List<CreateAttachmentDto>), string language = default(string), bool? requireIdentification = default(bool?), bool graphometric = default(bool))
+        /// <param name="base64SignatureImage">base64SignatureImage.</param>
+        /// <param name="notificationChannel">notificationChannel (required).</param>
+        public CreateSignerDto(string description = default(string), string email = default(string), string phoneNumber = default(string), string taxCode = default(string), VerificationModeDto verificationMode = default(VerificationModeDto), float indexOrder = default(float), string redirectUri = default(string), string externalId = default(string), List<CreateFieldGroupDto> fieldGroups = default(List<CreateFieldGroupDto>), List<CreateAttachmentDto> attachments = default(List<CreateAttachmentDto>), string language = default(string), bool? requireIdentification = default(bool?), bool graphometric = default(bool), string base64SignatureImage = default(string), NotificationChannel notificationChannel = default(NotificationChannel))
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -108,6 +115,17 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Attachments = attachments;
             this.Language = language;
             this.RequireIdentification = requireIdentification;
+            this.Base64SignatureImage = base64SignatureImage;
+            // to ensure "notificationChannel" is required (not null)
+            if (notificationChannel == null)
+            {
+                throw new InvalidDataException("notificationChannel is a required property for CreateSignerDto and cannot be null");
+            }
+            else
+            {
+                this.NotificationChannel = notificationChannel;
+            }
+
             this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.TaxCode = taxCode;
@@ -119,6 +137,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Language = language;
             this.RequireIdentification = requireIdentification;
             this.Graphometric = graphometric;
+            this.Base64SignatureImage = base64SignatureImage;
         }
 
         /// <summary>
@@ -195,6 +214,13 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public bool Graphometric { get; set; }
 
         /// <summary>
+        /// Gets or Sets Base64SignatureImage
+        /// </summary>
+        [DataMember(Name="base64SignatureImage", EmitDefaultValue=true)]
+        public string Base64SignatureImage { get; set; }
+
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -215,6 +241,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  RequireIdentification: ").Append(RequireIdentification).Append("\n");
             sb.Append("  Graphometric: ").Append(Graphometric).Append("\n");
+            sb.Append("  Base64SignatureImage: ").Append(Base64SignatureImage).Append("\n");
+            sb.Append("  NotificationChannel: ").Append(NotificationChannel).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -315,6 +343,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.Graphometric == input.Graphometric ||
                     (this.Graphometric != null &&
                     this.Graphometric.Equals(input.Graphometric))
+                ) && 
+                (
+                    this.Base64SignatureImage == input.Base64SignatureImage ||
+                    (this.Base64SignatureImage != null &&
+                    this.Base64SignatureImage.Equals(input.Base64SignatureImage))
+                ) && 
+                (
+                    this.NotificationChannel == input.NotificationChannel ||
+                    (this.NotificationChannel != null &&
+                    this.NotificationChannel.Equals(input.NotificationChannel))
                 );
         }
 
@@ -353,6 +391,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.RequireIdentification.GetHashCode();
                 if (this.Graphometric != null)
                     hashCode = hashCode * 59 + this.Graphometric.GetHashCode();
+                if (this.Base64SignatureImage != null)
+                    hashCode = hashCode * 59 + this.Base64SignatureImage.GetHashCode();
+                if (this.NotificationChannel != null)
+                    hashCode = hashCode * 59 + this.NotificationChannel.GetHashCode();
                 return hashCode;
             }
         }

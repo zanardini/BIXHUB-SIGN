@@ -131,7 +131,7 @@ namespace Abletech.Bix.SignService.Contract.Client
             IDictionary<string, string> defaultHeader,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://authapidemo.bixhub.eu/SignService") : this()
+            string basePath = "/SignService") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");

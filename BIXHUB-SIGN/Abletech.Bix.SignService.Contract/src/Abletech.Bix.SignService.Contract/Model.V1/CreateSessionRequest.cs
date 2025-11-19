@@ -95,9 +95,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <param name="retentionDays">retentionDays.</param>
         /// <param name="daysToDownload">daysToDownload.</param>
         /// <param name="automaticReminder">automaticReminder (required).</param>
-        /// <param name="extraFields">extraFields.</param>
+        /// <param name="extraProperties">extraProperties.</param>
         /// <param name="customAutomaticReminderDays">customAutomaticReminderDays.</param>
-        public CreateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?), bool? requireTimestampingForDocuments = default(bool?), bool? lockAllChangesInSignedDocuments = default(bool?), bool? acquireBiometricData = default(bool?), string externalId = default(string), int? retentionDays = default(int?), int? daysToDownload = default(int?), AutomaticReminderType automaticReminder = default(AutomaticReminderType), Dictionary<string, string> extraFields = default(Dictionary<string, string>), int? customAutomaticReminderDays = default(int?))
+        /// <param name="isPrivate">isPrivate.</param>
+        /// <param name="privateViewers">privateViewers.</param>
+        public CreateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?), bool? requireTimestampingForDocuments = default(bool?), bool? lockAllChangesInSignedDocuments = default(bool?), bool? acquireBiometricData = default(bool?), string externalId = default(string), int? retentionDays = default(int?), int? daysToDownload = default(int?), AutomaticReminderType automaticReminder = default(AutomaticReminderType), Dictionary<string, string> extraProperties = default(Dictionary<string, string>), int? customAutomaticReminderDays = default(int?), bool isPrivate = default(bool), List<string> privateViewers = default(List<string>))
         {
             // to ensure "process" is required (not null)
             if (process == null)
@@ -147,8 +149,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                 this.AutomaticReminder = automaticReminder;
             }
 
-            this.ExtraFields = extraFields;
+            this.ExtraProperties = extraProperties;
             this.CustomAutomaticReminderDays = customAutomaticReminderDays;
+            this.PrivateViewers = privateViewers;
             this.Description = description;
             this.Metadata = metadata;
             this.Parameters = parameters;
@@ -167,8 +170,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.ExternalId = externalId;
             this.RetentionDays = retentionDays;
             this.DaysToDownload = daysToDownload;
-            this.ExtraFields = extraFields;
+            this.ExtraProperties = extraProperties;
             this.CustomAutomaticReminderDays = customAutomaticReminderDays;
+            this.IsPrivate = isPrivate;
+            this.PrivateViewers = privateViewers;
         }
 
 
@@ -283,16 +288,28 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets ExtraFields
+        /// Gets or Sets ExtraProperties
         /// </summary>
-        [DataMember(Name="extraFields", EmitDefaultValue=true)]
-        public Dictionary<string, string> ExtraFields { get; set; }
+        [DataMember(Name="extraProperties", EmitDefaultValue=true)]
+        public Dictionary<string, string> ExtraProperties { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomAutomaticReminderDays
         /// </summary>
         [DataMember(Name="customAutomaticReminderDays", EmitDefaultValue=true)]
         public int? CustomAutomaticReminderDays { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsPrivate
+        /// </summary>
+        [DataMember(Name="isPrivate", EmitDefaultValue=true)]
+        public bool IsPrivate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivateViewers
+        /// </summary>
+        [DataMember(Name="privateViewers", EmitDefaultValue=true)]
+        public List<string> PrivateViewers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -323,8 +340,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  RetentionDays: ").Append(RetentionDays).Append("\n");
             sb.Append("  DaysToDownload: ").Append(DaysToDownload).Append("\n");
             sb.Append("  AutomaticReminder: ").Append(AutomaticReminder).Append("\n");
-            sb.Append("  ExtraFields: ").Append(ExtraFields).Append("\n");
+            sb.Append("  ExtraProperties: ").Append(ExtraProperties).Append("\n");
             sb.Append("  CustomAutomaticReminderDays: ").Append(CustomAutomaticReminderDays).Append("\n");
+            sb.Append("  IsPrivate: ").Append(IsPrivate).Append("\n");
+            sb.Append("  PrivateViewers: ").Append(PrivateViewers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -473,15 +492,26 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.AutomaticReminder.Equals(input.AutomaticReminder))
                 ) && 
                 (
-                    this.ExtraFields == input.ExtraFields ||
-                    this.ExtraFields != null &&
-                    input.ExtraFields != null &&
-                    this.ExtraFields.SequenceEqual(input.ExtraFields)
+                    this.ExtraProperties == input.ExtraProperties ||
+                    this.ExtraProperties != null &&
+                    input.ExtraProperties != null &&
+                    this.ExtraProperties.SequenceEqual(input.ExtraProperties)
                 ) && 
                 (
                     this.CustomAutomaticReminderDays == input.CustomAutomaticReminderDays ||
                     (this.CustomAutomaticReminderDays != null &&
                     this.CustomAutomaticReminderDays.Equals(input.CustomAutomaticReminderDays))
+                ) && 
+                (
+                    this.IsPrivate == input.IsPrivate ||
+                    (this.IsPrivate != null &&
+                    this.IsPrivate.Equals(input.IsPrivate))
+                ) && 
+                (
+                    this.PrivateViewers == input.PrivateViewers ||
+                    this.PrivateViewers != null &&
+                    input.PrivateViewers != null &&
+                    this.PrivateViewers.SequenceEqual(input.PrivateViewers)
                 );
         }
 
@@ -536,10 +566,14 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.DaysToDownload.GetHashCode();
                 if (this.AutomaticReminder != null)
                     hashCode = hashCode * 59 + this.AutomaticReminder.GetHashCode();
-                if (this.ExtraFields != null)
-                    hashCode = hashCode * 59 + this.ExtraFields.GetHashCode();
+                if (this.ExtraProperties != null)
+                    hashCode = hashCode * 59 + this.ExtraProperties.GetHashCode();
                 if (this.CustomAutomaticReminderDays != null)
                     hashCode = hashCode * 59 + this.CustomAutomaticReminderDays.GetHashCode();
+                if (this.IsPrivate != null)
+                    hashCode = hashCode * 59 + this.IsPrivate.GetHashCode();
+                if (this.PrivateViewers != null)
+                    hashCode = hashCode * 59 + this.PrivateViewers.GetHashCode();
                 return hashCode;
             }
         }

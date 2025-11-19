@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *SessionLifeCycleApi* | [**ApiV1SessionLifeCyclePublishSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclepublishsessionguidpost) | **POST** /api/v1/SessionLifeCycle/Publish/{sessionGuid} | Make signature session viewable
 *SessionLifeCycleApi* | [**ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclerestoreidentificationsessionsessionguidsignerguidpost) | **POST** /api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid} | 
 *SessionLifeCycleApi* | [**ApiV1SessionLifeCycleSendEmailSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclesendemailsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendEmail/{sessionGuid} | Send an email to next user with the link to activate the signature session
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleSendNotificationSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclesendnotificationsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendNotification/{sessionGuid} | Send an email to next user with the link to activate the signature session
 *SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUpdateSessionGuidPatch**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleupdatesessionguidpatch) | **PATCH** /api/v1/SessionLifeCycle/Update/{sessionGuid} | Update attributes, parameters or metadata of an signature session
 *SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFileBase64Post**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilebase64post) | **POST** /api/v1/SessionLifeCycle/UploadFileBase64 | 
 *SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilePost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilepost) | **POST** /api/v1/SessionLifeCycle/UploadFile | Upload a document in format pdf
@@ -179,6 +180,7 @@ Class | Method | HTTP request | Description
  - [Model.V1.IdeSessionStatus](docs/IdeSessionStatus.md)
  - [Model.V1.IdentificationSessionStatusSessionResponse](docs/IdentificationSessionStatusSessionResponse.md)
  - [Model.V1.NextActorStatusSessionResponse](docs/NextActorStatusSessionResponse.md)
+ - [Model.V1.NotificationChannel](docs/NotificationChannel.md)
  - [Model.V1.PositionType](docs/PositionType.md)
  - [Model.V1.PublishSessionApproversResponse](docs/PublishSessionApproversResponse.md)
  - [Model.V1.PublishSessionErrorsResponse](docs/PublishSessionErrorsResponse.md)

@@ -26,8 +26,10 @@ Name | Type | Description | Notes
 **RetentionDays** | **int?** |  | [optional] 
 **DaysToDownload** | **int?** |  | [optional] 
 **AutomaticReminder** | **AutomaticReminderType** |  | 
-**ExtraFields** | **Dictionary&lt;string, string&gt;** |  | [optional] 
+**ExtraProperties** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **CustomAutomaticReminderDays** | **int?** |  | [optional] 
+**IsPrivate** | **bool** |  | [optional] 
+**PrivateViewers** | **List&lt;string&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

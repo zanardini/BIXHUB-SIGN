@@ -153,6 +153,22 @@ namespace Abletech.Bix.SignService.Contract.Test
         {
             // TODO unit test for the property 'Errors'
         }
+        /// <summary>
+        /// Test the property 'ExpirationDate'
+        /// </summary>
+        [Test]
+        public void ExpirationDateTest()
+        {
+            // TODO unit test for the property 'ExpirationDate'
+        }
+        /// <summary>
+        /// Test the property 'RejectionDate'
+        /// </summary>
+        [Test]
+        public void RejectionDateTest()
+        {
+            // TODO unit test for the property 'RejectionDate'
+        }
 
     }
 

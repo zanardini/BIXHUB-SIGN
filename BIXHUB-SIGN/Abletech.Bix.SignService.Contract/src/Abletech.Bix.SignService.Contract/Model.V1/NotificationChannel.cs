@@ -46,78 +46,24 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines IdeSessionStatus
+    /// Defines NotificationChannel
     /// </summary>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum IdeSessionStatus
+    public enum NotificationChannel
     {
         /// <summary>
-        /// Enum Pending for value: Pending
+        /// Enum Email for value: Email
         /// </summary>
-        [EnumMember(Value = "Pending")]
-        Pending = 1,
+        [EnumMember(Value = "Email")]
+        Email = 1,
 
         /// <summary>
-        /// Enum InProgress for value: InProgress
+        /// Enum Sms for value: Sms
         /// </summary>
-        [EnumMember(Value = "InProgress")]
-        InProgress = 2,
-
-        /// <summary>
-        /// Enum InVerify for value: InVerify
-        /// </summary>
-        [EnumMember(Value = "InVerify")]
-        InVerify = 3,
-
-        /// <summary>
-        /// Enum Completed for value: Completed
-        /// </summary>
-        [EnumMember(Value = "Completed")]
-        Completed = 4,
-
-        /// <summary>
-        /// Enum Failed for value: Failed
-        /// </summary>
-        [EnumMember(Value = "Failed")]
-        Failed = 5,
-
-        /// <summary>
-        /// Enum Deleted for value: Deleted
-        /// </summary>
-        [EnumMember(Value = "Deleted")]
-        Deleted = 6,
-
-        /// <summary>
-        /// Enum DeletedByRetention for value: DeletedByRetention
-        /// </summary>
-        [EnumMember(Value = "DeletedByRetention")]
-        DeletedByRetention = 7,
-
-        /// <summary>
-        /// Enum FailedTooManyAttempts for value: FailedTooManyAttempts
-        /// </summary>
-        [EnumMember(Value = "FailedTooManyAttempts")]
-        FailedTooManyAttempts = 8,
-
-        /// <summary>
-        /// Enum FailedSpidCie for value: FailedSpidCie
-        /// </summary>
-        [EnumMember(Value = "FailedSpidCie")]
-        FailedSpidCie = 9,
-
-        /// <summary>
-        /// Enum FailedCannotVerify for value: FailedCannotVerify
-        /// </summary>
-        [EnumMember(Value = "FailedCannotVerify")]
-        FailedCannotVerify = 10,
-
-        /// <summary>
-        /// Enum Rejected for value: Rejected
-        /// </summary>
-        [EnumMember(Value = "Rejected")]
-        Rejected = 11
+        [EnumMember(Value = "Sms")]
+        Sms = 2
 
     }
 

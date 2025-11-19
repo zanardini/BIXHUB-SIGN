@@ -294,6 +294,19 @@ namespace Abletech.Bix.SignService.Contract.Test
         }
         
         /// <summary>
+        /// Test ApiV1SessionLifeCycleSendNotificationSessionGuidPost
+        /// </summary>
+        [Test]
+        public void ApiV1SessionLifeCycleSendNotificationSessionGuidPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //Guid sessionGuid = null;
+            //SendEmailRequest sendEmailRequest = null;
+            //var response = instance.ApiV1SessionLifeCycleSendNotificationSessionGuidPost(sessionGuid, sendEmailRequest);
+            //Assert.IsInstanceOf(typeof(ActorType), response, "response is ActorType");
+        }
+        
+        /// <summary>
         /// Test ApiV1SessionLifeCycleUpdateSessionGuidPatch
         /// </summary>
         [Test]

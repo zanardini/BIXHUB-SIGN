@@ -234,12 +234,12 @@ namespace Abletech.Bix.SignService.Contract.Test
             // TODO unit test for the property 'AutomaticReminder'
         }
         /// <summary>
-        /// Test the property 'ExtraFields'
+        /// Test the property 'ExtraProperties'
         /// </summary>
         [Test]
-        public void ExtraFieldsTest()
+        public void ExtraPropertiesTest()
         {
-            // TODO unit test for the property 'ExtraFields'
+            // TODO unit test for the property 'ExtraProperties'
         }
         /// <summary>
         /// Test the property 'CustomAutomaticReminderDays'
@@ -248,6 +248,22 @@ namespace Abletech.Bix.SignService.Contract.Test
         public void CustomAutomaticReminderDaysTest()
         {
             // TODO unit test for the property 'CustomAutomaticReminderDays'
+        }
+        /// <summary>
+        /// Test the property 'IsPrivate'
+        /// </summary>
+        [Test]
+        public void IsPrivateTest()
+        {
+            // TODO unit test for the property 'IsPrivate'
+        }
+        /// <summary>
+        /// Test the property 'PrivateViewers'
+        /// </summary>
+        [Test]
+        public void PrivateViewersTest()
+        {
+            // TODO unit test for the property 'PrivateViewers'
         }
 
     }

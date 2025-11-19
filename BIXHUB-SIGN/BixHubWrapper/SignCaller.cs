@@ -427,7 +427,7 @@ namespace BixHubWrapper
         {
             if (sessionModel == null)
                 return null;
-
+            
             BixHubWrapper.Model.InfoSessionResponse result = new BixHubWrapper.Model.InfoSessionResponse();
             if (sessionGuid != null)
                 result.SessionGuid = sessionGuid.Value;

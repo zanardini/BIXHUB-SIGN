@@ -24,7 +24,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
     /// </summary>
     public interface ISessionLifeCycleApi : IApiAccessor
     {
-        #region Synchronous Operations
+        
         /// <summary>
         /// 
         /// </summary>
@@ -424,6 +424,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sessionGuid"></param>
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <returns>ActorType</returns>
+        [Obsolete]
         ActorType ApiV1SessionLifeCycleSendEmailSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest));
 
         /// <summary>
@@ -436,7 +437,31 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sessionGuid"></param>
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <returns>ApiResponse of ActorType</returns>
+        [Obsolete]
         ApiResponse<ActorType> ApiV1SessionLifeCycleSendEmailSessionGuidPostWithHttpInfo (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest));
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session
+        /// </summary>
+        /// <remarks>
+        /// Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </remarks>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <returns>ActorType</returns>
+        ActorType ApiV1SessionLifeCycleSendNotificationSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest));
+
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session
+        /// </summary>
+        /// <remarks>
+        /// Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </remarks>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <returns>ApiResponse of ActorType</returns>
+        ApiResponse<ActorType> ApiV1SessionLifeCycleSendNotificationSessionGuidPostWithHttpInfo (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest));
         /// <summary>
         /// Update attributes, parameters or metadata of an signature session
         /// </summary>
@@ -529,8 +554,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         ApiResponse<List<SavedFileResponse>> ApiV1SessionLifeCycleUploadFilesBase64PostWithHttpInfo (UploadFilesRequest uploadFilesRequest = default(UploadFilesRequest));
         
         
-        #endregion Synchronous Operations
-        #region Asynchronous Operations
+        
         /// <summary>
         /// 
         /// </summary>
@@ -965,6 +989,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ActorType</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ActorType> ApiV1SessionLifeCycleSendEmailSessionGuidPostAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -978,7 +1003,33 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (ActorType)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ActorType>> ApiV1SessionLifeCycleSendEmailSessionGuidPostWithHttpInfoAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session
+        /// </summary>
+        /// <remarks>
+        /// Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </remarks>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ActorType</returns>
+        System.Threading.Tasks.Task<ActorType> ApiV1SessionLifeCycleSendNotificationSessionGuidPostAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session
+        /// </summary>
+        /// <remarks>
+        /// Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </remarks>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ApiResponse (ActorType)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ActorType>> ApiV1SessionLifeCycleSendNotificationSessionGuidPostWithHttpInfoAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update attributes, parameters or metadata of an signature session
         /// </summary>
@@ -1077,7 +1128,8 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <returns>Task of ApiResponse (List&lt;SavedFileResponse&gt;)</returns>
         [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<List<SavedFileResponse>>> ApiV1SessionLifeCycleUploadFilesBase64PostWithHttpInfoAsync (UploadFilesRequest uploadFilesRequest = default(UploadFilesRequest), CancellationToken cancellationToken = default(CancellationToken));
-        #endregion Asynchronous Operations
+        
+
     }
 
     /// <summary>
@@ -3948,6 +4000,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sessionGuid"></param>
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <returns>ActorType</returns>
+        [Obsolete]
         public ActorType ApiV1SessionLifeCycleSendEmailSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest))
         {
              ApiResponse<ActorType> localVarResponse = ApiV1SessionLifeCycleSendEmailSessionGuidPostWithHttpInfo(sessionGuid, sendEmailRequest);
@@ -3961,6 +4014,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sessionGuid"></param>
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <returns>ApiResponse of ActorType</returns>
+        [Obsolete]
         public ApiResponse<ActorType> ApiV1SessionLifeCycleSendEmailSessionGuidPostWithHttpInfo (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest))
         {
             // verify the required parameter 'sessionGuid' is set
@@ -4036,6 +4090,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ActorType</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ActorType> ApiV1SessionLifeCycleSendEmailSessionGuidPostAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<ActorType> localVarResponse = await ApiV1SessionLifeCycleSendEmailSessionGuidPostWithHttpInfoAsync(sessionGuid, sendEmailRequest, cancellationToken);
@@ -4051,6 +4106,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
         /// <param name="sendEmailRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (ActorType)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ApiResponse<ActorType>> ApiV1SessionLifeCycleSendEmailSessionGuidPostWithHttpInfoAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'sessionGuid' is set
@@ -4110,6 +4166,183 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ApiV1SessionLifeCycleSendEmailSessionGuidPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ActorType>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ActorType) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActorType)));
+        }
+
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </summary>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <returns>ActorType</returns>
+        public ActorType ApiV1SessionLifeCycleSendNotificationSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest))
+        {
+             ApiResponse<ActorType> localVarResponse = ApiV1SessionLifeCycleSendNotificationSessionGuidPostWithHttpInfo(sessionGuid, sendEmailRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </summary>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <returns>ApiResponse of ActorType</returns>
+        public ApiResponse<ActorType> ApiV1SessionLifeCycleSendNotificationSessionGuidPostWithHttpInfo (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest))
+        {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleSendNotificationSessionGuidPost");
+
+            var localVarPath = "/api/v1/SessionLifeCycle/SendNotification/{sessionGuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json; x-api-version=1.0", 
+                "text/json; x-api-version=1.0", 
+                "application/*+json; x-api-version=1.0"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain; x-api-version=1.0",
+                "application/json; x-api-version=1.0",
+                "text/json; x-api-version=1.0"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (sendEmailRequest != null && sendEmailRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(sendEmailRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = sendEmailRequest; // byte array
+            }
+
+            // authentication (Bearer) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleSendNotificationSessionGuidPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ActorType>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ActorType) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActorType)));
+        }
+
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </summary>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ActorType</returns>
+        public async System.Threading.Tasks.Task<ActorType> ApiV1SessionLifeCycleSendNotificationSessionGuidPostAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken))
+        {
+             ApiResponse<ActorType> localVarResponse = await ApiV1SessionLifeCycleSendNotificationSessionGuidPostWithHttpInfoAsync(sessionGuid, sendEmailRequest, cancellationToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Send an email to next user with the link to activate the signature session Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+        /// </summary>
+        /// <exception cref="Abletech.Bix.SignService.Contract.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionGuid"></param>
+        /// <param name="sendEmailRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ApiResponse (ActorType)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ActorType>> ApiV1SessionLifeCycleSendNotificationSessionGuidPostWithHttpInfoAsync (Guid sessionGuid, SendEmailRequest sendEmailRequest = default(SendEmailRequest), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // verify the required parameter 'sessionGuid' is set
+            if (sessionGuid == null)
+                throw new ApiException(400, "Missing required parameter 'sessionGuid' when calling SessionLifeCycleApi->ApiV1SessionLifeCycleSendNotificationSessionGuidPost");
+
+            var localVarPath = "/api/v1/SessionLifeCycle/SendNotification/{sessionGuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json; x-api-version=1.0", 
+                "text/json; x-api-version=1.0", 
+                "application/*+json; x-api-version=1.0"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain; x-api-version=1.0",
+                "application/json; x-api-version=1.0",
+                "text/json; x-api-version=1.0"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sessionGuid != null) localVarPathParams.Add("sessionGuid", this.Configuration.ApiClient.ParameterToString(sessionGuid)); // path parameter
+            if (sendEmailRequest != null && sendEmailRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(sendEmailRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = sendEmailRequest; // byte array
+            }
+
+            // authentication (Bearer) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType, cancellationToken);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiV1SessionLifeCycleSendNotificationSessionGuidPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -4771,5 +5004,8 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (List<SavedFileResponse>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SavedFileResponse>)));
         }
+
+     
+
     }
 }

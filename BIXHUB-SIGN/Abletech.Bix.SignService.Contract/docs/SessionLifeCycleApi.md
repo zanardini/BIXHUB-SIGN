@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**ApiV1SessionLifeCyclePublishSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclepublishsessionguidpost) | **POST** /api/v1/SessionLifeCycle/Publish/{sessionGuid} | Make signature session viewable
 [**ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclerestoreidentificationsessionsessionguidsignerguidpost) | **POST** /api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid} | 
 [**ApiV1SessionLifeCycleSendEmailSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclesendemailsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendEmail/{sessionGuid} | Send an email to next user with the link to activate the signature session
+[**ApiV1SessionLifeCycleSendNotificationSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclesendnotificationsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendNotification/{sessionGuid} | Send an email to next user with the link to activate the signature session
 [**ApiV1SessionLifeCycleUpdateSessionGuidPatch**](SessionLifeCycleApi.md#apiv1sessionlifecycleupdatesessionguidpatch) | **PATCH** /api/v1/SessionLifeCycle/Update/{sessionGuid} | Update attributes, parameters or metadata of an signature session
 [**ApiV1SessionLifeCycleUploadFileBase64Post**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilebase64post) | **POST** /api/v1/SessionLifeCycle/UploadFileBase64 | 
 [**ApiV1SessionLifeCycleUploadFilePost**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilepost) | **POST** /api/v1/SessionLifeCycle/UploadFile | Upload a document in format pdf
@@ -1419,6 +1420,90 @@ namespace Example
             catch (ApiException e)
             {
                 Debug.Print("Exception when calling SessionLifeCycleApi.ApiV1SessionLifeCycleSendEmailSessionGuidPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sessionGuid** | **Guid**|  | 
+ **sendEmailRequest** | [**SendEmailRequest**](SendEmailRequest.md)|  | [optional] 
+
+### Return type
+
+[**ActorType**](ActorType.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1SessionLifeCycleSendNotificationSessionGuidPost
+
+> ActorType ApiV1SessionLifeCycleSendNotificationSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = null)
+
+Send an email to next user with the link to activate the signature session
+
+Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Abletech.Bix.SignService.Contract.Client.V1;
+using Abletech.Bix.SignService.Contract.Client;
+using Abletech.Bix.SignService.Contract.Model.V1;
+
+namespace Example
+{
+    public class ApiV1SessionLifeCycleSendNotificationSessionGuidPostExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "/SignService";
+            // Configure HTTP bearer authorization: Bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SessionLifeCycleApi(Configuration.Default);
+            var sessionGuid = "sessionGuid_example";  // Guid | 
+            var sendEmailRequest = new SendEmailRequest(); // SendEmailRequest |  (optional) 
+
+            try
+            {
+                // Send an email to next user with the link to activate the signature session
+                ActorType result = apiInstance.ApiV1SessionLifeCycleSendNotificationSessionGuidPost(sessionGuid, sendEmailRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling SessionLifeCycleApi.ApiV1SessionLifeCycleSendNotificationSessionGuidPost: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

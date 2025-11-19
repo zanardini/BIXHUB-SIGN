@@ -80,7 +80,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <param name="approvers">approvers.</param>
         /// <param name="signers">signers.</param>
         /// <param name="errors">errors.</param>
-        public GetStatusSessionResponse(Guid sessionGuid = default(Guid), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), string reason = default(string), DateTime createdDate = default(DateTime), DateTime? completedDate = default(DateTime?), string externalId = default(string), List<NextActorStatusSessionResponse> nextActors = default(List<NextActorStatusSessionResponse>), List<ApproverStatusSessionResponse> approvers = default(List<ApproverStatusSessionResponse>), List<SignerStatusSessionResponse> signers = default(List<SignerStatusSessionResponse>), List<SignErrorDto> errors = default(List<SignErrorDto>))
+        /// <param name="expirationDate">expirationDate.</param>
+        /// <param name="rejectionDate">rejectionDate.</param>
+        public GetStatusSessionResponse(Guid sessionGuid = default(Guid), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), string reason = default(string), DateTime createdDate = default(DateTime), DateTime? completedDate = default(DateTime?), string externalId = default(string), List<NextActorStatusSessionResponse> nextActors = default(List<NextActorStatusSessionResponse>), List<ApproverStatusSessionResponse> approvers = default(List<ApproverStatusSessionResponse>), List<SignerStatusSessionResponse> signers = default(List<SignerStatusSessionResponse>), List<SignErrorDto> errors = default(List<SignErrorDto>), DateTime? expirationDate = default(DateTime?), DateTime? rejectionDate = default(DateTime?))
         {
             // to ensure "process" is required (not null)
             if (process == null)
@@ -109,6 +111,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Approvers = approvers;
             this.Signers = signers;
             this.Errors = errors;
+            this.ExpirationDate = expirationDate;
+            this.RejectionDate = rejectionDate;
             this.SessionGuid = sessionGuid;
             this.Reason = reason;
             this.CreatedDate = createdDate;
@@ -118,6 +122,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Approvers = approvers;
             this.Signers = signers;
             this.Errors = errors;
+            this.ExpirationDate = expirationDate;
+            this.RejectionDate = rejectionDate;
         }
 
         /// <summary>
@@ -177,6 +183,18 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public List<SignErrorDto> Errors { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpirationDate
+        /// </summary>
+        [DataMember(Name="expirationDate", EmitDefaultValue=true)]
+        public DateTime? ExpirationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RejectionDate
+        /// </summary>
+        [DataMember(Name="rejectionDate", EmitDefaultValue=true)]
+        public DateTime? RejectionDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -195,6 +213,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  Approvers: ").Append(Approvers).Append("\n");
             sb.Append("  Signers: ").Append(Signers).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
+            sb.Append("  RejectionDate: ").Append(RejectionDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -287,6 +307,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.Errors != null &&
                     input.Errors != null &&
                     this.Errors.SequenceEqual(input.Errors)
+                ) && 
+                (
+                    this.ExpirationDate == input.ExpirationDate ||
+                    (this.ExpirationDate != null &&
+                    this.ExpirationDate.Equals(input.ExpirationDate))
+                ) && 
+                (
+                    this.RejectionDate == input.RejectionDate ||
+                    (this.RejectionDate != null &&
+                    this.RejectionDate.Equals(input.RejectionDate))
                 );
         }
 
@@ -321,6 +351,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.Signers.GetHashCode();
                 if (this.Errors != null)
                     hashCode = hashCode * 59 + this.Errors.GetHashCode();
+                if (this.ExpirationDate != null)
+                    hashCode = hashCode * 59 + this.ExpirationDate.GetHashCode();
+                if (this.RejectionDate != null)
+                    hashCode = hashCode * 59 + this.RejectionDate.GetHashCode();
                 return hashCode;
             }
         }

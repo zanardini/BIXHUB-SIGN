@@ -84,12 +84,15 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <param name="parameters">parameters.</param>
         /// <param name="metadata">metadata.</param>
         /// <param name="attributes">attributes.</param>
+        /// <param name="extraProperties">extraProperties.</param>
         /// <param name="approvers">approvers.</param>
         /// <param name="documents">documents.</param>
         /// <param name="signers">signers.</param>
         /// <param name="followers">followers.</param>
         /// <param name="externalId">externalId.</param>
-        public GetSessionDetailResponse(Guid guid = default(Guid), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), WorkFlowType workFlow = default(WorkFlowType), DateTime createdDate = default(DateTime), DateTime updatedDate = default(DateTime), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<ApproverSessionDetailResponse> approvers = default(List<ApproverSessionDetailResponse>), List<DocumentSessionDetailResponse> documents = default(List<DocumentSessionDetailResponse>), List<SignerSessionDetailResponse> signers = default(List<SignerSessionDetailResponse>), List<FollowerSessionDetailResponse> followers = default(List<FollowerSessionDetailResponse>), string externalId = default(string))
+        /// <param name="expirationDate">expirationDate.</param>
+        /// <param name="rejectionDate">rejectionDate.</param>
+        public GetSessionDetailResponse(Guid guid = default(Guid), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), WorkFlowType workFlow = default(WorkFlowType), DateTime createdDate = default(DateTime), DateTime updatedDate = default(DateTime), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), Dictionary<string, string> extraProperties = default(Dictionary<string, string>), List<ApproverSessionDetailResponse> approvers = default(List<ApproverSessionDetailResponse>), List<DocumentSessionDetailResponse> documents = default(List<DocumentSessionDetailResponse>), List<SignerSessionDetailResponse> signers = default(List<SignerSessionDetailResponse>), List<FollowerSessionDetailResponse> followers = default(List<FollowerSessionDetailResponse>), string externalId = default(string), DateTime? expirationDate = default(DateTime?), DateTime? rejectionDate = default(DateTime?))
         {
             this.Description = description;
             // to ensure "process" is required (not null)
@@ -125,11 +128,14 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Parameters = parameters;
             this.Metadata = metadata;
             this.Attributes = attributes;
+            this.ExtraProperties = extraProperties;
             this.Approvers = approvers;
             this.Documents = documents;
             this.Signers = signers;
             this.Followers = followers;
             this.ExternalId = externalId;
+            this.ExpirationDate = expirationDate;
+            this.RejectionDate = rejectionDate;
             this.Guid = guid;
             this.Description = description;
             this.CreatedDate = createdDate;
@@ -137,11 +143,14 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Parameters = parameters;
             this.Metadata = metadata;
             this.Attributes = attributes;
+            this.ExtraProperties = extraProperties;
             this.Approvers = approvers;
             this.Documents = documents;
             this.Signers = signers;
             this.Followers = followers;
             this.ExternalId = externalId;
+            this.ExpirationDate = expirationDate;
+            this.RejectionDate = rejectionDate;
         }
 
         /// <summary>
@@ -190,6 +199,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExtraProperties
+        /// </summary>
+        [DataMember(Name="extraProperties", EmitDefaultValue=true)]
+        public Dictionary<string, string> ExtraProperties { get; set; }
+
+        /// <summary>
         /// Gets or Sets Approvers
         /// </summary>
         [DataMember(Name="approvers", EmitDefaultValue=true)]
@@ -220,6 +235,18 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public string ExternalId { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpirationDate
+        /// </summary>
+        [DataMember(Name="expirationDate", EmitDefaultValue=true)]
+        public DateTime? ExpirationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RejectionDate
+        /// </summary>
+        [DataMember(Name="rejectionDate", EmitDefaultValue=true)]
+        public DateTime? RejectionDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -237,11 +264,14 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  Parameters: ").Append(Parameters).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  ExtraProperties: ").Append(ExtraProperties).Append("\n");
             sb.Append("  Approvers: ").Append(Approvers).Append("\n");
             sb.Append("  Documents: ").Append(Documents).Append("\n");
             sb.Append("  Signers: ").Append(Signers).Append("\n");
             sb.Append("  Followers: ").Append(Followers).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
+            sb.Append("  RejectionDate: ").Append(RejectionDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -330,6 +360,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.Attributes.SequenceEqual(input.Attributes)
                 ) && 
                 (
+                    this.ExtraProperties == input.ExtraProperties ||
+                    this.ExtraProperties != null &&
+                    input.ExtraProperties != null &&
+                    this.ExtraProperties.SequenceEqual(input.ExtraProperties)
+                ) && 
+                (
                     this.Approvers == input.Approvers ||
                     this.Approvers != null &&
                     input.Approvers != null &&
@@ -357,6 +393,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
+                    this.ExpirationDate == input.ExpirationDate ||
+                    (this.ExpirationDate != null &&
+                    this.ExpirationDate.Equals(input.ExpirationDate))
+                ) && 
+                (
+                    this.RejectionDate == input.RejectionDate ||
+                    (this.RejectionDate != null &&
+                    this.RejectionDate.Equals(input.RejectionDate))
                 );
         }
 
@@ -389,6 +435,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Attributes != null)
                     hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.ExtraProperties != null)
+                    hashCode = hashCode * 59 + this.ExtraProperties.GetHashCode();
                 if (this.Approvers != null)
                     hashCode = hashCode * 59 + this.Approvers.GetHashCode();
                 if (this.Documents != null)
@@ -399,6 +447,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.Followers.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.ExpirationDate != null)
+                    hashCode = hashCode * 59 + this.ExpirationDate.GetHashCode();
+                if (this.RejectionDate != null)
+                    hashCode = hashCode * 59 + this.RejectionDate.GetHashCode();
                 return hashCode;
             }
         }

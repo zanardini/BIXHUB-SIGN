@@ -169,6 +169,22 @@ namespace Abletech.Bix.SignService.Contract.Test
         {
             // TODO unit test for the property 'Graphometric'
         }
+        /// <summary>
+        /// Test the property 'Base64SignatureImage'
+        /// </summary>
+        [Test]
+        public void Base64SignatureImageTest()
+        {
+            // TODO unit test for the property 'Base64SignatureImage'
+        }
+        /// <summary>
+        /// Test the property 'NotificationChannel'
+        /// </summary>
+        [Test]
+        public void NotificationChannelTest()
+        {
+            // TODO unit test for the property 'NotificationChannel'
+        }
 
     }
 

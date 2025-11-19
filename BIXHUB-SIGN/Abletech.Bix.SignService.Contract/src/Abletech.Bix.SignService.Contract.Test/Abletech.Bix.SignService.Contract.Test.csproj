@@ -81,7 +81,7 @@ The version of the OpenAPI document: v1
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Abletech.Bix.SignService.Contract\Abletech.Bix.SignService.Contract.csproj">
-          <Project>{1CFC145C-84F1-4F49-AA89-D1339640066D}</Project>
+          <Project>{45982626-61B0-48CD-BE76-823C43A513C9}</Project>
           <Name>Abletech.Bix.SignService.Contract</Name>
       </ProjectReference>
   </ItemGroup>

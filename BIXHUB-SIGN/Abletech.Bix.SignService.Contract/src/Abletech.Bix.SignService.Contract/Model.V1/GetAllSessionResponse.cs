@@ -79,7 +79,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <param name="parameters">parameters.</param>
         /// <param name="metadata">metadata.</param>
         /// <param name="attributes">attributes.</param>
-        public GetAllSessionResponse(Guid sessionGuid = default(Guid), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), DateTime createdDate = default(DateTime), DateTime updatedDate = default(DateTime), DateTime? completedDate = default(DateTime?), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>))
+        /// <param name="expirationDate">expirationDate.</param>
+        /// <param name="rejectionDate">rejectionDate.</param>
+        /// <param name="extraProperties">extraProperties.</param>
+        public GetAllSessionResponse(Guid sessionGuid = default(Guid), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), DateTime createdDate = default(DateTime), DateTime updatedDate = default(DateTime), DateTime? completedDate = default(DateTime?), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), DateTime? expirationDate = default(DateTime?), DateTime? rejectionDate = default(DateTime?), Dictionary<string, string> extraProperties = default(Dictionary<string, string>))
         {
             this.Description = description;
             // to ensure "process" is required (not null)
@@ -106,6 +109,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Parameters = parameters;
             this.Metadata = metadata;
             this.Attributes = attributes;
+            this.ExpirationDate = expirationDate;
+            this.RejectionDate = rejectionDate;
+            this.ExtraProperties = extraProperties;
             this.SessionGuid = sessionGuid;
             this.Description = description;
             this.CreatedDate = createdDate;
@@ -114,6 +120,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.Parameters = parameters;
             this.Metadata = metadata;
             this.Attributes = attributes;
+            this.ExpirationDate = expirationDate;
+            this.RejectionDate = rejectionDate;
+            this.ExtraProperties = extraProperties;
         }
 
         /// <summary>
@@ -167,6 +176,24 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpirationDate
+        /// </summary>
+        [DataMember(Name="expirationDate", EmitDefaultValue=true)]
+        public DateTime? ExpirationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RejectionDate
+        /// </summary>
+        [DataMember(Name="rejectionDate", EmitDefaultValue=true)]
+        public DateTime? RejectionDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExtraProperties
+        /// </summary>
+        [DataMember(Name="extraProperties", EmitDefaultValue=true)]
+        public Dictionary<string, string> ExtraProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -184,6 +211,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  Parameters: ").Append(Parameters).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
+            sb.Append("  RejectionDate: ").Append(RejectionDate).Append("\n");
+            sb.Append("  ExtraProperties: ").Append(ExtraProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -270,6 +300,22 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.Attributes != null &&
                     input.Attributes != null &&
                     this.Attributes.SequenceEqual(input.Attributes)
+                ) && 
+                (
+                    this.ExpirationDate == input.ExpirationDate ||
+                    (this.ExpirationDate != null &&
+                    this.ExpirationDate.Equals(input.ExpirationDate))
+                ) && 
+                (
+                    this.RejectionDate == input.RejectionDate ||
+                    (this.RejectionDate != null &&
+                    this.RejectionDate.Equals(input.RejectionDate))
+                ) && 
+                (
+                    this.ExtraProperties == input.ExtraProperties ||
+                    this.ExtraProperties != null &&
+                    input.ExtraProperties != null &&
+                    this.ExtraProperties.SequenceEqual(input.ExtraProperties)
                 );
         }
 
@@ -302,6 +348,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Attributes != null)
                     hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.ExpirationDate != null)
+                    hashCode = hashCode * 59 + this.ExpirationDate.GetHashCode();
+                if (this.RejectionDate != null)
+                    hashCode = hashCode * 59 + this.RejectionDate.GetHashCode();
+                if (this.ExtraProperties != null)
+                    hashCode = hashCode * 59 + this.ExtraProperties.GetHashCode();
                 return hashCode;
             }
         }

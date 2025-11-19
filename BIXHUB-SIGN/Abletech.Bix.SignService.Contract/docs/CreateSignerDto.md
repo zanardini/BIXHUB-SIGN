@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **Language** | **string** |  | [optional] 
 **RequireIdentification** | **bool?** |  | [optional] 
 **Graphometric** | **bool** |  | [optional] 
+**Base64SignatureImage** | **string** |  | [optional] 
+**NotificationChannel** | **NotificationChannel** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
