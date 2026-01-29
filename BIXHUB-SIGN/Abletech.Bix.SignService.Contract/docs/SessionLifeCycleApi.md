@@ -4,30 +4,30 @@ All URIs are relative to */SignService*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1SessionLifeCycleCreateAndPublishPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclecreateandpublishpost) | **POST** /api/v1/SessionLifeCycle/CreateAndPublish | 
-[**ApiV1SessionLifeCycleCreatePost**](SessionLifeCycleApi.md#apiv1sessionlifecyclecreatepost) | **POST** /api/v1/SessionLifeCycle/Create | Create a signature session
-[**ApiV1SessionLifeCycleDeleteSessionGuidDelete**](SessionLifeCycleApi.md#apiv1sessionlifecycledeletesessionguiddelete) | **DELETE** /api/v1/SessionLifeCycle/Delete/{sessionGuid} | Delete a signature session
-[**ApiV1SessionLifeCycleGetAllPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetallpost) | **POST** /api/v1/SessionLifeCycle/GetAll | Return all signature sessions with the status
-[**ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentbase64sessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid} | 
-[**ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentsessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid} | Returns attachment uploaded by user during signature session
-[**ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrail64sessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail64/{sessionGuid} | 
-[**ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrailsessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail/{sessionGuid} | Returns Audit Trail of a signature session
-[**ApiV1SessionLifeCycleGetErrorsGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegeterrorsget) | **GET** /api/v1/SessionLifeCycle/GetErrors | Returns errors details of a list of signature sessions
-[**ApiV1SessionLifeCycleGetFieldsSessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetfieldssessionguidget) | **GET** /api/v1/SessionLifeCycle/GetFields/{sessionGuid} | Return info of all fields in a flatten way
-[**ApiV1SessionLifeCycleGetSessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetsessionguidget) | **GET** /api/v1/SessionLifeCycle/Get/{sessionGuid} | Return info of a signature session
-[**ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultbase64sessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid} | 
-[**ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultsessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid} | Returns signed document by documentGuid and sessionGuid
-[**ApiV1SessionLifeCycleGetStatusPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetstatuspost) | **POST** /api/v1/SessionLifeCycle/GetStatus | Returns status details of a list of signature sessions
-[**ApiV1SessionLifeCycleMarkErrorAsFixedSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclemarkerrorasfixedsessionguidpost) | **POST** /api/v1/SessionLifeCycle/MarkErrorAsFixed/{sessionGuid} | 
-[**ApiV1SessionLifeCyclePublishSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclepublishsessionguidpost) | **POST** /api/v1/SessionLifeCycle/Publish/{sessionGuid} | Make signature session viewable
-[**ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclerestoreidentificationsessionsessionguidsignerguidpost) | **POST** /api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid} | 
-[**ApiV1SessionLifeCycleSendEmailSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclesendemailsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendEmail/{sessionGuid} | Send an email to next user with the link to activate the signature session
-[**ApiV1SessionLifeCycleSendNotificationSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclesendnotificationsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendNotification/{sessionGuid} | Send an email to next user with the link to activate the signature session
-[**ApiV1SessionLifeCycleUpdateSessionGuidPatch**](SessionLifeCycleApi.md#apiv1sessionlifecycleupdatesessionguidpatch) | **PATCH** /api/v1/SessionLifeCycle/Update/{sessionGuid} | Update attributes, parameters or metadata of an signature session
-[**ApiV1SessionLifeCycleUploadFileBase64Post**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilebase64post) | **POST** /api/v1/SessionLifeCycle/UploadFileBase64 | 
-[**ApiV1SessionLifeCycleUploadFilePost**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilepost) | **POST** /api/v1/SessionLifeCycle/UploadFile | Upload a document in format pdf
-[**ApiV1SessionLifeCycleUploadFilesBase64Post**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilesbase64post) | **POST** /api/v1/SessionLifeCycle/UploadFilesBase64 | 
-[**ApiV1SessionLifeCycleUploadFilesPost**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilespost) | **POST** /api/v1/SessionLifeCycle/UploadFiles | Upload documents in format pdf
+[**ApiV1SessionLifeCycleCreateAndPublishPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclecreateandpublishpost) | **POST** /api/v1/SessionLifeCycle/CreateAndPublish | Create and Publish
+[**ApiV1SessionLifeCycleCreatePost**](SessionLifeCycleApi.md#apiv1sessionlifecyclecreatepost) | **POST** /api/v1/SessionLifeCycle/Create | Create File
+[**ApiV1SessionLifeCycleDeleteSessionGuidDelete**](SessionLifeCycleApi.md#apiv1sessionlifecycledeletesessionguiddelete) | **DELETE** /api/v1/SessionLifeCycle/Delete/{sessionGuid} | Delete session
+[**ApiV1SessionLifeCycleGetAllPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetallpost) | **POST** /api/v1/SessionLifeCycle/GetAll | Get Sessions
+[**ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentbase64sessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid} | Get Attachment Base64
+[**ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentsessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid} | Get Attachment
+[**ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrail64sessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail64/{sessionGuid} | Get AuditTrail Base64
+[**ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrailsessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail/{sessionGuid} | Get AuditTrail
+[**ApiV1SessionLifeCycleGetErrorsGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegeterrorsget) | **GET** /api/v1/SessionLifeCycle/GetErrors | Get Errors
+[**ApiV1SessionLifeCycleGetFieldsSessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetfieldssessionguidget) | **GET** /api/v1/SessionLifeCycle/GetFields/{sessionGuid} | Get Fields
+[**ApiV1SessionLifeCycleGetSessionGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetsessionguidget) | **GET** /api/v1/SessionLifeCycle/Get/{sessionGuid} | Get Session
+[**ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultbase64sessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid} | Get Signed Result Base64
+[**ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultsessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid} | Get Signed Result
+[**ApiV1SessionLifeCycleGetStatusPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclegetstatuspost) | **POST** /api/v1/SessionLifeCycle/GetStatus | Get Sessions Status
+[**ApiV1SessionLifeCycleMarkErrorAsFixedSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclemarkerrorasfixedsessionguidpost) | **POST** /api/v1/SessionLifeCycle/MarkErrorAsFixed/{sessionGuid} | Fix Error
+[**ApiV1SessionLifeCyclePublishSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclepublishsessionguidpost) | **POST** /api/v1/SessionLifeCycle/Publish/{sessionGuid} | Publish
+[**ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclerestoreidentificationsessionsessionguidsignerguidpost) | **POST** /api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid} | Restore Identification
+[**ApiV1SessionLifeCycleSendEmailSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclesendemailsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendEmail/{sessionGuid} | Send Email
+[**ApiV1SessionLifeCycleSendNotificationSessionGuidPost**](SessionLifeCycleApi.md#apiv1sessionlifecyclesendnotificationsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendNotification/{sessionGuid} | Send Notification
+[**ApiV1SessionLifeCycleUpdateSessionGuidPatch**](SessionLifeCycleApi.md#apiv1sessionlifecycleupdatesessionguidpatch) | **PATCH** /api/v1/SessionLifeCycle/Update/{sessionGuid} | Update session
+[**ApiV1SessionLifeCycleUploadFileBase64Post**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilebase64post) | **POST** /api/v1/SessionLifeCycle/UploadFileBase64 | Upload File Base64
+[**ApiV1SessionLifeCycleUploadFilePost**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilepost) | **POST** /api/v1/SessionLifeCycle/UploadFile | Upload File
+[**ApiV1SessionLifeCycleUploadFilesBase64Post**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilesbase64post) | **POST** /api/v1/SessionLifeCycle/UploadFilesBase64 | Upload Files Base64
+[**ApiV1SessionLifeCycleUploadFilesPost**](SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilespost) | **POST** /api/v1/SessionLifeCycle/UploadFiles | Upload Files
 
 
 
@@ -35,7 +35,9 @@ Method | HTTP request | Description
 
 > PublishSessionResponse ApiV1SessionLifeCycleCreateAndPublishPost (CreateSessionRequest createSessionRequest = null)
 
+Create and Publish
 
+Allows creation and publication of a Sign Session
 
 ### Example
 
@@ -61,6 +63,7 @@ namespace Example
 
             try
             {
+                // Create and Publish
                 PublishSessionResponse result = apiInstance.ApiV1SessionLifeCycleCreateAndPublishPost(createSessionRequest);
                 Debug.WriteLine(result);
             }
@@ -92,8 +95,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -111,9 +114,9 @@ Name | Type | Description  | Notes
 
 > CreateSessionResponse ApiV1SessionLifeCycleCreatePost (CreateSessionRequest createSessionRequest = null)
 
-Create a signature session
+Create File
 
-Permits to create the signature session in draft state. In order to make session viewable call publish API after create.
+Allows the creation of a Sign Session. The Sign Session must then be published before it can be started
 
 ### Example
 
@@ -139,7 +142,7 @@ namespace Example
 
             try
             {
-                // Create a signature session
+                // Create File
                 CreateSessionResponse result = apiInstance.ApiV1SessionLifeCycleCreatePost(createSessionRequest);
                 Debug.WriteLine(result);
             }
@@ -171,8 +174,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -190,9 +193,9 @@ Name | Type | Description  | Notes
 
 > void ApiV1SessionLifeCycleDeleteSessionGuidDelete (Guid sessionGuid)
 
-Delete a signature session
+Delete session
 
-Delete a signature session if exist and if is in a deletable status
+Deletes a Sign Session, if it exists and is in a state that allows deletion
 
 ### Example
 
@@ -218,7 +221,7 @@ namespace Example
 
             try
             {
-                // Delete a signature session
+                // Delete session
                 apiInstance.ApiV1SessionLifeCycleDeleteSessionGuidDelete(sessionGuid);
             }
             catch (ApiException e)
@@ -268,9 +271,9 @@ void (empty response body)
 
 > GetAllSessionResponseGetPaginatedListResponse ApiV1SessionLifeCycleGetAllPost (GetAllSessionRequest getAllSessionRequest = null)
 
-Return all signature sessions with the status
+Get Sessions
 
-Return all signature sessions with the status, for more details about session status use API GetStatus
+Returns a list of Sign Sessions
 
 ### Example
 
@@ -296,7 +299,7 @@ namespace Example
 
             try
             {
-                // Return all signature sessions with the status
+                // Get Sessions
                 GetAllSessionResponseGetPaginatedListResponse result = apiInstance.ApiV1SessionLifeCycleGetAllPost(getAllSessionRequest);
                 Debug.WriteLine(result);
             }
@@ -328,8 +331,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -347,7 +350,9 @@ Name | Type | Description  | Notes
 
 > FileDataBase64 ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet (Guid sessionGuid, Guid signerGuid, Guid attachmentGuid)
 
+Get Attachment Base64
 
+[**Deprecated**] Endpoint, please use Get Attachment
 
 ### Example
 
@@ -375,6 +380,7 @@ namespace Example
 
             try
             {
+                // Get Attachment Base64
                 FileDataBase64 result = apiInstance.ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet(sessionGuid, signerGuid, attachmentGuid);
                 Debug.WriteLine(result);
             }
@@ -409,7 +415,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -427,9 +433,9 @@ Name | Type | Description  | Notes
 
 > System.IO.Stream ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet (Guid sessionGuid, Guid signerGuid, Guid attachmentGuid)
 
-Returns attachment uploaded by user during signature session
+Get Attachment
 
-Returns attachment uploaded by user during signature session
+Returns the file attached by a Signer during a Sign Session
 
 ### Example
 
@@ -457,7 +463,7 @@ namespace Example
 
             try
             {
-                // Returns attachment uploaded by user during signature session
+                // Get Attachment
                 System.IO.Stream result = apiInstance.ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet(sessionGuid, signerGuid, attachmentGuid);
                 Debug.WriteLine(result);
             }
@@ -492,7 +498,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -508,9 +514,11 @@ Name | Type | Description  | Notes
 
 ## ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet
 
-> FileDataBase64 ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet (Guid sessionGuid, Guid? documentGuid = null)
+> FileDataBase64 ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet (Guid sessionGuid)
 
+Get AuditTrail Base64
 
+[**Deprecated**] Endpoint, please use Get AuditTrail
 
 ### Example
 
@@ -533,11 +541,11 @@ namespace Example
 
             var apiInstance = new SessionLifeCycleApi(Configuration.Default);
             var sessionGuid = "sessionGuid_example";  // Guid | 
-            var documentGuid = "documentGuid_example";  // Guid? |  (optional) 
 
             try
             {
-                FileDataBase64 result = apiInstance.ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet(sessionGuid, documentGuid);
+                // Get AuditTrail Base64
+                FileDataBase64 result = apiInstance.ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet(sessionGuid);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -557,7 +565,6 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sessionGuid** | **Guid**|  | 
- **documentGuid** | **Guid?**|  | [optional] 
 
 ### Return type
 
@@ -570,7 +577,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -588,9 +595,9 @@ Name | Type | Description  | Notes
 
 > System.IO.Stream ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet (Guid sessionGuid)
 
-Returns Audit Trail of a signature session
+Get AuditTrail
 
-Returns Audit Trail in pdf format with the evidence of all operations executed by users during the signature session
+Returns a PDF containing the evidence of all the operations performed by the actors during the Sign Session.
 
 ### Example
 
@@ -616,7 +623,7 @@ namespace Example
 
             try
             {
-                // Returns Audit Trail of a signature session
+                // Get AuditTrail
                 System.IO.Stream result = apiInstance.ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet(sessionGuid);
                 Debug.WriteLine(result);
             }
@@ -649,7 +656,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -667,9 +674,9 @@ Name | Type | Description  | Notes
 
 > List&lt;GetErrorsSessionResponse&gt; ApiV1SessionLifeCycleGetErrorsGet (int? take = null, int? skip = null)
 
-Returns errors details of a list of signature sessions
+Get Errors
 
-Returns errors details of a list of signature sessions. For example if you use webhooks and your registered endpoint is not reachable for 24h, with this API you could acquire this information, and remediate.
+Returns errors related to a list of sessions. For example, if you're using webhooks and your endpoint is unreachable for 24 hours, this API can retrieve that information and resolve the issue.
 
 ### Example
 
@@ -696,7 +703,7 @@ namespace Example
 
             try
             {
-                // Returns errors details of a list of signature sessions
+                // Get Errors
                 List<GetErrorsSessionResponse> result = apiInstance.ApiV1SessionLifeCycleGetErrorsGet(take, skip);
                 Debug.WriteLine(result);
             }
@@ -730,7 +737,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -748,9 +755,9 @@ Name | Type | Description  | Notes
 
 > List&lt;GetFieldsDtoResponse&gt; ApiV1SessionLifeCycleGetFieldsSessionGuidGet (Guid sessionGuid, Guid? documentGuid = null, Guid? signerGuid = null, Guid? fieldGroupGuid = null)
 
-Return info of all fields in a flatten way
+Get Fields
 
-Return info of all fields in flatten way in order to make easy the acquisition of a selected values by users for fields
+Returns fields information in a flattened format, making it easier to read the keys/values.
 
 ### Example
 
@@ -779,7 +786,7 @@ namespace Example
 
             try
             {
-                // Return info of all fields in a flatten way
+                // Get Fields
                 List<GetFieldsDtoResponse> result = apiInstance.ApiV1SessionLifeCycleGetFieldsSessionGuidGet(sessionGuid, documentGuid, signerGuid, fieldGroupGuid);
                 Debug.WriteLine(result);
             }
@@ -815,7 +822,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -833,9 +840,9 @@ Name | Type | Description  | Notes
 
 > GetSessionDetailResponse ApiV1SessionLifeCycleGetSessionGuidGet (Guid sessionGuid)
 
-Return info of a signature session
+Get Session
 
-Returns the signature session's metadata/parameters/attributes and the details about approvers, signers, documents, attachments and fields.
+Returns information about Sign Session, actors and documents
 
 ### Example
 
@@ -861,7 +868,7 @@ namespace Example
 
             try
             {
-                // Return info of a signature session
+                // Get Session
                 GetSessionDetailResponse result = apiInstance.ApiV1SessionLifeCycleGetSessionGuidGet(sessionGuid);
                 Debug.WriteLine(result);
             }
@@ -894,7 +901,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -912,7 +919,9 @@ Name | Type | Description  | Notes
 
 > FileDataBase64 ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet (Guid sessionGuid, Guid documentGuid)
 
+Get Signed Result Base64
 
+[**Deprecated**] Endpoint, please use Get Signed Result
 
 ### Example
 
@@ -939,6 +948,7 @@ namespace Example
 
             try
             {
+                // Get Signed Result Base64
                 FileDataBase64 result = apiInstance.ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet(sessionGuid, documentGuid);
                 Debug.WriteLine(result);
             }
@@ -972,7 +982,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -990,9 +1000,9 @@ Name | Type | Description  | Notes
 
 > System.IO.Stream ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet (Guid sessionGuid, Guid documentGuid)
 
-Returns signed document by documentGuid and sessionGuid
+Get Signed Result
 
-Returns signed document by sessionGuid and documentGuid, use API Get to obtain all the documents guid of a created session.
+If the Sign Session is completed, the signed PDF is returned. Use the Get Session Endpoint to get documents Guids.
 
 ### Example
 
@@ -1019,7 +1029,7 @@ namespace Example
 
             try
             {
-                // Returns signed document by documentGuid and sessionGuid
+                // Get Signed Result
                 System.IO.Stream result = apiInstance.ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet(sessionGuid, documentGuid);
                 Debug.WriteLine(result);
             }
@@ -1053,7 +1063,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1071,9 +1081,9 @@ Name | Type | Description  | Notes
 
 > List&lt;GetStatusSessionResponse&gt; ApiV1SessionLifeCycleGetStatusPost (List<Guid> requestBody = null)
 
-Returns status details of a list of signature sessions
+Get Sessions Status
 
-Returns status details of a list of signature sessions base on the process types
+Returns the status of a list of Sign Sessions
 
 ### Example
 
@@ -1099,7 +1109,7 @@ namespace Example
 
             try
             {
-                // Returns status details of a list of signature sessions
+                // Get Sessions Status
                 List<GetStatusSessionResponse> result = apiInstance.ApiV1SessionLifeCycleGetStatusPost(requestBody);
                 Debug.WriteLine(result);
             }
@@ -1131,8 +1141,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1150,7 +1160,9 @@ Name | Type | Description  | Notes
 
 > void ApiV1SessionLifeCycleMarkErrorAsFixedSessionGuidPost (Guid sessionGuid, FixErrorRequest fixErrorRequest = null)
 
+Fix Error
 
+Allows the removal of errors that are returned by Get Errors
 
 ### Example
 
@@ -1177,6 +1189,7 @@ namespace Example
 
             try
             {
+                // Fix Error
                 apiInstance.ApiV1SessionLifeCycleMarkErrorAsFixedSessionGuidPost(sessionGuid, fixErrorRequest);
             }
             catch (ApiException e)
@@ -1208,7 +1221,7 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
 - **Accept**: Not defined
 
 
@@ -1227,9 +1240,9 @@ void (empty response body)
 
 > PublishSessionResponse ApiV1SessionLifeCyclePublishSessionGuidPost (Guid sessionGuid)
 
-Make signature session viewable
+Publish
 
-Make signature session viewable, after this operation any ather modification are not allowed
+Makes a Sign Session visible, after this operation it will no longer be possible to update the Sign Session.
 
 ### Example
 
@@ -1255,7 +1268,7 @@ namespace Example
 
             try
             {
-                // Make signature session viewable
+                // Publish
                 PublishSessionResponse result = apiInstance.ApiV1SessionLifeCyclePublishSessionGuidPost(sessionGuid);
                 Debug.WriteLine(result);
             }
@@ -1288,7 +1301,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1306,7 +1319,9 @@ Name | Type | Description  | Notes
 
 > RestoreIdentificationSessionResponse ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost (Guid sessionGuid, Guid signerGuid)
 
+Restore Identification
 
+Allows you to restore the Identification Session linked to a Sign Session
 
 ### Example
 
@@ -1333,6 +1348,7 @@ namespace Example
 
             try
             {
+                // Restore Identification
                 RestoreIdentificationSessionResponse result = apiInstance.ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost(sessionGuid, signerGuid);
                 Debug.WriteLine(result);
             }
@@ -1366,7 +1382,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1384,9 +1400,9 @@ Name | Type | Description  | Notes
 
 > ActorType ApiV1SessionLifeCycleSendEmailSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = null)
 
-Send an email to next user with the link to activate the signature session
+Send Email
 
-Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+[**Deprecated**] Endpoint, please use Send Notification
 
 ### Example
 
@@ -1413,7 +1429,7 @@ namespace Example
 
             try
             {
-                // Send an email to next user with the link to activate the signature session
+                // Send Email
                 ActorType result = apiInstance.ApiV1SessionLifeCycleSendEmailSessionGuidPost(sessionGuid, sendEmailRequest);
                 Debug.WriteLine(result);
             }
@@ -1446,8 +1462,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1468,9 +1484,9 @@ Name | Type | Description  | Notes
 
 > ActorType ApiV1SessionLifeCycleSendNotificationSessionGuidPost (Guid sessionGuid, SendEmailRequest sendEmailRequest = null)
 
-Send an email to next user with the link to activate the signature session
+Send Notification
 
-Send an email to next user with the link to activate the signature session. This API offers option reminder in order to use different template for reminder operation.
+Send a notification to the next actor containing the link to proceed with the Sign Session
 
 ### Example
 
@@ -1497,7 +1513,7 @@ namespace Example
 
             try
             {
-                // Send an email to next user with the link to activate the signature session
+                // Send Notification
                 ActorType result = apiInstance.ApiV1SessionLifeCycleSendNotificationSessionGuidPost(sessionGuid, sendEmailRequest);
                 Debug.WriteLine(result);
             }
@@ -1530,8 +1546,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1552,9 +1568,9 @@ Name | Type | Description  | Notes
 
 > void ApiV1SessionLifeCycleUpdateSessionGuidPatch (Guid sessionGuid, UpdateSessionRequest updateSessionRequest = null)
 
-Update attributes, parameters or metadata of an signature session
+Update session
 
-Update attributes, parameters or metadata of an signature session
+Update data of a Sign Session
 
 ### Example
 
@@ -1581,7 +1597,7 @@ namespace Example
 
             try
             {
-                // Update attributes, parameters or metadata of an signature session
+                // Update session
                 apiInstance.ApiV1SessionLifeCycleUpdateSessionGuidPatch(sessionGuid, updateSessionRequest);
             }
             catch (ApiException e)
@@ -1613,7 +1629,7 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
 - **Accept**: Not defined
 
 
@@ -1632,7 +1648,9 @@ void (empty response body)
 
 > SavedFileResponse ApiV1SessionLifeCycleUploadFileBase64Post (UploadFileBase64Request uploadFileBase64Request = null)
 
+Upload File Base64
 
+[**Deprecated**] Endpoint, please use Upload File
 
 ### Example
 
@@ -1658,6 +1676,7 @@ namespace Example
 
             try
             {
+                // Upload File Base64
                 SavedFileResponse result = apiInstance.ApiV1SessionLifeCycleUploadFileBase64Post(uploadFileBase64Request);
                 Debug.WriteLine(result);
             }
@@ -1689,8 +1708,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1708,9 +1727,9 @@ Name | Type | Description  | Notes
 
 > SavedFileResponse ApiV1SessionLifeCycleUploadFilePost (System.IO.Stream file = null)
 
-Upload a document in format pdf
+Upload File
 
-Permits document upload for preparing a signature session.
+Allows uploading a PDF file
 
 ### Example
 
@@ -1736,7 +1755,7 @@ namespace Example
 
             try
             {
-                // Upload a document in format pdf
+                // Upload File
                 SavedFileResponse result = apiInstance.ApiV1SessionLifeCycleUploadFilePost(file);
                 Debug.WriteLine(result);
             }
@@ -1769,7 +1788,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1787,7 +1806,9 @@ Name | Type | Description  | Notes
 
 > List&lt;SavedFileResponse&gt; ApiV1SessionLifeCycleUploadFilesBase64Post (UploadFilesRequest uploadFilesRequest = null)
 
+Upload Files Base64
 
+[**Deprecated**] Endpoint, please use Upload Files
 
 ### Example
 
@@ -1813,6 +1834,7 @@ namespace Example
 
             try
             {
+                // Upload Files Base64
                 List<SavedFileResponse> result = apiInstance.ApiV1SessionLifeCycleUploadFilesBase64Post(uploadFilesRequest);
                 Debug.WriteLine(result);
             }
@@ -1844,8 +1866,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json; x-api-version=1.0, text/json; x-api-version=1.0, application/*+json; x-api-version=1.0
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Content-Type**: application/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details
@@ -1863,9 +1885,9 @@ Name | Type | Description  | Notes
 
 > List&lt;SavedFileResponse&gt; ApiV1SessionLifeCycleUploadFilesPost (List<System.IO.Stream> files = null)
 
-Upload documents in format pdf
+Upload Files
 
-Permits documents upload for preparing a signature session.
+Allows uploading multiple PDF files
 
 ### Example
 
@@ -1891,7 +1913,7 @@ namespace Example
 
             try
             {
-                // Upload documents in format pdf
+                // Upload Files
                 List<SavedFileResponse> result = apiInstance.ApiV1SessionLifeCycleUploadFilesPost(files);
                 Debug.WriteLine(result);
             }
@@ -1924,7 +1946,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details

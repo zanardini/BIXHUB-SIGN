@@ -59,9 +59,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateFieldGroupDocumentDto" /> class.
         /// </summary>
-        /// <param name="fileGuid">fileGuid (required).</param>
-        /// <param name="indexOrder">indexOrder.</param>
-        /// <param name="fields">fields.</param>
+        /// <param name="fileGuid">The &#39;fileGuid&#39; obtained via the &#39;Upload File&#39; API. It must match the &#39;fileGuid&#39; of a Document (required).</param>
+        /// <param name="indexOrder">Document&#39;s order in this FieldGroup. This order is non-binding, it provides the signer with a guided signing experience.</param>
+        /// <param name="fields">List of Fields in this Document belonging to FieldGroup.</param>
         public CreateFieldGroupDocumentDto(Guid fileGuid = default(Guid), float indexOrder = default(float), List<CreateFieldDto> fields = default(List<CreateFieldDto>))
         {
             // to ensure "fileGuid" is required (not null)
@@ -80,20 +80,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets FileGuid
+        /// The &#39;fileGuid&#39; obtained via the &#39;Upload File&#39; API. It must match the &#39;fileGuid&#39; of a Document
         /// </summary>
+        /// <value>The &#39;fileGuid&#39; obtained via the &#39;Upload File&#39; API. It must match the &#39;fileGuid&#39; of a Document</value>
         [DataMember(Name="fileGuid", EmitDefaultValue=true)]
         public Guid FileGuid { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Document&#39;s order in this FieldGroup. This order is non-binding, it provides the signer with a guided signing experience
         /// </summary>
+        /// <value>Document&#39;s order in this FieldGroup. This order is non-binding, it provides the signer with a guided signing experience</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets Fields
+        /// List of Fields in this Document belonging to FieldGroup
         /// </summary>
+        /// <value>List of Fields in this Document belonging to FieldGroup</value>
         [DataMember(Name="fields", EmitDefaultValue=true)]
         public List<CreateFieldDto> Fields { get; set; }
 

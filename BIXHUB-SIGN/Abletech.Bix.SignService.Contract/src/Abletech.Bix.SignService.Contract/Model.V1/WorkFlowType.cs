@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines WorkFlowType
+    /// The WorkFlow parameter defines how notifications should be sent to the actors in the Sign Session:  - **Automatic**: A notification will be sent automatically whenever necessary.  - **Manual**: No notification will be automatically sent to the actors involved in the Sign Session
     /// </summary>
+    /// <value>The WorkFlow parameter defines how notifications should be sent to the actors in the Sign Session:  - **Automatic**: A notification will be sent automatically whenever necessary.  - **Manual**: No notification will be automatically sent to the actors involved in the Sign Session</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

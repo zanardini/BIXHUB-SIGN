@@ -54,15 +54,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSessionResponse" /> class.
         /// </summary>
-        /// <param name="sessionGuid">sessionGuid.</param>
+        /// <param name="sessionGuid">Guid of the newly created Sign Session.</param>
         public CreateSessionResponse(Guid sessionGuid = default(Guid))
         {
             this.SessionGuid = sessionGuid;
         }
 
         /// <summary>
-        /// Gets or Sets SessionGuid
+        /// Guid of the newly created Sign Session
         /// </summary>
+        /// <value>Guid of the newly created Sign Session</value>
         [DataMember(Name="sessionGuid", EmitDefaultValue=true)]
         public Guid SessionGuid { get; set; }
 

@@ -66,7 +66,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0, text/json; x-api-version=1.0
+- **Accept**: text/plain; x-api-version=1.0, application/json; x-api-version=1.0
 
 
 ### HTTP response details

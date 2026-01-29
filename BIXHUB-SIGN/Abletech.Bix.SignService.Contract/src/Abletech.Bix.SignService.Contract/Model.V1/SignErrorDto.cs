@@ -64,10 +64,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="SignErrorDto" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
+        /// <param name="guid">Error&#39;s guid.</param>
         /// <param name="type">type (required).</param>
-        /// <param name="details">details.</param>
-        /// <param name="timeStamp">timeStamp.</param>
+        /// <param name="details">Error&#39;s details.</param>
+        /// <param name="timeStamp">Error&#39;s Date (UTC standard).</param>
         public SignErrorDto(Guid guid = default(Guid), SignErrorType type = default(SignErrorType), string details = default(string), DateTime timeStamp = default(DateTime))
         {
             // to ensure "type" is required (not null)
@@ -87,21 +87,24 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Error&#39;s guid
         /// </summary>
+        /// <value>Error&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets Details
+        /// Error&#39;s details
         /// </summary>
+        /// <value>Error&#39;s details</value>
         [DataMember(Name="details", EmitDefaultValue=true)]
         public string Details { get; set; }
 
         /// <summary>
-        /// Gets or Sets TimeStamp
+        /// Error&#39;s Date (UTC standard)
         /// </summary>
+        /// <value>Error&#39;s Date (UTC standard)</value>
         [DataMember(Name="timeStamp", EmitDefaultValue=true)]
         public DateTime TimeStamp { get; set; }
 

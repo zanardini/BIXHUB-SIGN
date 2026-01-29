@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**GroupOrder** | **float** |  | [optional] 
-**Documents** | [**List&lt;CreateFieldGroupDocumentDto&gt;**](CreateFieldGroupDocumentDto.md) |  | [optional] 
+**Name** | **string** | FieldGroup&#39;s name | 
+**GroupOrder** | **float** | FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property | [optional] 
+**Documents** | [**List&lt;CreateFieldGroupDocumentDto&gt;**](CreateFieldGroupDocumentDto.md) | List of Documents containing Fields belonging to this FieldGroups | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

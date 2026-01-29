@@ -65,7 +65,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Initializes a new instance of the <see cref="CreateWebhookDto" /> class.
         /// </summary>
         /// <param name="webhookType">webhookType (required).</param>
-        /// <param name="url">url (required).</param>
+        /// <param name="url">URL that will receive a Post API call (required).</param>
         public CreateWebhookDto(SignWebhookEvent webhookType = default(SignWebhookEvent), string url = default(string))
         {
             // to ensure "webhookType" is required (not null)
@@ -92,8 +92,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets Url
+        /// URL that will receive a Post API call
         /// </summary>
+        /// <value>URL that will receive a Post API call</value>
         [DataMember(Name="url", EmitDefaultValue=true)]
         public string Url { get; set; }
 

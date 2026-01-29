@@ -54,9 +54,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="FileDataBase64" /> class.
         /// </summary>
-        /// <param name="base64">base64.</param>
-        /// <param name="fileName">fileName.</param>
-        /// <param name="mimeType">mimeType.</param>
+        /// <param name="base64">Base64 representing the file.</param>
+        /// <param name="fileName">File&#39;s Name.</param>
+        /// <param name="mimeType">File&#39;s MimeType.</param>
         public FileDataBase64(string base64 = default(string), string fileName = default(string), string mimeType = default(string))
         {
             this.Base64 = base64;
@@ -68,20 +68,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Base64
+        /// Base64 representing the file
         /// </summary>
+        /// <value>Base64 representing the file</value>
         [DataMember(Name="base64", EmitDefaultValue=true)]
         public string Base64 { get; set; }
 
         /// <summary>
-        /// Gets or Sets FileName
+        /// File&#39;s Name
         /// </summary>
+        /// <value>File&#39;s Name</value>
         [DataMember(Name="fileName", EmitDefaultValue=true)]
         public string FileName { get; set; }
 
         /// <summary>
-        /// Gets or Sets MimeType
+        /// File&#39;s MimeType
         /// </summary>
+        /// <value>File&#39;s MimeType</value>
         [DataMember(Name="mimeType", EmitDefaultValue=true)]
         public string MimeType { get; set; }
 

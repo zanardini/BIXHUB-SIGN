@@ -64,8 +64,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRadioButtonFieldDto" /> class.
         /// </summary>
-        /// <param name="shortDescription">shortDescription (required).</param>
-        /// <param name="indexOrder">indexOrder.</param>
+        /// <param name="shortDescription">RadioButton&#39;s description (required).</param>
+        /// <param name="indexOrder">RadioButton&#39;s index order. This order is non-binding, it provides the signer with a guided signing experience.</param>
         /// <param name="appearance">appearance.</param>
         /// <param name="position">position.</param>
         public CreateRadioButtonFieldDto(string shortDescription = default(string), float indexOrder = default(float), RadioButtonAppearance? appearance = default(RadioButtonAppearance?), CreatePositionDto position = default(CreatePositionDto))
@@ -86,14 +86,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets ShortDescription
+        /// RadioButton&#39;s description
         /// </summary>
+        /// <value>RadioButton&#39;s description</value>
         [DataMember(Name="shortDescription", EmitDefaultValue=true)]
         public string ShortDescription { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// RadioButton&#39;s index order. This order is non-binding, it provides the signer with a guided signing experience
         /// </summary>
+        /// <value>RadioButton&#39;s index order. This order is non-binding, it provides the signer with a guided signing experience</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 

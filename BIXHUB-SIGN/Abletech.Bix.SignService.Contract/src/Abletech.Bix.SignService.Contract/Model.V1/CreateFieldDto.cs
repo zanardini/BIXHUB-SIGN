@@ -75,22 +75,22 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Initializes a new instance of the <see cref="CreateFieldDto" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="shortDescription">shortDescription (required).</param>
-        /// <param name="indexOrder">indexOrder.</param>
-        /// <param name="optional">optional.</param>
-        /// <param name="initialValue">initialValue.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="values">values.</param>
-        /// <param name="radioButtonFields">radioButtonFields.</param>
-        /// <param name="fontSize">fontSize.</param>
+        /// <param name="shortDescription">Field&#39;s description (required).</param>
+        /// <param name="indexOrder">Field&#39;s order in this Document. This order is non-binding, it provides the signer with a guided signing experience.</param>
+        /// <param name="optional">If true, the Field must be filled in to complete the Sign Session.</param>
+        /// <param name="initialValue">Field&#39;s initial value, written when the Signer opens the Sign Session. It can only be filled if type property is set to TextBox.</param>
+        /// <param name="externalId">Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="values">List of values Signer can choose from. It&#39;s only read if type property is set to ComboBox.</param>
+        /// <param name="radioButtonFields">List of RadioButtons Signer can choose from. It&#39;s only read if type property is set to RadioGroup.</param>
+        /// <param name="fontSize">Font size that the text in this Field will be written in. It&#39;s only read if type property is set to TextBox.</param>
         /// <param name="font">font.</param>
         /// <param name="backGroundColor">backGroundColor.</param>
-        /// <param name="maxLength">maxLength.</param>
-        /// <param name="multiLine">multiLine.</param>
-        /// <param name="regexPattern">regexPattern.</param>
+        /// <param name="maxLength">The maximum length of text that can be written in this Field. It&#39;s only read if type property is set to TextBox.</param>
+        /// <param name="multiLine">If true, the text in this Field can wrap. It&#39;s only read if type property is set to TextBox.</param>
+        /// <param name="regexPattern">Pattern that the text written in this Field must follow. It&#39;s only read if type property is set to TextBox.</param>
         /// <param name="datePickerConstraint">datePickerConstraint.</param>
         /// <param name="position">position.</param>
-        /// <param name="immutable">immutable.</param>
+        /// <param name="immutable">If true, the value of this Field cannot be edited. It&#39;s only read if type property is set to TextBox, and InitialValue parameter has a value.</param>
         /// <param name="textColor">textColor.</param>
         public CreateFieldDto(FieldType type = default(FieldType), string shortDescription = default(string), float indexOrder = default(float), bool optional = default(bool), string initialValue = default(string), string externalId = default(string), List<string> values = default(List<string>), List<CreateRadioButtonFieldDto> radioButtonFields = default(List<CreateRadioButtonFieldDto>), double? fontSize = default(double?), FontAbleTech? font = default(FontAbleTech?), ColorDto backGroundColor = default(ColorDto), int? maxLength = default(int?), bool? multiLine = default(bool?), string regexPattern = default(string), DatePickerConstraint? datePickerConstraint = default(DatePickerConstraint?), CreatePositionDto position = default(CreatePositionDto), bool immutable = default(bool), ColorDto textColor = default(ColorDto))
         {
@@ -142,50 +142,58 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets ShortDescription
+        /// Field&#39;s description
         /// </summary>
+        /// <value>Field&#39;s description</value>
         [DataMember(Name="shortDescription", EmitDefaultValue=true)]
         public string ShortDescription { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Field&#39;s order in this Document. This order is non-binding, it provides the signer with a guided signing experience
         /// </summary>
+        /// <value>Field&#39;s order in this Document. This order is non-binding, it provides the signer with a guided signing experience</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets Optional
+        /// If true, the Field must be filled in to complete the Sign Session
         /// </summary>
+        /// <value>If true, the Field must be filled in to complete the Sign Session</value>
         [DataMember(Name="optional", EmitDefaultValue=true)]
         public bool Optional { get; set; }
 
         /// <summary>
-        /// Gets or Sets InitialValue
+        /// Field&#39;s initial value, written when the Signer opens the Sign Session. It can only be filled if type property is set to TextBox
         /// </summary>
+        /// <value>Field&#39;s initial value, written when the Signer opens the Sign Session. It can only be filled if type property is set to TextBox</value>
         [DataMember(Name="initialValue", EmitDefaultValue=true)]
         public string InitialValue { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Values
+        /// List of values Signer can choose from. It&#39;s only read if type property is set to ComboBox
         /// </summary>
+        /// <value>List of values Signer can choose from. It&#39;s only read if type property is set to ComboBox</value>
         [DataMember(Name="values", EmitDefaultValue=true)]
         public List<string> Values { get; set; }
 
         /// <summary>
-        /// Gets or Sets RadioButtonFields
+        /// List of RadioButtons Signer can choose from. It&#39;s only read if type property is set to RadioGroup
         /// </summary>
+        /// <value>List of RadioButtons Signer can choose from. It&#39;s only read if type property is set to RadioGroup</value>
         [DataMember(Name="radioButtonFields", EmitDefaultValue=true)]
         public List<CreateRadioButtonFieldDto> RadioButtonFields { get; set; }
 
         /// <summary>
-        /// Gets or Sets FontSize
+        /// Font size that the text in this Field will be written in. It&#39;s only read if type property is set to TextBox
         /// </summary>
+        /// <value>Font size that the text in this Field will be written in. It&#39;s only read if type property is set to TextBox</value>
         [DataMember(Name="fontSize", EmitDefaultValue=true)]
         public double? FontSize { get; set; }
 
@@ -197,20 +205,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public ColorDto BackGroundColor { get; set; }
 
         /// <summary>
-        /// Gets or Sets MaxLength
+        /// The maximum length of text that can be written in this Field. It&#39;s only read if type property is set to TextBox
         /// </summary>
+        /// <value>The maximum length of text that can be written in this Field. It&#39;s only read if type property is set to TextBox</value>
         [DataMember(Name="maxLength", EmitDefaultValue=true)]
         public int? MaxLength { get; set; }
 
         /// <summary>
-        /// Gets or Sets MultiLine
+        /// If true, the text in this Field can wrap. It&#39;s only read if type property is set to TextBox
         /// </summary>
+        /// <value>If true, the text in this Field can wrap. It&#39;s only read if type property is set to TextBox</value>
         [DataMember(Name="multiLine", EmitDefaultValue=true)]
         public bool? MultiLine { get; set; }
 
         /// <summary>
-        /// Gets or Sets RegexPattern
+        /// Pattern that the text written in this Field must follow. It&#39;s only read if type property is set to TextBox
         /// </summary>
+        /// <value>Pattern that the text written in this Field must follow. It&#39;s only read if type property is set to TextBox</value>
         [DataMember(Name="regexPattern", EmitDefaultValue=true)]
         public string RegexPattern { get; set; }
 
@@ -222,8 +233,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public CreatePositionDto Position { get; set; }
 
         /// <summary>
-        /// Gets or Sets Immutable
+        /// If true, the value of this Field cannot be edited. It&#39;s only read if type property is set to TextBox, and InitialValue parameter has a value
         /// </summary>
+        /// <value>If true, the value of this Field cannot be edited. It&#39;s only read if type property is set to TextBox, and InitialValue parameter has a value</value>
         [DataMember(Name="immutable", EmitDefaultValue=true)]
         public bool Immutable { get; set; }
 

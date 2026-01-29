@@ -54,11 +54,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="SavedFileResponse" /> class.
         /// </summary>
-        /// <param name="fileGuid">fileGuid.</param>
-        /// <param name="fileName">fileName.</param>
-        /// <param name="mimeType">mimeType.</param>
-        /// <param name="hash">hash.</param>
-        /// <param name="fileSize">fileSize.</param>
+        /// <param name="fileGuid">Can be used for Create File API.</param>
+        /// <param name="fileName">File&#39;s Name.</param>
+        /// <param name="mimeType">File&#39;s MimeType.</param>
+        /// <param name="hash">File&#39;s Hash.</param>
+        /// <param name="fileSize">File&#39;s Size.</param>
         public SavedFileResponse(Guid fileGuid = default(Guid), string fileName = default(string), string mimeType = default(string), string hash = default(string), long fileSize = default(long))
         {
             this.FileName = fileName;
@@ -72,32 +72,37 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets FileGuid
+        /// Can be used for Create File API
         /// </summary>
+        /// <value>Can be used for Create File API</value>
         [DataMember(Name="fileGuid", EmitDefaultValue=true)]
         public Guid FileGuid { get; set; }
 
         /// <summary>
-        /// Gets or Sets FileName
+        /// File&#39;s Name
         /// </summary>
+        /// <value>File&#39;s Name</value>
         [DataMember(Name="fileName", EmitDefaultValue=true)]
         public string FileName { get; set; }
 
         /// <summary>
-        /// Gets or Sets MimeType
+        /// File&#39;s MimeType
         /// </summary>
+        /// <value>File&#39;s MimeType</value>
         [DataMember(Name="mimeType", EmitDefaultValue=true)]
         public string MimeType { get; set; }
 
         /// <summary>
-        /// Gets or Sets Hash
+        /// File&#39;s Hash
         /// </summary>
+        /// <value>File&#39;s Hash</value>
         [DataMember(Name="hash", EmitDefaultValue=true)]
         public string Hash { get; set; }
 
         /// <summary>
-        /// Gets or Sets FileSize
+        /// File&#39;s Size
         /// </summary>
+        /// <value>File&#39;s Size</value>
         [DataMember(Name="fileSize", EmitDefaultValue=true)]
         public long FileSize { get; set; }
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **WebhookType** | **SignWebhookEvent** |  | 
-**Url** | **string** |  | 
+**Url** | **string** | URL that will receive a Post API call | 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

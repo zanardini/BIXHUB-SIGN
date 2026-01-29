@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines PositionType
+    /// The Type parameter indicates how the position should be defined.:  - **AcroField**: If there is already an Acrofield in the document, you can choose this value and fill in the AcroFieldTag parameter.  - **Label**: Insert a new Acrofield indicating its position relative to a Label already present in the PDF. You must indicate Height and Width. You can specify the PageNumber, the occurrence of the Label, and the offset relative to the Label.  - **Coordinates**: Insert a new Acrofield indicating the position and size. You must indicate PageNumber, Top, Left, Height and Width
     /// </summary>
+    /// <value>The Type parameter indicates how the position should be defined.:  - **AcroField**: If there is already an Acrofield in the document, you can choose this value and fill in the AcroFieldTag parameter.  - **Label**: Insert a new Acrofield indicating its position relative to a Label already present in the PDF. You must indicate Height and Width. You can specify the PageNumber, the occurrence of the Label, and the offset relative to the Label.  - **Coordinates**: Insert a new Acrofield indicating the position and size. You must indicate PageNumber, Top, Left, Height and Width</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

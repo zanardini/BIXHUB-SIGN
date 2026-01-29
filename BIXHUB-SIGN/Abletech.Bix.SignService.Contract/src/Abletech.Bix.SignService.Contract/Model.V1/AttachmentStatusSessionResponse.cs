@@ -52,16 +52,37 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
     public partial class AttachmentStatusSessionResponse :  IEquatable<AttachmentStatusSessionResponse>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets AttachmentValidationTypeAI
+        /// </summary>
+        [DataMember(Name="attachmentValidationTypeAI", EmitDefaultValue=true)]
+        public AttachmentValidationTypeAiDto AttachmentValidationTypeAI { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="AttachmentStatusSessionResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="mandatory">mandatory.</param>
-        /// <param name="uploaded">uploaded.</param>
-        /// <param name="indexOrder">indexOrder.</param>
-        /// <param name="externalId">externalId.</param>
-        public AttachmentStatusSessionResponse(Guid guid = default(Guid), bool mandatory = default(bool), bool uploaded = default(bool), float indexOrder = default(float), string externalId = default(string))
+        [JsonConstructorAttribute]
+        protected AttachmentStatusSessionResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AttachmentStatusSessionResponse" /> class.
+        /// </summary>
+        /// <param name="guid">Attachment&#39;s guid.</param>
+        /// <param name="mandatory">If true, Signer must upload this Attachment to complete the Sign Session.</param>
+        /// <param name="uploaded">If true, Signer has already uploaded this Attachment.</param>
+        /// <param name="indexOrder">Order in which Attachments will be presented to Signer.</param>
+        /// <param name="externalId">Optional identifier to recognize the Attachment in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="attachmentValidationTypeAI">attachmentValidationTypeAI (required).</param>
+        public AttachmentStatusSessionResponse(Guid guid = default(Guid), bool mandatory = default(bool), bool uploaded = default(bool), float indexOrder = default(float), string externalId = default(string), AttachmentValidationTypeAiDto attachmentValidationTypeAI = default(AttachmentValidationTypeAiDto))
         {
             this.ExternalId = externalId;
+            // to ensure "attachmentValidationTypeAI" is required (not null)
+            if (attachmentValidationTypeAI == null)
+            {
+                throw new InvalidDataException("attachmentValidationTypeAI is a required property for AttachmentStatusSessionResponse and cannot be null");
+            }
+            else
+            {
+                this.AttachmentValidationTypeAI = attachmentValidationTypeAI;
+            }
+
             this.Guid = guid;
             this.Mandatory = mandatory;
             this.Uploaded = uploaded;
@@ -70,34 +91,40 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Attachment&#39;s guid
         /// </summary>
+        /// <value>Attachment&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Mandatory
+        /// If true, Signer must upload this Attachment to complete the Sign Session
         /// </summary>
+        /// <value>If true, Signer must upload this Attachment to complete the Sign Session</value>
         [DataMember(Name="mandatory", EmitDefaultValue=true)]
         public bool Mandatory { get; set; }
 
         /// <summary>
-        /// Gets or Sets Uploaded
+        /// If true, Signer has already uploaded this Attachment
         /// </summary>
+        /// <value>If true, Signer has already uploaded this Attachment</value>
         [DataMember(Name="uploaded", EmitDefaultValue=true)]
         public bool Uploaded { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Order in which Attachments will be presented to Signer
         /// </summary>
+        /// <value>Order in which Attachments will be presented to Signer</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Attachment in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Attachment in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,6 +139,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  Uploaded: ").Append(Uploaded).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  AttachmentValidationTypeAI: ").Append(AttachmentValidationTypeAI).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -170,6 +198,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
+                    this.AttachmentValidationTypeAI == input.AttachmentValidationTypeAI ||
+                    (this.AttachmentValidationTypeAI != null &&
+                    this.AttachmentValidationTypeAI.Equals(input.AttachmentValidationTypeAI))
                 );
         }
 
@@ -192,6 +225,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.AttachmentValidationTypeAI != null)
+                    hashCode = hashCode * 59 + this.AttachmentValidationTypeAI.GetHashCode();
                 return hashCode;
             }
         }

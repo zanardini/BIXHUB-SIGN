@@ -54,15 +54,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="SendEmailRequest" /> class.
         /// </summary>
-        /// <param name="reminder">reminder.</param>
+        /// <param name="reminder">If true, the notification will use the reminder template.</param>
         public SendEmailRequest(bool reminder = default(bool))
         {
             this.Reminder = reminder;
         }
 
         /// <summary>
-        /// Gets or Sets Reminder
+        /// If true, the notification will use the reminder template
         /// </summary>
+        /// <value>If true, the notification will use the reminder template</value>
         [DataMember(Name="reminder", EmitDefaultValue=true)]
         public bool Reminder { get; set; }
 

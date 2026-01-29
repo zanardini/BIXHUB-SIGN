@@ -69,13 +69,13 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="GetErrorsSessionResponse" /> class.
         /// </summary>
-        /// <param name="sessionGuid">sessionGuid.</param>
+        /// <param name="sessionGuid">Guid of Sign Session.</param>
         /// <param name="process">process (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="createdDate">createdDate.</param>
-        /// <param name="completedDate">completedDate.</param>
-        /// <param name="errors">errors.</param>
-        /// <param name="errorsNumber">errorsNumber.</param>
+        /// <param name="createdDate">Sign Session creation date (UTC standard).</param>
+        /// <param name="completedDate">Sign Session completion date (UTC standard).</param>
+        /// <param name="errors">List of non-blocking errors that occurred while continuing this Sign Session.</param>
+        /// <param name="errorsNumber">Number of non-blocking errors that occurred while continuing this Sign Session.</param>
         public GetErrorsSessionResponse(Guid sessionGuid = default(Guid), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), DateTime createdDate = default(DateTime), DateTime? completedDate = default(DateTime?), List<SignErrorDto> errors = default(List<SignErrorDto>), int errorsNumber = default(int))
         {
             // to ensure "process" is required (not null)
@@ -108,34 +108,39 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets SessionGuid
+        /// Guid of Sign Session
         /// </summary>
+        /// <value>Guid of Sign Session</value>
         [DataMember(Name="sessionGuid", EmitDefaultValue=true)]
         public Guid SessionGuid { get; set; }
 
 
 
         /// <summary>
-        /// Gets or Sets CreatedDate
+        /// Sign Session creation date (UTC standard)
         /// </summary>
+        /// <value>Sign Session creation date (UTC standard)</value>
         [DataMember(Name="createdDate", EmitDefaultValue=true)]
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets CompletedDate
+        /// Sign Session completion date (UTC standard)
         /// </summary>
+        /// <value>Sign Session completion date (UTC standard)</value>
         [DataMember(Name="completedDate", EmitDefaultValue=true)]
         public DateTime? CompletedDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// List of non-blocking errors that occurred while continuing this Sign Session
         /// </summary>
+        /// <value>List of non-blocking errors that occurred while continuing this Sign Session</value>
         [DataMember(Name="errors", EmitDefaultValue=true)]
         public List<SignErrorDto> Errors { get; set; }
 
         /// <summary>
-        /// Gets or Sets ErrorsNumber
+        /// Number of non-blocking errors that occurred while continuing this Sign Session
         /// </summary>
+        /// <value>Number of non-blocking errors that occurred while continuing this Sign Session</value>
         [DataMember(Name="errorsNumber", EmitDefaultValue=true)]
         public int ErrorsNumber { get; set; }
 

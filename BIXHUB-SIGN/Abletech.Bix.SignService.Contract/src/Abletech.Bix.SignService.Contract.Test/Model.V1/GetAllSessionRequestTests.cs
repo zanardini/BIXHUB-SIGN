@@ -137,6 +137,14 @@ namespace Abletech.Bix.SignService.Contract.Test
         {
             // TODO unit test for the property 'Take'
         }
+        /// <summary>
+        /// Test the property 'ExternalId'
+        /// </summary>
+        [Test]
+        public void ExternalIdTest()
+        {
+            // TODO unit test for the property 'ExternalId'
+        }
 
     }
 

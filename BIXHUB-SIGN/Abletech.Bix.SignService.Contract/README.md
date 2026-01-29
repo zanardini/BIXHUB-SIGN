@@ -81,16 +81,17 @@ namespace Example
             // Configure HTTP bearer authorization: Bearer
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new MonitoringApi(Configuration.Default);
+            var apiInstance = new MassiveSignApi(Configuration.Default);
 
             try
             {
-                string result = apiInstance.ApiV1MonitoringHealthyGet();
+                // Get Certificate
+                GetCertificateResponse result = apiInstance.ApiV1MassiveSignGetCertificateGet();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling MonitoringApi.ApiV1MonitoringHealthyGet: " + e.Message );
+                Debug.Print("Exception when calling MassiveSignApi.ApiV1MassiveSignGetCertificateGet: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -106,31 +107,33 @@ All URIs are relative to */SignService*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MassiveSignApi* | [**ApiV1MassiveSignGetCertificateGet**](docs/MassiveSignApi.md#apiv1massivesigngetcertificateget) | **GET** /api/v1/MassiveSign/GetCertificate | Get Certificate
+*MassiveSignApi* | [**ApiV1MassiveSignSignPkcs1Post**](docs/MassiveSignApi.md#apiv1massivesignsignpkcs1post) | **POST** /api/v1/MassiveSign/SignPkcs1 | Sign PKCS#1
 *MonitoringApi* | [**ApiV1MonitoringHealthyGet**](docs/MonitoringApi.md#apiv1monitoringhealthyget) | **GET** /api/v1/Monitoring/Healthy | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleCreateAndPublishPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclecreateandpublishpost) | **POST** /api/v1/SessionLifeCycle/CreateAndPublish | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleCreatePost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclecreatepost) | **POST** /api/v1/SessionLifeCycle/Create | Create a signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleDeleteSessionGuidDelete**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycledeletesessionguiddelete) | **DELETE** /api/v1/SessionLifeCycle/Delete/{sessionGuid} | Delete a signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAllPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetallpost) | **POST** /api/v1/SessionLifeCycle/GetAll | Return all signature sessions with the status
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentbase64sessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid} | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentsessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid} | Returns attachment uploaded by user during signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrail64sessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail64/{sessionGuid} | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrailsessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail/{sessionGuid} | Returns Audit Trail of a signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetErrorsGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegeterrorsget) | **GET** /api/v1/SessionLifeCycle/GetErrors | Returns errors details of a list of signature sessions
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetFieldsSessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetfieldssessionguidget) | **GET** /api/v1/SessionLifeCycle/GetFields/{sessionGuid} | Return info of all fields in a flatten way
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetSessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetsessionguidget) | **GET** /api/v1/SessionLifeCycle/Get/{sessionGuid} | Return info of a signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultbase64sessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid} | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultsessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid} | Returns signed document by documentGuid and sessionGuid
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetStatusPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetstatuspost) | **POST** /api/v1/SessionLifeCycle/GetStatus | Returns status details of a list of signature sessions
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleMarkErrorAsFixedSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclemarkerrorasfixedsessionguidpost) | **POST** /api/v1/SessionLifeCycle/MarkErrorAsFixed/{sessionGuid} | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCyclePublishSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclepublishsessionguidpost) | **POST** /api/v1/SessionLifeCycle/Publish/{sessionGuid} | Make signature session viewable
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclerestoreidentificationsessionsessionguidsignerguidpost) | **POST** /api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid} | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleSendEmailSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclesendemailsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendEmail/{sessionGuid} | Send an email to next user with the link to activate the signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleSendNotificationSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclesendnotificationsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendNotification/{sessionGuid} | Send an email to next user with the link to activate the signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUpdateSessionGuidPatch**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleupdatesessionguidpatch) | **PATCH** /api/v1/SessionLifeCycle/Update/{sessionGuid} | Update attributes, parameters or metadata of an signature session
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFileBase64Post**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilebase64post) | **POST** /api/v1/SessionLifeCycle/UploadFileBase64 | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilePost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilepost) | **POST** /api/v1/SessionLifeCycle/UploadFile | Upload a document in format pdf
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilesBase64Post**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilesbase64post) | **POST** /api/v1/SessionLifeCycle/UploadFilesBase64 | 
-*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilesPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilespost) | **POST** /api/v1/SessionLifeCycle/UploadFiles | Upload documents in format pdf
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleCreateAndPublishPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclecreateandpublishpost) | **POST** /api/v1/SessionLifeCycle/CreateAndPublish | Create and Publish
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleCreatePost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclecreatepost) | **POST** /api/v1/SessionLifeCycle/Create | Create File
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleDeleteSessionGuidDelete**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycledeletesessionguiddelete) | **DELETE** /api/v1/SessionLifeCycle/Delete/{sessionGuid} | Delete session
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAllPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetallpost) | **POST** /api/v1/SessionLifeCycle/GetAll | Get Sessions
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAttachmentBase64SessionGuidSignerGuidAttachmentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentbase64sessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachmentBase64/{sessionGuid}/{signerGuid}/{attachmentGuid} | Get Attachment Base64
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAttachmentSessionGuidSignerGuidAttachmentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetattachmentsessionguidsignerguidattachmentguidget) | **GET** /api/v1/SessionLifeCycle/GetAttachment/{sessionGuid}/{signerGuid}/{attachmentGuid} | Get Attachment
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrail64sessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail64/{sessionGuid} | Get AuditTrail Base64
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetAuditTrailSessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetaudittrailsessionguidget) | **GET** /api/v1/SessionLifeCycle/GetAuditTrail/{sessionGuid} | Get AuditTrail
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetErrorsGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegeterrorsget) | **GET** /api/v1/SessionLifeCycle/GetErrors | Get Errors
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetFieldsSessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetfieldssessionguidget) | **GET** /api/v1/SessionLifeCycle/GetFields/{sessionGuid} | Get Fields
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetSessionGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetsessionguidget) | **GET** /api/v1/SessionLifeCycle/Get/{sessionGuid} | Get Session
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetSignedResultBase64SessionGuidDocumentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultbase64sessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResultBase64/{sessionGuid}/{documentGuid} | Get Signed Result Base64
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetSignedResultSessionGuidDocumentGuidGet**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetsignedresultsessionguiddocumentguidget) | **GET** /api/v1/SessionLifeCycle/GetSignedResult/{sessionGuid}/{documentGuid} | Get Signed Result
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleGetStatusPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclegetstatuspost) | **POST** /api/v1/SessionLifeCycle/GetStatus | Get Sessions Status
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleMarkErrorAsFixedSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclemarkerrorasfixedsessionguidpost) | **POST** /api/v1/SessionLifeCycle/MarkErrorAsFixed/{sessionGuid} | Fix Error
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCyclePublishSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclepublishsessionguidpost) | **POST** /api/v1/SessionLifeCycle/Publish/{sessionGuid} | Publish
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleRestoreIdentificationSessionSessionGuidSignerGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclerestoreidentificationsessionsessionguidsignerguidpost) | **POST** /api/v1/SessionLifeCycle/RestoreIdentificationSession/{sessionGuid}/{signerGuid} | Restore Identification
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleSendEmailSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclesendemailsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendEmail/{sessionGuid} | Send Email
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleSendNotificationSessionGuidPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecyclesendnotificationsessionguidpost) | **POST** /api/v1/SessionLifeCycle/SendNotification/{sessionGuid} | Send Notification
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUpdateSessionGuidPatch**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleupdatesessionguidpatch) | **PATCH** /api/v1/SessionLifeCycle/Update/{sessionGuid} | Update session
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFileBase64Post**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilebase64post) | **POST** /api/v1/SessionLifeCycle/UploadFileBase64 | Upload File Base64
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilePost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilepost) | **POST** /api/v1/SessionLifeCycle/UploadFile | Upload File
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilesBase64Post**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilesbase64post) | **POST** /api/v1/SessionLifeCycle/UploadFilesBase64 | Upload Files Base64
+*SessionLifeCycleApi* | [**ApiV1SessionLifeCycleUploadFilesPost**](docs/SessionLifeCycleApi.md#apiv1sessionlifecycleuploadfilespost) | **POST** /api/v1/SessionLifeCycle/UploadFiles | Upload Files
 
 
 ## Documentation for Models
@@ -141,6 +144,7 @@ Class | Method | HTTP request | Description
  - [Model.V1.ApproverStatusSessionState](docs/ApproverStatusSessionState.md)
  - [Model.V1.AttachmentSessionDetailResponse](docs/AttachmentSessionDetailResponse.md)
  - [Model.V1.AttachmentStatusSessionResponse](docs/AttachmentStatusSessionResponse.md)
+ - [Model.V1.AttachmentValidationTypeAiDto](docs/AttachmentValidationTypeAiDto.md)
  - [Model.V1.AutomaticReminderType](docs/AutomaticReminderType.md)
  - [Model.V1.ColorDto](docs/ColorDto.md)
  - [Model.V1.CreateApproverDto](docs/CreateApproverDto.md)
@@ -170,6 +174,7 @@ Class | Method | HTTP request | Description
  - [Model.V1.GetAllSessionRequest](docs/GetAllSessionRequest.md)
  - [Model.V1.GetAllSessionResponse](docs/GetAllSessionResponse.md)
  - [Model.V1.GetAllSessionResponseGetPaginatedListResponse](docs/GetAllSessionResponseGetPaginatedListResponse.md)
+ - [Model.V1.GetCertificateResponse](docs/GetCertificateResponse.md)
  - [Model.V1.GetErrorsSessionResponse](docs/GetErrorsSessionResponse.md)
  - [Model.V1.GetFieldsDtoDocument](docs/GetFieldsDtoDocument.md)
  - [Model.V1.GetFieldsDtoFieldGroup](docs/GetFieldsDtoFieldGroup.md)
@@ -194,6 +199,10 @@ Class | Method | HTTP request | Description
  - [Model.V1.SessionFlowTypeDto](docs/SessionFlowTypeDto.md)
  - [Model.V1.SignErrorDto](docs/SignErrorDto.md)
  - [Model.V1.SignErrorType](docs/SignErrorType.md)
+ - [Model.V1.SignPkcs1HashAlgorithm](docs/SignPkcs1HashAlgorithm.md)
+ - [Model.V1.SignPkcs1Request](docs/SignPkcs1Request.md)
+ - [Model.V1.SignPkcs1Response](docs/SignPkcs1Response.md)
+ - [Model.V1.SignPkcs1ResponseHash](docs/SignPkcs1ResponseHash.md)
  - [Model.V1.SignSessionProcessTypeDto](docs/SignSessionProcessTypeDto.md)
  - [Model.V1.SignSessionStatus](docs/SignSessionStatus.md)
  - [Model.V1.SignWebhookEvent](docs/SignWebhookEvent.md)

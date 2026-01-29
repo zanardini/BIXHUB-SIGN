@@ -69,19 +69,19 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="GetStatusSessionResponse" /> class.
         /// </summary>
-        /// <param name="sessionGuid">sessionGuid.</param>
+        /// <param name="sessionGuid">Guid of Sign Session.</param>
         /// <param name="process">process (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="reason">reason.</param>
-        /// <param name="createdDate">createdDate.</param>
-        /// <param name="completedDate">completedDate.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="nextActors">nextActors.</param>
-        /// <param name="approvers">approvers.</param>
-        /// <param name="signers">signers.</param>
-        /// <param name="errors">errors.</param>
-        /// <param name="expirationDate">expirationDate.</param>
-        /// <param name="rejectionDate">rejectionDate.</param>
+        /// <param name="reason">Reason why the Sign Session was rejected.</param>
+        /// <param name="createdDate">Sign Session creation date (UTC standard).</param>
+        /// <param name="completedDate">Sign Session completion date (UTC standard).</param>
+        /// <param name="externalId">Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.</param>
+        /// <param name="nextActors">List of upcoming actors with a valid link.</param>
+        /// <param name="approvers">List of Approvers who will need to approve the Sign Session before the Signers can start signing documents.</param>
+        /// <param name="signers">List of Signers who will have to sign the documents in this Sign Session.</param>
+        /// <param name="errors">List of non-blocking errors that occurred while continuing this Sign Session.</param>
+        /// <param name="expirationDate">Sign Session expiration date (UTC standard).</param>
+        /// <param name="rejectionDate">Date an Approver or Signer rejected the Sign Session (UTC standard).</param>
         public GetStatusSessionResponse(Guid sessionGuid = default(Guid), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), string reason = default(string), DateTime createdDate = default(DateTime), DateTime? completedDate = default(DateTime?), string externalId = default(string), List<NextActorStatusSessionResponse> nextActors = default(List<NextActorStatusSessionResponse>), List<ApproverStatusSessionResponse> approvers = default(List<ApproverStatusSessionResponse>), List<SignerStatusSessionResponse> signers = default(List<SignerStatusSessionResponse>), List<SignErrorDto> errors = default(List<SignErrorDto>), DateTime? expirationDate = default(DateTime?), DateTime? rejectionDate = default(DateTime?))
         {
             // to ensure "process" is required (not null)
@@ -127,70 +127,81 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets SessionGuid
+        /// Guid of Sign Session
         /// </summary>
+        /// <value>Guid of Sign Session</value>
         [DataMember(Name="sessionGuid", EmitDefaultValue=true)]
         public Guid SessionGuid { get; set; }
 
 
 
         /// <summary>
-        /// Gets or Sets Reason
+        /// Reason why the Sign Session was rejected
         /// </summary>
+        /// <value>Reason why the Sign Session was rejected</value>
         [DataMember(Name="reason", EmitDefaultValue=true)]
         public string Reason { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedDate
+        /// Sign Session creation date (UTC standard)
         /// </summary>
+        /// <value>Sign Session creation date (UTC standard)</value>
         [DataMember(Name="createdDate", EmitDefaultValue=true)]
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets CompletedDate
+        /// Sign Session completion date (UTC standard)
         /// </summary>
+        /// <value>Sign Session completion date (UTC standard)</value>
         [DataMember(Name="completedDate", EmitDefaultValue=true)]
         public DateTime? CompletedDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving
         /// </summary>
+        /// <value>Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets NextActors
+        /// List of upcoming actors with a valid link
         /// </summary>
+        /// <value>List of upcoming actors with a valid link</value>
         [DataMember(Name="nextActors", EmitDefaultValue=true)]
         public List<NextActorStatusSessionResponse> NextActors { get; set; }
 
         /// <summary>
-        /// Gets or Sets Approvers
+        /// List of Approvers who will need to approve the Sign Session before the Signers can start signing documents
         /// </summary>
+        /// <value>List of Approvers who will need to approve the Sign Session before the Signers can start signing documents</value>
         [DataMember(Name="approvers", EmitDefaultValue=true)]
         public List<ApproverStatusSessionResponse> Approvers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Signers
+        /// List of Signers who will have to sign the documents in this Sign Session
         /// </summary>
+        /// <value>List of Signers who will have to sign the documents in this Sign Session</value>
         [DataMember(Name="signers", EmitDefaultValue=true)]
         public List<SignerStatusSessionResponse> Signers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// List of non-blocking errors that occurred while continuing this Sign Session
         /// </summary>
+        /// <value>List of non-blocking errors that occurred while continuing this Sign Session</value>
         [DataMember(Name="errors", EmitDefaultValue=true)]
         public List<SignErrorDto> Errors { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpirationDate
+        /// Sign Session expiration date (UTC standard)
         /// </summary>
+        /// <value>Sign Session expiration date (UTC standard)</value>
         [DataMember(Name="expirationDate", EmitDefaultValue=true)]
         public DateTime? ExpirationDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets RejectionDate
+        /// Date an Approver or Signer rejected the Sign Session (UTC standard)
         /// </summary>
+        /// <value>Date an Approver or Signer rejected the Sign Session (UTC standard)</value>
         [DataMember(Name="rejectionDate", EmitDefaultValue=true)]
         public DateTime? RejectionDate { get; set; }
 

@@ -65,16 +65,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Initializes a new instance of the <see cref="CreatePositionDto" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="acroFieldTag">acroFieldTag.</param>
-        /// <param name="pageNumber">pageNumber.</param>
-        /// <param name="top">top.</param>
-        /// <param name="left">left.</param>
-        /// <param name="label">label.</param>
-        /// <param name="occurrence">occurrence.</param>
-        /// <param name="offsetX">offsetX.</param>
-        /// <param name="offsetY">offsetY.</param>
-        /// <param name="width">width.</param>
-        /// <param name="height">height.</param>
+        /// <param name="acroFieldTag">Identifier of the Acrofield to find. It&#39;s only read if type property is set to AcroField.</param>
+        /// <param name="pageNumber">Number of PDF page. Set to &#39;1&#39; to select the first page of the PDF.</param>
+        /// <param name="top">Distance from the top edge of the page, expressed as a percentage of the page height.</param>
+        /// <param name="left">Distance from the left edge of the page, expressed as a percentage of the page width.</param>
+        /// <param name="label">Label to search in the PDF. It&#39;s only read if type property is set to Label.</param>
+        /// <param name="occurrence">Occurrence of the Label within the PDF (If pageNumber is set, the search is restricted to that page). It&#39;s only read if type property is set to Label.</param>
+        /// <param name="offsetX">Move on the X-axis relative to the Label position to insert the new Acrofield, expressed as a percentage of the page width. It&#39;s only read if type property is set to Label.</param>
+        /// <param name="offsetY">Move on the Y-axis relative to the Label position to insert the new Acrofield, expressed as a percentage of the page height. It&#39;s only read if type property is set to Label.</param>
+        /// <param name="width">Width of the new Acrofield that will be added, expressed as a percentage of the page width.</param>
+        /// <param name="height">Height of the new Acrofield that will be added, expressed as a percentage of the page height.</param>
         public CreatePositionDto(PositionType type = default(PositionType), string acroFieldTag = default(string), int? pageNumber = default(int?), float? top = default(float?), float? left = default(float?), string label = default(string), int? occurrence = default(int?), float? offsetX = default(float?), float? offsetY = default(float?), float? width = default(float?), float? height = default(float?))
         {
             // to ensure "type" is required (not null)
@@ -111,62 +111,72 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets AcroFieldTag
+        /// Identifier of the Acrofield to find. It&#39;s only read if type property is set to AcroField
         /// </summary>
+        /// <value>Identifier of the Acrofield to find. It&#39;s only read if type property is set to AcroField</value>
         [DataMember(Name="acroFieldTag", EmitDefaultValue=true)]
         public string AcroFieldTag { get; set; }
 
         /// <summary>
-        /// Gets or Sets PageNumber
+        /// Number of PDF page. Set to &#39;1&#39; to select the first page of the PDF
         /// </summary>
+        /// <value>Number of PDF page. Set to &#39;1&#39; to select the first page of the PDF</value>
         [DataMember(Name="pageNumber", EmitDefaultValue=true)]
         public int? PageNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets Top
+        /// Distance from the top edge of the page, expressed as a percentage of the page height
         /// </summary>
+        /// <value>Distance from the top edge of the page, expressed as a percentage of the page height</value>
         [DataMember(Name="top", EmitDefaultValue=true)]
         public float? Top { get; set; }
 
         /// <summary>
-        /// Gets or Sets Left
+        /// Distance from the left edge of the page, expressed as a percentage of the page width
         /// </summary>
+        /// <value>Distance from the left edge of the page, expressed as a percentage of the page width</value>
         [DataMember(Name="left", EmitDefaultValue=true)]
         public float? Left { get; set; }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// Label to search in the PDF. It&#39;s only read if type property is set to Label
         /// </summary>
+        /// <value>Label to search in the PDF. It&#39;s only read if type property is set to Label</value>
         [DataMember(Name="label", EmitDefaultValue=true)]
         public string Label { get; set; }
 
         /// <summary>
-        /// Gets or Sets Occurrence
+        /// Occurrence of the Label within the PDF (If pageNumber is set, the search is restricted to that page). It&#39;s only read if type property is set to Label
         /// </summary>
+        /// <value>Occurrence of the Label within the PDF (If pageNumber is set, the search is restricted to that page). It&#39;s only read if type property is set to Label</value>
         [DataMember(Name="occurrence", EmitDefaultValue=true)]
         public int? Occurrence { get; set; }
 
         /// <summary>
-        /// Gets or Sets OffsetX
+        /// Move on the X-axis relative to the Label position to insert the new Acrofield, expressed as a percentage of the page width. It&#39;s only read if type property is set to Label
         /// </summary>
+        /// <value>Move on the X-axis relative to the Label position to insert the new Acrofield, expressed as a percentage of the page width. It&#39;s only read if type property is set to Label</value>
         [DataMember(Name="offsetX", EmitDefaultValue=true)]
         public float? OffsetX { get; set; }
 
         /// <summary>
-        /// Gets or Sets OffsetY
+        /// Move on the Y-axis relative to the Label position to insert the new Acrofield, expressed as a percentage of the page height. It&#39;s only read if type property is set to Label
         /// </summary>
+        /// <value>Move on the Y-axis relative to the Label position to insert the new Acrofield, expressed as a percentage of the page height. It&#39;s only read if type property is set to Label</value>
         [DataMember(Name="offsetY", EmitDefaultValue=true)]
         public float? OffsetY { get; set; }
 
         /// <summary>
-        /// Gets or Sets Width
+        /// Width of the new Acrofield that will be added, expressed as a percentage of the page width
         /// </summary>
+        /// <value>Width of the new Acrofield that will be added, expressed as a percentage of the page width</value>
         [DataMember(Name="width", EmitDefaultValue=true)]
         public float? Width { get; set; }
 
         /// <summary>
-        /// Gets or Sets Height
+        /// Height of the new Acrofield that will be added, expressed as a percentage of the page height
         /// </summary>
+        /// <value>Height of the new Acrofield that will be added, expressed as a percentage of the page height</value>
         [DataMember(Name="height", EmitDefaultValue=true)]
         public float? Height { get; set; }
 

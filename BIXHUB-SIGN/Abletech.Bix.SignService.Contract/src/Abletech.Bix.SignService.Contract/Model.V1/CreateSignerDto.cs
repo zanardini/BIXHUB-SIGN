@@ -69,20 +69,20 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSignerDto" /> class.
         /// </summary>
-        /// <param name="description">description (required).</param>
-        /// <param name="email">email.</param>
-        /// <param name="phoneNumber">phoneNumber.</param>
-        /// <param name="taxCode">taxCode.</param>
+        /// <param name="description">Signer&#39;s description (required).</param>
+        /// <param name="email">Signer&#39;s email address; It may receive notifications or OTP.</param>
+        /// <param name="phoneNumber">Signer&#39;s phone number; It may receive notifications or OTP.</param>
+        /// <param name="taxCode">Signer&#39;s taxcode.</param>
         /// <param name="verificationMode">verificationMode (required).</param>
-        /// <param name="indexOrder">indexOrder.</param>
-        /// <param name="redirectUri">redirectUri.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="fieldGroups">fieldGroups.</param>
-        /// <param name="attachments">attachments.</param>
-        /// <param name="language">language.</param>
-        /// <param name="requireIdentification">requireIdentification.</param>
-        /// <param name="graphometric">graphometric.</param>
-        /// <param name="base64SignatureImage">base64SignatureImage.</param>
+        /// <param name="indexOrder">Signer&#39;s index order; Signers will sign the Sign Session in order according to this property.</param>
+        /// <param name="redirectUri">URL to which the Signer will be redirected after the sign process is complete.</param>
+        /// <param name="externalId">Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="fieldGroups">List of FieldGroups that the Signer will have to complete. Each FieldGroup can be validated via a different OTP.</param>
+        /// <param name="attachments">List of Attachments that the Signer can upload.</param>
+        /// <param name="language">Language in which the Signer will receive automatic notifications. This must be entered in accordance with the ISO 639 standard.</param>
+        /// <param name="requireIdentification">If true, the Signer will be asked to identify themselves before they can sign Documents.</param>
+        /// <param name="graphometric">If true, the Signer will be required to sign on specific devices that can detect stroke pressure.</param>
+        /// <param name="base64SignatureImage">Base64 image that the Signer will use to sign Documents.</param>
         /// <param name="notificationChannel">notificationChannel (required).</param>
         public CreateSignerDto(string description = default(string), string email = default(string), string phoneNumber = default(string), string taxCode = default(string), VerificationModeDto verificationMode = default(VerificationModeDto), float indexOrder = default(float), string redirectUri = default(string), string externalId = default(string), List<CreateFieldGroupDto> fieldGroups = default(List<CreateFieldGroupDto>), List<CreateAttachmentDto> attachments = default(List<CreateAttachmentDto>), string language = default(string), bool? requireIdentification = default(bool?), bool graphometric = default(bool), string base64SignatureImage = default(string), NotificationChannel notificationChannel = default(NotificationChannel))
         {
@@ -141,81 +141,94 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Signer&#39;s description
         /// </summary>
+        /// <value>Signer&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Signer&#39;s email address; It may receive notifications or OTP
         /// </summary>
+        /// <value>Signer&#39;s email address; It may receive notifications or OTP</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets PhoneNumber
+        /// Signer&#39;s phone number; It may receive notifications or OTP
         /// </summary>
+        /// <value>Signer&#39;s phone number; It may receive notifications or OTP</value>
         [DataMember(Name="phoneNumber", EmitDefaultValue=true)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxCode
+        /// Signer&#39;s taxcode
         /// </summary>
+        /// <value>Signer&#39;s taxcode</value>
         [DataMember(Name="taxCode", EmitDefaultValue=true)]
         public string TaxCode { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Signer&#39;s index order; Signers will sign the Sign Session in order according to this property
         /// </summary>
+        /// <value>Signer&#39;s index order; Signers will sign the Sign Session in order according to this property</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets RedirectUri
+        /// URL to which the Signer will be redirected after the sign process is complete
         /// </summary>
+        /// <value>URL to which the Signer will be redirected after the sign process is complete</value>
         [DataMember(Name="redirectUri", EmitDefaultValue=true)]
         public string RedirectUri { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets FieldGroups
+        /// List of FieldGroups that the Signer will have to complete. Each FieldGroup can be validated via a different OTP
         /// </summary>
+        /// <value>List of FieldGroups that the Signer will have to complete. Each FieldGroup can be validated via a different OTP</value>
         [DataMember(Name="fieldGroups", EmitDefaultValue=true)]
         public List<CreateFieldGroupDto> FieldGroups { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attachments
+        /// List of Attachments that the Signer can upload
         /// </summary>
+        /// <value>List of Attachments that the Signer can upload</value>
         [DataMember(Name="attachments", EmitDefaultValue=true)]
         public List<CreateAttachmentDto> Attachments { get; set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// Language in which the Signer will receive automatic notifications. This must be entered in accordance with the ISO 639 standard
         /// </summary>
+        /// <value>Language in which the Signer will receive automatic notifications. This must be entered in accordance with the ISO 639 standard</value>
         [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 
         /// <summary>
-        /// Gets or Sets RequireIdentification
+        /// If true, the Signer will be asked to identify themselves before they can sign Documents
         /// </summary>
+        /// <value>If true, the Signer will be asked to identify themselves before they can sign Documents</value>
         [DataMember(Name="requireIdentification", EmitDefaultValue=true)]
         public bool? RequireIdentification { get; set; }
 
         /// <summary>
-        /// Gets or Sets Graphometric
+        /// If true, the Signer will be required to sign on specific devices that can detect stroke pressure
         /// </summary>
+        /// <value>If true, the Signer will be required to sign on specific devices that can detect stroke pressure</value>
         [DataMember(Name="graphometric", EmitDefaultValue=true)]
         public bool Graphometric { get; set; }
 
         /// <summary>
-        /// Gets or Sets Base64SignatureImage
+        /// Base64 image that the Signer will use to sign Documents
         /// </summary>
+        /// <value>Base64 image that the Signer will use to sign Documents</value>
         [DataMember(Name="base64SignatureImage", EmitDefaultValue=true)]
         public string Base64SignatureImage { get; set; }
 

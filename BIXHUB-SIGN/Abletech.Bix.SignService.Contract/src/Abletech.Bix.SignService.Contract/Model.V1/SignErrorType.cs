@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines SignErrorType
+    /// - **SendMailToApprover**: Errors sending email to Approver.  - **SendMailToSigner**: Errors sending email to Signer.  - **WebhookCallSessionCompleted**: Errors in Webhook API call to notify Sign Session completion.  - **WebhookCallSignerCompleted**: Errors in the Webhook API call to notify that a Signer has successfully signed.  - **WenhookCallApproverCompleted**: Errors in the Webhook API call to notify that an Approver has successfully approved.  - **WebhookCallSessionApproved**: Errors in Webhook API call to notify Sign Session approval.  - **SendMailToFollower**: Errors sending email to Follower.  - **AuditTrailGeneration**: Errors in AuditTrail generation.  - **IdentificationSession**: Errors occurred during the identification process.  - **SendSmsToSigner**: Errors sending SMS to Signer.
     /// </summary>
+    /// <value>- **SendMailToApprover**: Errors sending email to Approver.  - **SendMailToSigner**: Errors sending email to Signer.  - **WebhookCallSessionCompleted**: Errors in Webhook API call to notify Sign Session completion.  - **WebhookCallSignerCompleted**: Errors in the Webhook API call to notify that a Signer has successfully signed.  - **WenhookCallApproverCompleted**: Errors in the Webhook API call to notify that an Approver has successfully approved.  - **WebhookCallSessionApproved**: Errors in Webhook API call to notify Sign Session approval.  - **SendMailToFollower**: Errors sending email to Follower.  - **AuditTrailGeneration**: Errors in AuditTrail generation.  - **IdentificationSession**: Errors occurred during the identification process.  - **SendSmsToSigner**: Errors sending SMS to Signer.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

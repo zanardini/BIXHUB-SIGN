@@ -76,29 +76,29 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// </summary>
         /// <param name="process">process (required).</param>
         /// <param name="workFlow">workFlow (required).</param>
-        /// <param name="description">description.</param>
-        /// <param name="metadata">metadata.</param>
-        /// <param name="parameters">parameters.</param>
-        /// <param name="attributes">attributes.</param>
-        /// <param name="webhooks">webhooks.</param>
-        /// <param name="approvers">approvers.</param>
-        /// <param name="followers">followers.</param>
-        /// <param name="documents">documents.</param>
-        /// <param name="signers">signers.</param>
-        /// <param name="requireIdentificationForSigners">requireIdentificationForSigners.</param>
-        /// <param name="requireStrongAuthForSigners">requireStrongAuthForSigners.</param>
-        /// <param name="requireStrongAuthForApprovers">requireStrongAuthForApprovers.</param>
-        /// <param name="requireTimestampingForDocuments">requireTimestampingForDocuments.</param>
-        /// <param name="lockAllChangesInSignedDocuments">lockAllChangesInSignedDocuments.</param>
-        /// <param name="acquireBiometricData">acquireBiometricData.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="retentionDays">retentionDays.</param>
-        /// <param name="daysToDownload">daysToDownload.</param>
+        /// <param name="description">Description of the Sign Session; It will be visible to the involved actors.</param>
+        /// <param name="metadata">Metadata for legal archiving; Allowed Values:  - **OGGETTO**: It will be written in the metadata OGGETTO during the preservation in ARXivar eArchiving.  - **EXTERNAL_ID**: It will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving..</param>
+        /// <param name="parameters">Parameters to modify backend behavior; Allowed Values:  - **language**: It will be the default language for all actors for which it has not been specified. This must be entered in accordance with the ISO 639 standard.  - **emailTemplate.approverInitialUrl**: Guid of email template to use to send the initial Url to Approvers.  - **emailTemplate.approverReminderUrl**: Guid of email template to use to send the a reminder to Approvers.  - **emailTemplate.signerInitialUrl**: Guid of email template to use to send the initial Url to Signers.  - **emailTemplate.signerIdeInitialUrl**: Guid of email template to use to send the initial Url to Signers who will have to undergo an identification process.  - **emailTemplate.signerReminderUrl**: Guid of email template to use to send the a reminder to Signers.  - **emailTemplate.signerCompleteUrl**: Guid of email template to use to send the finel Url to Signers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.followerCompleteUrl**: Guid of email template to use to send the finel Url to Followers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.signerReject**: Guid of email template to use to notify Signers who have already signed documents that the Sign Session has been canceled because a Signer refused to sign.  - **emailTemplate.approverReject**: Guid of email template to use to inform Approvers who have already approved the Sign Session that the Sign Session itself will be canceled because an Approver refused to approve it.  - **emailTemplate.approverInitialOtp**: Guid of email template to use to send OTP to Approvers when opening the Sign Session.  - **emailTemplate.signerInitialOtp**: Guid of email template to use to send OTP to Signers when opening the Sign Session.  - **emailTemplate.signerConfirmFieldGroupOtp**: Guid of email template to use to send OTP to Signers when completing a FieldGroup..</param>
+        /// <param name="attributes">Attributes to modify frontend behavior; Allowed Values:  - [**Deprecated**] **otp.expireInSeconds**: Duration expressed in seconds of OTPs sent to actors.  - [**Deprecated**] **otp.message**: Text of the message used when sending OTPs via SMS.  - **dateformat**: Format in which the date will be written on the final PDF within the DatePicker fields.</param>
+        /// <param name="webhooks">List of URLs that should receive a Post API call when the session proceeds.</param>
+        /// <param name="approvers">List of Approvers who will need to approve the Sign Session before the Signers can start signing documents.</param>
+        /// <param name="followers">List of Followers who will be notified when the last Signer has successfully completed the Sign Session. They will be able to see all the Signers involved and download all the documents.</param>
+        /// <param name="documents">List of Documents that will be viewed and/or signed during the Sign Session.</param>
+        /// <param name="signers">List of Signers who will have to sign the documents in this Sign Session.</param>
+        /// <param name="requireIdentificationForSigners">If true, all Signers will have to identify themselves unless otherwise specified at the individual Signer level.</param>
+        /// <param name="requireStrongAuthForSigners">If true, Signers will have to enter an OTP when opening the Sign Session. [**Deprecated**]: Use Signer property requireIdentification.</param>
+        /// <param name="requireStrongAuthForApprovers">If true, Approvers will have to enter an OTP when opening the Sign Session.</param>
+        /// <param name="requireTimestampingForDocuments">If true, a timestamp will be applied to Documents at the end of the Sign Session.</param>
+        /// <param name="lockAllChangesInSignedDocuments">If true, at the end of the Sign Session the Documents will be sealed to prevent further changes.</param>
+        /// <param name="acquireBiometricData">If true, biometric data of all Signers will be acquired with the graphometric property set to true.</param>
+        /// <param name="externalId">Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.</param>
+        /// <param name="retentionDays">Number of days the Sign Session can be completed from the time of Publish. If the last Signer has not completed the process by the time the Sign Session expires, the Sign Session will be deleted.</param>
+        /// <param name="daysToDownload">Number of days that Documents will be available for download after the Sign Session is completed.</param>
         /// <param name="automaticReminder">automaticReminder (required).</param>
-        /// <param name="extraProperties">extraProperties.</param>
-        /// <param name="customAutomaticReminderDays">customAutomaticReminderDays.</param>
-        /// <param name="isPrivate">isPrivate.</param>
-        /// <param name="privateViewers">privateViewers.</param>
+        /// <param name="extraProperties">Any extra properties to add to the Sign Session.</param>
+        /// <param name="customAutomaticReminderDays">Number of days after the first notification to send an automatic reminder. This value is read only if the automaticReminder property has a value of Custom.</param>
+        /// <param name="isPrivate">If true, the Sign Session will be visible only to who created it and to users whose email addresses are included in the privateViewers property.</param>
+        /// <param name="privateViewers">List of email of the only users who can see the Sign Session if the isPrivate property is true.</param>
         public CreateSessionRequest(SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), WorkFlowType workFlow = default(WorkFlowType), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<CreateWebhookDto> webhooks = default(List<CreateWebhookDto>), List<CreateApproverDto> approvers = default(List<CreateApproverDto>), List<CreateFollowerDto> followers = default(List<CreateFollowerDto>), List<CreateDocumentDto> documents = default(List<CreateDocumentDto>), List<CreateSignerDto> signers = default(List<CreateSignerDto>), bool? requireIdentificationForSigners = default(bool?), bool? requireStrongAuthForSigners = default(bool?), bool? requireStrongAuthForApprovers = default(bool?), bool? requireTimestampingForDocuments = default(bool?), bool? lockAllChangesInSignedDocuments = default(bool?), bool? acquireBiometricData = default(bool?), string externalId = default(string), int? retentionDays = default(int?), int? daysToDownload = default(int?), AutomaticReminderType automaticReminder = default(AutomaticReminderType), Dictionary<string, string> extraProperties = default(Dictionary<string, string>), int? customAutomaticReminderDays = default(int?), bool isPrivate = default(bool), List<string> privateViewers = default(List<string>))
         {
             // to ensure "process" is required (not null)
@@ -179,135 +179,158 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Description of the Sign Session; It will be visible to the involved actors
         /// </summary>
+        /// <value>Description of the Sign Session; It will be visible to the involved actors</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Metadata
+        /// Metadata for legal archiving; Allowed Values:  - **OGGETTO**: It will be written in the metadata OGGETTO during the preservation in ARXivar eArchiving.  - **EXTERNAL_ID**: It will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.
         /// </summary>
+        /// <value>Metadata for legal archiving; Allowed Values:  - **OGGETTO**: It will be written in the metadata OGGETTO during the preservation in ARXivar eArchiving.  - **EXTERNAL_ID**: It will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.</value>
         [DataMember(Name="metadata", EmitDefaultValue=true)]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Gets or Sets Parameters
+        /// Parameters to modify backend behavior; Allowed Values:  - **language**: It will be the default language for all actors for which it has not been specified. This must be entered in accordance with the ISO 639 standard.  - **emailTemplate.approverInitialUrl**: Guid of email template to use to send the initial Url to Approvers.  - **emailTemplate.approverReminderUrl**: Guid of email template to use to send the a reminder to Approvers.  - **emailTemplate.signerInitialUrl**: Guid of email template to use to send the initial Url to Signers.  - **emailTemplate.signerIdeInitialUrl**: Guid of email template to use to send the initial Url to Signers who will have to undergo an identification process.  - **emailTemplate.signerReminderUrl**: Guid of email template to use to send the a reminder to Signers.  - **emailTemplate.signerCompleteUrl**: Guid of email template to use to send the finel Url to Signers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.followerCompleteUrl**: Guid of email template to use to send the finel Url to Followers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.signerReject**: Guid of email template to use to notify Signers who have already signed documents that the Sign Session has been canceled because a Signer refused to sign.  - **emailTemplate.approverReject**: Guid of email template to use to inform Approvers who have already approved the Sign Session that the Sign Session itself will be canceled because an Approver refused to approve it.  - **emailTemplate.approverInitialOtp**: Guid of email template to use to send OTP to Approvers when opening the Sign Session.  - **emailTemplate.signerInitialOtp**: Guid of email template to use to send OTP to Signers when opening the Sign Session.  - **emailTemplate.signerConfirmFieldGroupOtp**: Guid of email template to use to send OTP to Signers when completing a FieldGroup.
         /// </summary>
+        /// <value>Parameters to modify backend behavior; Allowed Values:  - **language**: It will be the default language for all actors for which it has not been specified. This must be entered in accordance with the ISO 639 standard.  - **emailTemplate.approverInitialUrl**: Guid of email template to use to send the initial Url to Approvers.  - **emailTemplate.approverReminderUrl**: Guid of email template to use to send the a reminder to Approvers.  - **emailTemplate.signerInitialUrl**: Guid of email template to use to send the initial Url to Signers.  - **emailTemplate.signerIdeInitialUrl**: Guid of email template to use to send the initial Url to Signers who will have to undergo an identification process.  - **emailTemplate.signerReminderUrl**: Guid of email template to use to send the a reminder to Signers.  - **emailTemplate.signerCompleteUrl**: Guid of email template to use to send the finel Url to Signers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.followerCompleteUrl**: Guid of email template to use to send the finel Url to Followers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.signerReject**: Guid of email template to use to notify Signers who have already signed documents that the Sign Session has been canceled because a Signer refused to sign.  - **emailTemplate.approverReject**: Guid of email template to use to inform Approvers who have already approved the Sign Session that the Sign Session itself will be canceled because an Approver refused to approve it.  - **emailTemplate.approverInitialOtp**: Guid of email template to use to send OTP to Approvers when opening the Sign Session.  - **emailTemplate.signerInitialOtp**: Guid of email template to use to send OTP to Signers when opening the Sign Session.  - **emailTemplate.signerConfirmFieldGroupOtp**: Guid of email template to use to send OTP to Signers when completing a FieldGroup.</value>
         [DataMember(Name="parameters", EmitDefaultValue=true)]
         public Dictionary<string, string> Parameters { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
+        /// Attributes to modify frontend behavior; Allowed Values:  - [**Deprecated**] **otp.expireInSeconds**: Duration expressed in seconds of OTPs sent to actors.  - [**Deprecated**] **otp.message**: Text of the message used when sending OTPs via SMS.  - **dateformat**: Format in which the date will be written on the final PDF within the DatePicker fields
         /// </summary>
+        /// <value>Attributes to modify frontend behavior; Allowed Values:  - [**Deprecated**] **otp.expireInSeconds**: Duration expressed in seconds of OTPs sent to actors.  - [**Deprecated**] **otp.message**: Text of the message used when sending OTPs via SMS.  - **dateformat**: Format in which the date will be written on the final PDF within the DatePicker fields</value>
         [DataMember(Name="attributes", EmitDefaultValue=true)]
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
-        /// Gets or Sets Webhooks
+        /// List of URLs that should receive a Post API call when the session proceeds
         /// </summary>
+        /// <value>List of URLs that should receive a Post API call when the session proceeds</value>
         [DataMember(Name="webhooks", EmitDefaultValue=true)]
         public List<CreateWebhookDto> Webhooks { get; set; }
 
         /// <summary>
-        /// Gets or Sets Approvers
+        /// List of Approvers who will need to approve the Sign Session before the Signers can start signing documents
         /// </summary>
+        /// <value>List of Approvers who will need to approve the Sign Session before the Signers can start signing documents</value>
         [DataMember(Name="approvers", EmitDefaultValue=true)]
         public List<CreateApproverDto> Approvers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Followers
+        /// List of Followers who will be notified when the last Signer has successfully completed the Sign Session. They will be able to see all the Signers involved and download all the documents
         /// </summary>
+        /// <value>List of Followers who will be notified when the last Signer has successfully completed the Sign Session. They will be able to see all the Signers involved and download all the documents</value>
         [DataMember(Name="followers", EmitDefaultValue=true)]
         public List<CreateFollowerDto> Followers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Documents
+        /// List of Documents that will be viewed and/or signed during the Sign Session
         /// </summary>
+        /// <value>List of Documents that will be viewed and/or signed during the Sign Session</value>
         [DataMember(Name="documents", EmitDefaultValue=true)]
         public List<CreateDocumentDto> Documents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Signers
+        /// List of Signers who will have to sign the documents in this Sign Session
         /// </summary>
+        /// <value>List of Signers who will have to sign the documents in this Sign Session</value>
         [DataMember(Name="signers", EmitDefaultValue=true)]
         public List<CreateSignerDto> Signers { get; set; }
 
         /// <summary>
-        /// Gets or Sets RequireIdentificationForSigners
+        /// If true, all Signers will have to identify themselves unless otherwise specified at the individual Signer level
         /// </summary>
+        /// <value>If true, all Signers will have to identify themselves unless otherwise specified at the individual Signer level</value>
         [DataMember(Name="requireIdentificationForSigners", EmitDefaultValue=true)]
         public bool? RequireIdentificationForSigners { get; set; }
 
         /// <summary>
-        /// Gets or Sets RequireStrongAuthForSigners
+        /// If true, Signers will have to enter an OTP when opening the Sign Session. [**Deprecated**]: Use Signer property requireIdentification
         /// </summary>
+        /// <value>If true, Signers will have to enter an OTP when opening the Sign Session. [**Deprecated**]: Use Signer property requireIdentification</value>
         [DataMember(Name="requireStrongAuthForSigners", EmitDefaultValue=true)]
+        [Obsolete]
         public bool? RequireStrongAuthForSigners { get; set; }
 
         /// <summary>
-        /// Gets or Sets RequireStrongAuthForApprovers
+        /// If true, Approvers will have to enter an OTP when opening the Sign Session
         /// </summary>
+        /// <value>If true, Approvers will have to enter an OTP when opening the Sign Session</value>
         [DataMember(Name="requireStrongAuthForApprovers", EmitDefaultValue=true)]
         public bool? RequireStrongAuthForApprovers { get; set; }
 
         /// <summary>
-        /// Gets or Sets RequireTimestampingForDocuments
+        /// If true, a timestamp will be applied to Documents at the end of the Sign Session
         /// </summary>
+        /// <value>If true, a timestamp will be applied to Documents at the end of the Sign Session</value>
         [DataMember(Name="requireTimestampingForDocuments", EmitDefaultValue=true)]
         public bool? RequireTimestampingForDocuments { get; set; }
 
         /// <summary>
-        /// Gets or Sets LockAllChangesInSignedDocuments
+        /// If true, at the end of the Sign Session the Documents will be sealed to prevent further changes
         /// </summary>
+        /// <value>If true, at the end of the Sign Session the Documents will be sealed to prevent further changes</value>
         [DataMember(Name="lockAllChangesInSignedDocuments", EmitDefaultValue=true)]
         public bool? LockAllChangesInSignedDocuments { get; set; }
 
         /// <summary>
-        /// Gets or Sets AcquireBiometricData
+        /// If true, biometric data of all Signers will be acquired with the graphometric property set to true
         /// </summary>
+        /// <value>If true, biometric data of all Signers will be acquired with the graphometric property set to true</value>
         [DataMember(Name="acquireBiometricData", EmitDefaultValue=true)]
         public bool? AcquireBiometricData { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving
         /// </summary>
+        /// <value>Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets RetentionDays
+        /// Number of days the Sign Session can be completed from the time of Publish. If the last Signer has not completed the process by the time the Sign Session expires, the Sign Session will be deleted
         /// </summary>
+        /// <value>Number of days the Sign Session can be completed from the time of Publish. If the last Signer has not completed the process by the time the Sign Session expires, the Sign Session will be deleted</value>
         [DataMember(Name="retentionDays", EmitDefaultValue=true)]
         public int? RetentionDays { get; set; }
 
         /// <summary>
-        /// Gets or Sets DaysToDownload
+        /// Number of days that Documents will be available for download after the Sign Session is completed
         /// </summary>
+        /// <value>Number of days that Documents will be available for download after the Sign Session is completed</value>
         [DataMember(Name="daysToDownload", EmitDefaultValue=true)]
         public int? DaysToDownload { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets ExtraProperties
+        /// Any extra properties to add to the Sign Session
         /// </summary>
+        /// <value>Any extra properties to add to the Sign Session</value>
         [DataMember(Name="extraProperties", EmitDefaultValue=true)]
         public Dictionary<string, string> ExtraProperties { get; set; }
 
         /// <summary>
-        /// Gets or Sets CustomAutomaticReminderDays
+        /// Number of days after the first notification to send an automatic reminder. This value is read only if the automaticReminder property has a value of Custom
         /// </summary>
+        /// <value>Number of days after the first notification to send an automatic reminder. This value is read only if the automaticReminder property has a value of Custom</value>
         [DataMember(Name="customAutomaticReminderDays", EmitDefaultValue=true)]
         public int? CustomAutomaticReminderDays { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsPrivate
+        /// If true, the Sign Session will be visible only to who created it and to users whose email addresses are included in the privateViewers property
         /// </summary>
+        /// <value>If true, the Sign Session will be visible only to who created it and to users whose email addresses are included in the privateViewers property</value>
         [DataMember(Name="isPrivate", EmitDefaultValue=true)]
         public bool IsPrivate { get; set; }
 
         /// <summary>
-        /// Gets or Sets PrivateViewers
+        /// List of email of the only users who can see the Sign Session if the isPrivate property is true
         /// </summary>
+        /// <value>List of email of the only users who can see the Sign Session if the isPrivate property is true</value>
         [DataMember(Name="privateViewers", EmitDefaultValue=true)]
         public List<string> PrivateViewers { get; set; }
 
@@ -598,6 +621,34 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExternalId, length must be less than 50.", new [] { "ExternalId" });
             }
 
+
+
+
+            // RetentionDays (int?) maximum
+            if(this.RetentionDays > (int?)31)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RetentionDays, must be a value less than or equal to 31.", new [] { "RetentionDays" });
+            }
+
+            // RetentionDays (int?) minimum
+            if(this.RetentionDays < (int?)1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RetentionDays, must be a value greater than or equal to 1.", new [] { "RetentionDays" });
+            }
+
+
+
+            // DaysToDownload (int?) maximum
+            if(this.DaysToDownload > (int?)31)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DaysToDownload, must be a value less than or equal to 31.", new [] { "DaysToDownload" });
+            }
+
+            // DaysToDownload (int?) minimum
+            if(this.DaysToDownload < (int?)1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DaysToDownload, must be a value greater than or equal to 1.", new [] { "DaysToDownload" });
+            }
 
 
 

@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines SessionFlowTypeDto
+    /// The FlowType property defines which identification flow the user will have to follow:  - **Dynamic**: User independently chooses between the flows enabled on his BusinessUnit.  - **Ai**: User will be required to perform identification via AI.  - **Spid**: User will be required to identify himself via SPID.  - **Cie**: User will be required to carry out identification via CIE.
     /// </summary>
+    /// <value>The FlowType property defines which identification flow the user will have to follow:  - **Dynamic**: User independently chooses between the flows enabled on his BusinessUnit.  - **Ai**: User will be required to perform identification via AI.  - **Spid**: User will be required to identify himself via SPID.  - **Cie**: User will be required to carry out identification via CIE.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

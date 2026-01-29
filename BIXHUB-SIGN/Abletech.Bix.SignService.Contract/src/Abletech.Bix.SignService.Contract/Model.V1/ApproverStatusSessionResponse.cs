@@ -64,13 +64,13 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="ApproverStatusSessionResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="email">email.</param>
-        /// <param name="description">description.</param>
-        /// <param name="indexOrder">indexOrder.</param>
+        /// <param name="guid">Approver&#39;s guid.</param>
+        /// <param name="email">Approver&#39;s email address; It may receive notifications or OTP.</param>
+        /// <param name="description">Approver&#39;s description.</param>
+        /// <param name="indexOrder">Approver&#39;s index order; Approvers will approve the Sign Session in order according to this property.</param>
         /// <param name="status">status (required).</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="firstAccessDate">firstAccessDate.</param>
+        /// <param name="externalId">Optional identifier to recognize the Approver in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="firstAccessDate">Date the Approver first visited the received link.</param>
         public ApproverStatusSessionResponse(Guid guid = default(Guid), string email = default(string), string description = default(string), float indexOrder = default(float), ApproverStatusSessionState status = default(ApproverStatusSessionState), string externalId = default(string), DateTime? firstAccessDate = default(DateTime?))
         {
             this.Email = email;
@@ -96,39 +96,45 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Approver&#39;s guid
         /// </summary>
+        /// <value>Approver&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Approver&#39;s email address; It may receive notifications or OTP
         /// </summary>
+        /// <value>Approver&#39;s email address; It may receive notifications or OTP</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Approver&#39;s description
         /// </summary>
+        /// <value>Approver&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Approver&#39;s index order; Approvers will approve the Sign Session in order according to this property
         /// </summary>
+        /// <value>Approver&#39;s index order; Approvers will approve the Sign Session in order according to this property</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Approver in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Approver in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets FirstAccessDate
+        /// Date the Approver first visited the received link
         /// </summary>
+        /// <value>Date the Approver first visited the received link</value>
         [DataMember(Name="firstAccessDate", EmitDefaultValue=true)]
         public DateTime? FirstAccessDate { get; set; }
 

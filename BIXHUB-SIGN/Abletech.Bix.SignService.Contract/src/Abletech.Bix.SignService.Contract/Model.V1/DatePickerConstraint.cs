@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines DatePickerConstraint
+    /// The DatePickerConstraint parameter indicates which date can be written in a Datepicker Field:  - **Today**: Today&#39;s date only.  - **Past**: Only dates prior to today.  - **Future**: Future.  - **TodayOrPast**: Only current or previous dates.  - **TodayOrFuture**: Only today or later dates.
     /// </summary>
+    /// <value>The DatePickerConstraint parameter indicates which date can be written in a Datepicker Field:  - **Today**: Today&#39;s date only.  - **Past**: Only dates prior to today.  - **Future**: Future.  - **TodayOrPast**: Only current or previous dates.  - **TodayOrFuture**: Only today or later dates.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

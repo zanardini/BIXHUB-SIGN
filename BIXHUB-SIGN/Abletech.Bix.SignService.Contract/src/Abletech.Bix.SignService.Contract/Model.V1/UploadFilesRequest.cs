@@ -54,7 +54,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadFilesRequest" /> class.
         /// </summary>
-        /// <param name="files">files.</param>
+        /// <param name="files">List of files to upload.</param>
         public UploadFilesRequest(List<UploadFileBase64Request> files = default(List<UploadFileBase64Request>))
         {
             this.Files = files;
@@ -62,8 +62,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Files
+        /// List of files to upload
         /// </summary>
+        /// <value>List of files to upload</value>
         [DataMember(Name="files", EmitDefaultValue=true)]
         public List<UploadFileBase64Request> Files { get; set; }
 

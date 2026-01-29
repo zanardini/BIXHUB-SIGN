@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | **Guid** |  | [optional] 
-**Name** | **string** |  | [optional] 
+**Guid** | **Guid** | FieldGroup&#39;s guid | [optional] 
+**Name** | **string** | FieldGroup&#39;s name | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -64,12 +64,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldSessionDetailResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="shortDescription">shortDescription.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="optional">optional.</param>
+        /// <param name="guid">Field&#39;s guid.</param>
+        /// <param name="shortDescription">Field&#39;s description.</param>
+        /// <param name="externalId">Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="optional">If true, the Field must be filled in to complete the Sign Session.</param>
         /// <param name="fieldType">fieldType (required).</param>
-        /// <param name="value">value.</param>
+        /// <param name="value">Field&#39;s actual value.</param>
         public FieldSessionDetailResponse(Guid guid = default(Guid), string shortDescription = default(string), string externalId = default(string), bool optional = default(bool), FieldType fieldType = default(FieldType), string value = default(string))
         {
             this.ShortDescription = shortDescription;
@@ -93,33 +93,38 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Field&#39;s guid
         /// </summary>
+        /// <value>Field&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShortDescription
+        /// Field&#39;s description
         /// </summary>
+        /// <value>Field&#39;s description</value>
         [DataMember(Name="shortDescription", EmitDefaultValue=true)]
         public string ShortDescription { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Optional
+        /// If true, the Field must be filled in to complete the Sign Session
         /// </summary>
+        /// <value>If true, the Field must be filled in to complete the Sign Session</value>
         [DataMember(Name="optional", EmitDefaultValue=true)]
         public bool Optional { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets Value
+        /// Field&#39;s actual value
         /// </summary>
+        /// <value>Field&#39;s actual value</value>
         [DataMember(Name="value", EmitDefaultValue=true)]
         public string Value { get; set; }
 

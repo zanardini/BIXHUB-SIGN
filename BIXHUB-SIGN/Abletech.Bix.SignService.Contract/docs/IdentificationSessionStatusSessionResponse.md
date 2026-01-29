@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | **Guid** |  | [optional] 
+**Guid** | **Guid** | Guid of Identification Session | [optional] 
 **Status** | **IdeSessionStatus** |  | [optional] 
 **FlowType** | **SessionFlowTypeDto** |  | [optional] 
-**CompletedDate** | **DateTime?** |  | [optional] 
+**CompletedDate** | **DateTime?** | Identification Session completion date (UTC standard) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

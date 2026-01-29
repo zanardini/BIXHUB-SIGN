@@ -54,8 +54,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="GetFieldsDtoFieldGroup" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="name">name.</param>
+        /// <param name="guid">FieldGroup&#39;s guid.</param>
+        /// <param name="name">FieldGroup&#39;s name.</param>
         public GetFieldsDtoFieldGroup(Guid guid = default(Guid), string name = default(string))
         {
             this.Name = name;
@@ -64,14 +64,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// FieldGroup&#39;s guid
         /// </summary>
+        /// <value>FieldGroup&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// FieldGroup&#39;s name
         /// </summary>
+        /// <value>FieldGroup&#39;s name</value>
         [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 

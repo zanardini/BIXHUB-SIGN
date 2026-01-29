@@ -74,24 +74,24 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSessionDetailResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="description">description.</param>
+        /// <param name="guid">Guid of Sign Session.</param>
+        /// <param name="description">Description of the Sign Session.</param>
         /// <param name="process">process (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="workFlow">workFlow (required).</param>
-        /// <param name="createdDate">createdDate.</param>
-        /// <param name="updatedDate">updatedDate.</param>
-        /// <param name="parameters">parameters.</param>
-        /// <param name="metadata">metadata.</param>
-        /// <param name="attributes">attributes.</param>
-        /// <param name="extraProperties">extraProperties.</param>
-        /// <param name="approvers">approvers.</param>
-        /// <param name="documents">documents.</param>
-        /// <param name="signers">signers.</param>
-        /// <param name="followers">followers.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="expirationDate">expirationDate.</param>
-        /// <param name="rejectionDate">rejectionDate.</param>
+        /// <param name="createdDate">Sign Session creation date (UTC standard).</param>
+        /// <param name="updatedDate">Sign Session update date (UTC standard).</param>
+        /// <param name="parameters">Parameters to modify backend behavior; Allowed Values:  - **language**: It will be the default language for all actors for which it has not been specified. This must be entered in accordance with the ISO 639 standard.  - **emailTemplate.approverInitialUrl**: Guid of email template to use to send the initial Url to Approvers.  - **emailTemplate.approverReminderUrl**: Guid of email template to use to send the a reminder to Approvers.  - **emailTemplate.signerInitialUrl**: Guid of email template to use to send the initial Url to Signers.  - **emailTemplate.signerIdeInitialUrl**: Guid of email template to use to send the initial Url to Signers who will have to undergo an identification process.  - **emailTemplate.signerReminderUrl**: Guid of email template to use to send the a reminder to Signers.  - **emailTemplate.signerCompleteUrl**: Guid of email template to use to send the finel Url to Signers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.followerCompleteUrl**: Guid of email template to use to send the finel Url to Followers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.signerReject**: Guid of email template to use to notify Signers who have already signed documents that the Sign Session has been canceled because a Signer refused to sign.  - **emailTemplate.approverReject**: Guid of email template to use to inform Approvers who have already approved the Sign Session that the Sign Session itself will be canceled because an Approver refused to approve it.  - **emailTemplate.approverInitialOtp**: Guid of email template to use to send OTP to Approvers when opening the Sign Session.  - **emailTemplate.signerInitialOtp**: Guid of email template to use to send OTP to Signers when opening the Sign Session.  - **emailTemplate.signerConfirmFieldGroupOtp**: Guid of email template to use to send OTP to Signers when completing a FieldGroup..</param>
+        /// <param name="metadata">Metadata for legal archiving; Allowed Values:  - **OGGETTO**: It will be written in the metadata OGGETTO during the preservation in ARXivar eArchiving.  - **EXTERNAL_ID**: It will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving..</param>
+        /// <param name="attributes">Attributes to modify frontend behavior; Allowed Values:  - [**Deprecated**] **otp.expireInSeconds**: Duration expressed in seconds of OTPs sent to actors.  - [**Deprecated**] **otp.message**: Text of the message used when sending OTPs via SMS.  - **dateformat**: Format in which the date will be written on the final PDF within the DatePicker fields.</param>
+        /// <param name="extraProperties">Extra properties specified when creating Sign Session.</param>
+        /// <param name="approvers">List of Approvers who will need to approve the Sign Session before the Signers can start signing documents.</param>
+        /// <param name="documents">List of Documents that will be viewed and/or signed during the Sign Session.</param>
+        /// <param name="signers">List of Signers who will have to sign the documents in this Sign Session.</param>
+        /// <param name="followers">List of Followers who will be notified when the last Signer has successfully completed the Sign Session. They will be able to see all the Signers involved and download all the documents.</param>
+        /// <param name="externalId">Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.</param>
+        /// <param name="expirationDate">Sign Session expiration date (UTC standard).</param>
+        /// <param name="rejectionDate">Date an Approver or Signer rejected the Sign Session (UTC standard).</param>
         public GetSessionDetailResponse(Guid guid = default(Guid), string description = default(string), SignSessionProcessTypeDto process = default(SignSessionProcessTypeDto), SignSessionStatus status = default(SignSessionStatus), WorkFlowType workFlow = default(WorkFlowType), DateTime createdDate = default(DateTime), DateTime updatedDate = default(DateTime), Dictionary<string, string> parameters = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), Dictionary<string, string> attributes = default(Dictionary<string, string>), Dictionary<string, string> extraProperties = default(Dictionary<string, string>), List<ApproverSessionDetailResponse> approvers = default(List<ApproverSessionDetailResponse>), List<DocumentSessionDetailResponse> documents = default(List<DocumentSessionDetailResponse>), List<SignerSessionDetailResponse> signers = default(List<SignerSessionDetailResponse>), List<FollowerSessionDetailResponse> followers = default(List<FollowerSessionDetailResponse>), string externalId = default(string), DateTime? expirationDate = default(DateTime?), DateTime? rejectionDate = default(DateTime?))
         {
             this.Description = description;
@@ -154,14 +154,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Guid of Sign Session
         /// </summary>
+        /// <value>Guid of Sign Session</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Description of the Sign Session
         /// </summary>
+        /// <value>Description of the Sign Session</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
@@ -169,80 +171,93 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets CreatedDate
+        /// Sign Session creation date (UTC standard)
         /// </summary>
+        /// <value>Sign Session creation date (UTC standard)</value>
         [DataMember(Name="createdDate", EmitDefaultValue=true)]
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets UpdatedDate
+        /// Sign Session update date (UTC standard)
         /// </summary>
+        /// <value>Sign Session update date (UTC standard)</value>
         [DataMember(Name="updatedDate", EmitDefaultValue=true)]
         public DateTime UpdatedDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Parameters
+        /// Parameters to modify backend behavior; Allowed Values:  - **language**: It will be the default language for all actors for which it has not been specified. This must be entered in accordance with the ISO 639 standard.  - **emailTemplate.approverInitialUrl**: Guid of email template to use to send the initial Url to Approvers.  - **emailTemplate.approverReminderUrl**: Guid of email template to use to send the a reminder to Approvers.  - **emailTemplate.signerInitialUrl**: Guid of email template to use to send the initial Url to Signers.  - **emailTemplate.signerIdeInitialUrl**: Guid of email template to use to send the initial Url to Signers who will have to undergo an identification process.  - **emailTemplate.signerReminderUrl**: Guid of email template to use to send the a reminder to Signers.  - **emailTemplate.signerCompleteUrl**: Guid of email template to use to send the finel Url to Signers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.followerCompleteUrl**: Guid of email template to use to send the finel Url to Followers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.signerReject**: Guid of email template to use to notify Signers who have already signed documents that the Sign Session has been canceled because a Signer refused to sign.  - **emailTemplate.approverReject**: Guid of email template to use to inform Approvers who have already approved the Sign Session that the Sign Session itself will be canceled because an Approver refused to approve it.  - **emailTemplate.approverInitialOtp**: Guid of email template to use to send OTP to Approvers when opening the Sign Session.  - **emailTemplate.signerInitialOtp**: Guid of email template to use to send OTP to Signers when opening the Sign Session.  - **emailTemplate.signerConfirmFieldGroupOtp**: Guid of email template to use to send OTP to Signers when completing a FieldGroup.
         /// </summary>
+        /// <value>Parameters to modify backend behavior; Allowed Values:  - **language**: It will be the default language for all actors for which it has not been specified. This must be entered in accordance with the ISO 639 standard.  - **emailTemplate.approverInitialUrl**: Guid of email template to use to send the initial Url to Approvers.  - **emailTemplate.approverReminderUrl**: Guid of email template to use to send the a reminder to Approvers.  - **emailTemplate.signerInitialUrl**: Guid of email template to use to send the initial Url to Signers.  - **emailTemplate.signerIdeInitialUrl**: Guid of email template to use to send the initial Url to Signers who will have to undergo an identification process.  - **emailTemplate.signerReminderUrl**: Guid of email template to use to send the a reminder to Signers.  - **emailTemplate.signerCompleteUrl**: Guid of email template to use to send the finel Url to Signers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.followerCompleteUrl**: Guid of email template to use to send the finel Url to Followers. The documents can be downloaded from the page reached via this Url.  - **emailTemplate.signerReject**: Guid of email template to use to notify Signers who have already signed documents that the Sign Session has been canceled because a Signer refused to sign.  - **emailTemplate.approverReject**: Guid of email template to use to inform Approvers who have already approved the Sign Session that the Sign Session itself will be canceled because an Approver refused to approve it.  - **emailTemplate.approverInitialOtp**: Guid of email template to use to send OTP to Approvers when opening the Sign Session.  - **emailTemplate.signerInitialOtp**: Guid of email template to use to send OTP to Signers when opening the Sign Session.  - **emailTemplate.signerConfirmFieldGroupOtp**: Guid of email template to use to send OTP to Signers when completing a FieldGroup.</value>
         [DataMember(Name="parameters", EmitDefaultValue=true)]
         public Dictionary<string, string> Parameters { get; set; }
 
         /// <summary>
-        /// Gets or Sets Metadata
+        /// Metadata for legal archiving; Allowed Values:  - **OGGETTO**: It will be written in the metadata OGGETTO during the preservation in ARXivar eArchiving.  - **EXTERNAL_ID**: It will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.
         /// </summary>
+        /// <value>Metadata for legal archiving; Allowed Values:  - **OGGETTO**: It will be written in the metadata OGGETTO during the preservation in ARXivar eArchiving.  - **EXTERNAL_ID**: It will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.</value>
         [DataMember(Name="metadata", EmitDefaultValue=true)]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
+        /// Attributes to modify frontend behavior; Allowed Values:  - [**Deprecated**] **otp.expireInSeconds**: Duration expressed in seconds of OTPs sent to actors.  - [**Deprecated**] **otp.message**: Text of the message used when sending OTPs via SMS.  - **dateformat**: Format in which the date will be written on the final PDF within the DatePicker fields
         /// </summary>
+        /// <value>Attributes to modify frontend behavior; Allowed Values:  - [**Deprecated**] **otp.expireInSeconds**: Duration expressed in seconds of OTPs sent to actors.  - [**Deprecated**] **otp.message**: Text of the message used when sending OTPs via SMS.  - **dateformat**: Format in which the date will be written on the final PDF within the DatePicker fields</value>
         [DataMember(Name="attributes", EmitDefaultValue=true)]
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExtraProperties
+        /// Extra properties specified when creating Sign Session
         /// </summary>
+        /// <value>Extra properties specified when creating Sign Session</value>
         [DataMember(Name="extraProperties", EmitDefaultValue=true)]
         public Dictionary<string, string> ExtraProperties { get; set; }
 
         /// <summary>
-        /// Gets or Sets Approvers
+        /// List of Approvers who will need to approve the Sign Session before the Signers can start signing documents
         /// </summary>
+        /// <value>List of Approvers who will need to approve the Sign Session before the Signers can start signing documents</value>
         [DataMember(Name="approvers", EmitDefaultValue=true)]
         public List<ApproverSessionDetailResponse> Approvers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Documents
+        /// List of Documents that will be viewed and/or signed during the Sign Session
         /// </summary>
+        /// <value>List of Documents that will be viewed and/or signed during the Sign Session</value>
         [DataMember(Name="documents", EmitDefaultValue=true)]
         public List<DocumentSessionDetailResponse> Documents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Signers
+        /// List of Signers who will have to sign the documents in this Sign Session
         /// </summary>
+        /// <value>List of Signers who will have to sign the documents in this Sign Session</value>
         [DataMember(Name="signers", EmitDefaultValue=true)]
         public List<SignerSessionDetailResponse> Signers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Followers
+        /// List of Followers who will be notified when the last Signer has successfully completed the Sign Session. They will be able to see all the Signers involved and download all the documents
         /// </summary>
+        /// <value>List of Followers who will be notified when the last Signer has successfully completed the Sign Session. They will be able to see all the Signers involved and download all the documents</value>
         [DataMember(Name="followers", EmitDefaultValue=true)]
         public List<FollowerSessionDetailResponse> Followers { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving
         /// </summary>
+        /// <value>Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpirationDate
+        /// Sign Session expiration date (UTC standard)
         /// </summary>
+        /// <value>Sign Session expiration date (UTC standard)</value>
         [DataMember(Name="expirationDate", EmitDefaultValue=true)]
         public DateTime? ExpirationDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets RejectionDate
+        /// Date an Approver or Signer rejected the Sign Session (UTC standard)
         /// </summary>
+        /// <value>Date an Approver or Signer rejected the Sign Session (UTC standard)</value>
         [DataMember(Name="rejectionDate", EmitDefaultValue=true)]
         public DateTime? RejectionDate { get; set; }
 

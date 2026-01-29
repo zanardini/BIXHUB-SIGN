@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines AutomaticReminderType
+    /// The AutomaticReminder property defines whether and how often to send an automatic reminder to the actors:  - **None**: No automatic reminders will be sent.  - [**Deprecated**] **Day7**: An automatic reminder will be sent 7 days after the first notification was sent.  - [**Deprecated**] **Day14**: An automatic reminder will be sent 14 days after the first notification was sent.  - **Custom**: Starting from the sending of the first notification, an automatic reminder will be sent after a number of days equal to the value of the customAutomaticReminderDays property.
     /// </summary>
+    /// <value>The AutomaticReminder property defines whether and how often to send an automatic reminder to the actors:  - **None**: No automatic reminders will be sent.  - [**Deprecated**] **Day7**: An automatic reminder will be sent 7 days after the first notification was sent.  - [**Deprecated**] **Day14**: An automatic reminder will be sent 14 days after the first notification was sent.  - **Custom**: Starting from the sending of the first notification, an automatic reminder will be sent after a number of days equal to the value of the customAutomaticReminderDays property.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

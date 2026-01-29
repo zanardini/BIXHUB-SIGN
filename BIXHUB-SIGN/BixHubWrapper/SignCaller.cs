@@ -28,7 +28,7 @@ namespace BixHubWrapper
             get
             {
                 {
-                  ;
+                    ;
                     var result = new Abletech.Bix.SignService.Contract.Client.Configuration()
                     {
                         AccessToken = _accessToken,
@@ -307,7 +307,11 @@ namespace BixHubWrapper
             fieldsGroup1.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateFieldGroupDto("Primo Gruppo", 0, fg_documents));
 
             List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto> attachments = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateAttachmentDto>();
-            signers.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto(description, email, phoneNumber, taxCode, Abletech.Bix.SignService.Contract.Model.V1.VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments));
+
+            var signer = new Abletech.Bix.SignService.Contract.Model.V1.CreateSignerDto(description, email, phoneNumber, taxCode, Abletech.Bix.SignService.Contract.Model.V1.VerificationModeDto.SmsOtp, 0, returnUrl, externalID, fieldsGroup1, attachments);
+            signer.Base64SignatureImage = Convert.ToBase64String(File.ReadAllBytes(@"C:\Temp\BixHub\firma.jpg"));
+
+            signers.Add(signer);
 
             List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto> documents = new List<Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto>();
             documents.Add(new Abletech.Bix.SignService.Contract.Model.V1.CreateDocumentDto("Informativa Privacy", documentUploaded.FileGuid, null, "Informativa Privacy", false));
@@ -379,7 +383,7 @@ namespace BixHubWrapper
             Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest body = new Abletech.Bix.SignService.Contract.Model.V1.CreateSessionRequest(Abletech.Bix.SignService.Contract.Model.V1.SignSessionProcessTypeDto.ES, Abletech.Bix.SignService.Contract.Model.V1.WorkFlowType.Automatic, sessionDescription, metadata, parameters, attributes, webhooks,
                 approvers, followers, documents, signers, false, false, false);
             body.AcquireBiometricData = addBiometricData;
-            
+
             Abletech.Bix.SignService.Contract.Model.V1.CreateSessionResponse response = sessionLifeCycleApi.ApiV1SessionLifeCycleCreatePost(body);
 
             if (response.SessionGuid == null)
@@ -427,7 +431,7 @@ namespace BixHubWrapper
         {
             if (sessionModel == null)
                 return null;
-            
+
             BixHubWrapper.Model.InfoSessionResponse result = new BixHubWrapper.Model.InfoSessionResponse();
             if (sessionGuid != null)
                 result.SessionGuid = sessionGuid.Value;
@@ -501,6 +505,27 @@ namespace BixHubWrapper
                     result.Add(signer.IdentificationSession.Guid, signer.TaxCode);
             }
             return result;
+        }
+
+        public Dictionary<string, string> MassiveSignHash_ExecuteSign(List<string> listaHash)
+        {
+            var result = new Dictionary<string, string>();
+            Abletech.Bix.SignService.Contract.Client.V1.MassiveSignApi massiveSignApi = new Abletech.Bix.SignService.Contract.Client.V1.MassiveSignApi(Configuration);
+
+            var request = new Abletech.Bix.SignService.Contract.Model.V1.SignPkcs1Request(listaHash, Abletech.Bix.SignService.Contract.Model.V1.SignPkcs1HashAlgorithm.SHA256);
+            var response = massiveSignApi.ApiV1MassiveSignSignPkcs1Post(request);
+            foreach (var signedHash in response.SignedHashes)
+            {
+                result.Add(signedHash.InputHash, signedHash.Signature);
+            }
+            return result;
+        }
+
+        public string MassiveSignHash_GetSigningCertificate()
+        {
+            Abletech.Bix.SignService.Contract.Client.V1.MassiveSignApi massiveSignApi = new Abletech.Bix.SignService.Contract.Client.V1.MassiveSignApi(Configuration);
+            var certificates = massiveSignApi.ApiV1MassiveSignGetCertificateGet();
+            return certificates.SigningCertificate;
         }
     }
 }

@@ -11,6 +11,7 @@ docs/ApproverStatusSessionResponse.md
 docs/ApproverStatusSessionState.md
 docs/AttachmentSessionDetailResponse.md
 docs/AttachmentStatusSessionResponse.md
+docs/AttachmentValidationTypeAiDto.md
 docs/AutomaticReminderType.md
 docs/ColorDto.md
 docs/CreateApproverDto.md
@@ -40,6 +41,7 @@ docs/FontAbleTech.md
 docs/GetAllSessionRequest.md
 docs/GetAllSessionResponse.md
 docs/GetAllSessionResponseGetPaginatedListResponse.md
+docs/GetCertificateResponse.md
 docs/GetErrorsSessionResponse.md
 docs/GetFieldsDtoDocument.md
 docs/GetFieldsDtoFieldGroup.md
@@ -49,6 +51,7 @@ docs/GetSessionDetailResponse.md
 docs/GetStatusSessionResponse.md
 docs/IdeSessionStatus.md
 docs/IdentificationSessionStatusSessionResponse.md
+docs/MassiveSignApi.md
 docs/MonitoringApi.md
 docs/NextActorStatusSessionResponse.md
 docs/NotificationChannel.md
@@ -66,6 +69,10 @@ docs/SessionFlowTypeDto.md
 docs/SessionLifeCycleApi.md
 docs/SignErrorDto.md
 docs/SignErrorType.md
+docs/SignPkcs1HashAlgorithm.md
+docs/SignPkcs1Request.md
+docs/SignPkcs1Response.md
+docs/SignPkcs1ResponseHash.md
 docs/SignSessionProcessTypeDto.md
 docs/SignSessionStatus.md
 docs/SignWebhookEvent.md
@@ -80,6 +87,7 @@ docs/WorkFlowType.md
 git_push.sh
 mono_nunit_test.sh
 src/Abletech.Bix.SignService.Contract.Test/Abletech.Bix.SignService.Contract.Test.csproj
+src/Abletech.Bix.SignService.Contract.Test/Client.V1/MassiveSignApiTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Client.V1/MonitoringApiTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Client.V1/SessionLifeCycleApiTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/ActorTypeTests.cs
@@ -88,6 +96,7 @@ src/Abletech.Bix.SignService.Contract.Test/Model.V1/ApproverStatusSessionRespons
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/ApproverStatusSessionStateTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/AttachmentSessionDetailResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/AttachmentStatusSessionResponseTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/AttachmentValidationTypeAiDtoTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/AutomaticReminderTypeTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/ColorDtoTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/CreateApproverDtoTests.cs
@@ -117,6 +126,7 @@ src/Abletech.Bix.SignService.Contract.Test/Model.V1/FontAbleTechTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetAllSessionRequestTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetAllSessionResponseGetPaginatedListResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetAllSessionResponseTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetCertificateResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetErrorsSessionResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetFieldsDtoDocumentTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/GetFieldsDtoFieldGroupTests.cs
@@ -141,6 +151,10 @@ src/Abletech.Bix.SignService.Contract.Test/Model.V1/SendEmailRequestTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/SessionFlowTypeDtoTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignErrorDtoTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignErrorTypeTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignPkcs1HashAlgorithmTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignPkcs1RequestTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignPkcs1ResponseHashTests.cs
+src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignPkcs1ResponseTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignSessionProcessTypeDtoTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignSessionStatusTests.cs
 src/Abletech.Bix.SignService.Contract.Test/Model.V1/SignWebhookEventTests.cs
@@ -155,6 +169,7 @@ src/Abletech.Bix.SignService.Contract.Test/Model.V1/WorkFlowTypeTests.cs
 src/Abletech.Bix.SignService.Contract.Test/packages.config
 src/Abletech.Bix.SignService.Contract/Abletech.Bix.SignService.Contract.csproj
 src/Abletech.Bix.SignService.Contract/Abletech.Bix.SignService.Contract.nuspec
+src/Abletech.Bix.SignService.Contract/Client.V1/MassiveSignApi.cs
 src/Abletech.Bix.SignService.Contract/Client.V1/MonitoringApi.cs
 src/Abletech.Bix.SignService.Contract/Client.V1/SessionLifeCycleApi.cs
 src/Abletech.Bix.SignService.Contract/Client/ApiClient.cs
@@ -172,6 +187,7 @@ src/Abletech.Bix.SignService.Contract/Model.V1/ApproverStatusSessionResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/ApproverStatusSessionState.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/AttachmentSessionDetailResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/AttachmentStatusSessionResponse.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/AttachmentValidationTypeAiDto.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/AutomaticReminderType.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/ColorDto.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/CreateApproverDto.cs
@@ -201,6 +217,7 @@ src/Abletech.Bix.SignService.Contract/Model.V1/FontAbleTech.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/GetAllSessionRequest.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/GetAllSessionResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/GetAllSessionResponseGetPaginatedListResponse.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/GetCertificateResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/GetErrorsSessionResponse.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/GetFieldsDtoDocument.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/GetFieldsDtoFieldGroup.cs
@@ -225,6 +242,10 @@ src/Abletech.Bix.SignService.Contract/Model.V1/SendEmailRequest.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/SessionFlowTypeDto.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/SignErrorDto.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/SignErrorType.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/SignPkcs1HashAlgorithm.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/SignPkcs1Request.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/SignPkcs1Response.cs
+src/Abletech.Bix.SignService.Contract/Model.V1/SignPkcs1ResponseHash.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/SignSessionProcessTypeDto.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/SignSessionStatus.cs
 src/Abletech.Bix.SignService.Contract/Model.V1/SignWebhookEvent.cs

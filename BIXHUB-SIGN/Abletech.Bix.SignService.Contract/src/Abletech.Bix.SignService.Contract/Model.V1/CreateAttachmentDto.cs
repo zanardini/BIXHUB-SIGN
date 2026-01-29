@@ -52,6 +52,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
     public partial class CreateAttachmentDto :  IEquatable<CreateAttachmentDto>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets AttachmentValidationTypeAi
+        /// </summary>
+        [DataMember(Name="attachmentValidationTypeAi", EmitDefaultValue=true)]
+        public AttachmentValidationTypeAiDto? AttachmentValidationTypeAi { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateAttachmentDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -59,12 +64,13 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAttachmentDto" /> class.
         /// </summary>
-        /// <param name="description">description (required).</param>
-        /// <param name="mandatory">mandatory.</param>
-        /// <param name="attachToAuditTrail">attachToAuditTrail.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="indexOrder">indexOrder.</param>
-        public CreateAttachmentDto(string description = default(string), bool mandatory = default(bool), bool? attachToAuditTrail = default(bool?), string externalId = default(string), float indexOrder = default(float))
+        /// <param name="description">Attachment&#39;s description (required).</param>
+        /// <param name="mandatory">If true, Signer must upload this Attachment to complete the Sign Session.</param>
+        /// <param name="attachToAuditTrail">If true, Attachments will be attached to the AuditTrail generated at the end of the Sign Session.</param>
+        /// <param name="externalId">Optional identifier to recognize the Attachment in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="indexOrder">Order in which Attachments will be presented to Signer.</param>
+        /// <param name="attachmentValidationTypeAi">attachmentValidationTypeAi.</param>
+        public CreateAttachmentDto(string description = default(string), bool mandatory = default(bool), bool? attachToAuditTrail = default(bool?), string externalId = default(string), float indexOrder = default(float), AttachmentValidationTypeAiDto? attachmentValidationTypeAi = default(AttachmentValidationTypeAiDto?))
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -82,37 +88,44 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.AttachToAuditTrail = attachToAuditTrail;
             this.ExternalId = externalId;
             this.IndexOrder = indexOrder;
+            this.AttachmentValidationTypeAi = attachmentValidationTypeAi;
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Attachment&#39;s description
         /// </summary>
+        /// <value>Attachment&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Mandatory
+        /// If true, Signer must upload this Attachment to complete the Sign Session
         /// </summary>
+        /// <value>If true, Signer must upload this Attachment to complete the Sign Session</value>
         [DataMember(Name="mandatory", EmitDefaultValue=true)]
         public bool Mandatory { get; set; }
 
         /// <summary>
-        /// Gets or Sets AttachToAuditTrail
+        /// If true, Attachments will be attached to the AuditTrail generated at the end of the Sign Session
         /// </summary>
+        /// <value>If true, Attachments will be attached to the AuditTrail generated at the end of the Sign Session</value>
         [DataMember(Name="attachToAuditTrail", EmitDefaultValue=true)]
         public bool? AttachToAuditTrail { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Attachment in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Attachment in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Order in which Attachments will be presented to Signer
         /// </summary>
+        /// <value>Order in which Attachments will be presented to Signer</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -127,6 +140,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  AttachToAuditTrail: ").Append(AttachToAuditTrail).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  IndexOrder: ").Append(IndexOrder).Append("\n");
+            sb.Append("  AttachmentValidationTypeAi: ").Append(AttachmentValidationTypeAi).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -185,6 +199,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.IndexOrder == input.IndexOrder ||
                     (this.IndexOrder != null &&
                     this.IndexOrder.Equals(input.IndexOrder))
+                ) && 
+                (
+                    this.AttachmentValidationTypeAi == input.AttachmentValidationTypeAi ||
+                    (this.AttachmentValidationTypeAi != null &&
+                    this.AttachmentValidationTypeAi.Equals(input.AttachmentValidationTypeAi))
                 );
         }
 
@@ -207,6 +226,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.IndexOrder != null)
                     hashCode = hashCode * 59 + this.IndexOrder.GetHashCode();
+                if (this.AttachmentValidationTypeAi != null)
+                    hashCode = hashCode * 59 + this.AttachmentValidationTypeAi.GetHashCode();
                 return hashCode;
             }
         }

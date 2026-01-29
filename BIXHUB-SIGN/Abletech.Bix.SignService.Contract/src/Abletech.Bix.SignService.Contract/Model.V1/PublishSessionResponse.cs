@@ -54,10 +54,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="PublishSessionResponse" /> class.
         /// </summary>
-        /// <param name="approvers">approvers.</param>
-        /// <param name="signers">signers.</param>
-        /// <param name="errors">errors.</param>
-        /// <param name="sessionGuid">sessionGuid.</param>
+        /// <param name="approvers">List of Approvers who will need to approve the Sign Session before the Signers can start signing documents.</param>
+        /// <param name="signers">List of Signers who will have to sign the documents in this Sign Session.</param>
+        /// <param name="errors">List of non-blocking errors that occurred publishing this Sign Session.</param>
+        /// <param name="sessionGuid">Guid of the newly created Sign Session.</param>
         public PublishSessionResponse(List<PublishSessionApproversResponse> approvers = default(List<PublishSessionApproversResponse>), List<PublishSessionSignersResponse> signers = default(List<PublishSessionSignersResponse>), List<PublishSessionErrorsResponse> errors = default(List<PublishSessionErrorsResponse>), Guid sessionGuid = default(Guid))
         {
             this.Approvers = approvers;
@@ -70,26 +70,30 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Approvers
+        /// List of Approvers who will need to approve the Sign Session before the Signers can start signing documents
         /// </summary>
+        /// <value>List of Approvers who will need to approve the Sign Session before the Signers can start signing documents</value>
         [DataMember(Name="approvers", EmitDefaultValue=true)]
         public List<PublishSessionApproversResponse> Approvers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Signers
+        /// List of Signers who will have to sign the documents in this Sign Session
         /// </summary>
+        /// <value>List of Signers who will have to sign the documents in this Sign Session</value>
         [DataMember(Name="signers", EmitDefaultValue=true)]
         public List<PublishSessionSignersResponse> Signers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// List of non-blocking errors that occurred publishing this Sign Session
         /// </summary>
+        /// <value>List of non-blocking errors that occurred publishing this Sign Session</value>
         [DataMember(Name="errors", EmitDefaultValue=true)]
         public List<PublishSessionErrorsResponse> Errors { get; set; }
 
         /// <summary>
-        /// Gets or Sets SessionGuid
+        /// Guid of the newly created Sign Session
         /// </summary>
+        /// <value>Guid of the newly created Sign Session</value>
         [DataMember(Name="sessionGuid", EmitDefaultValue=true)]
         public Guid SessionGuid { get; set; }
 

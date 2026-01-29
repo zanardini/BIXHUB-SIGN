@@ -69,8 +69,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllSessionRequest" /> class.
         /// </summary>
-        /// <param name="businessUnitGuid">businessUnitGuid.</param>
-        /// <param name="sessionGuid">sessionGuid.</param>
+        /// <param name="businessUnitGuid">BusinessUnit&#39;s guid.</param>
+        /// <param name="sessionGuid">Guid of Sign Session.</param>
         /// <param name="process">process.</param>
         /// <param name="workFlow">workFlow.</param>
         /// <param name="sessionStatus">sessionStatus.</param>
@@ -78,7 +78,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <param name="toCreationDate">toCreationDate.</param>
         /// <param name="skip">skip.</param>
         /// <param name="take">take.</param>
-        public GetAllSessionRequest(Guid? businessUnitGuid = default(Guid?), Guid? sessionGuid = default(Guid?), SignSessionProcessTypeDto? process = default(SignSessionProcessTypeDto?), WorkFlowType? workFlow = default(WorkFlowType?), SignSessionStatus? sessionStatus = default(SignSessionStatus?), DateTime? fromCreationDate = default(DateTime?), DateTime? toCreationDate = default(DateTime?), int? skip = default(int?), int? take = default(int?))
+        /// <param name="externalId">Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving.</param>
+        public GetAllSessionRequest(Guid? businessUnitGuid = default(Guid?), Guid? sessionGuid = default(Guid?), SignSessionProcessTypeDto? process = default(SignSessionProcessTypeDto?), WorkFlowType? workFlow = default(WorkFlowType?), SignSessionStatus? sessionStatus = default(SignSessionStatus?), DateTime? fromCreationDate = default(DateTime?), DateTime? toCreationDate = default(DateTime?), int? skip = default(int?), int? take = default(int?), string externalId = default(string))
         {
             this.BusinessUnitGuid = businessUnitGuid;
             this.SessionGuid = sessionGuid;
@@ -86,6 +87,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.ToCreationDate = toCreationDate;
             this.Skip = skip;
             this.Take = take;
+            this.ExternalId = externalId;
             this.BusinessUnitGuid = businessUnitGuid;
             this.SessionGuid = sessionGuid;
             this.Process = process;
@@ -95,17 +97,20 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             this.ToCreationDate = toCreationDate;
             this.Skip = skip;
             this.Take = take;
+            this.ExternalId = externalId;
         }
 
         /// <summary>
-        /// Gets or Sets BusinessUnitGuid
+        /// BusinessUnit&#39;s guid
         /// </summary>
+        /// <value>BusinessUnit&#39;s guid</value>
         [DataMember(Name="businessUnitGuid", EmitDefaultValue=true)]
         public Guid? BusinessUnitGuid { get; set; }
 
         /// <summary>
-        /// Gets or Sets SessionGuid
+        /// Guid of Sign Session
         /// </summary>
+        /// <value>Guid of Sign Session</value>
         [DataMember(Name="sessionGuid", EmitDefaultValue=true)]
         public Guid? SessionGuid { get; set; }
 
@@ -137,6 +142,13 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public int? Take { get; set; }
 
         /// <summary>
+        /// Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving
+        /// </summary>
+        /// <value>Optional identifier to recognize the Sign Session in other software. ExternalIds are not guaranteed to be unique. If Metadata EXTERNAL_ID has no value, this property will be written in the metadata EXTERNAL_ID during the preservation in ARXivar eArchiving</value>
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -153,6 +165,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
             sb.Append("  ToCreationDate: ").Append(ToCreationDate).Append("\n");
             sb.Append("  Skip: ").Append(Skip).Append("\n");
             sb.Append("  Take: ").Append(Take).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -231,6 +244,11 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     this.Take == input.Take ||
                     (this.Take != null &&
                     this.Take.Equals(input.Take))
+                ) && 
+                (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
                 );
         }
 
@@ -261,6 +279,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
                     hashCode = hashCode * 59 + this.Skip.GetHashCode();
                 if (this.Take != null)
                     hashCode = hashCode * 59 + this.Take.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 return hashCode;
             }
         }

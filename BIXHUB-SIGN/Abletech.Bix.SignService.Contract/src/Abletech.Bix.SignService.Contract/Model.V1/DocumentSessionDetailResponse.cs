@@ -54,9 +54,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentSessionDetailResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="description">description.</param>
-        /// <param name="externalId">externalId.</param>
+        /// <param name="guid">Document&#39;s guid.</param>
+        /// <param name="description">Document&#39;s description.</param>
+        /// <param name="externalId">Optional identifier to recognize the Document in other software.  ExternalIds are not guaranteed to be unique.</param>
         public DocumentSessionDetailResponse(Guid guid = default(Guid), string description = default(string), string externalId = default(string))
         {
             this.Description = description;
@@ -67,20 +67,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Document&#39;s guid
         /// </summary>
+        /// <value>Document&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Document&#39;s description
         /// </summary>
+        /// <value>Document&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Document in other software.  ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Document in other software.  ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 

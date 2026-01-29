@@ -59,12 +59,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDocumentDto" /> class.
         /// </summary>
-        /// <param name="description">description (required).</param>
-        /// <param name="fileGuid">fileGuid (required).</param>
-        /// <param name="sealPositions">sealPositions.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="mandatoryRead">mandatoryRead.</param>
-        /// <param name="indexOrder">indexOrder.</param>
+        /// <param name="description">Document&#39;s description (required).</param>
+        /// <param name="fileGuid">The &#39;fileGuid&#39; obtained via the &#39;Upload File&#39; API (required).</param>
+        /// <param name="sealPositions">List of Document locations where a rosette should be placed at the end of the Sign Session.</param>
+        /// <param name="externalId">Optional identifier to recognize the Document in other software.  ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="mandatoryRead">If true, Signers will be forced to read this Document to the end before they can begin signing.</param>
+        /// <param name="indexOrder">Order in which Documents will be presented to Approvers.</param>
         public CreateDocumentDto(string description = default(string), Guid fileGuid = default(Guid), List<CreatePositionDto> sealPositions = default(List<CreatePositionDto>), string externalId = default(string), bool mandatoryRead = default(bool), float indexOrder = default(float))
         {
             // to ensure "description" is required (not null)
@@ -96,38 +96,44 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Document&#39;s description
         /// </summary>
+        /// <value>Document&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets FileGuid
+        /// The &#39;fileGuid&#39; obtained via the &#39;Upload File&#39; API
         /// </summary>
+        /// <value>The &#39;fileGuid&#39; obtained via the &#39;Upload File&#39; API</value>
         [DataMember(Name="fileGuid", EmitDefaultValue=true)]
         public Guid FileGuid { get; set; }
 
         /// <summary>
-        /// Gets or Sets SealPositions
+        /// List of Document locations where a rosette should be placed at the end of the Sign Session
         /// </summary>
+        /// <value>List of Document locations where a rosette should be placed at the end of the Sign Session</value>
         [DataMember(Name="sealPositions", EmitDefaultValue=true)]
         public List<CreatePositionDto> SealPositions { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Document in other software.  ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Document in other software.  ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets MandatoryRead
+        /// If true, Signers will be forced to read this Document to the end before they can begin signing
         /// </summary>
+        /// <value>If true, Signers will be forced to read this Document to the end before they can begin signing</value>
         [DataMember(Name="mandatoryRead", EmitDefaultValue=true)]
         public bool MandatoryRead { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Order in which Documents will be presented to Approvers
         /// </summary>
+        /// <value>Order in which Documents will be presented to Approvers</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 

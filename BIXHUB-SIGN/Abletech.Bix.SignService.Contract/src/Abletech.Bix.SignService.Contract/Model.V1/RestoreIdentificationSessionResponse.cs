@@ -54,8 +54,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="RestoreIdentificationSessionResponse" /> class.
         /// </summary>
-        /// <param name="nextActors">nextActors.</param>
-        /// <param name="errors">errors.</param>
+        /// <param name="nextActors">List of upcoming actors with a valid link.</param>
+        /// <param name="errors">List of non-blocking errors that occurred while continuing this Sign Session.</param>
         public RestoreIdentificationSessionResponse(List<NextActorStatusSessionResponse> nextActors = default(List<NextActorStatusSessionResponse>), List<RestoreIdentificationSessionErrorsResponse> errors = default(List<RestoreIdentificationSessionErrorsResponse>))
         {
             this.NextActors = nextActors;
@@ -65,14 +65,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets NextActors
+        /// List of upcoming actors with a valid link
         /// </summary>
+        /// <value>List of upcoming actors with a valid link</value>
         [DataMember(Name="nextActors", EmitDefaultValue=true)]
         public List<NextActorStatusSessionResponse> NextActors { get; set; }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// List of non-blocking errors that occurred while continuing this Sign Session
         /// </summary>
+        /// <value>List of non-blocking errors that occurred while continuing this Sign Session</value>
         [DataMember(Name="errors", EmitDefaultValue=true)]
         public List<RestoreIdentificationSessionErrorsResponse> Errors { get; set; }
 

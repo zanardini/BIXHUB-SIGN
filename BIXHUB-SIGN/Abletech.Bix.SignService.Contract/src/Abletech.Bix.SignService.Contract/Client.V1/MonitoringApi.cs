@@ -212,8 +212,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "text/plain; x-api-version=1.0",
-                "application/json; x-api-version=1.0",
-                "text/json; x-api-version=1.0"
+                "application/json; x-api-version=1.0"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -283,8 +282,7 @@ namespace Abletech.Bix.SignService.Contract.Client.V1
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "text/plain; x-api-version=1.0",
-                "application/json; x-api-version=1.0",
-                "text/json; x-api-version=1.0"
+                "application/json; x-api-version=1.0"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)

@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines RadioButtonAppearance
+    /// The Appearance property indicates how RadioButton will be displayed on the Pdf. Default is Circle
     /// </summary>
+    /// <value>The Appearance property indicates how RadioButton will be displayed on the Pdf. Default is Circle</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

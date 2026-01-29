@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines SignWebhookEvent
+    /// The WebhookType parameter defines on which event the Post API call should be executed:  - **Sign_SessionCompleted**: When the last Signer has completed their last FieldGroup.  - **Sign_SignerCompleted**: Whenever a Signer has completed their last FieldGroup.  - **Sign_ApproverCompleted**: Whenever an Approver has approved the Sign Session.  - **Sign_SessionApproved**: When the last Approver has approved the Sign Session.  - **Ide_SessionCompleted**: Whenever a Signer successfully completes the identification process.
     /// </summary>
+    /// <value>The WebhookType parameter defines on which event the Post API call should be executed:  - **Sign_SessionCompleted**: When the last Signer has completed their last FieldGroup.  - **Sign_SignerCompleted**: Whenever a Signer has completed their last FieldGroup.  - **Sign_ApproverCompleted**: Whenever an Approver has approved the Sign Session.  - **Sign_SessionApproved**: When the last Approver has approved the Sign Session.  - **Ide_SessionCompleted**: Whenever a Signer successfully completes the identification process.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

@@ -59,9 +59,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateFieldGroupDto" /> class.
         /// </summary>
-        /// <param name="name">name (required).</param>
-        /// <param name="groupOrder">groupOrder.</param>
-        /// <param name="documents">documents.</param>
+        /// <param name="name">FieldGroup&#39;s name (required).</param>
+        /// <param name="groupOrder">FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property.</param>
+        /// <param name="documents">List of Documents containing Fields belonging to this FieldGroups.</param>
         public CreateFieldGroupDto(string name = default(string), float groupOrder = default(float), List<CreateFieldGroupDocumentDto> documents = default(List<CreateFieldGroupDocumentDto>))
         {
             // to ensure "name" is required (not null)
@@ -80,20 +80,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// FieldGroup&#39;s name
         /// </summary>
+        /// <value>FieldGroup&#39;s name</value>
         [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupOrder
+        /// FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property
         /// </summary>
+        /// <value>FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property</value>
         [DataMember(Name="groupOrder", EmitDefaultValue=true)]
         public float GroupOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets Documents
+        /// List of Documents containing Fields belonging to this FieldGroups
         /// </summary>
+        /// <value>List of Documents containing Fields belonging to this FieldGroups</value>
         [DataMember(Name="documents", EmitDefaultValue=true)]
         public List<CreateFieldGroupDocumentDto> Documents { get; set; }
 

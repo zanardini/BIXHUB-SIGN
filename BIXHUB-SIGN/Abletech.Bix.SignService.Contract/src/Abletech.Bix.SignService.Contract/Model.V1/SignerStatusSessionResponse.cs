@@ -64,16 +64,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="SignerStatusSessionResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="email">email.</param>
-        /// <param name="description">description.</param>
-        /// <param name="taxCode">taxCode.</param>
-        /// <param name="indexOrder">indexOrder.</param>
+        /// <param name="guid">Signer&#39;s guid.</param>
+        /// <param name="email">Signer&#39;s email address; It may receive notifications or OTP.</param>
+        /// <param name="description">Signer&#39;s description.</param>
+        /// <param name="taxCode">Signer&#39;s taxcode.</param>
+        /// <param name="indexOrder">Signer&#39;s index order; Signers will sign the Sign Session in order according to this property.</param>
         /// <param name="status">status (required).</param>
-        /// <param name="attachments">attachments.</param>
+        /// <param name="attachments">List of Attachments that the Signer can upload.</param>
         /// <param name="identificationSession">identificationSession.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="firstAccessDate">firstAccessDate.</param>
+        /// <param name="externalId">Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="firstAccessDate">Date the Signer first visited the received link.</param>
         public SignerStatusSessionResponse(Guid guid = default(Guid), string email = default(string), string description = default(string), string taxCode = default(string), float indexOrder = default(float), SignerStatusSessionState status = default(SignerStatusSessionState), List<AttachmentStatusSessionResponse> attachments = default(List<AttachmentStatusSessionResponse>), IdentificationSessionStatusSessionResponse identificationSession = default(IdentificationSessionStatusSessionResponse), string externalId = default(string), DateTime? firstAccessDate = default(DateTime?))
         {
             this.Email = email;
@@ -104,39 +104,45 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Signer&#39;s guid
         /// </summary>
+        /// <value>Signer&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Signer&#39;s email address; It may receive notifications or OTP
         /// </summary>
+        /// <value>Signer&#39;s email address; It may receive notifications or OTP</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Signer&#39;s description
         /// </summary>
+        /// <value>Signer&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxCode
+        /// Signer&#39;s taxcode
         /// </summary>
+        /// <value>Signer&#39;s taxcode</value>
         [DataMember(Name="taxCode", EmitDefaultValue=true)]
         public string TaxCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Signer&#39;s index order; Signers will sign the Sign Session in order according to this property
         /// </summary>
+        /// <value>Signer&#39;s index order; Signers will sign the Sign Session in order according to this property</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets Attachments
+        /// List of Attachments that the Signer can upload
         /// </summary>
+        /// <value>List of Attachments that the Signer can upload</value>
         [DataMember(Name="attachments", EmitDefaultValue=true)]
         public List<AttachmentStatusSessionResponse> Attachments { get; set; }
 
@@ -147,14 +153,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         public IdentificationSessionStatusSessionResponse IdentificationSession { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets FirstAccessDate
+        /// Date the Signer first visited the received link
         /// </summary>
+        /// <value>Date the Signer first visited the received link</value>
         [DataMember(Name="firstAccessDate", EmitDefaultValue=true)]
         public DateTime? FirstAccessDate { get; set; }
 

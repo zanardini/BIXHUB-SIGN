@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ShortDescription** | **string** |  | 
-**IndexOrder** | **float** |  | [optional] 
+**ShortDescription** | **string** | RadioButton&#39;s description | 
+**IndexOrder** | **float** | RadioButton&#39;s index order. This order is non-binding, it provides the signer with a guided signing experience | [optional] 
 **Appearance** | **RadioButtonAppearance** |  | [optional] 
 **Position** | [**CreatePositionDto**](CreatePositionDto.md) |  | [optional] 
 

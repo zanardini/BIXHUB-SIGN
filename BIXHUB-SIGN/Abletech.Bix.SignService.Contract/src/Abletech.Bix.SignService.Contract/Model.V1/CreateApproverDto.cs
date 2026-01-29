@@ -59,12 +59,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateApproverDto" /> class.
         /// </summary>
-        /// <param name="email">email (required).</param>
-        /// <param name="description">description (required).</param>
-        /// <param name="indexOrder">indexOrder.</param>
-        /// <param name="redirectUri">redirectUri.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="language">language.</param>
+        /// <param name="email">Approver&#39;s email address; It may receive notifications or OTP (required).</param>
+        /// <param name="description">Approver&#39;s description (required).</param>
+        /// <param name="indexOrder">Approver&#39;s index order; Approvers will approve the Sign Session in order according to this property.</param>
+        /// <param name="redirectUri">URL to which the Approver will be redirected after the approval process is complete.</param>
+        /// <param name="externalId">Optional identifier to recognize the Approver in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="language">Language in which the Approver will receive automatic notifications. This must be entered in accordance with the ISO 639 standard.</param>
         public CreateApproverDto(string email = default(string), string description = default(string), float indexOrder = default(float), string redirectUri = default(string), string externalId = default(string), string language = default(string))
         {
             // to ensure "email" is required (not null)
@@ -97,38 +97,44 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Approver&#39;s email address; It may receive notifications or OTP
         /// </summary>
+        /// <value>Approver&#39;s email address; It may receive notifications or OTP</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Approver&#39;s description
         /// </summary>
+        /// <value>Approver&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets IndexOrder
+        /// Approver&#39;s index order; Approvers will approve the Sign Session in order according to this property
         /// </summary>
+        /// <value>Approver&#39;s index order; Approvers will approve the Sign Session in order according to this property</value>
         [DataMember(Name="indexOrder", EmitDefaultValue=true)]
         public float IndexOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets RedirectUri
+        /// URL to which the Approver will be redirected after the approval process is complete
         /// </summary>
+        /// <value>URL to which the Approver will be redirected after the approval process is complete</value>
         [DataMember(Name="redirectUri", EmitDefaultValue=true)]
         public string RedirectUri { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Approver in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Approver in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// Language in which the Approver will receive automatic notifications. This must be entered in accordance with the ISO 639 standard
         /// </summary>
+        /// <value>Language in which the Approver will receive automatic notifications. This must be entered in accordance with the ISO 639 standard</value>
         [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 

@@ -65,10 +65,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Initializes a new instance of the <see cref="GetFieldsDtoResponse" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="guid">guid.</param>
-        /// <param name="shortDescription">shortDescription.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="value">value.</param>
+        /// <param name="guid">Field&#39;s guid.</param>
+        /// <param name="shortDescription">Field&#39;s description.</param>
+        /// <param name="externalId">Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="value">Field&#39;s actual value.</param>
         /// <param name="document">document.</param>
         /// <param name="fieldGroup">fieldGroup.</param>
         /// <param name="signer">signer.</param>
@@ -98,26 +98,30 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Field&#39;s guid
         /// </summary>
+        /// <value>Field&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShortDescription
+        /// Field&#39;s description
         /// </summary>
+        /// <value>Field&#39;s description</value>
         [DataMember(Name="shortDescription", EmitDefaultValue=true)]
         public string ShortDescription { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// Field&#39;s actual value
         /// </summary>
+        /// <value>Field&#39;s actual value</value>
         [DataMember(Name="value", EmitDefaultValue=true)]
         public string Value { get; set; }
 

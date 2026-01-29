@@ -59,9 +59,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateFollowerDto" /> class.
         /// </summary>
-        /// <param name="email">email (required).</param>
-        /// <param name="description">description (required).</param>
-        /// <param name="language">language.</param>
+        /// <param name="email">Follower&#39;s email address; It may receive notifications (required).</param>
+        /// <param name="description">Follower&#39;s description (required).</param>
+        /// <param name="language">Language in which the Follower will receive automatic notifications. This must be entered in accordance with the ISO 639 standard.</param>
         public CreateFollowerDto(string email = default(string), string description = default(string), string language = default(string))
         {
             // to ensure "email" is required (not null)
@@ -89,20 +89,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Follower&#39;s email address; It may receive notifications
         /// </summary>
+        /// <value>Follower&#39;s email address; It may receive notifications</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Follower&#39;s description
         /// </summary>
+        /// <value>Follower&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// Language in which the Follower will receive automatic notifications. This must be entered in accordance with the ISO 639 standard
         /// </summary>
+        /// <value>Language in which the Follower will receive automatic notifications. This must be entered in accordance with the ISO 639 standard</value>
         [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 

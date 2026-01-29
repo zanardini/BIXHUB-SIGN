@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines NotificationChannel
+    /// The NotificationChannel parameter indicates through which channel notifications will be sent:  - **Email**: Notifications will be sent via email.  - **Sms**: Notifications will be sent via SMS.
     /// </summary>
+    /// <value>The NotificationChannel parameter indicates through which channel notifications will be sent:  - **Email**: Notifications will be sent via email.  - **Sms**: Notifications will be sent via SMS.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

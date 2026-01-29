@@ -147,8 +147,7 @@ namespace Abletech.Bix.SignService.Contract.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //Guid sessionGuid = null;
-            //Guid? documentGuid = null;
-            //var response = instance.ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet(sessionGuid, documentGuid);
+            //var response = instance.ApiV1SessionLifeCycleGetAuditTrail64SessionGuidGet(sessionGuid);
             //Assert.IsInstanceOf(typeof(FileDataBase64), response, "response is FileDataBase64");
         }
         

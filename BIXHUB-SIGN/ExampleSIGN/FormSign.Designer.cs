@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this._txtLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this._btnFirmaMassivaHASH = new System.Windows.Forms.Button();
             this._cbAddGrafoData = new System.Windows.Forms.CheckBox();
             this._btnCreaSessioneGrafo = new System.Windows.Forms.Button();
             this._btnCreaSessioneFEQ = new System.Windows.Forms.Button();
@@ -65,6 +66,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this._btnGetSessionStatus = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this._btnClearLog = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -74,7 +76,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sessionData = new System.Windows.Forms.DataGridView();
-            this._btnClearLog = new System.Windows.Forms.Button();
+            this._txtFileNameToMassiveSignHash = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -102,68 +105,61 @@
             this.groupBox1.Controls.Add(this._txtClientSecret);
             this.groupBox1.Controls.Add(this._txtClientId);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1072, 166);
+            this.groupBox1.Size = new System.Drawing.Size(804, 135);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connessione Web Api";
             // 
             // _txtIdeUrl
             // 
-            this._txtIdeUrl.Location = new System.Drawing.Point(551, 57);
-            this._txtIdeUrl.Margin = new System.Windows.Forms.Padding(4);
+            this._txtIdeUrl.Location = new System.Drawing.Point(413, 46);
             this._txtIdeUrl.Name = "_txtIdeUrl";
-            this._txtIdeUrl.Size = new System.Drawing.Size(343, 22);
+            this._txtIdeUrl.Size = new System.Drawing.Size(258, 20);
             this._txtIdeUrl.TabIndex = 14;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(460, 59);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(345, 48);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 16);
+            this.label13.Size = new System.Drawing.Size(66, 13);
             this.label13.TabIndex = 15;
             this.label13.Text = "Ide Web Api";
             // 
             // _txtSignUrl
             // 
-            this._txtSignUrl.Location = new System.Drawing.Point(551, 25);
-            this._txtSignUrl.Margin = new System.Windows.Forms.Padding(4);
+            this._txtSignUrl.Location = new System.Drawing.Point(413, 20);
             this._txtSignUrl.Name = "_txtSignUrl";
-            this._txtSignUrl.Size = new System.Drawing.Size(343, 22);
+            this._txtSignUrl.Size = new System.Drawing.Size(258, 20);
             this._txtSignUrl.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(460, 27);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(345, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 16);
+            this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 13;
             this.label7.Text = "Sign Web Api";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 98);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(8, 80);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 16);
+            this.label11.Size = new System.Drawing.Size(63, 13);
             this.label11.TabIndex = 12;
             this.label11.Text = "Client GUID";
             // 
             // _btnSaveSettings
             // 
             this._btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnSaveSettings.Location = new System.Drawing.Point(919, 122);
-            this._btnSaveSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnSaveSettings.Location = new System.Drawing.Point(689, 99);
+            this._btnSaveSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnSaveSettings.Name = "_btnSaveSettings";
-            this._btnSaveSettings.Size = new System.Drawing.Size(141, 31);
+            this._btnSaveSettings.Size = new System.Drawing.Size(106, 25);
             this._btnSaveSettings.TabIndex = 7;
             this._btnSaveSettings.Text = "Salva dati usati";
             this._btnSaveSettings.UseVisualStyleBackColor = true;
@@ -171,18 +167,17 @@
             // 
             // _txtClientGuid
             // 
-            this._txtClientGuid.Location = new System.Drawing.Point(101, 96);
-            this._txtClientGuid.Margin = new System.Windows.Forms.Padding(4);
+            this._txtClientGuid.Location = new System.Drawing.Point(76, 78);
             this._txtClientGuid.Name = "_txtClientGuid";
-            this._txtClientGuid.Size = new System.Drawing.Size(639, 22);
+            this._txtClientGuid.Size = new System.Drawing.Size(480, 20);
             this._txtClientGuid.TabIndex = 3;
             // 
             // _btnLogin
             // 
-            this._btnLogin.Location = new System.Drawing.Point(776, 122);
-            this._btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnLogin.Location = new System.Drawing.Point(582, 99);
+            this._btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnLogin.Name = "_btnLogin";
-            this._btnLogin.Size = new System.Drawing.Size(140, 31);
+            this._btnLogin.Size = new System.Drawing.Size(105, 25);
             this._btnLogin.TabIndex = 6;
             this._btnLogin.Text = "Login";
             this._btnLogin.UseVisualStyleBackColor = true;
@@ -190,56 +185,50 @@
             // 
             // _txtAuthUrl
             // 
-            this._txtAuthUrl.Location = new System.Drawing.Point(100, 22);
-            this._txtAuthUrl.Margin = new System.Windows.Forms.Padding(4);
+            this._txtAuthUrl.Location = new System.Drawing.Point(75, 18);
             this._txtAuthUrl.Name = "_txtAuthUrl";
-            this._txtAuthUrl.Size = new System.Drawing.Size(343, 22);
+            this._txtAuthUrl.Size = new System.Drawing.Size(258, 20);
             this._txtAuthUrl.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(353, 132);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(265, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Client Secret";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 130);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(7, 106);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Client ID";
             // 
             // _txtClientSecret
             // 
-            this._txtClientSecret.Location = new System.Drawing.Point(443, 128);
-            this._txtClientSecret.Margin = new System.Windows.Forms.Padding(4);
+            this._txtClientSecret.Location = new System.Drawing.Point(332, 104);
             this._txtClientSecret.Name = "_txtClientSecret";
             this._txtClientSecret.PasswordChar = '*';
-            this._txtClientSecret.Size = new System.Drawing.Size(296, 22);
+            this._txtClientSecret.Size = new System.Drawing.Size(223, 20);
             this._txtClientSecret.TabIndex = 5;
             // 
             // _txtClientId
             // 
-            this._txtClientId.Location = new System.Drawing.Point(100, 128);
-            this._txtClientId.Margin = new System.Windows.Forms.Padding(4);
+            this._txtClientId.Location = new System.Drawing.Point(75, 104);
             this._txtClientId.Name = "_txtClientId";
-            this._txtClientId.Size = new System.Drawing.Size(211, 22);
+            this._txtClientId.Size = new System.Drawing.Size(159, 20);
             this._txtClientId.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Auth Web Api";
             // 
@@ -249,18 +238,21 @@
             this._txtLog.AcceptsTab = true;
             this._txtLog.AllowDrop = true;
             this._txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._txtLog.Location = new System.Drawing.Point(4, 4);
-            this._txtLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._txtLog.Location = new System.Drawing.Point(3, 3);
+            this._txtLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._txtLog.Multiline = true;
             this._txtLog.Name = "_txtLog";
             this._txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this._txtLog.Size = new System.Drawing.Size(1055, 262);
+            this._txtLog.Size = new System.Drawing.Size(789, 198);
             this._txtLog.TabIndex = 7;
             // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this._txtFileNameToMassiveSignHash);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this._btnFirmaMassivaHASH);
             this.groupBox3.Controls.Add(this._cbAddGrafoData);
             this.groupBox3.Controls.Add(this._btnCreaSessioneGrafo);
             this.groupBox3.Controls.Add(this._btnCreaSessioneFEQ);
@@ -279,34 +271,42 @@
             this.groupBox3.Controls.Add(this._btnCreaSessioneFES);
             this.groupBox3.Controls.Add(this._txtMail);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(16, 188);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 153);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(1072, 172);
+            this.groupBox3.Size = new System.Drawing.Size(804, 161);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Creazione nuova sessione di firma FES";
+            // 
+            // _btnFirmaMassivaHASH
+            // 
+            this._btnFirmaMassivaHASH.Location = new System.Drawing.Point(217, 130);
+            this._btnFirmaMassivaHASH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._btnFirmaMassivaHASH.Name = "_btnFirmaMassivaHASH";
+            this._btnFirmaMassivaHASH.Size = new System.Drawing.Size(112, 25);
+            this._btnFirmaMassivaHASH.TabIndex = 34;
+            this._btnFirmaMassivaHASH.Text = "Massiva HASH";
+            this._btnFirmaMassivaHASH.UseVisualStyleBackColor = true;
+            this._btnFirmaMassivaHASH.Click += new System.EventHandler(this._btnFirmaMassivaHASH_Click);
             // 
             // _cbAddGrafoData
             // 
             this._cbAddGrafoData.AutoSize = true;
             this._cbAddGrafoData.Checked = true;
             this._cbAddGrafoData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this._cbAddGrafoData.Location = new System.Drawing.Point(952, 131);
-            this._cbAddGrafoData.Margin = new System.Windows.Forms.Padding(4);
+            this._cbAddGrafoData.Location = new System.Drawing.Point(714, 106);
             this._cbAddGrafoData.Name = "_cbAddGrafoData";
-            this._cbAddGrafoData.Size = new System.Drawing.Size(114, 20);
+            this._cbAddGrafoData.Size = new System.Drawing.Size(92, 17);
             this._cbAddGrafoData.TabIndex = 33;
             this._cbAddGrafoData.Text = "Dati biometrici";
             this._cbAddGrafoData.UseVisualStyleBackColor = true;
             // 
             // _btnCreaSessioneGrafo
             // 
-            this._btnCreaSessioneGrafo.Location = new System.Drawing.Point(754, 125);
-            this._btnCreaSessioneGrafo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnCreaSessioneGrafo.Location = new System.Drawing.Point(566, 102);
+            this._btnCreaSessioneGrafo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnCreaSessioneGrafo.Name = "_btnCreaSessioneGrafo";
-            this._btnCreaSessioneGrafo.Size = new System.Drawing.Size(191, 31);
+            this._btnCreaSessioneGrafo.Size = new System.Drawing.Size(143, 25);
             this._btnCreaSessioneGrafo.TabIndex = 32;
             this._btnCreaSessioneGrafo.Text = "Crea Sessione Grafmetrica";
             this._btnCreaSessioneGrafo.UseVisualStyleBackColor = true;
@@ -314,10 +314,10 @@
             // 
             // _btnCreaSessioneFEQ
             // 
-            this._btnCreaSessioneFEQ.Location = new System.Drawing.Point(599, 125);
-            this._btnCreaSessioneFEQ.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnCreaSessioneFEQ.Location = new System.Drawing.Point(449, 102);
+            this._btnCreaSessioneFEQ.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnCreaSessioneFEQ.Name = "_btnCreaSessioneFEQ";
-            this._btnCreaSessioneFEQ.Size = new System.Drawing.Size(149, 31);
+            this._btnCreaSessioneFEQ.Size = new System.Drawing.Size(112, 25);
             this._btnCreaSessioneFEQ.TabIndex = 31;
             this._btnCreaSessioneFEQ.Text = "Crea Sessione FEQ";
             this._btnCreaSessioneFEQ.UseVisualStyleBackColor = true;
@@ -326,20 +326,19 @@
             // _cbAddApprover
             // 
             this._cbAddApprover.AutoSize = true;
-            this._cbAddApprover.Location = new System.Drawing.Point(127, 131);
-            this._cbAddApprover.Margin = new System.Windows.Forms.Padding(4);
+            this._cbAddApprover.Location = new System.Drawing.Point(95, 106);
             this._cbAddApprover.Name = "_cbAddApprover";
-            this._cbAddApprover.Size = new System.Drawing.Size(155, 20);
+            this._cbAddApprover.Size = new System.Drawing.Size(124, 17);
             this._cbAddApprover.TabIndex = 30;
             this._cbAddApprover.Text = "Inserisci approvatore";
             this._cbAddApprover.UseVisualStyleBackColor = true;
             // 
             // _btnCreaSessioneFEA
             // 
-            this._btnCreaSessioneFEA.Location = new System.Drawing.Point(444, 125);
-            this._btnCreaSessioneFEA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnCreaSessioneFEA.Location = new System.Drawing.Point(333, 102);
+            this._btnCreaSessioneFEA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnCreaSessioneFEA.Name = "_btnCreaSessioneFEA";
-            this._btnCreaSessioneFEA.Size = new System.Drawing.Size(149, 31);
+            this._btnCreaSessioneFEA.Size = new System.Drawing.Size(112, 25);
             this._btnCreaSessioneFEA.TabIndex = 29;
             this._btnCreaSessioneFEA.Text = "Crea Sessione FEA";
             this._btnCreaSessioneFEA.UseVisualStyleBackColor = true;
@@ -347,100 +346,90 @@
             // 
             // _txtDescription
             // 
-            this._txtDescription.Location = new System.Drawing.Point(659, 53);
-            this._txtDescription.Margin = new System.Windows.Forms.Padding(4);
+            this._txtDescription.Location = new System.Drawing.Point(494, 43);
             this._txtDescription.Name = "_txtDescription";
-            this._txtDescription.Size = new System.Drawing.Size(401, 22);
+            this._txtDescription.Size = new System.Drawing.Size(302, 20);
             this._txtDescription.TabIndex = 24;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(545, 57);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(409, 46);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 16);
+            this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 23;
             this.label8.Text = "Description";
             // 
             // _txtTaxCode
             // 
-            this._txtTaxCode.Location = new System.Drawing.Point(100, 54);
-            this._txtTaxCode.Margin = new System.Windows.Forms.Padding(4);
+            this._txtTaxCode.Location = new System.Drawing.Point(75, 44);
             this._txtTaxCode.Name = "_txtTaxCode";
-            this._txtTaxCode.Size = new System.Drawing.Size(341, 22);
+            this._txtTaxCode.Size = new System.Drawing.Size(257, 20);
             this._txtTaxCode.TabIndex = 22;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 57);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(7, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 16);
+            this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 21;
             this.label4.Text = "TaxCode";
             // 
             // _txtExternalID
             // 
-            this._txtExternalID.Location = new System.Drawing.Point(660, 85);
-            this._txtExternalID.Margin = new System.Windows.Forms.Padding(4);
+            this._txtExternalID.Location = new System.Drawing.Point(495, 69);
             this._txtExternalID.Name = "_txtExternalID";
-            this._txtExternalID.Size = new System.Drawing.Size(401, 22);
+            this._txtExternalID.Size = new System.Drawing.Size(302, 20);
             this._txtExternalID.TabIndex = 20;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(547, 90);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(410, 73);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 16);
+            this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "ExternalID";
             // 
             // _txtReturnUrl
             // 
-            this._txtReturnUrl.Location = new System.Drawing.Point(101, 86);
-            this._txtReturnUrl.Margin = new System.Windows.Forms.Padding(4);
+            this._txtReturnUrl.Location = new System.Drawing.Point(76, 70);
             this._txtReturnUrl.Name = "_txtReturnUrl";
-            this._txtReturnUrl.Size = new System.Drawing.Size(341, 22);
+            this._txtReturnUrl.Size = new System.Drawing.Size(257, 20);
             this._txtReturnUrl.TabIndex = 18;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 89);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(8, 72);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 16);
+            this.label10.Size = new System.Drawing.Size(55, 13);
             this.label10.TabIndex = 17;
             this.label10.Text = "Return Url";
             // 
             // _txtPhoneNumber
             // 
-            this._txtPhoneNumber.Location = new System.Drawing.Point(659, 21);
-            this._txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this._txtPhoneNumber.Location = new System.Drawing.Point(494, 17);
             this._txtPhoneNumber.Name = "_txtPhoneNumber";
-            this._txtPhoneNumber.Size = new System.Drawing.Size(401, 22);
+            this._txtPhoneNumber.Size = new System.Drawing.Size(302, 20);
             this._txtPhoneNumber.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(545, 26);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(409, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 16);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Phone Number";
             // 
             // _btnCreaSessioneFES
             // 
-            this._btnCreaSessioneFES.Location = new System.Drawing.Point(289, 125);
-            this._btnCreaSessioneFES.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnCreaSessioneFES.Location = new System.Drawing.Point(217, 102);
+            this._btnCreaSessioneFES.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnCreaSessioneFES.Name = "_btnCreaSessioneFES";
-            this._btnCreaSessioneFES.Size = new System.Drawing.Size(149, 31);
+            this._btnCreaSessioneFES.Size = new System.Drawing.Size(112, 25);
             this._btnCreaSessioneFES.TabIndex = 10;
             this._btnCreaSessioneFES.Text = "Crea Sessione FES";
             this._btnCreaSessioneFES.UseVisualStyleBackColor = true;
@@ -448,28 +437,26 @@
             // 
             // _txtMail
             // 
-            this._txtMail.Location = new System.Drawing.Point(100, 22);
-            this._txtMail.Margin = new System.Windows.Forms.Padding(4);
+            this._txtMail.Location = new System.Drawing.Point(75, 18);
             this._txtMail.Name = "_txtMail";
-            this._txtMail.Size = new System.Drawing.Size(341, 22);
+            this._txtMail.Size = new System.Drawing.Size(257, 20);
             this._txtMail.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 25);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(7, 20);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 16);
+            this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Mail";
             // 
             // _btnGetSessionStatus
             // 
-            this._btnGetSessionStatus.Location = new System.Drawing.Point(13, 36);
-            this._btnGetSessionStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._btnGetSessionStatus.Location = new System.Drawing.Point(10, 29);
+            this._btnGetSessionStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnGetSessionStatus.Name = "_btnGetSessionStatus";
-            this._btnGetSessionStatus.Size = new System.Drawing.Size(151, 31);
+            this._btnGetSessionStatus.Size = new System.Drawing.Size(113, 25);
             this._btnGetSessionStatus.TabIndex = 12;
             this._btnGetSessionStatus.Text = "Reperimento elenco";
             this._btnGetSessionStatus.UseVisualStyleBackColor = true;
@@ -486,21 +473,30 @@
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this._txtSessionID);
             this.groupBox4.Controls.Add(this._btnGetSessionStatus);
-            this.groupBox4.Location = new System.Drawing.Point(16, 368);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Location = new System.Drawing.Point(12, 320);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(1072, 85);
+            this.groupBox4.Size = new System.Drawing.Size(804, 60);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Lettura sessioni di firma";
             // 
+            // _btnClearLog
+            // 
+            this._btnClearLog.Location = new System.Drawing.Point(128, 29);
+            this._btnClearLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._btnClearLog.Name = "_btnClearLog";
+            this._btnClearLog.Size = new System.Drawing.Size(84, 25);
+            this._btnClearLog.TabIndex = 18;
+            this._btnClearLog.Text = "Clear Log";
+            this._btnClearLog.UseVisualStyleBackColor = true;
+            this._btnClearLog.Click += new System.EventHandler(this._btnClearLog_Click);
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(804, 34);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Location = new System.Drawing.Point(603, 28);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 31);
+            this.button3.Size = new System.Drawing.Size(86, 25);
             this.button3.TabIndex = 17;
             this.button3.Text = "Download";
             this.button3.UseVisualStyleBackColor = true;
@@ -508,10 +504,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(924, 34);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(693, 28);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 31);
+            this.button2.Size = new System.Drawing.Size(103, 25);
             this.button2.TabIndex = 16;
             this.button2.Text = "Cancella sessione";
             this.button2.UseVisualStyleBackColor = true;
@@ -519,10 +515,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(643, 36);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(482, 29);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 31);
+            this.button1.Size = new System.Drawing.Size(117, 25);
             this.button1.TabIndex = 15;
             this.button1.Text = "Lettura info sessione";
             this.button1.UseVisualStyleBackColor = true;
@@ -531,19 +527,17 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(339, 42);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(254, 34);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 16);
+            this.label12.Size = new System.Drawing.Size(58, 13);
             this.label12.TabIndex = 14;
             this.label12.Text = "Session ID";
             // 
             // _txtSessionID
             // 
-            this._txtSessionID.Location = new System.Drawing.Point(424, 39);
-            this._txtSessionID.Margin = new System.Windows.Forms.Padding(4);
+            this._txtSessionID.Location = new System.Drawing.Point(318, 32);
             this._txtSessionID.Name = "_txtSessionID";
-            this._txtSessionID.Size = new System.Drawing.Size(211, 22);
+            this._txtSessionID.Size = new System.Drawing.Size(159, 20);
             this._txtSessionID.TabIndex = 13;
             // 
             // tabControl1
@@ -553,21 +547,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(17, 460);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(13, 387);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1071, 299);
+            this.tabControl1.Size = new System.Drawing.Size(803, 230);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this._txtLog);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1063, 270);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(795, 204);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Log";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -575,11 +567,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.sessionData);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1063, 270);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(795, 204);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sessioni";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -588,36 +579,41 @@
             // 
             this.sessionData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sessionData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sessionData.Location = new System.Drawing.Point(4, 4);
-            this.sessionData.Margin = new System.Windows.Forms.Padding(4);
+            this.sessionData.Location = new System.Drawing.Point(3, 3);
             this.sessionData.Name = "sessionData";
             this.sessionData.RowHeadersWidth = 51;
-            this.sessionData.Size = new System.Drawing.Size(1055, 262);
+            this.sessionData.Size = new System.Drawing.Size(789, 198);
             this.sessionData.TabIndex = 0;
             this.sessionData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sessionData_CellContentClick);
             // 
-            // _btnClearLog
+            // _txtFileNameToMassiveSignHash
             // 
-            this._btnClearLog.Location = new System.Drawing.Point(170, 36);
-            this._btnClearLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._btnClearLog.Name = "_btnClearLog";
-            this._btnClearLog.Size = new System.Drawing.Size(112, 31);
-            this._btnClearLog.TabIndex = 18;
-            this._btnClearLog.Text = "Clear Log";
-            this._btnClearLog.UseVisualStyleBackColor = true;
-            this._btnClearLog.Click += new System.EventHandler(this._btnClearLog_Click);
+            this._txtFileNameToMassiveSignHash.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this._txtFileNameToMassiveSignHash.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this._txtFileNameToMassiveSignHash.Location = new System.Drawing.Point(394, 133);
+            this._txtFileNameToMassiveSignHash.Name = "_txtFileNameToMassiveSignHash";
+            this._txtFileNameToMassiveSignHash.Size = new System.Drawing.Size(401, 20);
+            this._txtFileNameToMassiveSignHash.TabIndex = 36;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(334, 136);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(54, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "FileName:";
             // 
             // FormSign
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 774);
+            this.ClientSize = new System.Drawing.Size(828, 629);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(861, 47);
+            this.MinimumSize = new System.Drawing.Size(650, 45);
             this.Name = "FormSign";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign example";
@@ -685,6 +681,9 @@
         private System.Windows.Forms.CheckBox _cbAddGrafoData;
         private System.Windows.Forms.Button _btnCreaSessioneGrafo;
         private System.Windows.Forms.Button _btnClearLog;
+        private System.Windows.Forms.Button _btnFirmaMassivaHASH;
+        private System.Windows.Forms.TextBox _txtFileNameToMassiveSignHash;
+        private System.Windows.Forms.Label label14;
     }
 }
 

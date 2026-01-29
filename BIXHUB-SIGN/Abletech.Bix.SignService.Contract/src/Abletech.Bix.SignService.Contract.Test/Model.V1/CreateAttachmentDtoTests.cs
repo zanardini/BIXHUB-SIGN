@@ -105,6 +105,14 @@ namespace Abletech.Bix.SignService.Contract.Test
         {
             // TODO unit test for the property 'IndexOrder'
         }
+        /// <summary>
+        /// Test the property 'AttachmentValidationTypeAi'
+        /// </summary>
+        [Test]
+        public void AttachmentValidationTypeAiTest()
+        {
+            // TODO unit test for the property 'AttachmentValidationTypeAi'
+        }
 
     }
 

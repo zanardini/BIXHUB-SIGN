@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines FieldType
+    /// - **Signature**: May contain a signature stroke or glyph.  - **CheckBox**: It may or may not be selected.  - **RadioGroup**: Only one of the available values ​​can be selected.  - **TextBox**: May contain free text.  - **DatePicker**: May contain a Date.  - **ComboBox**: Only one of the available values ​​can be selected.
     /// </summary>
+    /// <value>- **Signature**: May contain a signature stroke or glyph.  - **CheckBox**: It may or may not be selected.  - **RadioGroup**: Only one of the available values ​​can be selected.  - **TextBox**: May contain free text.  - **DatePicker**: May contain a Date.  - **ComboBox**: Only one of the available values ​​can be selected.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

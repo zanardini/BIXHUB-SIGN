@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines ApproverStatusSessionState
+    /// The Status property defines the state of the Approver:  - **Approved**: Approver has already approved the Sign Session.  - **Rejected**: Approver rejected the Sign Session.  - **InProgress**: Approver has not yet made his decision.
     /// </summary>
+    /// <value>The Status property defines the state of the Approver:  - **Approved**: Approver has already approved the Sign Session.  - **Rejected**: Approver rejected the Sign Session.  - **InProgress**: Approver has not yet made his decision.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

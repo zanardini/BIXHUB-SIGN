@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines VerificationModeDto
+    /// The VerificationMode property indicates how Signer authenticates the signature:  - **Signature**: The signature stroke is sufficient.  - **EmailOtp**: An OTP will be sent to the email address.  - **SmsOtp**: An OTP will be sent to the phone number via SMS.  - **WhatsappOtp**: An OTP will be sent to the phone number via WhatsApp.
     /// </summary>
+    /// <value>The VerificationMode property indicates how Signer authenticates the signature:  - **Signature**: The signature stroke is sufficient.  - **EmailOtp**: An OTP will be sent to the email address.  - **SmsOtp**: An OTP will be sent to the phone number via SMS.  - **WhatsappOtp**: An OTP will be sent to the phone number via WhatsApp.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | **Guid** |  | [optional] 
+**Guid** | **Guid** | Error&#39;s guid | [optional] 
 **Type** | **SignErrorType** |  | 
-**Details** | **string** |  | [optional] 
-**TimeStamp** | **DateTime** |  | [optional] 
+**Details** | **string** | Error&#39;s details | [optional] 
+**TimeStamp** | **DateTime** | Error&#39;s Date (UTC standard) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

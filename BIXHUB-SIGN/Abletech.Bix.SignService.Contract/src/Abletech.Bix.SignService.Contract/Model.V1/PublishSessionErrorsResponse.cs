@@ -65,7 +65,7 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Initializes a new instance of the <see cref="PublishSessionErrorsResponse" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="details">details.</param>
+        /// <param name="details">Error&#39;s details.</param>
         public PublishSessionErrorsResponse(SignErrorType type = default(SignErrorType), string details = default(string))
         {
             // to ensure "type" is required (not null)
@@ -84,8 +84,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets Details
+        /// Error&#39;s details
         /// </summary>
+        /// <value>Error&#39;s details</value>
         [DataMember(Name="details", EmitDefaultValue=true)]
         public string Details { get; set; }
 

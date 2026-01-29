@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Guid** | **Guid** |  | [optional] 
-**ShortDescription** | **string** |  | [optional] 
-**ExternalId** | **string** |  | [optional] 
-**Optional** | **bool** |  | [optional] 
+**Guid** | **Guid** | Field&#39;s guid | [optional] 
+**ShortDescription** | **string** | Field&#39;s description | [optional] 
+**ExternalId** | **string** | Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique | [optional] 
+**Optional** | **bool** | If true, the Field must be filled in to complete the Sign Session | [optional] 
 **FieldType** | **FieldType** |  | 
-**Value** | **string** |  | [optional] 
+**Value** | **string** | Field&#39;s actual value | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

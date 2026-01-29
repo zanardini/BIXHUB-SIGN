@@ -12,7 +12,7 @@ The version of the OpenAPI document: v1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{45982626-61B0-48CD-BE76-823C43A513C9}</ProjectGuid>
+    <ProjectGuid>{80FFDE8A-BD50-42A1-852E-84541A5D20BA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Abletech.Bix.SignService.Contract</RootNamespace>

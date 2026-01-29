@@ -54,12 +54,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="PublishSessionSignersResponse" /> class.
         /// </summary>
-        /// <param name="email">email.</param>
-        /// <param name="taxCode">taxCode.</param>
-        /// <param name="description">description.</param>
-        /// <param name="uri">uri.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="guid">guid.</param>
+        /// <param name="email">Signer&#39;s email address; It may receive notifications or OTP.</param>
+        /// <param name="taxCode">Signer&#39;s taxcode.</param>
+        /// <param name="description">Signer&#39;s description.</param>
+        /// <param name="uri">Link that leads to the page from which the session can be continued.</param>
+        /// <param name="externalId">Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="guid">Signer&#39;s guid.</param>
         public PublishSessionSignersResponse(string email = default(string), string taxCode = default(string), string description = default(string), string uri = default(string), string externalId = default(string), Guid guid = default(Guid))
         {
             this.Email = email;
@@ -76,38 +76,44 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Signer&#39;s email address; It may receive notifications or OTP
         /// </summary>
+        /// <value>Signer&#39;s email address; It may receive notifications or OTP</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxCode
+        /// Signer&#39;s taxcode
         /// </summary>
+        /// <value>Signer&#39;s taxcode</value>
         [DataMember(Name="taxCode", EmitDefaultValue=true)]
         public string TaxCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Signer&#39;s description
         /// </summary>
+        /// <value>Signer&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Uri
+        /// Link that leads to the page from which the session can be continued
         /// </summary>
+        /// <value>Link that leads to the page from which the session can be continued</value>
         [DataMember(Name="uri", EmitDefaultValue=true)]
         public string Uri { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Signer&#39;s guid
         /// </summary>
+        /// <value>Signer&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 

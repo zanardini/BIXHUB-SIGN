@@ -54,8 +54,8 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldGroupDocumentSessionDetailResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="fields">fields.</param>
+        /// <param name="guid">FieldGroupDocument&#39;s Guid.</param>
+        /// <param name="fields">List of Fields in this Document belonging to FieldGroup.</param>
         public FieldGroupDocumentSessionDetailResponse(Guid guid = default(Guid), List<FieldSessionDetailResponse> fields = default(List<FieldSessionDetailResponse>))
         {
             this.Fields = fields;
@@ -64,14 +64,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// FieldGroupDocument&#39;s Guid
         /// </summary>
+        /// <value>FieldGroupDocument&#39;s Guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Fields
+        /// List of Fields in this Document belonging to FieldGroup
         /// </summary>
+        /// <value>List of Fields in this Document belonging to FieldGroup</value>
         [DataMember(Name="fields", EmitDefaultValue=true)]
         public List<FieldSessionDetailResponse> Fields { get; set; }
 

@@ -54,9 +54,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="FollowerSessionDetailResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="email">email.</param>
-        /// <param name="description">description.</param>
+        /// <param name="guid">Follower&#39;s guid.</param>
+        /// <param name="email">Follower&#39;s email address; It may receive notifications.</param>
+        /// <param name="description">Follower&#39;s description.</param>
         public FollowerSessionDetailResponse(Guid guid = default(Guid), string email = default(string), string description = default(string))
         {
             this.Email = email;
@@ -67,20 +67,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Follower&#39;s guid
         /// </summary>
+        /// <value>Follower&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Follower&#39;s email address; It may receive notifications
         /// </summary>
+        /// <value>Follower&#39;s email address; It may receive notifications</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Follower&#39;s description
         /// </summary>
+        /// <value>Follower&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 

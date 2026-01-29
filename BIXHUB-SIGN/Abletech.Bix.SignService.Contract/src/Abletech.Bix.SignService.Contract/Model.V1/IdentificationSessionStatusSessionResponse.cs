@@ -64,10 +64,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="IdentificationSessionStatusSessionResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
+        /// <param name="guid">Guid of Identification Session.</param>
         /// <param name="status">status.</param>
         /// <param name="flowType">flowType.</param>
-        /// <param name="completedDate">completedDate.</param>
+        /// <param name="completedDate">Identification Session completion date (UTC standard).</param>
         public IdentificationSessionStatusSessionResponse(Guid guid = default(Guid), IdeSessionStatus? status = default(IdeSessionStatus?), SessionFlowTypeDto? flowType = default(SessionFlowTypeDto?), DateTime? completedDate = default(DateTime?))
         {
             this.CompletedDate = completedDate;
@@ -78,16 +78,18 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Guid of Identification Session
         /// </summary>
+        /// <value>Guid of Identification Session</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
 
 
         /// <summary>
-        /// Gets or Sets CompletedDate
+        /// Identification Session completion date (UTC standard)
         /// </summary>
+        /// <value>Identification Session completion date (UTC standard)</value>
         [DataMember(Name="completedDate", EmitDefaultValue=true)]
         public DateTime? CompletedDate { get; set; }
 

@@ -54,9 +54,9 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldGroupSessionDetailResponse" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="groupOrder">groupOrder.</param>
-        /// <param name="documents">documents.</param>
+        /// <param name="guid">FieldGroup&#39;s guid.</param>
+        /// <param name="groupOrder">FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property.</param>
+        /// <param name="documents">List of Documents containing Fields belonging to this FieldGroups.</param>
         public FieldGroupSessionDetailResponse(Guid guid = default(Guid), float groupOrder = default(float), List<FieldGroupDocumentSessionDetailResponse> documents = default(List<FieldGroupDocumentSessionDetailResponse>))
         {
             this.Documents = documents;
@@ -66,20 +66,23 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// FieldGroup&#39;s guid
         /// </summary>
+        /// <value>FieldGroup&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupOrder
+        /// FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property
         /// </summary>
+        /// <value>FieldGroup&#39;s order. Signer will have to complete FieldGroups in order according to this property</value>
         [DataMember(Name="groupOrder", EmitDefaultValue=true)]
         public float GroupOrder { get; set; }
 
         /// <summary>
-        /// Gets or Sets Documents
+        /// List of Documents containing Fields belonging to this FieldGroups
         /// </summary>
+        /// <value>List of Documents containing Fields belonging to this FieldGroups</value>
         [DataMember(Name="documents", EmitDefaultValue=true)]
         public List<FieldGroupDocumentSessionDetailResponse> Documents { get; set; }
 

@@ -54,10 +54,10 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="GetFieldsDtoSigner" /> class.
         /// </summary>
-        /// <param name="guid">guid.</param>
-        /// <param name="description">description.</param>
-        /// <param name="taxCode">taxCode.</param>
-        /// <param name="externalId">externalId.</param>
+        /// <param name="guid">Signer&#39;s guid.</param>
+        /// <param name="description">Signer&#39;s description.</param>
+        /// <param name="taxCode">Signer&#39;s taxcode.</param>
+        /// <param name="externalId">Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique.</param>
         public GetFieldsDtoSigner(Guid guid = default(Guid), string description = default(string), string taxCode = default(string), string externalId = default(string))
         {
             this.Description = description;
@@ -70,26 +70,30 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         }
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Signer&#39;s guid
         /// </summary>
+        /// <value>Signer&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Signer&#39;s description
         /// </summary>
+        /// <value>Signer&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxCode
+        /// Signer&#39;s taxcode
         /// </summary>
+        /// <value>Signer&#39;s taxcode</value>
         [DataMember(Name="taxCode", EmitDefaultValue=true)]
         public string TaxCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Signer in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 

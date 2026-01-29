@@ -46,8 +46,9 @@ using Abletech.Bix.SignService.Contract.Client;
 namespace Abletech.Bix.SignService.Contract.Model.V1
 {
     /// <summary>
-    /// Defines SignSessionProcessTypeDto
+    /// The Process property defines the security level of the Sign session:  - **ES** Simple Electronic Signature: Basic signing process, ideal for most signature requests.  - **AES** Advanced Electronic Signature: Advanced signature process, connected to the certain identification of the Signer.  - **QES** Qualified Electronic Signature: Qualified signature process, connected to the certain identification of the Signer and issuing of the certificate.
     /// </summary>
+    /// <value>The Process property defines the security level of the Sign session:  - **ES** Simple Electronic Signature: Basic signing process, ideal for most signature requests.  - **AES** Advanced Electronic Signature: Advanced signature process, connected to the certain identification of the Signer.  - **QES** Qualified Electronic Signature: Qualified signature process, connected to the certain identification of the Signer and issuing of the certificate.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
@@ -60,10 +61,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         ES = 1,
 
         /// <summary>
+        /// Enum AES for value: AES
+        /// </summary>
+        [EnumMember(Value = "AES")]
+        AES = 2,
+
+        /// <summary>
         /// Enum QES for value: QES
         /// </summary>
         [EnumMember(Value = "QES")]
-        QES = 2
+        QES = 3
 
     }
 

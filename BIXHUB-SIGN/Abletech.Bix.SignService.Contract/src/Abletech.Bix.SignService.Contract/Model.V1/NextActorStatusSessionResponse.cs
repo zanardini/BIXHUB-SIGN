@@ -65,12 +65,12 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// Initializes a new instance of the <see cref="NextActorStatusSessionResponse" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="guid">guid.</param>
-        /// <param name="email">email.</param>
-        /// <param name="description">description.</param>
-        /// <param name="uri">uri.</param>
-        /// <param name="externalId">externalId.</param>
-        /// <param name="graphometric">graphometric.</param>
+        /// <param name="guid">Actor&#39;s guid.</param>
+        /// <param name="email">Actor&#39;s email address; It may receive notifications or OTP.</param>
+        /// <param name="description">Actor&#39;s description.</param>
+        /// <param name="uri">Link that leads to the page from which the session can be continued.</param>
+        /// <param name="externalId">Optional identifier to recognize the Actor in other software. ExternalIds are not guaranteed to be unique.</param>
+        /// <param name="graphometric">If true, the Signer will be required to sign on specific devices that can detect stroke pressure.</param>
         public NextActorStatusSessionResponse(ActorType type = default(ActorType), Guid guid = default(Guid), string email = default(string), string description = default(string), string uri = default(string), string externalId = default(string), bool graphometric = default(bool))
         {
             // to ensure "type" is required (not null)
@@ -97,38 +97,44 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
 
 
         /// <summary>
-        /// Gets or Sets Guid
+        /// Actor&#39;s guid
         /// </summary>
+        /// <value>Actor&#39;s guid</value>
         [DataMember(Name="guid", EmitDefaultValue=true)]
         public Guid Guid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Email
+        /// Actor&#39;s email address; It may receive notifications or OTP
         /// </summary>
+        /// <value>Actor&#39;s email address; It may receive notifications or OTP</value>
         [DataMember(Name="email", EmitDefaultValue=true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Actor&#39;s description
         /// </summary>
+        /// <value>Actor&#39;s description</value>
         [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Uri
+        /// Link that leads to the page from which the session can be continued
         /// </summary>
+        /// <value>Link that leads to the page from which the session can be continued</value>
         [DataMember(Name="uri", EmitDefaultValue=true)]
         public string Uri { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Optional identifier to recognize the Actor in other software. ExternalIds are not guaranteed to be unique
         /// </summary>
+        /// <value>Optional identifier to recognize the Actor in other software. ExternalIds are not guaranteed to be unique</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Graphometric
+        /// If true, the Signer will be required to sign on specific devices that can detect stroke pressure
         /// </summary>
+        /// <value>If true, the Signer will be required to sign on specific devices that can detect stroke pressure</value>
         [DataMember(Name="graphometric", EmitDefaultValue=true)]
         public bool Graphometric { get; set; }
 

@@ -54,15 +54,16 @@ namespace Abletech.Bix.SignService.Contract.Model.V1
         /// <summary>
         /// Initializes a new instance of the <see cref="FixErrorRequest" /> class.
         /// </summary>
-        /// <param name="errorGuid">errorGuid.</param>
+        /// <param name="errorGuid">Error&#39;s guid.</param>
         public FixErrorRequest(Guid errorGuid = default(Guid))
         {
             this.ErrorGuid = errorGuid;
         }
 
         /// <summary>
-        /// Gets or Sets ErrorGuid
+        /// Error&#39;s guid
         /// </summary>
+        /// <value>Error&#39;s guid</value>
         [DataMember(Name="errorGuid", EmitDefaultValue=true)]
         public Guid ErrorGuid { get; set; }
 

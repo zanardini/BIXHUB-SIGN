@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -33,6 +34,7 @@ namespace ExampleSIGN
                     _txtPhoneNumber.Text = settaggioIniziale.PhoneNumber;
                     _txtReturnUrl.Text = settaggioIniziale.ReturnUrl;
                     _txtExternalID.Text = settaggioIniziale.ExternalID;
+                    _txtFileNameToMassiveSignHash.Text = settaggioIniziale.FileNameToMassiveSignHash;
                 }
             }
         }
@@ -102,7 +104,7 @@ namespace ExampleSIGN
 
         private void AddLog(string log)
         {
-            _txtLog.Text += Environment.NewLine + log;
+            _txtLog.Text += Environment.NewLine + Environment.NewLine + log;
         }
 
         private void AddLogError(string log)
@@ -357,6 +359,46 @@ namespace ExampleSIGN
             _txtLog.Text = string.Empty;    
 
         }
+
+        private void _btnFirmaMassivaHASH_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_signCaller == null)
+                    throw new Exception("Fare login");
+                if (string.IsNullOrEmpty(_txtFileNameToMassiveSignHash.Text))
+                    throw new Exception("Selezionare il file da firmare");
+
+                if (!File.Exists(_txtFileNameToMassiveSignHash.Text))
+                    throw new Exception("Il file da firmare non esiste");
+
+                string base64 = "";
+                using (var sha256 = SHA256.Create())
+                {
+                    using (var stream = File.OpenRead(_txtFileNameToMassiveSignHash.Text))
+                    {
+                        byte[] hash = sha256.ComputeHash(stream);
+                        base64 = Convert.ToBase64String(hash);
+                    }
+                }
+
+                var certificato = _signCaller.MassiveSignHash_GetSigningCertificate(); 
+                    
+
+                var esitiFirme = _signCaller.MassiveSignHash_ExecuteSign(new List<string> { base64});
+                AddLogInfo("Firma massiva hash eseguita con successo:");
+                foreach (var esitoFirma in esitiFirme)
+                {
+                    AddLogInfo(" - " + esitoFirma.Key + " - " + esitoFirma.Value);
+                }
+
+                AddLogInfo("Certificato di firma:" + Environment.NewLine + certificato);
+            }
+            catch (Exception ex)
+            {
+                AddLogError(ex.Message);
+            }
+        }
     }
 
     [Serializable()]
@@ -376,5 +418,6 @@ namespace ExampleSIGN
         public string PhoneNumber { get; set; }
         public string ReturnUrl { get; set; }
         public string ExternalID { get; set; }
+        public string FileNameToMassiveSignHash { get; set; }
     }
 }

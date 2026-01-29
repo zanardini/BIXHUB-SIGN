@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **FieldType** |  | 
-**Guid** | **Guid** |  | [optional] 
-**ShortDescription** | **string** |  | [optional] 
-**ExternalId** | **string** |  | [optional] 
-**Value** | **string** |  | [optional] 
+**Guid** | **Guid** | Field&#39;s guid | [optional] 
+**ShortDescription** | **string** | Field&#39;s description | [optional] 
+**ExternalId** | **string** | Optional identifier to recognize the Field in other software. ExternalIds are not guaranteed to be unique | [optional] 
+**Value** | **string** | Field&#39;s actual value | [optional] 
 **Document** | [**GetFieldsDtoDocument**](GetFieldsDtoDocument.md) |  | [optional] 
 **FieldGroup** | [**GetFieldsDtoFieldGroup**](GetFieldsDtoFieldGroup.md) |  | [optional] 
 **Signer** | [**GetFieldsDtoSigner**](GetFieldsDtoSigner.md) |  | [optional] 
